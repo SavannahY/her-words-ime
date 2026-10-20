@@ -1,0 +1,1349 @@
+{
+  "format": "her-words-language-pack",
+  "version": 1,
+  "id": "neutral-zh-cn",
+  "name": "中性友好表达",
+  "language": "zh-CN",
+  "kind": "neutral",
+  "license": "MIT",
+  "description": "默认按词改写，保护正常女旁词、同音词与专业用语。",
+  "sources": [
+    {
+      "id": "un-zh",
+      "title": "联合国《中文性别包容性语言指南》",
+      "url": "https://www.un.org/zh/gender-inclusive-language/guidelines.shtml"
+    },
+    {
+      "id": "fincher",
+      "title": "洪理达《剩女》作者介绍页",
+      "url": "https://letahongfincher.com/leftover-women"
+    },
+    {
+      "id": "moe-furen",
+      "title": "教育部《重编国语辞典》妇人之仁",
+      "url": "https://dict.revised.moe.edu.tw/dictView.jsp?ID=39451&la=0&powerMode=0"
+    },
+    {
+      "id": "xiamianzun",
+      "title": "夏丏尊《汉字所表现的女性的地位》1922年原文",
+      "url": "https://zh.wikisource.org/zh-hant/漢字所表現的女性的地位"
+    },
+    {
+      "id": "moe-changshe",
+      "title": "教育部《重编国语辞典》长舌妇",
+      "url": "https://dict.revised.moe.edu.tw/dictView.jsp?ID=123730&la=1&powerMode=0"
+    },
+    {
+      "id": "moe-popo",
+      "title": "教育部《重编国语辞典》婆婆妈妈",
+      "url": "https://dict.revised.moe.edu.tw/dictView.jsp?ID=22499&la=1&powerMode=0"
+    },
+    {
+      "id": "moe-niang",
+      "title": "教育部《重编国语辞典》娘娘腔",
+      "url": "https://dict.revised.moe.edu.tw/dictView.jsp?ID=58217&la=1&powerMode=0"
+    },
+    {
+      "id": "moe-bullying",
+      "title": "教育部107至108年度防制校园霸凌案例教材",
+      "url": "https://bully.moe.edu.tw/uploads/file/20231129/6566b2dc13fdf.pdf"
+    },
+    {
+      "id": "moe-jian",
+      "title": "教育部《国字标准字体笔顺学习网》奸",
+      "url": "https://stroke-order.learningweb.moe.edu.tw/dictMean.jsp?ID=22904&la=0"
+    },
+    {
+      "id": "moe-jiao",
+      "title": "教育部《重编国语辞典》狡诈",
+      "url": "https://dict.revised.moe.edu.tw/dictView.jsp?ID=91461&la=0&powerMode=0"
+    },
+    {
+      "id": "moe-jianxiao",
+      "title": "教育部《国语辞典简编本》奸笑",
+      "url": "https://dict.concised.moe.edu.tw/dictView.jsp?ID=22758&la=0&powerMode=0"
+    },
+    {
+      "id": "moe-jihen",
+      "title": "教育部《重编国语辞典》嫉恨",
+      "url": "https://dict.revised.moe.edu.tw/dictView.jsp?ID=88270&la=1&powerMode=0"
+    },
+    {
+      "id": "moe-ji",
+      "title": "教育部《国语辞典简编本》忌",
+      "url": "https://dict.concised.moe.edu.tw/dictView.jsp?ID=21576&la=0&powerMode=0"
+    },
+    {
+      "id": "moe-beigong",
+      "title": "教育部《重编国语辞典》相似词索引",
+      "url": "https://dict.revised.moe.edu.tw/appendix.jsp?ID=6&la=0&page=3&powerMode=0&ver=5"
+    },
+    {
+      "id": "moe-pengbi",
+      "title": "教育部《成语典》朋比为奸",
+      "url": "https://dict.idioms.moe.edu.tw/bookView.jsp?ID=11111111"
+    },
+    {
+      "id": "moe-yi",
+      "title": "教育部台湾客语辞典：奴役",
+      "url": "https://hakkadict.moe.edu.tw/search_result/?id=13211"
+    },
+    {
+      "id": "moe-humu",
+      "title": "教育部台湾台语常用词辞典：虎豹母",
+      "url": "https://sutian.moe.edu.tw/zh-hant/tshiau/?iahbe=2&lui=tai_su&pitsoo=20&tsha=母"
+    },
+    {
+      "id": "cuhk-zhi",
+      "title": "香港中文大学汉语多功能字库：忮",
+      "url": "https://humanum.arts.cuhk.edu.hk/Lexis/lexi-mf/search.php?word=忮"
+    },
+    {
+      "id": "swrs",
+      "title": "Jiang等：SWSR中文网络性别歧视数据集原论文",
+      "url": "https://arxiv.org/abs/2108.03070"
+    },
+    {
+      "id": "bias",
+      "title": "Park等：Reducing Gender Bias in Abusive Language Detection",
+      "url": "https://arxiv.org/abs/1808.07231"
+    },
+    {
+      "id": "culture-popo",
+      "title": "国家文化记忆库：林凤美《婆婆妈妈的故事》",
+      "url": "https://tcmb.culture.tw/zh-tw/detail?id=308454&indexCode=Culture_Object"
+    },
+    {
+      "id": "paper-pofu",
+      "title": "陈葆文《聊斋志异》悍妒妇女类型析论",
+      "url": "https://tkujcl.tacx.tku.edu.tw/uploads/papers/tw/17.7-《聊齋誌異》「悍妒婦女」類型析論（陳葆文／淡江大學中文系副教授）.pdf"
+    },
+    {
+      "id": "zdic-zhiji",
+      "title": "汉典：忮忌，读 zhì jì",
+      "url": "https://www.zdic.net/hans/忮忌"
+    },
+    {
+      "id": "community-usage",
+      "title": "女性社群对忮忌的用例",
+      "url": "https://www.reddit.com/r/DoubanFeministGroup/comments/1gikls8"
+    },
+    {
+      "id": "community-borrowed",
+      "title": "2018年个人「以人代女」改字倡议",
+      "url": "https://madmansnest.com/2018/04/17/destroy-sexism.html"
+    },
+    {
+      "id": "male-radical-art",
+      "title": "中山大学刊载：柯倩婷的男旁印章造字实践",
+      "url": "https://www.sysu.edu.cn/news/info/2171/628661.htm"
+    },
+    {
+      "id": "community-male-spelling",
+      "title": "社群转载讨论中的男疾男户用例",
+      "url": "https://www.reddit.com/r/LiberalGooseGroup/comments/1f1wvmp"
+    },
+    {
+      "id": "editorial-preference",
+      "title": "她说：个人友好措辞偏好",
+      "url": "https://github.com/SavannahY/her-words-ime/blob/main/docs/language-packs.md"
+    }
+  ],
+  "entries": [
+    {
+      "id": "neutral-01",
+      "from": "女强人",
+      "to": "事业有成的女性",
+      "match": "phrase",
+      "pinyin": "nv qiang ren",
+      "variants": [
+        "女強人"
+      ],
+      "to_traditional": "事業有成的女性",
+      "note": "标题、作品名、引文应可切回原文。 来源直接给出的建议或其同义措辞",
+      "source_ids": [
+        "un-zh"
+      ],
+      "tests": [
+        {
+          "input": "女强人",
+          "expected": "事业有成的女性"
+        },
+        {
+          "input": "好妈妈和姐姐的婚姻",
+          "expected": "好妈妈和姐姐的婚姻"
+        }
+      ]
+    },
+    {
+      "id": "neutral-02",
+      "from": "妇孺皆知",
+      "to": "众所周知",
+      "match": "phrase",
+      "pinyin": "fu ru jie zhi",
+      "variants": [
+        "婦孺皆知"
+      ],
+      "to_traditional": "眾所周知",
+      "note": "不拆开妇和孺；仅匹配完整四字串。 来源直接给出的建议或其同义措辞",
+      "source_ids": [
+        "un-zh"
+      ],
+      "tests": [
+        {
+          "input": "妇孺皆知",
+          "expected": "众所周知"
+        },
+        {
+          "input": "好妈妈和姐姐的婚姻",
+          "expected": "好妈妈和姐姐的婚姻"
+        }
+      ]
+    },
+    {
+      "id": "neutral-03",
+      "from": "寡妇",
+      "to": "丧偶女性",
+      "match": "exact",
+      "pinyin": "gua fu",
+      "variants": [
+        "寡婦"
+      ],
+      "to_traditional": "喪偶女性",
+      "note": "黑寡妇是物种、作品名、角色名；风流寡妇是作品名，禁止子串替换。联合国原建议用丧偶妇女，此处女性是本项目措辞。 本项目编辑建议；来源支持问题或词义，未声称来源发布此映射",
+      "source_ids": [
+        "un-zh"
+      ],
+      "tests": [
+        {
+          "input": "寡妇",
+          "expected": "丧偶女性"
+        },
+        {
+          "input": "好妈妈和姐姐的婚姻",
+          "expected": "好妈妈和姐姐的婚姻"
+        },
+        {
+          "input": "黑寡妇",
+          "expected": "黑寡妇"
+        }
+      ]
+    },
+    {
+      "id": "neutral-04",
+      "from": "剩女",
+      "to": "单身女性",
+      "match": "exact",
+      "pinyin": "sheng nv",
+      "variants": [],
+      "to_traditional": "單身女性",
+      "note": "《剩女》等书名片名与反污名讨论保留原文通道。单身不严格等于从未结婚；需法律婚姻事实时用未婚女性。 本项目编辑建议；来源支持问题或词义，未声称来源发布此映射",
+      "source_ids": [
+        "fincher"
+      ],
+      "tests": [
+        {
+          "input": "剩女",
+          "expected": "单身女性"
+        },
+        {
+          "input": "好妈妈和姐姐的婚姻",
+          "expected": "好妈妈和姐姐的婚姻"
+        }
+      ]
+    },
+    {
+      "id": "neutral-05",
+      "from": "大龄剩女",
+      "to": "大龄单身女性",
+      "match": "phrase",
+      "pinyin": "da ling sheng nv",
+      "variants": [
+        "大齡剩女"
+      ],
+      "to_traditional": "大齡單身女性",
+      "note": "大龄依然是相对标签，可人工选单身女性；否定句和讨论用例仍会改词，应可还原。 本项目编辑建议；来源支持问题或词义，未声称来源发布此映射",
+      "source_ids": [
+        "fincher"
+      ],
+      "tests": [
+        {
+          "input": "大龄剩女",
+          "expected": "大龄单身女性"
+        },
+        {
+          "input": "好妈妈和姐姐的婚姻",
+          "expected": "好妈妈和姐姐的婚姻"
+        }
+      ]
+    },
+    {
+      "id": "neutral-06",
+      "from": "老剩女",
+      "to": "年长单身女性",
+      "match": "exact",
+      "pinyin": "lao sheng nv",
+      "variants": [],
+      "to_traditional": "年長單身女性",
+      "note": "只处理完整词条，不补全具体年龄；年长为语义妥协，也可直接选单身女性。 本项目编辑建议；来源支持问题或词义，未声称来源发布此映射",
+      "source_ids": [
+        "fincher"
+      ],
+      "tests": [
+        {
+          "input": "老剩女",
+          "expected": "年长单身女性"
+        },
+        {
+          "input": "好妈妈和姐姐的婚姻",
+          "expected": "好妈妈和姐姐的婚姻"
+        }
+      ]
+    },
+    {
+      "id": "neutral-08",
+      "from": "娘娘腔",
+      "to": "阴柔气质",
+      "match": "exact",
+      "pinyin": "niang niang qiang",
+      "variants": [],
+      "to_traditional": "陰柔氣質",
+      "note": "名词和形容词句法不同；完整句子如她是个娘娘腔不能直改为她是个阴柔气质。推荐只做词条候选。 本项目编辑建议；来源支持问题或词义，未声称来源发布此映射",
+      "source_ids": [
+        "un-zh",
+        "moe-niang"
+      ],
+      "tests": [
+        {
+          "input": "娘娘腔",
+          "expected": "阴柔气质"
+        },
+        {
+          "input": "好妈妈和姐姐的婚姻",
+          "expected": "好妈妈和姐姐的婚姻"
+        }
+      ]
+    },
+    {
+      "id": "neutral-09",
+      "from": "娘炮",
+      "to": "阴柔气质",
+      "match": "exact",
+      "pinyin": "niang pao",
+      "variants": [],
+      "to_traditional": "陰柔氣質",
+      "note": "不推断是女性、跨性别或同性恋。需要词条级候选，整句名词结构会不通顺。 本项目编辑建议；来源支持问题或词义，未声称来源发布此映射",
+      "source_ids": [
+        "moe-bullying",
+        "moe-niang"
+      ],
+      "tests": [
+        {
+          "input": "娘炮",
+          "expected": "阴柔气质"
+        },
+        {
+          "input": "好妈妈和姐姐的婚姻",
+          "expected": "好妈妈和姐姐的婚姻"
+        }
+      ]
+    },
+    {
+      "id": "neutral-10",
+      "from": "婆婆妈妈",
+      "to": "拖泥带水",
+      "match": "exact",
+      "pinyin": "po po ma ma",
+      "variants": [
+        "婆婆媽媽"
+      ],
+      "to_traditional": "拖泥帶水",
+      "note": "如指亲属们或作品《婆婆妈妈的故事》要原文。若指说话多，应选啰啰嗦嗦而非拖泥带水。 本项目编辑建议；来源支持问题或词义，未声称来源发布此映射",
+      "source_ids": [
+        "un-zh",
+        "moe-popo",
+        "culture-popo"
+      ],
+      "tests": [
+        {
+          "input": "婆婆妈妈",
+          "expected": "拖泥带水"
+        },
+        {
+          "input": "好妈妈和姐姐的婚姻",
+          "expected": "好妈妈和姐姐的婚姻"
+        }
+      ]
+    },
+    {
+      "id": "neutral-11",
+      "from": "妇人之仁",
+      "to": "心慈手软",
+      "match": "exact",
+      "pinyin": "fu ren zhi ren",
+      "variants": [
+        "婦人之仁"
+      ],
+      "to_traditional": "心慈手軟",
+      "note": "只覆盖心软姑息义；施小惠不顾大局义不等同。引用历史原话保留原文。 本项目编辑建议；来源支持问题或词义，未声称来源发布此映射",
+      "source_ids": [
+        "moe-furen",
+        "xiamianzun"
+      ],
+      "tests": [
+        {
+          "input": "妇人之仁",
+          "expected": "心慈手软"
+        },
+        {
+          "input": "好妈妈和姐姐的婚姻",
+          "expected": "好妈妈和姐姐的婚姻"
+        }
+      ]
+    },
+    {
+      "id": "neutral-12",
+      "from": "妇人之见",
+      "to": "浅陋之见",
+      "match": "phrase",
+      "pinyin": "fu ren zhi jian",
+      "variants": [
+        "婦人之見"
+      ],
+      "to_traditional": "淺陋之見",
+      "note": "保留对见识的评价、移除性别归因；批判这个词的元语言或原文引用应可还原。 本项目编辑建议；来源支持问题或词义，未声称来源发布此映射",
+      "source_ids": [
+        "xiamianzun"
+      ],
+      "tests": [
+        {
+          "input": "妇人之见",
+          "expected": "浅陋之见"
+        },
+        {
+          "input": "好妈妈和姐姐的婚姻",
+          "expected": "好妈妈和姐姐的婚姻"
+        }
+      ]
+    },
+    {
+      "id": "neutral-13",
+      "from": "长舌妇",
+      "to": "爱搬弄是非的人",
+      "match": "exact",
+      "pinyin": "chang she fu",
+      "variants": [
+        "長舌婦"
+      ],
+      "to_traditional": "愛搬弄是非的人",
+      "note": "替换评价仍然是负面但不归因于性别。整句她是个长舌妇会产生重复的人，应词条级处理。 本项目编辑建议；来源支持问题或词义，未声称来源发布此映射",
+      "source_ids": [
+        "moe-changshe"
+      ],
+      "tests": [
+        {
+          "input": "长舌妇",
+          "expected": "爱搬弄是非的人"
+        },
+        {
+          "input": "好妈妈和姐姐的婚姻",
+          "expected": "好妈妈和姐姐的婚姻"
+        }
+      ]
+    },
+    {
+      "id": "neutral-14",
+      "from": "泼妇",
+      "to": "蛮横无理的人",
+      "match": "exact",
+      "pinyin": "po fu",
+      "variants": [
+        "潑婦"
+      ],
+      "to_traditional": "蠻橫無理的人",
+      "note": "语义替代是编写建议，来源仅支持性别化称谓的讨论；文学人物或作品题名保留原文。 本项目编辑建议；来源支持问题或词义，未声称来源发布此映射",
+      "source_ids": [
+        "paper-pofu"
+      ],
+      "tests": [
+        {
+          "input": "泼妇",
+          "expected": "蛮横无理的人"
+        },
+        {
+          "input": "好妈妈和姐姐的婚姻",
+          "expected": "好妈妈和姐姐的婚姻"
+        }
+      ]
+    },
+    {
+      "id": "neutral-15",
+      "from": "悍妇",
+      "to": "蛮横无理的人",
+      "match": "exact",
+      "pinyin": "han fu",
+      "variants": [
+        "悍婦"
+      ],
+      "to_traditional": "蠻橫無理的人",
+      "note": "文学中的悍妇也可能被作者重新肯定；只做候选词条，允许原文。 本项目编辑建议；来源支持问题或词义，未声称来源发布此映射",
+      "source_ids": [
+        "paper-pofu"
+      ],
+      "tests": [
+        {
+          "input": "悍妇",
+          "expected": "蛮横无理的人"
+        },
+        {
+          "input": "好妈妈和姐姐的婚姻",
+          "expected": "好妈妈和姐姐的婚姻"
+        }
+      ]
+    },
+    {
+      "id": "neutral-18",
+      "from": "奸诈",
+      "to": "狡诈",
+      "match": "phrase",
+      "pinyin": "jian zha",
+      "variants": [
+        "奸詐",
+        "姦詐"
+      ],
+      "to_traditional": "狡詐",
+      "note": "词典支持近义，不据此宣称每次使用奸诈就是厌女；不改奸单字。 本项目编辑建议；来源支持问题或词义，未声称来源发布此映射",
+      "source_ids": [
+        "moe-jiao",
+        "community-borrowed"
+      ],
+      "tests": [
+        {
+          "input": "奸诈",
+          "expected": "狡诈"
+        },
+        {
+          "input": "好妈妈和姐姐的婚姻",
+          "expected": "好妈妈和姐姐的婚姻"
+        },
+        {
+          "input": "强奸罪",
+          "expected": "强奸罪"
+        }
+      ]
+    },
+    {
+      "id": "neutral-19",
+      "from": "奸计",
+      "to": "诡计",
+      "match": "phrase",
+      "pinyin": "jian ji",
+      "variants": [
+        "奸計",
+        "姦計"
+      ],
+      "to_traditional": "詭計",
+      "note": "仅限完整二字词；不连带变动强奸、内奸、奸臣等法律或历史概念。 本项目编辑建议；来源支持问题或词义，未声称来源发布此映射",
+      "source_ids": [
+        "moe-jian",
+        "community-borrowed"
+      ],
+      "tests": [
+        {
+          "input": "奸计",
+          "expected": "诡计"
+        },
+        {
+          "input": "好妈妈和姐姐的婚姻",
+          "expected": "好妈妈和姐姐的婚姻"
+        },
+        {
+          "input": "强奸罪",
+          "expected": "强奸罪"
+        }
+      ]
+    },
+    {
+      "id": "neutral-20",
+      "from": "奸商",
+      "to": "不良商家",
+      "match": "exact",
+      "pinyin": "jian shang",
+      "variants": [
+        "姦商"
+      ],
+      "to_traditional": "不良商家",
+      "note": "奸商可指商人本人；商家偏组织和经营者，句法数量词会变，应词条优先。 本项目编辑建议；来源支持问题或词义，未声称来源发布此映射",
+      "source_ids": [
+        "moe-jian",
+        "community-borrowed"
+      ],
+      "tests": [
+        {
+          "input": "奸商",
+          "expected": "不良商家"
+        },
+        {
+          "input": "好妈妈和姐姐的婚姻",
+          "expected": "好妈妈和姐姐的婚姻"
+        },
+        {
+          "input": "强奸罪",
+          "expected": "强奸罪"
+        }
+      ]
+    },
+    {
+      "id": "neutral-21",
+      "from": "奸险",
+      "to": "阴险",
+      "match": "phrase",
+      "pinyin": "jian xian",
+      "variants": [
+        "奸險",
+        "姦險"
+      ],
+      "to_traditional": "陰險",
+      "note": "词义近似；不用男旁造字制造兼容性负担。 本项目编辑建议；来源支持问题或词义，未声称来源发布此映射",
+      "source_ids": [
+        "moe-jian",
+        "community-borrowed"
+      ],
+      "tests": [
+        {
+          "input": "奸险",
+          "expected": "阴险"
+        },
+        {
+          "input": "好妈妈和姐姐的婚姻",
+          "expected": "好妈妈和姐姐的婚姻"
+        },
+        {
+          "input": "强奸罪",
+          "expected": "强奸罪"
+        }
+      ]
+    },
+    {
+      "id": "neutral-22",
+      "from": "奸笑",
+      "to": "阴笑",
+      "match": "phrase",
+      "pinyin": "jian xiao",
+      "variants": [
+        "姦笑"
+      ],
+      "to_traditional": "陰笑",
+      "note": "近义的编辑建议；叙事作品名和原话引用应可还原。 本项目编辑建议；来源支持问题或词义，未声称来源发布此映射",
+      "source_ids": [
+        "moe-jianxiao",
+        "community-borrowed"
+      ],
+      "tests": [
+        {
+          "input": "奸笑",
+          "expected": "阴笑"
+        },
+        {
+          "input": "好妈妈和姐姐的婚姻",
+          "expected": "好妈妈和姐姐的婚姻"
+        },
+        {
+          "input": "强奸罪",
+          "expected": "强奸罪"
+        }
+      ]
+    },
+    {
+      "id": "neutral-23",
+      "from": "狼狈为奸",
+      "to": "勾结作恶",
+      "match": "phrase",
+      "pinyin": "lang bei wei jian",
+      "variants": [
+        "狼狽為奸",
+        "狼狽為姦"
+      ],
+      "to_traditional": "勾結作惡",
+      "note": "保留勾结作恶的行为评价，无须造新字。 本项目编辑建议；来源支持问题或词义，未声称来源发布此映射",
+      "source_ids": [
+        "moe-pengbi",
+        "community-borrowed"
+      ],
+      "tests": [
+        {
+          "input": "狼狈为奸",
+          "expected": "勾结作恶"
+        },
+        {
+          "input": "好妈妈和姐姐的婚姻",
+          "expected": "好妈妈和姐姐的婚姻"
+        },
+        {
+          "input": "强奸罪",
+          "expected": "强奸罪"
+        }
+      ]
+    },
+    {
+      "id": "neutral-24",
+      "from": "奴颜婢膝",
+      "to": "卑躬屈膝",
+      "match": "phrase",
+      "pinyin": "nu yan bi xi",
+      "variants": [
+        "奴顏婢膝"
+      ],
+      "to_traditional": "卑躬屈膝",
+      "note": "词典支持近义；奴隶、奴役、奴隶制是历史与人权概念，不能连带屏蔽。 本项目编辑建议；来源支持问题或词义，未声称来源发布此映射",
+      "source_ids": [
+        "moe-beigong"
+      ],
+      "tests": [
+        {
+          "input": "奴颜婢膝",
+          "expected": "卑躬屈膝"
+        },
+        {
+          "input": "好妈妈和姐姐的婚姻",
+          "expected": "好妈妈和姐姐的婚姻"
+        }
+      ]
+    },
+    {
+      "id": "neutral-25",
+      "from": "嫉恨",
+      "to": "忌恨",
+      "match": "phrase",
+      "pinyin": "ji hen",
+      "variants": [],
+      "to_traditional": "忌恨",
+      "note": "保持怨恨的情绪，未变成正向情绪。 本项目编辑建议；来源支持问题或词义，未声称来源发布此映射",
+      "source_ids": [
+        "moe-jihen",
+        "moe-ji",
+        "community-borrowed"
+      ],
+      "tests": [
+        {
+          "input": "嫉恨",
+          "expected": "忌恨"
+        },
+        {
+          "input": "好妈妈和姐姐的婚姻",
+          "expected": "好妈妈和姐姐的婚姻"
+        }
+      ]
+    },
+    {
+      "id": "personal-01",
+      "from": "奸猾",
+      "to": "狡猾",
+      "match": "phrase",
+      "pinyin": "jian hua",
+      "variants": [
+        "姦猾"
+      ],
+      "to_traditional": "狡猾",
+      "note": "移除性别化贬称或依个人偏好改写；引用原话可切换保留措辞。 本工具的个人措辞建议；并非统一词语规范或逐字同义翻译。",
+      "source_ids": [
+        "editorial-preference",
+        "community-borrowed"
+      ],
+      "tests": [
+        {
+          "input": "奸猾",
+          "expected": "狡猾"
+        },
+        {
+          "input": "好妈妈和姐姐的婚姻",
+          "expected": "好妈妈和姐姐的婚姻"
+        },
+        {
+          "input": "强奸罪",
+          "expected": "强奸罪"
+        }
+      ]
+    },
+    {
+      "id": "personal-02",
+      "from": "奸滑",
+      "to": "狡猾",
+      "match": "phrase",
+      "pinyin": "jian hua",
+      "variants": [
+        "姦滑"
+      ],
+      "to_traditional": "狡猾",
+      "note": "移除性别化贬称或依个人偏好改写；引用原话可切换保留措辞。 本工具的个人措辞建议；并非统一词语规范或逐字同义翻译。",
+      "source_ids": [
+        "editorial-preference",
+        "community-borrowed"
+      ],
+      "tests": [
+        {
+          "input": "奸滑",
+          "expected": "狡猾"
+        },
+        {
+          "input": "好妈妈和姐姐的婚姻",
+          "expected": "好妈妈和姐姐的婚姻"
+        },
+        {
+          "input": "强奸罪",
+          "expected": "强奸罪"
+        }
+      ]
+    },
+    {
+      "id": "personal-03",
+      "from": "奸恶",
+      "to": "阴险",
+      "match": "phrase",
+      "pinyin": "jian e",
+      "variants": [
+        "奸惡",
+        "姦惡"
+      ],
+      "to_traditional": "陰險",
+      "note": "移除性别化贬称或依个人偏好改写；引用原话可切换保留措辞。 本工具的个人措辞建议；并非统一词语规范或逐字同义翻译。",
+      "source_ids": [
+        "editorial-preference",
+        "community-borrowed"
+      ],
+      "tests": [
+        {
+          "input": "奸恶",
+          "expected": "阴险"
+        },
+        {
+          "input": "好妈妈和姐姐的婚姻",
+          "expected": "好妈妈和姐姐的婚姻"
+        },
+        {
+          "input": "强奸罪",
+          "expected": "强奸罪"
+        }
+      ]
+    },
+    {
+      "id": "personal-04",
+      "from": "贪婪",
+      "to": "贪心",
+      "match": "phrase",
+      "pinyin": "tan lan",
+      "variants": [
+        "貪婪"
+      ],
+      "to_traditional": "貪心",
+      "note": "移除性别化贬称或依个人偏好改写；引用原话可切换保留措辞。 本工具的个人措辞建议；并非统一词语规范或逐字同义翻译。",
+      "source_ids": [
+        "editorial-preference",
+        "community-borrowed"
+      ],
+      "tests": [
+        {
+          "input": "贪婪",
+          "expected": "贪心"
+        },
+        {
+          "input": "好妈妈和姐姐的婚姻",
+          "expected": "好妈妈和姐姐的婚姻"
+        }
+      ]
+    },
+    {
+      "id": "personal-05",
+      "from": "嫉妒",
+      "to": "忮忌",
+      "match": "exact",
+      "pinyin": "ji du",
+      "variants": [],
+      "to_traditional": "忮忌",
+      "note": "忮忌读 zhì jì，是书面近义表达。 本工具的个人措辞建议；并非统一词语规范或逐字同义翻译。",
+      "source_ids": [
+        "zdic-zhiji",
+        "community-usage",
+        "community-male-spelling"
+      ],
+      "tests": [
+        {
+          "input": "嫉妒",
+          "expected": "忮忌"
+        },
+        {
+          "input": "好妈妈和姐姐的婚姻",
+          "expected": "好妈妈和姐姐的婚姻"
+        },
+        {
+          "input": "嫉恶如仇",
+          "expected": "嫉恶如仇"
+        }
+      ]
+    },
+    {
+      "id": "personal-06",
+      "from": "妒忌",
+      "to": "忮忌",
+      "match": "exact",
+      "pinyin": "du ji",
+      "variants": [],
+      "to_traditional": "忮忌",
+      "note": "忮忌读 zhì jì，是书面近义表达。 本工具的个人措辞建议；并非统一词语规范或逐字同义翻译。",
+      "source_ids": [
+        "zdic-zhiji",
+        "community-usage",
+        "community-male-spelling"
+      ],
+      "tests": [
+        {
+          "input": "妒忌",
+          "expected": "忮忌"
+        },
+        {
+          "input": "好妈妈和姐姐的婚姻",
+          "expected": "好妈妈和姐姐的婚姻"
+        },
+        {
+          "input": "嫉恶如仇",
+          "expected": "嫉恶如仇"
+        }
+      ]
+    },
+    {
+      "id": "personal-07",
+      "from": "谄媚",
+      "to": "谄谀",
+      "match": "exact",
+      "pinyin": "chan mei",
+      "variants": [
+        "諂媚"
+      ],
+      "to_traditional": "諂諛",
+      "note": "移除性别化贬称或依个人偏好改写；引用原话可切换保留措辞。 本工具的个人措辞建议；并非统一词语规范或逐字同义翻译。",
+      "source_ids": [
+        "editorial-preference"
+      ],
+      "tests": [
+        {
+          "input": "谄媚",
+          "expected": "谄谀"
+        },
+        {
+          "input": "好妈妈和姐姐的婚姻",
+          "expected": "好妈妈和姐姐的婚姻"
+        }
+      ]
+    },
+    {
+      "id": "personal-08",
+      "from": "绿茶婊",
+      "to": "表里不一的人",
+      "match": "phrase",
+      "pinyin": "lv cha biao",
+      "variants": [
+        "綠茶婊"
+      ],
+      "to_traditional": "表裡不一的人",
+      "note": "移除性别化贬称或依个人偏好改写；引用原话可切换保留措辞。 本工具的个人措辞建议；并非统一词语规范或逐字同义翻译。",
+      "source_ids": [
+        "editorial-preference"
+      ],
+      "tests": [
+        {
+          "input": "绿茶婊",
+          "expected": "表里不一的人"
+        },
+        {
+          "input": "好妈妈和姐姐的婚姻",
+          "expected": "好妈妈和姐姐的婚姻"
+        }
+      ]
+    },
+    {
+      "id": "personal-09",
+      "from": "心机婊",
+      "to": "工于心计的人",
+      "match": "phrase",
+      "pinyin": "xin ji biao",
+      "variants": [
+        "心機婊"
+      ],
+      "to_traditional": "工於心計的人",
+      "note": "移除性别化贬称或依个人偏好改写；引用原话可切换保留措辞。 本工具的个人措辞建议；并非统一词语规范或逐字同义翻译。",
+      "source_ids": [
+        "editorial-preference"
+      ],
+      "tests": [
+        {
+          "input": "心机婊",
+          "expected": "工于心计的人"
+        },
+        {
+          "input": "好妈妈和姐姐的婚姻",
+          "expected": "好妈妈和姐姐的婚姻"
+        }
+      ]
+    },
+    {
+      "id": "personal-10",
+      "from": "圣母婊",
+      "to": "过度说教的人",
+      "match": "phrase",
+      "pinyin": "sheng mu biao",
+      "variants": [
+        "聖母婊"
+      ],
+      "to_traditional": "過度說教的人",
+      "note": "移除性别化贬称或依个人偏好改写；引用原话可切换保留措辞。 本工具的个人措辞建议；并非统一词语规范或逐字同义翻译。",
+      "source_ids": [
+        "editorial-preference"
+      ],
+      "tests": [
+        {
+          "input": "圣母婊",
+          "expected": "过度说教的人"
+        },
+        {
+          "input": "好妈妈和姐姐的婚姻",
+          "expected": "好妈妈和姐姐的婚姻"
+        }
+      ]
+    },
+    {
+      "id": "personal-11",
+      "from": "绿茶婊子",
+      "to": "表里不一的人",
+      "match": "phrase",
+      "pinyin": "lv cha biao zi",
+      "variants": [
+        "綠茶婊子"
+      ],
+      "to_traditional": "表裡不一的人",
+      "note": "移除性别化贬称或依个人偏好改写；引用原话可切换保留措辞。 本工具的个人措辞建议；并非统一词语规范或逐字同义翻译。",
+      "source_ids": [
+        "editorial-preference"
+      ],
+      "tests": [
+        {
+          "input": "绿茶婊子",
+          "expected": "表里不一的人"
+        },
+        {
+          "input": "好妈妈和姐姐的婚姻",
+          "expected": "好妈妈和姐姐的婚姻"
+        }
+      ]
+    },
+    {
+      "id": "personal-12",
+      "from": "心机婊子",
+      "to": "工于心计的人",
+      "match": "phrase",
+      "pinyin": "xin ji biao zi",
+      "variants": [
+        "心機婊子"
+      ],
+      "to_traditional": "工於心計的人",
+      "note": "移除性别化贬称或依个人偏好改写；引用原话可切换保留措辞。 本工具的个人措辞建议；并非统一词语规范或逐字同义翻译。",
+      "source_ids": [
+        "editorial-preference"
+      ],
+      "tests": [
+        {
+          "input": "心机婊子",
+          "expected": "工于心计的人"
+        },
+        {
+          "input": "好妈妈和姐姐的婚姻",
+          "expected": "好妈妈和姐姐的婚姻"
+        }
+      ]
+    },
+    {
+      "id": "personal-13",
+      "from": "圣母婊子",
+      "to": "过度说教的人",
+      "match": "phrase",
+      "pinyin": "sheng mu biao zi",
+      "variants": [
+        "聖母婊子"
+      ],
+      "to_traditional": "過度說教的人",
+      "note": "移除性别化贬称或依个人偏好改写；引用原话可切换保留措辞。 本工具的个人措辞建议；并非统一词语规范或逐字同义翻译。",
+      "source_ids": [
+        "editorial-preference"
+      ],
+      "tests": [
+        {
+          "input": "圣母婊子",
+          "expected": "过度说教的人"
+        },
+        {
+          "input": "好妈妈和姐姐的婚姻",
+          "expected": "好妈妈和姐姐的婚姻"
+        }
+      ]
+    },
+    {
+      "id": "personal-14",
+      "from": "绿茶婊行为",
+      "to": "表里不一的行为",
+      "match": "phrase",
+      "pinyin": "lv cha biao xing wei",
+      "variants": [
+        "綠茶婊行為"
+      ],
+      "to_traditional": "表裡不一的行為",
+      "note": "移除性别化贬称或依个人偏好改写；引用原话可切换保留措辞。 本工具的个人措辞建议；并非统一词语规范或逐字同义翻译。",
+      "source_ids": [
+        "editorial-preference"
+      ],
+      "tests": [
+        {
+          "input": "绿茶婊行为",
+          "expected": "表里不一的行为"
+        },
+        {
+          "input": "好妈妈和姐姐的婚姻",
+          "expected": "好妈妈和姐姐的婚姻"
+        }
+      ]
+    },
+    {
+      "id": "personal-15",
+      "from": "心机婊行为",
+      "to": "工于心计的行为",
+      "match": "phrase",
+      "pinyin": "xin ji biao xing wei",
+      "variants": [
+        "心機婊行為"
+      ],
+      "to_traditional": "工於心計的行為",
+      "note": "移除性别化贬称或依个人偏好改写；引用原话可切换保留措辞。 本工具的个人措辞建议；并非统一词语规范或逐字同义翻译。",
+      "source_ids": [
+        "editorial-preference"
+      ],
+      "tests": [
+        {
+          "input": "心机婊行为",
+          "expected": "工于心计的行为"
+        },
+        {
+          "input": "好妈妈和姐姐的婚姻",
+          "expected": "好妈妈和姐姐的婚姻"
+        }
+      ]
+    },
+    {
+      "id": "personal-16",
+      "from": "圣母婊行为",
+      "to": "过度说教的行为",
+      "match": "phrase",
+      "pinyin": "sheng mu biao xing wei",
+      "variants": [
+        "聖母婊行為"
+      ],
+      "to_traditional": "過度說教的行為",
+      "note": "移除性别化贬称或依个人偏好改写；引用原话可切换保留措辞。 本工具的个人措辞建议；并非统一词语规范或逐字同义翻译。",
+      "source_ids": [
+        "editorial-preference"
+      ],
+      "tests": [
+        {
+          "input": "圣母婊行为",
+          "expected": "过度说教的行为"
+        },
+        {
+          "input": "好妈妈和姐姐的婚姻",
+          "expected": "好妈妈和姐姐的婚姻"
+        }
+      ]
+    },
+    {
+      "id": "personal-17",
+      "from": "婊子",
+      "to": "言行失当的人",
+      "match": "phrase",
+      "pinyin": "biao zi",
+      "variants": [],
+      "to_traditional": "言行失當的人",
+      "note": "移除性别化贬称或依个人偏好改写；引用原话可切换保留措辞。 本工具的个人措辞建议；并非统一词语规范或逐字同义翻译。",
+      "source_ids": [
+        "editorial-preference"
+      ],
+      "tests": [
+        {
+          "input": "婊子",
+          "expected": "言行失当的人"
+        },
+        {
+          "input": "好妈妈和姐姐的婚姻",
+          "expected": "好妈妈和姐姐的婚姻"
+        }
+      ]
+    },
+    {
+      "id": "personal-18",
+      "from": "贱女人",
+      "to": "失礼的人",
+      "match": "phrase",
+      "pinyin": "jian nv ren",
+      "variants": [
+        "賤女人"
+      ],
+      "to_traditional": "失禮的人",
+      "note": "移除性别化贬称或依个人偏好改写；引用原话可切换保留措辞。 本工具的个人措辞建议；并非统一词语规范或逐字同义翻译。",
+      "source_ids": [
+        "editorial-preference"
+      ],
+      "tests": [
+        {
+          "input": "贱女人",
+          "expected": "失礼的人"
+        },
+        {
+          "input": "好妈妈和姐姐的婚姻",
+          "expected": "好妈妈和姐姐的婚姻"
+        }
+      ]
+    },
+    {
+      "id": "personal-19",
+      "from": "贱人",
+      "to": "失礼的人",
+      "match": "exact",
+      "pinyin": "jian ren",
+      "variants": [
+        "賤人"
+      ],
+      "to_traditional": "失禮的人",
+      "note": "移除性别化贬称或依个人偏好改写；引用原话可切换保留措辞。 本工具的个人措辞建议；并非统一词语规范或逐字同义翻译。",
+      "source_ids": [
+        "editorial-preference"
+      ],
+      "tests": [
+        {
+          "input": "贱人",
+          "expected": "失礼的人"
+        },
+        {
+          "input": "好妈妈和姐姐的婚姻",
+          "expected": "好妈妈和姐姐的婚姻"
+        }
+      ]
+    },
+    {
+      "id": "personal-20",
+      "from": "贱货",
+      "to": "失礼的人",
+      "match": "exact",
+      "pinyin": "jian huo",
+      "variants": [
+        "賤貨"
+      ],
+      "to_traditional": "失禮的人",
+      "note": "移除性别化贬称或依个人偏好改写；引用原话可切换保留措辞。 本工具的个人措辞建议；并非统一词语规范或逐字同义翻译。",
+      "source_ids": [
+        "editorial-preference"
+      ],
+      "tests": [
+        {
+          "input": "贱货",
+          "expected": "失礼的人"
+        },
+        {
+          "input": "好妈妈和姐姐的婚姻",
+          "expected": "好妈妈和姐姐的婚姻"
+        }
+      ]
+    },
+    {
+      "id": "personal-21",
+      "from": "你妈的",
+      "to": "真是的",
+      "match": "exact",
+      "pinyin": "ni ma de",
+      "variants": [
+        "你媽的"
+      ],
+      "to_traditional": "真是的",
+      "note": "移除性别化贬称或依个人偏好改写；引用原话可切换保留措辞。 本工具的个人措辞建议；并非统一词语规范或逐字同义翻译。",
+      "source_ids": [
+        "editorial-preference"
+      ],
+      "tests": [
+        {
+          "input": "你妈的",
+          "expected": "真是的"
+        },
+        {
+          "input": "好妈妈和姐姐的婚姻",
+          "expected": "好妈妈和姐姐的婚姻"
+        },
+        {
+          "input": "你妈的生日",
+          "expected": "你妈的生日"
+        }
+      ]
+    },
+    {
+      "id": "personal-22",
+      "from": "他妈的",
+      "to": "真是的",
+      "match": "exact",
+      "pinyin": "ta ma de",
+      "variants": [
+        "他媽的"
+      ],
+      "to_traditional": "真是的",
+      "note": "移除性别化贬称或依个人偏好改写；引用原话可切换保留措辞。 本工具的个人措辞建议；并非统一词语规范或逐字同义翻译。",
+      "source_ids": [
+        "editorial-preference"
+      ],
+      "tests": [
+        {
+          "input": "他妈的",
+          "expected": "真是的"
+        },
+        {
+          "input": "好妈妈和姐姐的婚姻",
+          "expected": "好妈妈和姐姐的婚姻"
+        },
+        {
+          "input": "他妈的生日",
+          "expected": "他妈的生日"
+        }
+      ]
+    },
+    {
+      "id": "personal-23",
+      "from": "她妈的",
+      "to": "真是的",
+      "match": "exact",
+      "pinyin": "ta ma de",
+      "variants": [
+        "她媽的"
+      ],
+      "to_traditional": "真是的",
+      "note": "移除性别化贬称或依个人偏好改写；引用原话可切换保留措辞。 本工具的个人措辞建议；并非统一词语规范或逐字同义翻译。",
+      "source_ids": [
+        "editorial-preference"
+      ],
+      "tests": [
+        {
+          "input": "她妈的",
+          "expected": "真是的"
+        },
+        {
+          "input": "好妈妈和姐姐的婚姻",
+          "expected": "好妈妈和姐姐的婚姻"
+        },
+        {
+          "input": "她妈的生日",
+          "expected": "她妈的生日"
+        }
+      ]
+    }
+  ]
+}

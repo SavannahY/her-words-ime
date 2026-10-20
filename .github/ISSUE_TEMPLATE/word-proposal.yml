@@ -1,0 +1,95 @@
+name: 提议一个词条
+description: 提供中性表达或可选社群写法，不需要本地环境。
+title: "[词条] 原词 → 建议表达"
+body:
+  - type: markdown
+    attributes:
+      value: |
+        写下你希望输入法怎样表达即可，不确定的地方可以注明。
+        默认使用中性表达；社群改字需在输入法中手动切换才使用。公开用例用于记录用法，不代表语言规范。
+  - type: dropdown
+    id: kind
+    attributes:
+      label: 想补充哪类表达？
+      options:
+        - 中性表达（默认风格）
+        - 社群改字（手动切换使用）
+    validations:
+      required: true
+  - type: input
+    id: original
+    attributes:
+      label: 原词
+      description: 至少两个字。不能按女字旁全局替换单字。
+      placeholder: 例如：女强人
+    validations:
+      required: true
+  - type: input
+    id: replacement
+    attributes:
+      label: 建议表达
+      placeholder: 例如：事业有成的女性
+    validations:
+      required: true
+  - type: input
+    id: pinyin
+    attributes:
+      label: 原词完整拼音（可选）
+      description: 小写音节用空格分隔；不确定可留空。
+      placeholder: nv qiang ren
+  - type: textarea
+    id: examples
+    attributes:
+      label: 希望怎样替换？
+      description: 写一个输入和期望结果，并说明适用语境。尽量保持原句事实与语气。
+      placeholder: |
+        输入：女强人
+        期望：事业有成的女性
+        语境：描述职业成就
+    validations:
+      required: true
+  - type: textarea
+    id: protected
+    attributes:
+      label: 哪些文字不应该被误改？
+      description: 至少写一个保护例子。可以考虑正常词、同音词、专名或较长句子。
+      placeholder: |
+        “女科学家”保持原样。
+        “黑寡妇”不应随“寡妇”一起改。
+        “你妈的生日”不应被当作粗口。
+    validations:
+      required: true
+  - type: textarea
+    id: sources
+    attributes:
+      label: 公开来源
+      description: 至少一条 HTTPS 链接，简述它支持释义、替代建议还是社群用例。不要粘贴整篇文章。
+      placeholder: |
+        标题：
+        https://...
+        支持内容：
+    validations:
+      required: true
+  - type: textarea
+    id: differences
+    attributes:
+      label: 读音、含义或语体有没有变化？
+      description: 借字、拆字或生僻词请特别说明。不确定可以直接写“不确定”，也欢迎提供核对线索。
+      placeholder: 例如：这是近义改写，读音不同；适合书面表达，引用原话时应保留原词。
+    validations:
+      required: true
+  - type: dropdown
+    id: match
+    attributes:
+      label: 建议匹配范围（可选）
+      options:
+        - 只改完整词条候选（exact）
+        - 长句中也改这个完整字串（phrase）
+        - 还不确定
+  - type: checkboxes
+    id: license
+    attributes:
+      label: 贡献许可
+      options:
+        - label: 我同意将本次提交的原创词条、说明和测试按项目 MIT 许可发布；外部来源仍使用链接引用。
+          required: true

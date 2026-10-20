@@ -1,0 +1,9 @@
+{
+  "version": 1,
+  "neutral": [
+    "packs/neutral-zh-CN/pack.json"
+  ],
+  "community": [
+    "packs/community-zh-CN/pack.json"
+  ]
+}

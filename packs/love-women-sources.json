@@ -1,0 +1,345 @@
+{
+  "words": [
+    {
+      "id": "ainv",
+      "term": "爱女",
+      "pinyin": "ai nv",
+      "category": "女性主体",
+      "description": "这里指关爱、重视与支持女性的社群表达。",
+      "sourceId": "women-centred-reading",
+      "kind": "网络用语"
+    },
+    {
+      "id": "nvbenwei",
+      "term": "女本位",
+      "pinyin": "nv ben wei",
+      "category": "女性主体",
+      "description": "从女性的经验、需要与意愿出发的社群表达，内涵随语境变化。",
+      "sourceId": "women-centred-reading",
+      "kind": "网络用语"
+    },
+    {
+      "id": "jiemei-community",
+      "term": "媎妹",
+      "pinyin": "jie mei",
+      "category": "彼此支持",
+      "description": "部分女性网络社群对“姐妹”的写法，“媎”同“姐”音。",
+      "sourceId": "community-sisters",
+      "kind": "网络用语"
+    },
+    {
+      "id": "zimei",
+      "term": "姊妹",
+      "pinyin": "zi mei",
+      "category": "彼此支持",
+      "description": "“姐妹”的另一种常见写法，也用于女性朋友间的亲近称呼。",
+      "sourceId": "womany-sisters",
+      "kind": "常用词"
+    },
+    {
+      "id": "ni-feminine",
+      "term": "妳",
+      "pinyin": "ni",
+      "category": "友好表达",
+      "description": "指向女性的第二人称写法，常见于繁体中文交流。",
+      "sourceId": "woomanpower",
+      "kind": "常用词"
+    },
+    {
+      "id": "nvli",
+      "term": "女力",
+      "pinyin": "nv li",
+      "category": "女性主体",
+      "description": "表达女性拥有、发展并发挥自身力量的用语。",
+      "sourceId": "woomanpower",
+      "kind": "友好表达"
+    },
+    {
+      "id": "ainvwen",
+      "term": "爱女文",
+      "pinyin": "ai nv wen",
+      "category": "女性主体",
+      "description": "部分读者使用的作品标签，强调对女性角色和女性经验的重视。",
+      "sourceId": "women-centred-reading",
+      "kind": "网络用语"
+    },
+    {
+      "id": "danvzhu",
+      "term": "大女主",
+      "pinyin": "da nv zhu",
+      "category": "女性主体",
+      "description": "以女性为故事中心，强调她的选择、行动与成长的叙事表达。",
+      "sourceId": "community-sisters",
+      "kind": "网络用语"
+    },
+    {
+      "id": "jiejie",
+      "term": "姐姐",
+      "pinyin": "jie jie",
+      "category": "彼此支持",
+      "description": "亲属称谓，也可在亲近的交流中称呼女性。",
+      "sourceId": null,
+      "kind": "常用词"
+    },
+    {
+      "id": "jiemei",
+      "term": "姐妹",
+      "pinyin": "jie mei",
+      "category": "彼此支持",
+      "description": "姐妹亲属或彼此亲近的女性朋友。",
+      "sourceId": null,
+      "kind": "常用词"
+    },
+    {
+      "id": "nvxing",
+      "term": "女性",
+      "pinyin": "nv xing",
+      "category": "女性主体",
+      "description": "直接称呼女性群体的常用词。",
+      "sourceId": null,
+      "kind": "常用词"
+    },
+    {
+      "id": "taliliang",
+      "term": "她力量",
+      "pinyin": "ta li liang",
+      "category": "女性主体",
+      "description": "突出女性能力、创造和社会贡献的流行表达。",
+      "sourceId": "huadu-news",
+      "kind": "网络用语"
+    },
+    {
+      "id": "nvxingliliang",
+      "term": "女性力量",
+      "pinyin": "nv xing li liang",
+      "category": "女性主体",
+      "description": "表达女性的能力、行动和影响。",
+      "sourceId": "stu-sisters",
+      "kind": "友好表达"
+    },
+    {
+      "id": "zhutixing",
+      "term": "主体性",
+      "pinyin": "zhu ti xing",
+      "category": "女性主体",
+      "description": "重视自己的意愿、判断与行动能力。",
+      "sourceId": null,
+      "kind": "常用词"
+    },
+    {
+      "id": "ziworentong",
+      "term": "自我认同",
+      "pinyin": "zi wo ren tong",
+      "category": "自我成长",
+      "description": "理解并认可自己的身份、感受和价值。",
+      "sourceId": null,
+      "kind": "常用词"
+    },
+    {
+      "id": "yueji",
+      "term": "悦己",
+      "pinyin": "yue ji",
+      "category": "自我成长",
+      "description": "关照自己的喜好，让自己感到愉快。",
+      "sourceId": null,
+      "kind": "常用词"
+    },
+    {
+      "id": "ziqia",
+      "term": "自洽",
+      "pinyin": "zi qia",
+      "category": "自我成长",
+      "description": "让自己的想法、选择和行动彼此协调。",
+      "sourceId": null,
+      "kind": "常用词"
+    },
+    {
+      "id": "duli",
+      "term": "独立",
+      "pinyin": "du li",
+      "category": "自我成长",
+      "description": "保有自己的判断，发展自主生活与行动的能力。",
+      "sourceId": null,
+      "kind": "常用词"
+    },
+    {
+      "id": "yonggan",
+      "term": "勇敢",
+      "pinyin": "yong gan",
+      "category": "自我成长",
+      "description": "面对困难，仍愿意表达和行动。",
+      "sourceId": null,
+      "kind": "常用词"
+    },
+    {
+      "id": "huzhu",
+      "term": "互助",
+      "pinyin": "hu zhu",
+      "category": "彼此支持",
+      "description": "彼此提供帮助、资源和支持。",
+      "sourceId": "stu-sisters",
+      "kind": "常用词"
+    },
+    {
+      "id": "kanjian",
+      "term": "看见",
+      "pinyin": "kan jian",
+      "category": "友好表达",
+      "description": "在关怀语境里，表达认真关注对方的经历与感受。",
+      "sourceId": null,
+      "kind": "常用词"
+    },
+    {
+      "id": "nvxingyouyi",
+      "term": "女性友谊",
+      "pinyin": "nv xing you yi",
+      "category": "彼此支持",
+      "description": "女性之间的友谊、情感连接与相互支持。",
+      "sourceId": "friendship-book",
+      "kind": "友好表达"
+    },
+    {
+      "id": "nvxinghuzhu",
+      "term": "女性互助",
+      "pinyin": "nv xing hu zhu",
+      "category": "彼此支持",
+      "description": "女性彼此分享经验、资源与机会。",
+      "sourceId": "leanin-profile",
+      "kind": "友好表达"
+    },
+    {
+      "id": "gongtongchengzhang",
+      "term": "共同成长",
+      "pinyin": "gong tong cheng zhang",
+      "category": "彼此支持",
+      "description": "在交流与支持中一起学习、发展。",
+      "sourceId": "stu-sisters",
+      "kind": "友好表达"
+    },
+    {
+      "id": "ziwodingyi",
+      "term": "自我定义",
+      "pinyin": "zi wo ding yi",
+      "category": "自我成长",
+      "description": "由自己确定目标与理想，表达自己是谁。",
+      "sourceId": "leanin-profile",
+      "kind": "友好表达"
+    },
+    {
+      "id": "nvxinglingdaoli",
+      "term": "女性领导力",
+      "pinyin": "nv xing ling dao li",
+      "category": "女性主体",
+      "description": "关注女性参与决策、组织协作与带来改变的能力。",
+      "sourceId": "leanin-profile",
+      "kind": "友好表达"
+    },
+    {
+      "id": "xianghupeiban",
+      "term": "相互陪伴",
+      "pinyin": "xiang hu pei ban",
+      "category": "彼此支持",
+      "description": "在日常与困难时刻，彼此倾听、陪伴。",
+      "sourceId": "stu-sisters",
+      "kind": "友好表达"
+    },
+    {
+      "id": "nvshi",
+      "term": "女士",
+      "pinyin": "nv shi",
+      "category": "友好表达",
+      "description": "尊重女性的称谓，适合无需说明年龄或婚姻状态的场景。",
+      "sourceId": "un-language",
+      "kind": "友好表达"
+    },
+    {
+      "id": "banlv",
+      "term": "伴侣",
+      "pinyin": "ban lv",
+      "category": "友好表达",
+      "description": "称呼亲密关系中的另一方，可避免预设性别和婚姻身份。",
+      "sourceId": "un-language",
+      "kind": "友好表达"
+    },
+    {
+      "id": "ciyingbandenvren",
+      "term": "雌鹰般的女人",
+      "pinyin": "ci ying ban de nv ren",
+      "category": "女性主体",
+      "description": "以雌鹰比喻女性的力量与自由的网络修辞。",
+      "sourceId": "eagle-usage",
+      "kind": "网络用语"
+    },
+    {
+      "id": "tamen",
+      "term": "她们",
+      "pinyin": "ta men",
+      "category": "女性主体",
+      "description": "指称多位女性的第三人称代词。",
+      "sourceId": null,
+      "kind": "常用词"
+    }
+  ],
+  "sources": [
+    {
+      "id": "un-language",
+      "title": "联合国｜中文性别包容性语言指南",
+      "url": "https://www.un.org/zh/gender-inclusive-language/guidelines.shtml",
+      "note": "中文沟通建议：尊重个人称谓，使用“女士”“伴侣”等表达，并按语境提高女性的可见度。它不是本工具的代词替换规则。"
+    },
+    {
+      "id": "stu-sisters",
+      "title": "汕头大学淑德书院｜女性与公益项目",
+      "url": "https://www.stu.edu.cn/esther/nxygy/xmnr.htm",
+      "note": "书院项目的原始介绍，记录了女性力量、互助、陪伴及共同成长的具体实践。"
+    },
+    {
+      "id": "leanin-profile",
+      "title": "励媖中国｜机构公开介绍",
+      "url": "https://cn.linkedin.com/company/leaninchina%E5%8A%B1%E5%AA%96%E4%B8%AD%E5%9B%BD",
+      "note": "机构在领英的公开简介使用“女性互助”“女性领导力”，并鼓励女性追求由自己定义的目标。仅作为机构表达的使用依据。"
+    },
+    {
+      "id": "huadu-news",
+      "title": "花都区政府｜“她经济”与“她力量”活动报道",
+      "url": "https://www.huadu.gov.cn/zzzs/hdxw/content/post_10724306.html",
+      "note": "2026年3月的就业创业与消费活动报道，展示这两个流行表达的真实使用场景，不证明其首创或统一定义。"
+    },
+    {
+      "id": "friendship-book",
+      "title": "《闺蜜：女性情谊的历史》｜作者书摘",
+      "url": "https://www.thepaper.cn/newsDetail_forward_10771099",
+      "note": "玛丽莲·亚隆与特蕾莎·布朗的书籍引言，讨论女性友谊与社群互助；此处只据此收录相关表达。"
+    },
+    {
+      "id": "eagle-usage",
+      "title": "晋江文学城｜《自然界以壮为美》作品简介",
+      "url": "https://www.jjwxc.net/onebook.php?novelid=8752503",
+      "note": "作者公开作品简介实际使用了“雌鹰般的女人”。这是网络修辞用例，不是规范词条，也不证明词语来源。"
+    },
+    {
+      "id": "women-centred-reading",
+      "title": "陈琰娇｜“爱女”话语与承认的悖论",
+      "url": "https://www.chinawriter.com.cn/n1/2026/0918/c404027-40801147.html",
+      "note": "署名文章记录并讨论“爱女”“女本位”“爱女文”的网络阅读语境，也分析其中的争议；这里只以其证明用语及语境，不表示作者认可所有社群主张。"
+    },
+    {
+      "id": "community-sisters",
+      "title": "善烟｜《大女主/女强/爽文推文》作者简介",
+      "url": "https://www.jjwxc.net/onebook.php?novelid=7439946",
+      "note": "作者自己的公开文案以“媎妹”称呼读者，并使用“大女主”、女性视角和女男平权等表达；作为真实社群用例，不是规范词典。"
+    },
+    {
+      "id": "woomanpower",
+      "title": "女力学院 Woomanpower｜女性成长社群",
+      "url": "https://www.woomanpower.com/",
+      "note": "社群官网实际使用“女力”与“妳”，鼓励女性发展自身能力。它证明这些表达的使用，不证明其首次出现。"
+    },
+    {
+      "id": "womany-sisters",
+      "title": "女人迷｜支持现代女性自信向前的动力",
+      "url": "https://cn.womany.net/read/article/15907",
+      "note": "2018年的品牌合作文章以“姊妹”称呼女性朋友，并讨论女性之间的陪伴与鼓励；仅作为公开用例，不据此采纳其调查结论。"
+    }
+  ]
+}

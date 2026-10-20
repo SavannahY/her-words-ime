@@ -1,0 +1,493 @@
+{
+  "format": "her-words-language-pack",
+  "version": 1,
+  "id": "community-zh-cn",
+  "name": "可选社群借字",
+  "language": "zh-CN",
+  "kind": "community",
+  "license": "MIT",
+  "description": "需用户手动切换启用的个人借字/拆字表达，不作为规范字或标准读音。",
+  "sources": [
+    {
+      "id": "un-zh",
+      "title": "联合国《中文性别包容性语言指南》",
+      "url": "https://www.un.org/zh/gender-inclusive-language/guidelines.shtml"
+    },
+    {
+      "id": "fincher",
+      "title": "洪理达《剩女》作者介绍页",
+      "url": "https://letahongfincher.com/leftover-women"
+    },
+    {
+      "id": "moe-furen",
+      "title": "教育部《重编国语辞典》妇人之仁",
+      "url": "https://dict.revised.moe.edu.tw/dictView.jsp?ID=39451&la=0&powerMode=0"
+    },
+    {
+      "id": "xiamianzun",
+      "title": "夏丏尊《汉字所表现的女性的地位》1922年原文",
+      "url": "https://zh.wikisource.org/zh-hant/漢字所表現的女性的地位"
+    },
+    {
+      "id": "moe-changshe",
+      "title": "教育部《重编国语辞典》长舌妇",
+      "url": "https://dict.revised.moe.edu.tw/dictView.jsp?ID=123730&la=1&powerMode=0"
+    },
+    {
+      "id": "moe-popo",
+      "title": "教育部《重编国语辞典》婆婆妈妈",
+      "url": "https://dict.revised.moe.edu.tw/dictView.jsp?ID=22499&la=1&powerMode=0"
+    },
+    {
+      "id": "moe-niang",
+      "title": "教育部《重编国语辞典》娘娘腔",
+      "url": "https://dict.revised.moe.edu.tw/dictView.jsp?ID=58217&la=1&powerMode=0"
+    },
+    {
+      "id": "moe-bullying",
+      "title": "教育部107至108年度防制校园霸凌案例教材",
+      "url": "https://bully.moe.edu.tw/uploads/file/20231129/6566b2dc13fdf.pdf"
+    },
+    {
+      "id": "moe-jian",
+      "title": "教育部《国字标准字体笔顺学习网》奸",
+      "url": "https://stroke-order.learningweb.moe.edu.tw/dictMean.jsp?ID=22904&la=0"
+    },
+    {
+      "id": "moe-jiao",
+      "title": "教育部《重编国语辞典》狡诈",
+      "url": "https://dict.revised.moe.edu.tw/dictView.jsp?ID=91461&la=0&powerMode=0"
+    },
+    {
+      "id": "moe-jianxiao",
+      "title": "教育部《国语辞典简编本》奸笑",
+      "url": "https://dict.concised.moe.edu.tw/dictView.jsp?ID=22758&la=0&powerMode=0"
+    },
+    {
+      "id": "moe-jihen",
+      "title": "教育部《重编国语辞典》嫉恨",
+      "url": "https://dict.revised.moe.edu.tw/dictView.jsp?ID=88270&la=1&powerMode=0"
+    },
+    {
+      "id": "moe-ji",
+      "title": "教育部《国语辞典简编本》忌",
+      "url": "https://dict.concised.moe.edu.tw/dictView.jsp?ID=21576&la=0&powerMode=0"
+    },
+    {
+      "id": "moe-beigong",
+      "title": "教育部《重编国语辞典》相似词索引",
+      "url": "https://dict.revised.moe.edu.tw/appendix.jsp?ID=6&la=0&page=3&powerMode=0&ver=5"
+    },
+    {
+      "id": "moe-pengbi",
+      "title": "教育部《成语典》朋比为奸",
+      "url": "https://dict.idioms.moe.edu.tw/bookView.jsp?ID=11111111"
+    },
+    {
+      "id": "moe-yi",
+      "title": "教育部台湾客语辞典：奴役",
+      "url": "https://hakkadict.moe.edu.tw/search_result/?id=13211"
+    },
+    {
+      "id": "moe-humu",
+      "title": "教育部台湾台语常用词辞典：虎豹母",
+      "url": "https://sutian.moe.edu.tw/zh-hant/tshiau/?iahbe=2&lui=tai_su&pitsoo=20&tsha=母"
+    },
+    {
+      "id": "cuhk-zhi",
+      "title": "香港中文大学汉语多功能字库：忮",
+      "url": "https://humanum.arts.cuhk.edu.hk/Lexis/lexi-mf/search.php?word=忮"
+    },
+    {
+      "id": "swrs",
+      "title": "Jiang等：SWSR中文网络性别歧视数据集原论文",
+      "url": "https://arxiv.org/abs/2108.03070"
+    },
+    {
+      "id": "bias",
+      "title": "Park等：Reducing Gender Bias in Abusive Language Detection",
+      "url": "https://arxiv.org/abs/1808.07231"
+    },
+    {
+      "id": "culture-popo",
+      "title": "国家文化记忆库：林凤美《婆婆妈妈的故事》",
+      "url": "https://tcmb.culture.tw/zh-tw/detail?id=308454&indexCode=Culture_Object"
+    },
+    {
+      "id": "paper-pofu",
+      "title": "陈葆文《聊斋志异》悍妒妇女类型析论",
+      "url": "https://tkujcl.tacx.tku.edu.tw/uploads/papers/tw/17.7-《聊齋誌異》「悍妒婦女」類型析論（陳葆文／淡江大學中文系副教授）.pdf"
+    },
+    {
+      "id": "zdic-zhiji",
+      "title": "汉典：忮忌，读 zhì jì",
+      "url": "https://www.zdic.net/hans/忮忌"
+    },
+    {
+      "id": "community-usage",
+      "title": "女性社群对忮忌的用例",
+      "url": "https://www.reddit.com/r/DoubanFeministGroup/comments/1gikls8"
+    },
+    {
+      "id": "community-borrowed",
+      "title": "2018年个人「以人代女」改字倡议",
+      "url": "https://madmansnest.com/2018/04/17/destroy-sexism.html"
+    },
+    {
+      "id": "male-radical-art",
+      "title": "中山大学刊载：柯倩婷的男旁印章造字实践",
+      "url": "https://www.sysu.edu.cn/news/info/2171/628661.htm"
+    },
+    {
+      "id": "community-male-spelling",
+      "title": "社群转载讨论中的男疾男户用例",
+      "url": "https://www.reddit.com/r/LiberalGooseGroup/comments/1f1wvmp"
+    },
+    {
+      "id": "editorial-preference",
+      "title": "她说：个人友好措辞偏好",
+      "url": "https://github.com/SavannahY/her-words-ime/blob/main/docs/language-packs.md"
+    }
+  ],
+  "entries": [
+    {
+      "id": "community-neutral-18",
+      "from": "奸诈",
+      "to": "仠诈",
+      "match": "phrase",
+      "pinyin": "jian zha",
+      "variants": [
+        "奸詐",
+        "姦詐"
+      ],
+      "to_traditional": "仠詐",
+      "note": "社群借字或拆字写法，非通行同音异体；不改法律术语、姓名或正常女旁字。",
+      "source_ids": [
+        "community-borrowed",
+        "editorial-preference"
+      ],
+      "tests": [
+        {
+          "input": "奸诈",
+          "expected": "仠诈"
+        },
+        {
+          "input": "好妈妈和姐姐的婚姻",
+          "expected": "好妈妈和姐姐的婚姻"
+        }
+      ]
+    },
+    {
+      "id": "community-neutral-19",
+      "from": "奸计",
+      "to": "仠计",
+      "match": "phrase",
+      "pinyin": "jian ji",
+      "variants": [
+        "奸計",
+        "姦計"
+      ],
+      "to_traditional": "仠計",
+      "note": "社群借字或拆字写法，非通行同音异体；不改法律术语、姓名或正常女旁字。",
+      "source_ids": [
+        "community-borrowed",
+        "editorial-preference"
+      ],
+      "tests": [
+        {
+          "input": "奸计",
+          "expected": "仠计"
+        },
+        {
+          "input": "好妈妈和姐姐的婚姻",
+          "expected": "好妈妈和姐姐的婚姻"
+        }
+      ]
+    },
+    {
+      "id": "community-neutral-20",
+      "from": "奸商",
+      "to": "仠商",
+      "match": "exact",
+      "pinyin": "jian shang",
+      "variants": [
+        "姦商"
+      ],
+      "to_traditional": "仠商",
+      "note": "社群借字或拆字写法，非通行同音异体；不改法律术语、姓名或正常女旁字。",
+      "source_ids": [
+        "community-borrowed",
+        "editorial-preference"
+      ],
+      "tests": [
+        {
+          "input": "奸商",
+          "expected": "仠商"
+        },
+        {
+          "input": "好妈妈和姐姐的婚姻",
+          "expected": "好妈妈和姐姐的婚姻"
+        }
+      ]
+    },
+    {
+      "id": "community-neutral-21",
+      "from": "奸险",
+      "to": "仠险",
+      "match": "phrase",
+      "pinyin": "jian xian",
+      "variants": [
+        "奸險",
+        "姦險"
+      ],
+      "to_traditional": "仠險",
+      "note": "社群借字或拆字写法，非通行同音异体；不改法律术语、姓名或正常女旁字。",
+      "source_ids": [
+        "community-borrowed",
+        "editorial-preference"
+      ],
+      "tests": [
+        {
+          "input": "奸险",
+          "expected": "仠险"
+        },
+        {
+          "input": "好妈妈和姐姐的婚姻",
+          "expected": "好妈妈和姐姐的婚姻"
+        }
+      ]
+    },
+    {
+      "id": "community-neutral-22",
+      "from": "奸笑",
+      "to": "仠笑",
+      "match": "phrase",
+      "pinyin": "jian xiao",
+      "variants": [
+        "姦笑"
+      ],
+      "to_traditional": "仠笑",
+      "note": "社群借字或拆字写法，非通行同音异体；不改法律术语、姓名或正常女旁字。",
+      "source_ids": [
+        "community-borrowed",
+        "editorial-preference"
+      ],
+      "tests": [
+        {
+          "input": "奸笑",
+          "expected": "仠笑"
+        },
+        {
+          "input": "好妈妈和姐姐的婚姻",
+          "expected": "好妈妈和姐姐的婚姻"
+        }
+      ]
+    },
+    {
+      "id": "community-neutral-23",
+      "from": "狼狈为奸",
+      "to": "狼狈为仠",
+      "match": "phrase",
+      "pinyin": "lang bei wei jian",
+      "variants": [
+        "狼狽為奸",
+        "狼狽為姦"
+      ],
+      "to_traditional": "狼狽為仠",
+      "note": "社群借字或拆字写法，非通行同音异体；不改法律术语、姓名或正常女旁字。",
+      "source_ids": [
+        "community-borrowed",
+        "editorial-preference"
+      ],
+      "tests": [
+        {
+          "input": "狼狈为奸",
+          "expected": "狼狈为仠"
+        },
+        {
+          "input": "好妈妈和姐姐的婚姻",
+          "expected": "好妈妈和姐姐的婚姻"
+        }
+      ]
+    },
+    {
+      "id": "community-neutral-25",
+      "from": "嫉恨",
+      "to": "㑵恨",
+      "match": "phrase",
+      "pinyin": "ji hen",
+      "variants": [],
+      "to_traditional": "㑵恨",
+      "note": "社群借字或拆字写法，非通行同音异体；不改法律术语、姓名或正常女旁字。",
+      "source_ids": [
+        "community-borrowed",
+        "editorial-preference"
+      ],
+      "tests": [
+        {
+          "input": "嫉恨",
+          "expected": "㑵恨"
+        },
+        {
+          "input": "好妈妈和姐姐的婚姻",
+          "expected": "好妈妈和姐姐的婚姻"
+        }
+      ]
+    },
+    {
+      "id": "community-personal-01",
+      "from": "奸猾",
+      "to": "仠猾",
+      "match": "phrase",
+      "pinyin": "jian hua",
+      "variants": [
+        "姦猾"
+      ],
+      "to_traditional": "仠猾",
+      "note": "社群借字或拆字写法，非通行同音异体；不改法律术语、姓名或正常女旁字。",
+      "source_ids": [
+        "community-borrowed",
+        "editorial-preference"
+      ],
+      "tests": [
+        {
+          "input": "奸猾",
+          "expected": "仠猾"
+        },
+        {
+          "input": "好妈妈和姐姐的婚姻",
+          "expected": "好妈妈和姐姐的婚姻"
+        }
+      ]
+    },
+    {
+      "id": "community-personal-02",
+      "from": "奸滑",
+      "to": "仠滑",
+      "match": "phrase",
+      "pinyin": "jian hua",
+      "variants": [
+        "姦滑"
+      ],
+      "to_traditional": "仠滑",
+      "note": "社群借字或拆字写法，非通行同音异体；不改法律术语、姓名或正常女旁字。",
+      "source_ids": [
+        "community-borrowed",
+        "editorial-preference"
+      ],
+      "tests": [
+        {
+          "input": "奸滑",
+          "expected": "仠滑"
+        },
+        {
+          "input": "好妈妈和姐姐的婚姻",
+          "expected": "好妈妈和姐姐的婚姻"
+        }
+      ]
+    },
+    {
+      "id": "community-personal-03",
+      "from": "奸恶",
+      "to": "仠恶",
+      "match": "phrase",
+      "pinyin": "jian e",
+      "variants": [
+        "奸惡",
+        "姦惡"
+      ],
+      "to_traditional": "仠惡",
+      "note": "社群借字或拆字写法，非通行同音异体；不改法律术语、姓名或正常女旁字。",
+      "source_ids": [
+        "community-borrowed",
+        "editorial-preference"
+      ],
+      "tests": [
+        {
+          "input": "奸恶",
+          "expected": "仠恶"
+        },
+        {
+          "input": "好妈妈和姐姐的婚姻",
+          "expected": "好妈妈和姐姐的婚姻"
+        }
+      ]
+    },
+    {
+      "id": "community-personal-04",
+      "from": "贪婪",
+      "to": "贪㑣",
+      "match": "phrase",
+      "pinyin": "tan lan",
+      "variants": [
+        "貪婪"
+      ],
+      "to_traditional": "貪㑣",
+      "note": "社群借字或拆字写法，非通行同音异体；不改法律术语、姓名或正常女旁字。",
+      "source_ids": [
+        "community-borrowed",
+        "editorial-preference"
+      ],
+      "tests": [
+        {
+          "input": "贪婪",
+          "expected": "贪㑣"
+        },
+        {
+          "input": "好妈妈和姐姐的婚姻",
+          "expected": "好妈妈和姐姐的婚姻"
+        }
+      ]
+    },
+    {
+      "id": "community-personal-05",
+      "from": "嫉妒",
+      "to": "男疾男户",
+      "match": "exact",
+      "pinyin": "ji du",
+      "variants": [],
+      "to_traditional": "男疾男戶",
+      "note": "社群借字或拆字写法，非通行同音异体；不改法律术语、姓名或正常女旁字。",
+      "source_ids": [
+        "community-usage",
+        "community-male-spelling",
+        "editorial-preference"
+      ],
+      "tests": [
+        {
+          "input": "嫉妒",
+          "expected": "男疾男户"
+        },
+        {
+          "input": "好妈妈和姐姐的婚姻",
+          "expected": "好妈妈和姐姐的婚姻"
+        }
+      ]
+    },
+    {
+      "id": "community-personal-06",
+      "from": "妒忌",
+      "to": "男户男疾",
+      "match": "exact",
+      "pinyin": "du ji",
+      "variants": [],
+      "to_traditional": "男戶男疾",
+      "note": "社群借字或拆字写法，非通行同音异体；不改法律术语、姓名或正常女旁字。",
+      "source_ids": [
+        "community-usage",
+        "community-male-spelling",
+        "editorial-preference"
+      ],
+      "tests": [
+        {
+          "input": "妒忌",
+          "expected": "男户男疾"
+        },
+        {
+          "input": "好妈妈和姐姐的婚姻",
+          "expected": "好妈妈和姐姐的婚姻"
+        }
+      ]
+    }
+  ]
+}

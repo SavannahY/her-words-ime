@@ -1,0 +1,34 @@
+patch:
+  style/color_scheme: her_words_light
+  style/color_scheme_dark: her_words_dark
+  style/candidate_list_layout: linear
+  style/inline_preedit: true
+  style/font_face: PingFangSC-Regular
+  style/font_point: 18
+  style/label_font_point: 12
+  style/comment_font_point: 12
+  style/corner_radius: 8
+  style/hilited_corner_radius: 5
+  style/border_height: 7
+  style/border_width: 10
+  preset_color_schemes/her_words_light:
+    name: 她说 · 素纸
+    back_color: 0xf4f8fa
+    text_color: 0x4b4351
+    candidate_text_color: 0x4b4351
+    label_color: 0x9b94a4
+    comment_text_color: 0x99879b
+    hilited_candidate_back_color: 0x6f5779
+    hilited_candidate_text_color: 0xfafcff
+    hilited_candidate_label_color: 0xe9dfe8
+    hilited_comment_text_color: 0xe9dfe8
+  preset_color_schemes/her_words_dark:
+    name: 她说 · 夜色
+    back_color: 0x342b32
+    text_color: 0xe9e0e8
+    candidate_text_color: 0xe9e0e8
+    label_color: 0xa697a6
+    comment_text_color: 0xb9a7b8
+    hilited_candidate_back_color: 0x9d7a99
+    hilited_candidate_text_color: 0xffffff
+    hilited_candidate_label_color: 0xffffff

@@ -1,0 +1,50 @@
+name: Language packs and input engine
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  packs:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Install installer dependency
+        run: python3 -m pip install -r requirements.txt
+      - name: Validate sources, boundaries and examples
+        run: python3 scripts/validate_packs.py
+      - name: Run pack compiler tests
+        run: python3 -m unittest discover -s tests -p 'test_*.py'
+      - name: Compile selected language packs
+        run: python3 scripts/compile_packs.py --output generated/her_rewrite_rules.lua
+      - name: Compile the same language packs for the voice tool
+        run: python3 scripts/compile_web_rules.py --output generated/web-rules.json
+  macos-engine:
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Download and verify official Squirrel release
+        shell: bash
+        run: |
+          curl --fail --location --retry 2 https://github.com/rime/squirrel/releases/download/1.1.2/Squirrel-1.1.2.pkg -o "$RUNNER_TEMP/Squirrel.pkg"
+          python3 - "$RUNNER_TEMP/Squirrel.pkg" <<'PY'
+          import hashlib, pathlib, sys
+          digest = hashlib.sha256(pathlib.Path(sys.argv[1]).read_bytes()).hexdigest()
+          assert digest == '614746013212937623d5bbab9901e9c43d1ec937aa32307d6b6092a05e308287', digest
+          PY
+          pkgutil --check-signature "$RUNNER_TEMP/Squirrel.pkg"
+          pkgutil --expand-full "$RUNNER_TEMP/Squirrel.pkg" "$RUNNER_TEMP/squirrel"
+      - name: Compile selected language packs
+        run: python3 scripts/compile_packs.py --output rime/lua/her_rewrite_rules.lua
+      - name: Verify actual librime candidates and commits
+        run: python3 tests/integration_rime.py --app "$RUNNER_TEMP/squirrel/Payload/Squirrel.app" --config rime --report "$RUNNER_TEMP/her-words-results.json"

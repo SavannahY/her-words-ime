@@ -1,0 +1,10 @@
+# Extension of the unmodified official Luna Pinyin dictionary.
+---
+name: her_pinyin
+version: "1.0"
+sort: by_weight
+use_preset_vocabulary: true
+import_tables:
+  - her_words
+  - luna_pinyin
+...

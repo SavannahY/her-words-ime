@@ -1,0 +1,2 @@
+# Used only by the macOS installer to preserve existing Rime YAML settings.
+PyYAML>=6.0,<7

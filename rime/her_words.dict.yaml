@@ -1,0 +1,50 @@
+# 她说 · 女性友好词库
+# 拼音与词语可直接增补。来源见 lexicon-sources.json。
+---
+name: her_words
+version: "1.1"
+sort: by_weight
+...
+
+她	ta	1000000
+她们	ta men	1000000
+爱女	ai nv	1000000
+女本位	nv ben wei	1000000
+媎妹	jie mei	1000000
+姊妹	zi mei	1000000
+妳	ni	1000000
+女力	nv li	1000000
+爱女文	ai nv wen	1000000
+大女主	da nv zhu	1000000
+姐姐	jie jie	1000000
+姐妹	jie mei	1000000
+女性	nv xing	1000000
+她力量	ta li liang	1000000
+女性力量	nv xing li liang	1000000
+主体性	zhu ti xing	1000000
+自我认同	zi wo ren tong	1000000
+悦己	yue ji	1000000
+自洽	zi qia	1000000
+独立	du li	1000000
+勇敢	yong gan	1000000
+互助	hu zhu	1000000
+看见	kan jian	1000000
+女性友谊	nv xing you yi	1000000
+女性互助	nv xing hu zhu	1000000
+共同成长	gong tong cheng zhang	1000000
+自我定义	zi wo ding yi	1000000
+女性领导力	nv xing ling dao li	1000000
+相互陪伴	xiang hu pei ban	1000000
+女士	nv shi	1000000
+伴侣	ban lv	1000000
+雌鹰般的女人	ci ying ban de nv ren	1000000
+忮忌	zhi ji	1000000
+狡诈	jiao zha	1000000
+贪心	tan xin	1000000
+心慈手软	xin ci shou ruan	1000000
+单身女性	dan shen nv xing	1000000
+众所周知	zhong suo zhou zhi	1000000
+事业有成的女性	shi ye you cheng de nv xing	1000000
+忌恨	ji hen	1000000
+卑躬屈膝	bei gong qu xi	1000000
+谄谀	chan yu	1000000

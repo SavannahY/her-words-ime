@@ -1,0 +1,2148 @@
+{
+  "cases": [
+    {
+      "id": "ta_every_mode",
+      "input": "ta",
+      "modes": [
+        "default",
+        "original",
+        "friendly",
+        "community"
+      ],
+      "expectedFirst": "她"
+    },
+    {
+      "id": "tamen_every_mode",
+      "input": "tamen",
+      "modes": [
+        "default",
+        "original",
+        "friendly",
+        "community"
+      ],
+      "expectedFirst": [
+        "她们",
+        "她們"
+      ]
+    },
+    {
+      "id": "jianzha_friendly",
+      "input": "jianzha",
+      "modes": [
+        "default",
+        "friendly"
+      ],
+      "expectedFirst": [
+        "狡诈",
+        "狡詐"
+      ],
+      "annotation": "友好表达"
+    },
+    {
+      "id": "jianzha_community",
+      "input": "jianzha",
+      "modes": [
+        "community"
+      ],
+      "expectedFirst": [
+        "仠诈",
+        "仠詐"
+      ],
+      "annotation": "社群写法"
+    },
+    {
+      "id": "jianzha_original",
+      "input": "jianzha",
+      "modes": [
+        "original"
+      ],
+      "expectedAny": [
+        "奸诈",
+        "姦詐"
+      ]
+    },
+    {
+      "id": "furenzhiren_friendly",
+      "input": "furenzhiren",
+      "modes": [
+        "default",
+        "friendly"
+      ],
+      "expectedFirst": "心慈手软",
+      "annotation": "友好表达"
+    },
+    {
+      "id": "shengnv_homophone",
+      "input": "shengnv",
+      "modes": [
+        "default",
+        "friendly",
+        "community"
+      ],
+      "expectedFirst": "圣女",
+      "expectedAny": [
+        "单身女性",
+        "單身女性"
+      ],
+      "preserveUnrewrittenBaseline": true
+    },
+    {
+      "id": "jidu_homophone_friendly",
+      "input": "jidu",
+      "modes": [
+        "default",
+        "friendly"
+      ],
+      "expectedFirst": "极度",
+      "expectedAny": "忮忌",
+      "annotationOnExpected": "友好表达",
+      "preserveUnrewrittenBaseline": true
+    },
+    {
+      "id": "jidu_homophone_community",
+      "input": "jidu",
+      "modes": [
+        "community"
+      ],
+      "expectedFirst": "极度",
+      "expectedAny": "男疾男户",
+      "annotationOnExpected": "社群写法",
+      "preserveUnrewrittenBaseline": true
+    },
+    {
+      "id": "jianren_homophone",
+      "input": "jianren",
+      "modes": [
+        "default",
+        "friendly",
+        "community"
+      ],
+      "expectedAny": [
+        "坚韧",
+        "失礼的人"
+      ],
+      "requireAllExpected": true,
+      "preserveUnrewrittenBaseline": true
+    },
+    {
+      "id": "jidu_original",
+      "input": "jidu",
+      "modes": [
+        "original"
+      ],
+      "expectedAny": "嫉妒"
+    },
+    {
+      "id": "tanlan_friendly",
+      "input": "tanlan",
+      "modes": [
+        "default",
+        "friendly"
+      ],
+      "expectedFirst": [
+        "贪心",
+        "貪心"
+      ],
+      "annotation": "友好表达"
+    },
+    {
+      "id": "tanlan_community",
+      "input": "tanlan",
+      "modes": [
+        "community"
+      ],
+      "expectedFirst": [
+        "贪㑣",
+        "貪㑣"
+      ],
+      "annotation": "社群写法"
+    },
+    {
+      "id": "sentence_no_leak",
+      "input": "tamenshuotahenjianzha",
+      "modes": [
+        "default",
+        "friendly"
+      ],
+      "preferredObservation": [
+        "她们说她很狡诈",
+        "她們說她很狡詐"
+      ]
+    },
+    {
+      "id": "mother_birthday_protected",
+      "input": "nimadeshengri",
+      "modes": [
+        "friendly",
+        "community"
+      ],
+      "expectedAny": [
+        "你妈的生日",
+        "你媽的生日"
+      ],
+      "forbidden": [
+        "真是的生日"
+      ]
+    },
+    {
+      "id": "mother_name_protected",
+      "input": "tamademingzi",
+      "modes": [
+        "friendly",
+        "community"
+      ],
+      "expectedAny": [
+        "她妈的名字",
+        "她媽的名字"
+      ],
+      "forbidden": [
+        "真是的名字"
+      ]
+    },
+    {
+      "id": "traditional_pofu",
+      "input": "pofu",
+      "modes": [
+        "friendly",
+        "community"
+      ],
+      "expectedAny": "蠻橫無理的人",
+      "options": {
+        "zh_simp": false,
+        "zh_hans": false
+      },
+      "forbidden": [
+        "蛮横无理的人",
+        "蛮横無理的人"
+      ]
+    },
+    {
+      "id": "traditional_xinjibiao",
+      "input": "xinjibiao",
+      "modes": [
+        "friendly",
+        "community"
+      ],
+      "expectedAny": "工於心計的人",
+      "options": {
+        "zh_simp": false,
+        "zh_hans": false
+      },
+      "forbidden": [
+        "工于心计的人",
+        "工于心計的人"
+      ]
+    },
+    {
+      "id": "longest_lvchabiaozi",
+      "input": "lvchabiaozi",
+      "modes": [
+        "friendly",
+        "community"
+      ],
+      "expectedAny": [
+        "表里不一的人",
+        "表裡不一的人"
+      ],
+      "forbidden": [
+        "的人子"
+      ]
+    },
+    {
+      "id": "longest_xinjibiaoxingwei",
+      "input": "xinjibiaoxingwei",
+      "modes": [
+        "friendly",
+        "community"
+      ],
+      "expectedAny": [
+        "工于心计的行为",
+        "工於心計的行為"
+      ],
+      "forbidden": [
+        "的人行为",
+        "的人行為"
+      ]
+    },
+    {
+      "id": "protected_hao",
+      "input": "hao",
+      "modes": [
+        "friendly",
+        "community"
+      ],
+      "expectedAny": "好"
+    },
+    {
+      "id": "protected_mama",
+      "input": "mama",
+      "modes": [
+        "friendly",
+        "community"
+      ],
+      "expectedAny": [
+        "妈妈",
+        "媽媽"
+      ]
+    },
+    {
+      "id": "protected_jiejie",
+      "input": "jiejie",
+      "modes": [
+        "friendly",
+        "community"
+      ],
+      "expectedAny": "姐姐"
+    },
+    {
+      "id": "protected_hunyin",
+      "input": "hunyin",
+      "modes": [
+        "friendly",
+        "community"
+      ],
+      "expectedAny": "婚姻"
+    },
+    {
+      "id": "protected_shexian",
+      "input": "shexian",
+      "modes": [
+        "friendly",
+        "community"
+      ],
+      "expectedAny": "涉嫌"
+    },
+    {
+      "id": "protected_xianyiren",
+      "input": "xianyiren",
+      "modes": [
+        "friendly",
+        "community"
+      ],
+      "expectedAny": "嫌疑人"
+    },
+    {
+      "id": "protected_jieruchou",
+      "input": "jieruchou",
+      "modes": [
+        "friendly",
+        "community"
+      ],
+      "expectedAny": [
+        "嫉恶如仇",
+        "嫉惡如仇"
+      ]
+    },
+    {
+      "id": "protected_nulizhi",
+      "input": "nulizhi",
+      "modes": [
+        "friendly",
+        "community"
+      ],
+      "expectedAny": [
+        "奴隶制",
+        "奴隸制"
+      ]
+    },
+    {
+      "id": "protected_qiangjianzui",
+      "input": "qiangjianzui",
+      "modes": [
+        "friendly",
+        "community"
+      ],
+      "expectedAny": [
+        "强奸罪",
+        "強姦罪"
+      ]
+    },
+    {
+      "id": "protected_daji",
+      "input": "daji",
+      "modes": [
+        "friendly",
+        "community"
+      ],
+      "expectedAny": "妲己"
+    },
+    {
+      "id": "alias_nvqiangren",
+      "input": "nvqiangren",
+      "modes": [
+        "friendly"
+      ],
+      "expectedAny": [
+        "事业有成的女性",
+        "事業有成的女性"
+      ],
+      "annotationOnExpected": "友好表达",
+      "preserveUnrewrittenBaseline": true,
+      "forbidden": []
+    },
+    {
+      "id": "alias_nvqiangren",
+      "input": "nvqiangren",
+      "modes": [
+        "community"
+      ],
+      "expectedAny": [
+        "事业有成的女性",
+        "事業有成的女性"
+      ],
+      "annotationOnExpected": "社群写法",
+      "preserveUnrewrittenBaseline": true,
+      "forbidden": []
+    },
+    {
+      "id": "alias_furujiezhi",
+      "input": "furujiezhi",
+      "modes": [
+        "friendly"
+      ],
+      "expectedAny": [
+        "众所周知",
+        "眾所周知"
+      ],
+      "annotationOnExpected": "友好表达",
+      "preserveUnrewrittenBaseline": true,
+      "forbidden": []
+    },
+    {
+      "id": "alias_furujiezhi",
+      "input": "furujiezhi",
+      "modes": [
+        "community"
+      ],
+      "expectedAny": [
+        "众所周知",
+        "眾所周知"
+      ],
+      "annotationOnExpected": "社群写法",
+      "preserveUnrewrittenBaseline": true,
+      "forbidden": []
+    },
+    {
+      "id": "alias_guafu",
+      "input": "guafu",
+      "modes": [
+        "friendly"
+      ],
+      "expectedAny": [
+        "丧偶女性",
+        "喪偶女性"
+      ],
+      "annotationOnExpected": "友好表达",
+      "preserveUnrewrittenBaseline": true,
+      "forbidden": []
+    },
+    {
+      "id": "alias_guafu",
+      "input": "guafu",
+      "modes": [
+        "community"
+      ],
+      "expectedAny": [
+        "丧偶女性",
+        "喪偶女性"
+      ],
+      "annotationOnExpected": "社群写法",
+      "preserveUnrewrittenBaseline": true,
+      "forbidden": []
+    },
+    {
+      "id": "alias_shengnv",
+      "input": "shengnv",
+      "modes": [
+        "friendly"
+      ],
+      "expectedAny": [
+        "单身女性",
+        "單身女性"
+      ],
+      "annotationOnExpected": "友好表达",
+      "preserveUnrewrittenBaseline": true,
+      "forbidden": []
+    },
+    {
+      "id": "alias_shengnv",
+      "input": "shengnv",
+      "modes": [
+        "community"
+      ],
+      "expectedAny": [
+        "单身女性",
+        "單身女性"
+      ],
+      "annotationOnExpected": "社群写法",
+      "preserveUnrewrittenBaseline": true,
+      "forbidden": []
+    },
+    {
+      "id": "alias_dalingshengnv",
+      "input": "dalingshengnv",
+      "modes": [
+        "friendly"
+      ],
+      "expectedAny": [
+        "大龄单身女性",
+        "大齡單身女性"
+      ],
+      "annotationOnExpected": "友好表达",
+      "preserveUnrewrittenBaseline": true,
+      "forbidden": []
+    },
+    {
+      "id": "alias_dalingshengnv",
+      "input": "dalingshengnv",
+      "modes": [
+        "community"
+      ],
+      "expectedAny": [
+        "大龄单身女性",
+        "大齡單身女性"
+      ],
+      "annotationOnExpected": "社群写法",
+      "preserveUnrewrittenBaseline": true,
+      "forbidden": []
+    },
+    {
+      "id": "alias_laoshengnv",
+      "input": "laoshengnv",
+      "modes": [
+        "friendly"
+      ],
+      "expectedAny": [
+        "年长单身女性",
+        "年長單身女性"
+      ],
+      "annotationOnExpected": "友好表达",
+      "preserveUnrewrittenBaseline": true,
+      "forbidden": []
+    },
+    {
+      "id": "alias_laoshengnv",
+      "input": "laoshengnv",
+      "modes": [
+        "community"
+      ],
+      "expectedAny": [
+        "年长单身女性",
+        "年長單身女性"
+      ],
+      "annotationOnExpected": "社群写法",
+      "preserveUnrewrittenBaseline": true,
+      "forbidden": []
+    },
+    {
+      "id": "alias_niangniangqiang",
+      "input": "niangniangqiang",
+      "modes": [
+        "friendly"
+      ],
+      "expectedAny": [
+        "阴柔气质",
+        "陰柔氣質"
+      ],
+      "annotationOnExpected": "友好表达",
+      "preserveUnrewrittenBaseline": true,
+      "forbidden": []
+    },
+    {
+      "id": "alias_niangniangqiang",
+      "input": "niangniangqiang",
+      "modes": [
+        "community"
+      ],
+      "expectedAny": [
+        "阴柔气质",
+        "陰柔氣質"
+      ],
+      "annotationOnExpected": "社群写法",
+      "preserveUnrewrittenBaseline": true,
+      "forbidden": []
+    },
+    {
+      "id": "alias_niangpao",
+      "input": "niangpao",
+      "modes": [
+        "friendly"
+      ],
+      "expectedAny": [
+        "阴柔气质",
+        "陰柔氣質"
+      ],
+      "annotationOnExpected": "友好表达",
+      "preserveUnrewrittenBaseline": true,
+      "forbidden": []
+    },
+    {
+      "id": "alias_niangpao",
+      "input": "niangpao",
+      "modes": [
+        "community"
+      ],
+      "expectedAny": [
+        "阴柔气质",
+        "陰柔氣質"
+      ],
+      "annotationOnExpected": "社群写法",
+      "preserveUnrewrittenBaseline": true,
+      "forbidden": []
+    },
+    {
+      "id": "alias_popomama",
+      "input": "popomama",
+      "modes": [
+        "friendly"
+      ],
+      "expectedAny": [
+        "拖泥带水",
+        "拖泥帶水"
+      ],
+      "annotationOnExpected": "友好表达",
+      "preserveUnrewrittenBaseline": true,
+      "forbidden": []
+    },
+    {
+      "id": "alias_popomama",
+      "input": "popomama",
+      "modes": [
+        "community"
+      ],
+      "expectedAny": [
+        "拖泥带水",
+        "拖泥帶水"
+      ],
+      "annotationOnExpected": "社群写法",
+      "preserveUnrewrittenBaseline": true,
+      "forbidden": []
+    },
+    {
+      "id": "alias_furenzhiren",
+      "input": "furenzhiren",
+      "modes": [
+        "friendly"
+      ],
+      "expectedAny": [
+        "心慈手软",
+        "心慈手軟"
+      ],
+      "annotationOnExpected": "友好表达",
+      "preserveUnrewrittenBaseline": true,
+      "forbidden": []
+    },
+    {
+      "id": "alias_furenzhiren",
+      "input": "furenzhiren",
+      "modes": [
+        "community"
+      ],
+      "expectedAny": [
+        "心慈手软",
+        "心慈手軟"
+      ],
+      "annotationOnExpected": "社群写法",
+      "preserveUnrewrittenBaseline": true,
+      "forbidden": []
+    },
+    {
+      "id": "alias_furenzhijian",
+      "input": "furenzhijian",
+      "modes": [
+        "friendly"
+      ],
+      "expectedAny": [
+        "浅陋之见",
+        "淺陋之見"
+      ],
+      "annotationOnExpected": "友好表达",
+      "preserveUnrewrittenBaseline": true,
+      "forbidden": []
+    },
+    {
+      "id": "alias_furenzhijian",
+      "input": "furenzhijian",
+      "modes": [
+        "community"
+      ],
+      "expectedAny": [
+        "浅陋之见",
+        "淺陋之見"
+      ],
+      "annotationOnExpected": "社群写法",
+      "preserveUnrewrittenBaseline": true,
+      "forbidden": []
+    },
+    {
+      "id": "alias_changshefu",
+      "input": "changshefu",
+      "modes": [
+        "friendly"
+      ],
+      "expectedAny": [
+        "爱搬弄是非的人",
+        "愛搬弄是非的人"
+      ],
+      "annotationOnExpected": "友好表达",
+      "preserveUnrewrittenBaseline": true,
+      "forbidden": []
+    },
+    {
+      "id": "alias_changshefu",
+      "input": "changshefu",
+      "modes": [
+        "community"
+      ],
+      "expectedAny": [
+        "爱搬弄是非的人",
+        "愛搬弄是非的人"
+      ],
+      "annotationOnExpected": "社群写法",
+      "preserveUnrewrittenBaseline": true,
+      "forbidden": []
+    },
+    {
+      "id": "alias_pofu",
+      "input": "pofu",
+      "modes": [
+        "friendly"
+      ],
+      "expectedAny": [
+        "蛮横无理的人",
+        "蠻橫無理的人"
+      ],
+      "annotationOnExpected": "友好表达",
+      "preserveUnrewrittenBaseline": true,
+      "forbidden": []
+    },
+    {
+      "id": "alias_pofu",
+      "input": "pofu",
+      "modes": [
+        "community"
+      ],
+      "expectedAny": [
+        "蛮横无理的人",
+        "蠻橫無理的人"
+      ],
+      "annotationOnExpected": "社群写法",
+      "preserveUnrewrittenBaseline": true,
+      "forbidden": []
+    },
+    {
+      "id": "alias_hanfu",
+      "input": "hanfu",
+      "modes": [
+        "friendly"
+      ],
+      "expectedAny": [
+        "蛮横无理的人",
+        "蠻橫無理的人"
+      ],
+      "annotationOnExpected": "友好表达",
+      "preserveUnrewrittenBaseline": true,
+      "forbidden": []
+    },
+    {
+      "id": "alias_hanfu",
+      "input": "hanfu",
+      "modes": [
+        "community"
+      ],
+      "expectedAny": [
+        "蛮横无理的人",
+        "蠻橫無理的人"
+      ],
+      "annotationOnExpected": "社群写法",
+      "preserveUnrewrittenBaseline": true,
+      "forbidden": []
+    },
+    {
+      "id": "alias_jianzha",
+      "input": "jianzha",
+      "modes": [
+        "friendly"
+      ],
+      "expectedAny": [
+        "狡诈",
+        "狡詐"
+      ],
+      "annotationOnExpected": "友好表达",
+      "preserveUnrewrittenBaseline": true,
+      "forbidden": []
+    },
+    {
+      "id": "alias_jianzha",
+      "input": "jianzha",
+      "modes": [
+        "community"
+      ],
+      "expectedAny": [
+        "仠诈",
+        "仠詐"
+      ],
+      "annotationOnExpected": "社群写法",
+      "preserveUnrewrittenBaseline": true,
+      "forbidden": []
+    },
+    {
+      "id": "alias_jianji",
+      "input": "jianji",
+      "modes": [
+        "friendly"
+      ],
+      "expectedAny": [
+        "诡计",
+        "詭計"
+      ],
+      "annotationOnExpected": "友好表达",
+      "preserveUnrewrittenBaseline": true,
+      "forbidden": []
+    },
+    {
+      "id": "alias_jianji",
+      "input": "jianji",
+      "modes": [
+        "community"
+      ],
+      "expectedAny": [
+        "仠计",
+        "仠計"
+      ],
+      "annotationOnExpected": "社群写法",
+      "preserveUnrewrittenBaseline": true,
+      "forbidden": []
+    },
+    {
+      "id": "alias_jianshang",
+      "input": "jianshang",
+      "modes": [
+        "friendly"
+      ],
+      "expectedAny": [
+        "不良商家"
+      ],
+      "annotationOnExpected": "友好表达",
+      "preserveUnrewrittenBaseline": true,
+      "forbidden": []
+    },
+    {
+      "id": "alias_jianshang",
+      "input": "jianshang",
+      "modes": [
+        "community"
+      ],
+      "expectedAny": [
+        "仠商"
+      ],
+      "annotationOnExpected": "社群写法",
+      "preserveUnrewrittenBaseline": true,
+      "forbidden": []
+    },
+    {
+      "id": "alias_jianxian",
+      "input": "jianxian",
+      "modes": [
+        "friendly"
+      ],
+      "expectedAny": [
+        "阴险",
+        "陰險"
+      ],
+      "annotationOnExpected": "友好表达",
+      "preserveUnrewrittenBaseline": true,
+      "forbidden": []
+    },
+    {
+      "id": "alias_jianxian",
+      "input": "jianxian",
+      "modes": [
+        "community"
+      ],
+      "expectedAny": [
+        "仠险",
+        "仠險"
+      ],
+      "annotationOnExpected": "社群写法",
+      "preserveUnrewrittenBaseline": true,
+      "forbidden": []
+    },
+    {
+      "id": "alias_jianxiao",
+      "input": "jianxiao",
+      "modes": [
+        "friendly"
+      ],
+      "expectedAny": [
+        "阴笑",
+        "陰笑"
+      ],
+      "annotationOnExpected": "友好表达",
+      "preserveUnrewrittenBaseline": true,
+      "forbidden": []
+    },
+    {
+      "id": "alias_jianxiao",
+      "input": "jianxiao",
+      "modes": [
+        "community"
+      ],
+      "expectedAny": [
+        "仠笑"
+      ],
+      "annotationOnExpected": "社群写法",
+      "preserveUnrewrittenBaseline": true,
+      "forbidden": []
+    },
+    {
+      "id": "alias_langbeiweijian",
+      "input": "langbeiweijian",
+      "modes": [
+        "friendly"
+      ],
+      "expectedAny": [
+        "勾结作恶",
+        "勾結作惡"
+      ],
+      "annotationOnExpected": "友好表达",
+      "preserveUnrewrittenBaseline": true,
+      "forbidden": []
+    },
+    {
+      "id": "alias_langbeiweijian",
+      "input": "langbeiweijian",
+      "modes": [
+        "community"
+      ],
+      "expectedAny": [
+        "狼狈为仠",
+        "狼狽為仠"
+      ],
+      "annotationOnExpected": "社群写法",
+      "preserveUnrewrittenBaseline": true,
+      "forbidden": []
+    },
+    {
+      "id": "alias_nuyanbixi",
+      "input": "nuyanbixi",
+      "modes": [
+        "friendly"
+      ],
+      "expectedAny": [
+        "卑躬屈膝"
+      ],
+      "annotationOnExpected": "友好表达",
+      "preserveUnrewrittenBaseline": true,
+      "forbidden": []
+    },
+    {
+      "id": "alias_nuyanbixi",
+      "input": "nuyanbixi",
+      "modes": [
+        "community"
+      ],
+      "expectedAny": [
+        "卑躬屈膝"
+      ],
+      "annotationOnExpected": "社群写法",
+      "preserveUnrewrittenBaseline": true,
+      "forbidden": []
+    },
+    {
+      "id": "alias_jihen",
+      "input": "jihen",
+      "modes": [
+        "friendly"
+      ],
+      "expectedAny": [
+        "忌恨"
+      ],
+      "annotationOnExpected": "友好表达",
+      "preserveUnrewrittenBaseline": true,
+      "forbidden": []
+    },
+    {
+      "id": "alias_jihen",
+      "input": "jihen",
+      "modes": [
+        "community"
+      ],
+      "expectedAny": [
+        "㑵恨"
+      ],
+      "annotationOnExpected": "社群写法",
+      "preserveUnrewrittenBaseline": true,
+      "forbidden": []
+    },
+    {
+      "id": "alias_jianhua",
+      "input": "jianhua",
+      "modes": [
+        "friendly"
+      ],
+      "expectedAny": [
+        "狡猾"
+      ],
+      "annotationOnExpected": "友好表达",
+      "preserveUnrewrittenBaseline": true,
+      "forbidden": []
+    },
+    {
+      "id": "alias_jianhua",
+      "input": "jianhua",
+      "modes": [
+        "community"
+      ],
+      "expectedAny": [
+        "仠滑",
+        "仠猾"
+      ],
+      "annotationOnExpected": "社群写法",
+      "preserveUnrewrittenBaseline": true,
+      "forbidden": [],
+      "requireAllExpected": true
+    },
+    {
+      "id": "alias_jiane",
+      "input": "jiane",
+      "modes": [
+        "friendly"
+      ],
+      "expectedAny": [
+        "阴险",
+        "陰險"
+      ],
+      "annotationOnExpected": "友好表达",
+      "preserveUnrewrittenBaseline": true,
+      "forbidden": []
+    },
+    {
+      "id": "alias_jiane",
+      "input": "jiane",
+      "modes": [
+        "community"
+      ],
+      "expectedAny": [
+        "仠恶",
+        "仠惡"
+      ],
+      "annotationOnExpected": "社群写法",
+      "preserveUnrewrittenBaseline": true,
+      "forbidden": []
+    },
+    {
+      "id": "alias_tanlan",
+      "input": "tanlan",
+      "modes": [
+        "friendly"
+      ],
+      "expectedAny": [
+        "贪心",
+        "貪心"
+      ],
+      "annotationOnExpected": "友好表达",
+      "preserveUnrewrittenBaseline": true,
+      "forbidden": []
+    },
+    {
+      "id": "alias_tanlan",
+      "input": "tanlan",
+      "modes": [
+        "community"
+      ],
+      "expectedAny": [
+        "贪㑣",
+        "貪㑣"
+      ],
+      "annotationOnExpected": "社群写法",
+      "preserveUnrewrittenBaseline": true,
+      "forbidden": []
+    },
+    {
+      "id": "alias_jidu",
+      "input": "jidu",
+      "modes": [
+        "friendly"
+      ],
+      "expectedAny": [
+        "忮忌"
+      ],
+      "annotationOnExpected": "友好表达",
+      "preserveUnrewrittenBaseline": true,
+      "forbidden": []
+    },
+    {
+      "id": "alias_jidu",
+      "input": "jidu",
+      "modes": [
+        "community"
+      ],
+      "expectedAny": [
+        "男疾男户",
+        "男疾男戶"
+      ],
+      "annotationOnExpected": "社群写法",
+      "preserveUnrewrittenBaseline": true,
+      "forbidden": []
+    },
+    {
+      "id": "alias_duji",
+      "input": "duji",
+      "modes": [
+        "friendly"
+      ],
+      "expectedAny": [
+        "忮忌"
+      ],
+      "annotationOnExpected": "友好表达",
+      "preserveUnrewrittenBaseline": true,
+      "forbidden": []
+    },
+    {
+      "id": "alias_duji",
+      "input": "duji",
+      "modes": [
+        "community"
+      ],
+      "expectedAny": [
+        "男户男疾",
+        "男戶男疾"
+      ],
+      "annotationOnExpected": "社群写法",
+      "preserveUnrewrittenBaseline": true,
+      "forbidden": []
+    },
+    {
+      "id": "alias_chanmei",
+      "input": "chanmei",
+      "modes": [
+        "friendly"
+      ],
+      "expectedAny": [
+        "谄谀",
+        "諂諛"
+      ],
+      "annotationOnExpected": "友好表达",
+      "preserveUnrewrittenBaseline": true,
+      "forbidden": []
+    },
+    {
+      "id": "alias_chanmei",
+      "input": "chanmei",
+      "modes": [
+        "community"
+      ],
+      "expectedAny": [
+        "谄谀",
+        "諂諛"
+      ],
+      "annotationOnExpected": "社群写法",
+      "preserveUnrewrittenBaseline": true,
+      "forbidden": []
+    },
+    {
+      "id": "alias_lvchabiao",
+      "input": "lvchabiao",
+      "modes": [
+        "friendly"
+      ],
+      "expectedAny": [
+        "表里不一的人",
+        "表裡不一的人"
+      ],
+      "annotationOnExpected": "友好表达",
+      "preserveUnrewrittenBaseline": true,
+      "forbidden": []
+    },
+    {
+      "id": "alias_lvchabiao",
+      "input": "lvchabiao",
+      "modes": [
+        "community"
+      ],
+      "expectedAny": [
+        "表里不一的人",
+        "表裡不一的人"
+      ],
+      "annotationOnExpected": "社群写法",
+      "preserveUnrewrittenBaseline": true,
+      "forbidden": []
+    },
+    {
+      "id": "alias_xinjibiao",
+      "input": "xinjibiao",
+      "modes": [
+        "friendly"
+      ],
+      "expectedAny": [
+        "工于心计的人",
+        "工於心計的人"
+      ],
+      "annotationOnExpected": "友好表达",
+      "preserveUnrewrittenBaseline": true,
+      "forbidden": []
+    },
+    {
+      "id": "alias_xinjibiao",
+      "input": "xinjibiao",
+      "modes": [
+        "community"
+      ],
+      "expectedAny": [
+        "工于心计的人",
+        "工於心計的人"
+      ],
+      "annotationOnExpected": "社群写法",
+      "preserveUnrewrittenBaseline": true,
+      "forbidden": []
+    },
+    {
+      "id": "alias_shengmubiao",
+      "input": "shengmubiao",
+      "modes": [
+        "friendly"
+      ],
+      "expectedAny": [
+        "过度说教的人",
+        "過度說教的人"
+      ],
+      "annotationOnExpected": "友好表达",
+      "preserveUnrewrittenBaseline": true,
+      "forbidden": []
+    },
+    {
+      "id": "alias_shengmubiao",
+      "input": "shengmubiao",
+      "modes": [
+        "community"
+      ],
+      "expectedAny": [
+        "过度说教的人",
+        "過度說教的人"
+      ],
+      "annotationOnExpected": "社群写法",
+      "preserveUnrewrittenBaseline": true,
+      "forbidden": []
+    },
+    {
+      "id": "alias_lvchabiaozi",
+      "input": "lvchabiaozi",
+      "modes": [
+        "friendly"
+      ],
+      "expectedAny": [
+        "表里不一的人",
+        "表裡不一的人"
+      ],
+      "annotationOnExpected": "友好表达",
+      "preserveUnrewrittenBaseline": true,
+      "forbidden": [
+        "的人子",
+        "的人行为",
+        "的人行為"
+      ]
+    },
+    {
+      "id": "alias_lvchabiaozi",
+      "input": "lvchabiaozi",
+      "modes": [
+        "community"
+      ],
+      "expectedAny": [
+        "表里不一的人",
+        "表裡不一的人"
+      ],
+      "annotationOnExpected": "社群写法",
+      "preserveUnrewrittenBaseline": true,
+      "forbidden": [
+        "的人子",
+        "的人行为",
+        "的人行為"
+      ]
+    },
+    {
+      "id": "alias_xinjibiaozi",
+      "input": "xinjibiaozi",
+      "modes": [
+        "friendly"
+      ],
+      "expectedAny": [
+        "工于心计的人",
+        "工於心計的人"
+      ],
+      "annotationOnExpected": "友好表达",
+      "preserveUnrewrittenBaseline": true,
+      "forbidden": [
+        "的人子",
+        "的人行为",
+        "的人行為"
+      ]
+    },
+    {
+      "id": "alias_xinjibiaozi",
+      "input": "xinjibiaozi",
+      "modes": [
+        "community"
+      ],
+      "expectedAny": [
+        "工于心计的人",
+        "工於心計的人"
+      ],
+      "annotationOnExpected": "社群写法",
+      "preserveUnrewrittenBaseline": true,
+      "forbidden": [
+        "的人子",
+        "的人行为",
+        "的人行為"
+      ]
+    },
+    {
+      "id": "alias_shengmubiaozi",
+      "input": "shengmubiaozi",
+      "modes": [
+        "friendly"
+      ],
+      "expectedAny": [
+        "过度说教的人",
+        "過度說教的人"
+      ],
+      "annotationOnExpected": "友好表达",
+      "preserveUnrewrittenBaseline": true,
+      "forbidden": [
+        "的人子",
+        "的人行为",
+        "的人行為"
+      ]
+    },
+    {
+      "id": "alias_shengmubiaozi",
+      "input": "shengmubiaozi",
+      "modes": [
+        "community"
+      ],
+      "expectedAny": [
+        "过度说教的人",
+        "過度說教的人"
+      ],
+      "annotationOnExpected": "社群写法",
+      "preserveUnrewrittenBaseline": true,
+      "forbidden": [
+        "的人子",
+        "的人行为",
+        "的人行為"
+      ]
+    },
+    {
+      "id": "alias_lvchabiaoxingwei",
+      "input": "lvchabiaoxingwei",
+      "modes": [
+        "friendly"
+      ],
+      "expectedAny": [
+        "表里不一的行为",
+        "表裡不一的行為"
+      ],
+      "annotationOnExpected": "友好表达",
+      "preserveUnrewrittenBaseline": true,
+      "forbidden": [
+        "的人子",
+        "的人行为",
+        "的人行為"
+      ]
+    },
+    {
+      "id": "alias_lvchabiaoxingwei",
+      "input": "lvchabiaoxingwei",
+      "modes": [
+        "community"
+      ],
+      "expectedAny": [
+        "表里不一的行为",
+        "表裡不一的行為"
+      ],
+      "annotationOnExpected": "社群写法",
+      "preserveUnrewrittenBaseline": true,
+      "forbidden": [
+        "的人子",
+        "的人行为",
+        "的人行為"
+      ]
+    },
+    {
+      "id": "alias_xinjibiaoxingwei",
+      "input": "xinjibiaoxingwei",
+      "modes": [
+        "friendly"
+      ],
+      "expectedAny": [
+        "工于心计的行为",
+        "工於心計的行為"
+      ],
+      "annotationOnExpected": "友好表达",
+      "preserveUnrewrittenBaseline": true,
+      "forbidden": [
+        "的人子",
+        "的人行为",
+        "的人行為"
+      ]
+    },
+    {
+      "id": "alias_xinjibiaoxingwei",
+      "input": "xinjibiaoxingwei",
+      "modes": [
+        "community"
+      ],
+      "expectedAny": [
+        "工于心计的行为",
+        "工於心計的行為"
+      ],
+      "annotationOnExpected": "社群写法",
+      "preserveUnrewrittenBaseline": true,
+      "forbidden": [
+        "的人子",
+        "的人行为",
+        "的人行為"
+      ]
+    },
+    {
+      "id": "alias_shengmubiaoxingwei",
+      "input": "shengmubiaoxingwei",
+      "modes": [
+        "friendly"
+      ],
+      "expectedAny": [
+        "过度说教的行为",
+        "過度說教的行為"
+      ],
+      "annotationOnExpected": "友好表达",
+      "preserveUnrewrittenBaseline": true,
+      "forbidden": [
+        "的人子",
+        "的人行为",
+        "的人行為"
+      ]
+    },
+    {
+      "id": "alias_shengmubiaoxingwei",
+      "input": "shengmubiaoxingwei",
+      "modes": [
+        "community"
+      ],
+      "expectedAny": [
+        "过度说教的行为",
+        "過度說教的行為"
+      ],
+      "annotationOnExpected": "社群写法",
+      "preserveUnrewrittenBaseline": true,
+      "forbidden": [
+        "的人子",
+        "的人行为",
+        "的人行為"
+      ]
+    },
+    {
+      "id": "alias_biaozi",
+      "input": "biaozi",
+      "modes": [
+        "friendly"
+      ],
+      "expectedAny": [
+        "言行失当的人",
+        "言行失當的人"
+      ],
+      "annotationOnExpected": "友好表达",
+      "preserveUnrewrittenBaseline": true,
+      "forbidden": [
+        "的人子",
+        "的人行为",
+        "的人行為"
+      ]
+    },
+    {
+      "id": "alias_biaozi",
+      "input": "biaozi",
+      "modes": [
+        "community"
+      ],
+      "expectedAny": [
+        "言行失当的人",
+        "言行失當的人"
+      ],
+      "annotationOnExpected": "社群写法",
+      "preserveUnrewrittenBaseline": true,
+      "forbidden": [
+        "的人子",
+        "的人行为",
+        "的人行為"
+      ]
+    },
+    {
+      "id": "alias_jiannvren",
+      "input": "jiannvren",
+      "modes": [
+        "friendly"
+      ],
+      "expectedAny": [
+        "失礼的人",
+        "失禮的人"
+      ],
+      "annotationOnExpected": "友好表达",
+      "preserveUnrewrittenBaseline": true,
+      "forbidden": []
+    },
+    {
+      "id": "alias_jiannvren",
+      "input": "jiannvren",
+      "modes": [
+        "community"
+      ],
+      "expectedAny": [
+        "失礼的人",
+        "失禮的人"
+      ],
+      "annotationOnExpected": "社群写法",
+      "preserveUnrewrittenBaseline": true,
+      "forbidden": []
+    },
+    {
+      "id": "alias_jianren",
+      "input": "jianren",
+      "modes": [
+        "friendly"
+      ],
+      "expectedAny": [
+        "失礼的人",
+        "失禮的人"
+      ],
+      "annotationOnExpected": "友好表达",
+      "preserveUnrewrittenBaseline": true,
+      "forbidden": []
+    },
+    {
+      "id": "alias_jianren",
+      "input": "jianren",
+      "modes": [
+        "community"
+      ],
+      "expectedAny": [
+        "失礼的人",
+        "失禮的人"
+      ],
+      "annotationOnExpected": "社群写法",
+      "preserveUnrewrittenBaseline": true,
+      "forbidden": []
+    },
+    {
+      "id": "alias_jianhuo",
+      "input": "jianhuo",
+      "modes": [
+        "friendly"
+      ],
+      "expectedAny": [
+        "失礼的人",
+        "失禮的人"
+      ],
+      "annotationOnExpected": "友好表达",
+      "preserveUnrewrittenBaseline": true,
+      "forbidden": []
+    },
+    {
+      "id": "alias_jianhuo",
+      "input": "jianhuo",
+      "modes": [
+        "community"
+      ],
+      "expectedAny": [
+        "失礼的人",
+        "失禮的人"
+      ],
+      "annotationOnExpected": "社群写法",
+      "preserveUnrewrittenBaseline": true,
+      "forbidden": []
+    },
+    {
+      "id": "alias_nimade",
+      "input": "nimade",
+      "modes": [
+        "friendly"
+      ],
+      "expectedAny": [
+        "真是的"
+      ],
+      "annotationOnExpected": "友好表达",
+      "preserveUnrewrittenBaseline": true,
+      "forbidden": []
+    },
+    {
+      "id": "alias_nimade",
+      "input": "nimade",
+      "modes": [
+        "community"
+      ],
+      "expectedAny": [
+        "真是的"
+      ],
+      "annotationOnExpected": "社群写法",
+      "preserveUnrewrittenBaseline": true,
+      "forbidden": []
+    },
+    {
+      "id": "alias_tamade",
+      "input": "tamade",
+      "modes": [
+        "friendly"
+      ],
+      "expectedAny": [
+        "真是的"
+      ],
+      "annotationOnExpected": "友好表达",
+      "preserveUnrewrittenBaseline": true,
+      "forbidden": []
+    },
+    {
+      "id": "alias_tamade",
+      "input": "tamade",
+      "modes": [
+        "community"
+      ],
+      "expectedAny": [
+        "真是的"
+      ],
+      "annotationOnExpected": "社群写法",
+      "preserveUnrewrittenBaseline": true,
+      "forbidden": []
+    }
+  ],
+  "forbidden": [
+    "他",
+    {
+      "text": "女强人",
+      "match": "phrase"
+    },
+    {
+      "text": "妇孺皆知",
+      "match": "phrase"
+    },
+    {
+      "text": "寡妇",
+      "match": "exact"
+    },
+    {
+      "text": "剩女",
+      "match": "exact"
+    },
+    {
+      "text": "大龄剩女",
+      "match": "phrase"
+    },
+    {
+      "text": "老剩女",
+      "match": "exact"
+    },
+    {
+      "text": "娘娘腔",
+      "match": "exact"
+    },
+    {
+      "text": "娘炮",
+      "match": "exact"
+    },
+    {
+      "text": "婆婆妈妈",
+      "match": "exact"
+    },
+    {
+      "text": "妇人之仁",
+      "match": "exact"
+    },
+    {
+      "text": "妇人之见",
+      "match": "phrase"
+    },
+    {
+      "text": "长舌妇",
+      "match": "exact"
+    },
+    {
+      "text": "泼妇",
+      "match": "exact"
+    },
+    {
+      "text": "悍妇",
+      "match": "exact"
+    },
+    {
+      "text": "奸诈",
+      "match": "phrase"
+    },
+    {
+      "text": "奸计",
+      "match": "phrase"
+    },
+    {
+      "text": "奸商",
+      "match": "exact"
+    },
+    {
+      "text": "奸险",
+      "match": "phrase"
+    },
+    {
+      "text": "奸笑",
+      "match": "phrase"
+    },
+    {
+      "text": "狼狈为奸",
+      "match": "phrase"
+    },
+    {
+      "text": "奴颜婢膝",
+      "match": "phrase"
+    },
+    {
+      "text": "嫉恨",
+      "match": "phrase"
+    },
+    {
+      "text": "奸猾",
+      "match": "phrase"
+    },
+    {
+      "text": "奸滑",
+      "match": "phrase"
+    },
+    {
+      "text": "奸恶",
+      "match": "phrase"
+    },
+    {
+      "text": "贪婪",
+      "match": "phrase"
+    },
+    {
+      "text": "嫉妒",
+      "match": "exact"
+    },
+    {
+      "text": "妒忌",
+      "match": "exact"
+    },
+    {
+      "text": "谄媚",
+      "match": "exact"
+    },
+    {
+      "text": "绿茶婊",
+      "match": "phrase"
+    },
+    {
+      "text": "心机婊",
+      "match": "phrase"
+    },
+    {
+      "text": "圣母婊",
+      "match": "phrase"
+    },
+    {
+      "text": "绿茶婊子",
+      "match": "phrase"
+    },
+    {
+      "text": "心机婊子",
+      "match": "phrase"
+    },
+    {
+      "text": "圣母婊子",
+      "match": "phrase"
+    },
+    {
+      "text": "绿茶婊行为",
+      "match": "phrase"
+    },
+    {
+      "text": "心机婊行为",
+      "match": "phrase"
+    },
+    {
+      "text": "圣母婊行为",
+      "match": "phrase"
+    },
+    {
+      "text": "婊子",
+      "match": "phrase"
+    },
+    {
+      "text": "贱女人",
+      "match": "phrase"
+    },
+    {
+      "text": "贱人",
+      "match": "exact"
+    },
+    {
+      "text": "贱货",
+      "match": "exact"
+    },
+    {
+      "text": "你妈的",
+      "match": "exact"
+    },
+    {
+      "text": "他妈的",
+      "match": "exact"
+    },
+    {
+      "text": "她妈的",
+      "match": "exact"
+    },
+    {
+      "text": "女强人",
+      "match": "phrase"
+    },
+    {
+      "text": "女強人",
+      "match": "phrase"
+    },
+    {
+      "text": "妇孺皆知",
+      "match": "phrase"
+    },
+    {
+      "text": "婦孺皆知",
+      "match": "phrase"
+    },
+    {
+      "text": "寡妇",
+      "match": "exact"
+    },
+    {
+      "text": "寡婦",
+      "match": "exact"
+    },
+    {
+      "text": "剩女",
+      "match": "exact"
+    },
+    {
+      "text": "大龄剩女",
+      "match": "phrase"
+    },
+    {
+      "text": "大齡剩女",
+      "match": "phrase"
+    },
+    {
+      "text": "老剩女",
+      "match": "exact"
+    },
+    {
+      "text": "娘娘腔",
+      "match": "exact"
+    },
+    {
+      "text": "娘炮",
+      "match": "exact"
+    },
+    {
+      "text": "婆婆妈妈",
+      "match": "exact"
+    },
+    {
+      "text": "婆婆媽媽",
+      "match": "exact"
+    },
+    {
+      "text": "妇人之仁",
+      "match": "exact"
+    },
+    {
+      "text": "婦人之仁",
+      "match": "exact"
+    },
+    {
+      "text": "妇人之见",
+      "match": "phrase"
+    },
+    {
+      "text": "婦人之見",
+      "match": "phrase"
+    },
+    {
+      "text": "长舌妇",
+      "match": "exact"
+    },
+    {
+      "text": "長舌婦",
+      "match": "exact"
+    },
+    {
+      "text": "泼妇",
+      "match": "exact"
+    },
+    {
+      "text": "潑婦",
+      "match": "exact"
+    },
+    {
+      "text": "悍妇",
+      "match": "exact"
+    },
+    {
+      "text": "悍婦",
+      "match": "exact"
+    },
+    {
+      "text": "奸诈",
+      "match": "phrase"
+    },
+    {
+      "text": "奸詐",
+      "match": "phrase"
+    },
+    {
+      "text": "姦詐",
+      "match": "phrase"
+    },
+    {
+      "text": "奸计",
+      "match": "phrase"
+    },
+    {
+      "text": "奸計",
+      "match": "phrase"
+    },
+    {
+      "text": "姦計",
+      "match": "phrase"
+    },
+    {
+      "text": "奸商",
+      "match": "exact"
+    },
+    {
+      "text": "姦商",
+      "match": "exact"
+    },
+    {
+      "text": "奸险",
+      "match": "phrase"
+    },
+    {
+      "text": "奸險",
+      "match": "phrase"
+    },
+    {
+      "text": "姦險",
+      "match": "phrase"
+    },
+    {
+      "text": "奸笑",
+      "match": "phrase"
+    },
+    {
+      "text": "姦笑",
+      "match": "phrase"
+    },
+    {
+      "text": "狼狈为奸",
+      "match": "phrase"
+    },
+    {
+      "text": "狼狽為奸",
+      "match": "phrase"
+    },
+    {
+      "text": "狼狽為姦",
+      "match": "phrase"
+    },
+    {
+      "text": "奴颜婢膝",
+      "match": "phrase"
+    },
+    {
+      "text": "奴顏婢膝",
+      "match": "phrase"
+    },
+    {
+      "text": "嫉恨",
+      "match": "phrase"
+    },
+    {
+      "text": "奸猾",
+      "match": "phrase"
+    },
+    {
+      "text": "姦猾",
+      "match": "phrase"
+    },
+    {
+      "text": "奸滑",
+      "match": "phrase"
+    },
+    {
+      "text": "姦滑",
+      "match": "phrase"
+    },
+    {
+      "text": "奸恶",
+      "match": "phrase"
+    },
+    {
+      "text": "奸惡",
+      "match": "phrase"
+    },
+    {
+      "text": "姦惡",
+      "match": "phrase"
+    },
+    {
+      "text": "贪婪",
+      "match": "phrase"
+    },
+    {
+      "text": "貪婪",
+      "match": "phrase"
+    },
+    {
+      "text": "嫉妒",
+      "match": "exact"
+    },
+    {
+      "text": "妒忌",
+      "match": "exact"
+    },
+    {
+      "text": "谄媚",
+      "match": "exact"
+    },
+    {
+      "text": "諂媚",
+      "match": "exact"
+    },
+    {
+      "text": "绿茶婊",
+      "match": "phrase"
+    },
+    {
+      "text": "綠茶婊",
+      "match": "phrase"
+    },
+    {
+      "text": "心机婊",
+      "match": "phrase"
+    },
+    {
+      "text": "心機婊",
+      "match": "phrase"
+    },
+    {
+      "text": "圣母婊",
+      "match": "phrase"
+    },
+    {
+      "text": "聖母婊",
+      "match": "phrase"
+    },
+    {
+      "text": "绿茶婊子",
+      "match": "phrase"
+    },
+    {
+      "text": "綠茶婊子",
+      "match": "phrase"
+    },
+    {
+      "text": "心机婊子",
+      "match": "phrase"
+    },
+    {
+      "text": "心機婊子",
+      "match": "phrase"
+    },
+    {
+      "text": "圣母婊子",
+      "match": "phrase"
+    },
+    {
+      "text": "聖母婊子",
+      "match": "phrase"
+    },
+    {
+      "text": "绿茶婊行为",
+      "match": "phrase"
+    },
+    {
+      "text": "綠茶婊行為",
+      "match": "phrase"
+    },
+    {
+      "text": "心机婊行为",
+      "match": "phrase"
+    },
+    {
+      "text": "心機婊行為",
+      "match": "phrase"
+    },
+    {
+      "text": "圣母婊行为",
+      "match": "phrase"
+    },
+    {
+      "text": "聖母婊行為",
+      "match": "phrase"
+    },
+    {
+      "text": "婊子",
+      "match": "phrase"
+    },
+    {
+      "text": "贱女人",
+      "match": "phrase"
+    },
+    {
+      "text": "賤女人",
+      "match": "phrase"
+    },
+    {
+      "text": "贱人",
+      "match": "exact"
+    },
+    {
+      "text": "賤人",
+      "match": "exact"
+    },
+    {
+      "text": "贱货",
+      "match": "exact"
+    },
+    {
+      "text": "賤貨",
+      "match": "exact"
+    },
+    {
+      "text": "你妈的",
+      "match": "exact"
+    },
+    {
+      "text": "你媽的",
+      "match": "exact"
+    },
+    {
+      "text": "他妈的",
+      "match": "exact"
+    },
+    {
+      "text": "他媽的",
+      "match": "exact"
+    },
+    {
+      "text": "她妈的",
+      "match": "exact"
+    },
+    {
+      "text": "她媽的",
+      "match": "exact"
+    }
+  ]
+}

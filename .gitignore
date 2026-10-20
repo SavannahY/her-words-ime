@@ -1,0 +1,14 @@
+.DS_Store
+__pycache__/
+*.py[cod]
+.venv/
+generated/
+rime/build/
+rime/lua/her_rewrite_rules.lua
+*.userdb/
+*.userdb.*
+user.yaml
+installation.yaml
+downloads/
+tests/_runs/
+*.log
