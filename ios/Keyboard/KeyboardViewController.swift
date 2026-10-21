@@ -14,6 +14,7 @@ final class KeyboardViewController: UIInputViewController {
     private var numeric = false
     private var symbols = false
     private var loadFailed = false
+    private var engineLoading = false
     private var deleteTimer: Timer?
     private var documentID: UUID?
     private var heightConstraint: NSLayoutConstraint?
@@ -36,7 +37,10 @@ final class KeyboardViewController: UIInputViewController {
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        documentID = textDocumentProxy.documentIdentifier
+        let currentDocument = textDocumentProxy.documentIdentifier
+        if documentID != currentDocument { input = "" }
+        documentID = currentDocument
+        if loadFailed { loadEngine() }
         updateInputType()
         updateCandidates()
     }
@@ -45,7 +49,6 @@ final class KeyboardViewController: UIInputViewController {
         super.viewWillDisappear(animated)
         deleteTimer?.invalidate()
         deleteTimer = nil
-        input = ""
     }
 
     override func viewDidLayoutSubviews() {
@@ -66,6 +69,9 @@ final class KeyboardViewController: UIInputViewController {
     }
 
     private func loadEngine() {
+        guard !engineLoading else { return }
+        engineLoading = true
+        loadFailed = false
         DispatchQueue.global(qos: .userInitiated).async { [weak self] in
             do {
                 guard let lexicon = Bundle.main.url(forResource: "lexicon", withExtension: "json"),
@@ -76,11 +82,13 @@ final class KeyboardViewController: UIInputViewController {
                                                 rulesData: Data(contentsOf: rules))
                 DispatchQueue.main.async { [weak self] in
                     self?.engine = engine
+                    self?.engineLoading = false
                     self?.updateCandidates()
                 }
             } catch {
                 DispatchQueue.main.async { [weak self] in
                     self?.loadFailed = true
+                    self?.engineLoading = false
                     self?.updateCandidates()
                 }
             }
@@ -371,10 +379,25 @@ final class KeyboardViewController: UIInputViewController {
         } else {
             for (index, candidate) in candidates.enumerated() {
                 let button = UIButton(type: .system)
-                button.setTitle(candidate.text, for: .normal)
-                button.titleLabel?.font = .systemFont(ofSize: 20, weight: index == 0 ? .semibold : .regular)
-                button.tintColor = index == 0 ? .systemPurple : .label
-                button.contentEdgeInsets = UIEdgeInsets(top: 4, left: 11, bottom: 4, right: 11)
+                var configuration = UIButton.Configuration.plain()
+                configuration.title = candidate.text
+                configuration.subtitle = [candidate.isCompletion ? "补全" : "", candidate.annotation]
+                    .filter { !$0.isEmpty }.joined(separator: " · ")
+                configuration.titleAlignment = .center
+                configuration.baseForegroundColor = index == 0 ? .systemPurple : .label
+                configuration.contentInsets = NSDirectionalEdgeInsets(top: 1, leading: 11, bottom: 1, trailing: 11)
+                configuration.titleTextAttributesTransformer = UIConfigurationTextAttributesTransformer { attributes in
+                    var result = attributes
+                    result.font = .systemFont(ofSize: 20, weight: index == 0 ? .semibold : .regular)
+                    return result
+                }
+                configuration.subtitleTextAttributesTransformer = UIConfigurationTextAttributesTransformer { attributes in
+                    var result = attributes
+                    result.font = .systemFont(ofSize: 9)
+                    result.foregroundColor = .secondaryLabel
+                    return result
+                }
+                button.configuration = configuration
                 button.accessibilityLabel = candidate.text + (candidate.annotation.isEmpty ? "" : "，" + candidate.annotation)
                 button.addAction(UIAction { [weak self] _ in self?.select(candidate) }, for: .touchUpInside)
                 candidateStack.addArrangedSubview(button)
