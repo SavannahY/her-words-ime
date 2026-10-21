@@ -43,7 +43,7 @@ def build_project():
     if not shared:
         raise ValueError("Generate the Shared Swift sources first.")
     app_sources = sorted(path.relative_to(IOS).as_posix() for path in (IOS / "App").glob("*.swift")) + shared
-    keyboard_sources = ["Keyboard/KeyboardViewController.swift"] + shared
+    keyboard_sources = sorted(path.relative_to(IOS).as_posix() for path in (IOS / "Keyboard").glob("*.swift")) + shared
     resources = sorted(path.relative_to(IOS).as_posix() for path in (IOS / "Keyboard/Resources").glob("*") if path.is_file())
     references = {path: reference(path, "sourcecode.swift") for path in sorted(set(app_sources + keyboard_sources))}
     app_resources = [path for path in resources if Path(path).name not in {"lexicon.json", "data-info.json"}] + ["../speech/profiles.json"] + sorted(
@@ -93,7 +93,7 @@ def build_project():
               "CLANG_ENABLE_MODULES": "YES", "CLANG_ENABLE_OBJC_ARC": "YES", "ENABLE_USER_SCRIPT_SANDBOXING": "YES"}
     project_configs = configurations("project", common)
     target_common = {"CODE_SIGN_STYLE": "Automatic", "CURRENT_PROJECT_VERSION": "1",
-                     "MARKETING_VERSION": "0.2.0", "GENERATE_INFOPLIST_FILE": "NO", "TARGETED_DEVICE_FAMILY": "1,2",
+                     "MARKETING_VERSION": "0.3.0", "GENERATE_INFOPLIST_FILE": "NO", "TARGETED_DEVICE_FAMILY": "1,2",
                      "SUPPORTED_PLATFORMS": "iphoneos iphonesimulator", "SWIFT_EMIT_LOC_STRINGS": "YES"}
     app_settings = {**target_common, "PRODUCT_BUNDLE_IDENTIFIER": "$(HER_BUNDLE_PREFIX)", "PRODUCT_NAME": "HerWords",
                     "INFOPLIST_FILE": "App/Info.plist", "LD_RUNPATH_SEARCH_PATHS": ["$(inherited)", "@executable_path/Frameworks"]}

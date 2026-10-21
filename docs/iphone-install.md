@@ -49,6 +49,8 @@ HER_BUNDLE_PREFIX = com.yourname.herwords
 
 本项目键盘无需打开“允许完全访问”；正常打字也不需要麦克风权限。默认使用中性表达，社群写法由你在键盘里主动切换。密码框、部分电话号码输入框，以及禁止第三方键盘的 App 会使用系统键盘，这是 iOS 的限制。[Apple 添加与切换键盘说明](https://support.apple.com/zh-cn/guide/iphone/-iph73b71eb/ios)、[第三方键盘使用限制](https://developer.apple.com/documentation/uikit/configuring-a-custom-keyboard-interface)、[完全访问说明](https://developer.apple.com/documentation/uikit/configuring-open-access-for-a-custom-keyboard)
 
+点击键盘顶部「词库」可管理本地人名、英文词和拼音／缩写；长按候选可忘记或设为不再推荐。隐藏偏好也过滤基础词典及组合候选，防止被重新学回；隐藏名单默认折叠，可主动恢复。仅记录本键盘确认的短词，不读取聊天上下文。英文组成词后空格确认，点击候选才补全。详见 [本地词库说明](local-memory.md)。
+
 ## 5. 语音转文字在主 App 使用
 
 录音与语音识别放在主 App「她说」，不放进第三方键盘扩展。Apple 的键盘沙箱不允许键盘访问麦克风，开启完全访问也不能据此获得录音能力。使用主 App 的语音功能时，再按系统提示授予麦克风和语音识别权限；完成后检查文字并复制到目标 App。[Apple 键盘限制](https://developer.apple.com/documentation/uikit/configuring-open-access-for-a-custom-keyboard)、[键盘扩展与麦克风说明](https://developer.apple.com/library/archive/documentation/General/Conceptual/ExtensibilityPG/CustomKeyboard.html)、[语音与麦克风权限说明](https://developer.apple.com/documentation/bundleresources/protected-resources)

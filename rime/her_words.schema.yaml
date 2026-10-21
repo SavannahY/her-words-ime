@@ -4,7 +4,7 @@ __include: luna_pinyin_simp.schema:/
 schema:
   schema_id: her_words
   name: 她说 · 女性优先全拼
-  version: "1.1"
+  version: "1.2"
   author:
     - 她说
   description: |
@@ -16,6 +16,9 @@ translator:
   dictionary: her_pinyin
   prism: her_words
   user_dict: her_words
+  # All new personalization lives in the reviewable local memory store.
+  # Preserve any older Rime database on disk, but do not use or update it here.
+  enable_user_dict: false
 
 engine:
   filters:

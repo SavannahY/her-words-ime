@@ -70,6 +70,7 @@ struct HerSpeechMacApp: App {
 
 private struct MacSpeechView: View {
     @ObservedObject var model: MacSpeechModel
+    @State private var showWordMemory = false
 
     var body: some View {
         ScrollView {
@@ -106,6 +107,9 @@ private struct MacSpeechView: View {
                         }.pickerStyle(.segmented)
                         TextField("追加专名，用逗号或分号分隔", text: $model.customHotwords)
                             .textFieldStyle(.roundedBorder)
+                        Button("管理本地词库与不再推荐的名字") { showWordMemory = true }
+                        Text("已保存的人名和英文词也会用作语音提示，可以在本地词库删除或隐藏。")
+                            .font(.caption).foregroundStyle(.secondary)
                         Text("提示只调整识别概率，不能保证出现。英文保持原文，不进行翻译。每项最多 80 字，最多使用 128 项。")
                             .font(.caption).foregroundStyle(.secondary)
                     }.padding(6)
@@ -150,6 +154,7 @@ private struct MacSpeechView: View {
                     .font(.caption).foregroundStyle(.secondary)
             }.padding(24)
         }.frame(minWidth: 670, minHeight: 700)
+            .sheet(isPresented: $showWordMemory) { MacWordMemoryView(model: model.wordMemory) }
     }
 
     private var recordTitle: String {

@@ -170,6 +170,18 @@ class InstallerPlanTests(unittest.TestCase):
         self.assertIn('squirrel.custom.yaml', with_theme.files)
         self.assertIn('my_theme', theme.read_text(encoding='utf-8'))
 
+    def test_install_adds_memory_module_without_replacing_personal_words(self):
+        self.target.mkdir()
+        records = {'her_memory_policy.tsv': 'HER_WORD_MEMORY\t1\nS\tlearning\t0\n',
+                   'her_memory_learned.tsv': 'HER_WORD_MEMORY\t1\nL\tgh\tGitHub\t2\t100\n'}
+        for name, text in records.items():
+            (self.target / name).write_text(text, encoding='utf-8')
+        installer.write_plan(self.plan())
+        self.assertTrue((self.target / 'lua/her_memory.lua').is_file())
+        self.assertEqual(self.target.stat().st_mode & 0o777, 0o700)
+        for name, text in records.items():
+            self.assertEqual((self.target / name).read_text(encoding='utf-8'), text)
+
     def test_bad_yaml_stops_before_compile_or_backup_or_writes(self):
         self.target.mkdir()
         config = self.target / 'default.custom.yaml'

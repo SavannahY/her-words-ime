@@ -2,6 +2,7 @@
 -- Loaded by lua_filter@*her_filter after simplifier, before uniquifier.
 -- Rule data lives separately so wording changes do not require engine changes.
 local rule_data = require("her_rewrite_rules")
+local memory = require("her_memory")
 local rules = {}
 
 for index, rule in ipairs(rule_data.rules or {}) do
@@ -88,7 +89,8 @@ local function annotation(comment, label)
   return comment .. " · " .. label
 end
 
-return function(input, env)
+local function filter(input, env)
+  memory.refresh(env)
   local context = env.engine.context
   local community = context:get_option("her_community")
   local enabled = context:get_option("her_friendly") or community
@@ -98,6 +100,8 @@ return function(input, env)
   local pending_aliases
 
   local function emit(candidate, text, comment)
+    if memory.is_blocked(env, candidate.text) or memory.is_blocked(env, text)
+        or memory.is_blocked(env, comment) then return end
     local key = tostring(candidate.start) .. ":"
         .. tostring(candidate._end) .. ":" .. text
     if seen[key] then
@@ -130,6 +134,13 @@ return function(input, env)
         local candidate = Candidate("her_priority", segment.start,
             segment._end, priority, "")
         emit(candidate, priority, "")
+      end
+
+      for _, word in ipairs(memory.suggestions(env, raw)) do
+        local text, replaced = rewrite(word.text, enabled, community, simplified)
+        local comment = word.manual and "本地词库" or "本地记忆"
+        if replaced then comment = annotation(comment, label) end
+        emit(Candidate("her_memory", segment.start, segment._end, word.text, ""), text, comment)
       end
 
       if enabled then
@@ -172,17 +183,21 @@ return function(input, env)
 
   -- Consume only as downstream consumers request candidates. Do not collect or
   -- exhaust the translation: sentence ranking and candidate paging stay lazy.
-  -- Respect the first original candidate (after rewriting) before offering
-  -- aliases: a benign homophone such as 坚韧 must keep its original first place.
+  -- A benign homophone such as 坚韧 keeps its original first place. When the
+  -- candidate actually needed a rewrite, a whole-input alias takes priority:
+  -- this avoids splicing 新机 + 婊子 into 新机言行失当的人 for xinjibiaozi.
   for candidate in input:iter() do
     local text, replaced = rewrite(candidate.text, enabled, community, simplified)
     local comment = feminine(candidate.comment or "")
     if replaced then
       comment = annotation(comment, label)
     end
+    if replaced then emit_aliases() end
     emit(candidate, text, comment)
     emit_aliases()
   end
   -- A translator with no candidates can still provide a friendly alias.
   emit_aliases()
 end
+
+return { init = memory.init, fini = memory.fini, func = filter }

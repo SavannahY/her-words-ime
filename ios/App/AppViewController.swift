@@ -77,6 +77,7 @@ final class AppViewController: UIViewController, UITextViewDelegate {
         stack.addArrangedSubview(sectionTitle("把「她说键盘」加入 iPhone"))
         stack.addArrangedSubview(label("1. 打开系统设置 → 通用 → 键盘 → 键盘\n2. 轻点「添加新键盘」，选择「她说键盘」\n3. 输入时长按地球图标，切换到她说键盘", style: .body))
         stack.addArrangedSubview(label("键盘无需「允许完全访问」。密码框、部分电话号码框及限制第三方键盘的 App 会使用系统键盘。", style: .footnote, color: .secondaryLabel))
+        stack.addArrangedSubview(label("人名与英文词可保存在本机。点击键盘顶部「词库」管理，或长按候选选择「忘记／不再推荐」；隐藏名单可以恢复，不会上传。", style: .footnote, color: .secondaryLabel))
 
         stack.addArrangedSubview(sectionTitle("键盘试打"))
         stack.addArrangedSubview(label("轻点下方输入区，切换到「她说键盘」试打。这里保留实际输入的文字。", style: .footnote, color: .secondaryLabel))

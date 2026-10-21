@@ -17,7 +17,7 @@ let package = Package(
             name: "HerSpeechTextCore",
             path: "ios/Shared",
             exclude: ["HerPinyinEngine.swift"],
-            sources: ["HerSpeechText.swift", "HerModels.swift", "HerRewriter.swift", "HerSpeechWording.swift"]
+            sources: ["HerSpeechText.swift", "HerModels.swift", "HerRewriter.swift", "HerSpeechWording.swift", "HerWordMemory.swift"]
         ),
         .target(
             name: "HerBilingualASR",

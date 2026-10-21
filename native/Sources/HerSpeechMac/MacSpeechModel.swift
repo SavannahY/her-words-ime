@@ -31,6 +31,7 @@ final class MacSpeechModel: ObservableObject {
     private var wording: HerSpeechWording?
     private var profiles: [String: MacSpeechProfile] = [:]
     private let recorder = MacAudioTranscriber()
+    let wordMemory = MacWordMemoryModel()
     private var modelDownload: Task<Void, Never>?
     private var downloadID: UUID?
     private var recordingPrefix = ""
@@ -132,6 +133,13 @@ final class MacSpeechModel: ObservableObject {
             if let selected = profiles[profile] { words += selected.contextualStrings + selected.hotwords }
             words += customHotwords.components(separatedBy: CharacterSet(charactersIn: ",，;；\n"))
                 .map { $0.trimmingCharacters(in: .whitespacesAndNewlines) }.filter { !$0.isEmpty }
+            do {
+                words += try wordMemory.speechHints()
+                words = words.filter { !wordMemory.isBlocked($0) }
+            } catch {
+                words = []
+                resourceError = "本地词库未能读取，本次不使用词汇提示：" + error.localizedDescription
+            }
         }
         recorder.start(directory: modelDirectory, hotwords: words)
     }

@@ -1,9 +1,17 @@
 import UIKit
 
 /// All composition stays inside this extension until the user selects a candidate.
-/// No network, shared container, clipboard access, or keystroke persistence.
+/// Confirmed short words may be kept in a private local dictionary. No surrounding
+/// chat text, network, clipboard or shared-container access is used.
 final class KeyboardViewController: UIInputViewController {
     private var engine: HerPinyinEngine?
+    private var wordMemory: HerWordMemoryStore?
+    private var memoryError = ""
+    private var memoryEditor: WordMemoryViewController?
+    private var memoryEditorHeight: NSLayoutConstraint?
+    private var performingOwnEdit = false
+    private var combinedInput = ""
+    private var combinedText = ""
     private var input = ""
     private var mode: HerWordingMode = .neutral
     private var candidates: [HerCandidate] = []
@@ -20,6 +28,7 @@ final class KeyboardViewController: UIInputViewController {
     private var heightConstraint: NSLayoutConstraint?
     private let compositionLabel = UILabel()
     private let modeButton = UIButton(type: .system)
+    private let memoryButton = UIButton(type: .system)
     private let candidateScroll = UIScrollView()
     private let candidateStack = UIStackView()
     private let rows = UIStackView()
@@ -31,6 +40,7 @@ final class KeyboardViewController: UIInputViewController {
         inputView?.allowsSelfSizing = true
         primaryLanguage = "zh-Hans"
         documentID = textDocumentProxy.documentIdentifier
+        loadWordMemory()
         configureInterface()
         loadEngine()
     }
@@ -38,9 +48,13 @@ final class KeyboardViewController: UIInputViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         let currentDocument = textDocumentProxy.documentIdentifier
-        if documentID != currentDocument { input = "" }
+        if documentID != currentDocument { clearComposition() }
         documentID = currentDocument
         if loadFailed { loadEngine() }
+        if let wordMemory {
+            do { try wordMemory.refresh(); memoryError = "" }
+            catch { memoryError = error.localizedDescription }
+        }
         updateInputType()
         updateCandidates()
     }
@@ -49,29 +63,130 @@ final class KeyboardViewController: UIInputViewController {
         super.viewWillDisappear(animated)
         deleteTimer?.invalidate()
         deleteTimer = nil
+        clearComposition()
     }
 
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         let compactHeight = view.bounds.width > 600
-        let height: CGFloat = compactHeight ? 264 : 328
+        let desiredHeight: CGFloat = memoryEditor == nil ? (compactHeight ? 264 : 328) : (compactHeight ? 410 : 520)
+        let height = min(desiredHeight, max(264, UIScreen.main.bounds.height - (compactHeight ? 48 : 120)))
+        memoryEditorHeight?.constant = min(compactHeight ? 140 : 190, max(90, height - 310))
         if heightConstraint?.constant != height { heightConstraint?.constant = height }
     }
 
     override func textDidChange(_ textInput: UITextInput?) {
         super.textDidChange(textInput)
         if documentID != textDocumentProxy.documentIdentifier {
-            input = ""
+            clearComposition()
             documentID = textDocumentProxy.documentIdentifier
             updateCandidates()
         }
         updateInputType()
     }
 
+    override func textWillChange(_ textInput: UITextInput?) {
+        super.textWillChange(textInput)
+        clearForHostChange()
+    }
+
+    override func selectionDidChange(_ textInput: UITextInput?) {
+        super.selectionDidChange(textInput)
+        clearForHostChange()
+    }
+
+    private func clearForHostChange() {
+        // Some hosts may deliver these callbacks asynchronously after our own
+        // insertText call. Without reading host text, they cannot be reliably
+        // distinguished from a real cursor/document edit. Prefer discarding an
+        // uncommitted composition over inserting it into a changed host field.
+        // This can clear remaining pinyin during segmented name selection; real
+        // device/host validation is still required. No host text is deleted.
+        if !performingOwnEdit && memoryEditor == nil { clearComposition(); updateCandidates() }
+    }
+
+    private func clearComposition() {
+        input = ""
+        combinedInput = ""
+        combinedText = ""
+    }
+
+    private func loadWordMemory() {
+        do {
+            let directory = FileManager.default.urls(for: .applicationSupportDirectory, in: .userDomainMask)[0]
+                .appendingPathComponent("HerWordsKeyboardMemory", isDirectory: true)
+            wordMemory = try HerWordMemoryStore(directory: directory)
+            memoryError = ""
+        } catch { memoryError = error.localizedDescription }
+    }
+
+    private func toggleWordMemory() {
+        clearComposition()
+        if let editor = memoryEditor {
+            editor.willMove(toParent: nil)
+            root.removeArrangedSubview(editor.view)
+            editor.view.removeFromSuperview()
+            editor.removeFromParent()
+            memoryEditor = nil
+            memoryEditorHeight = nil
+            memoryButton.setTitle("词库", for: .normal)
+            if forcedASCII { english = true }
+        } else {
+            if wordMemory == nil {
+                loadWordMemory()
+                if wordMemory != nil { loadEngine() }
+            }
+            guard let wordMemory else { updateCandidates(); return }
+            let editor = WordMemoryViewController(store: wordMemory)
+            editor.onClose = { [weak self] in self?.toggleWordMemory() }
+            editor.onFieldChanged = { [weak self] in
+                self?.clearComposition()
+                self?.rebuildKeys()
+                self?.updateCandidates()
+            }
+            editor.onStoreChanged = { [weak self] in self?.memoryError = ""; self?.updateCandidates() }
+            addChild(editor)
+            root.insertArrangedSubview(editor.view, at: 1)
+            memoryEditorHeight = editor.view.heightAnchor.constraint(equalToConstant: 190)
+            memoryEditorHeight?.isActive = true
+            editor.didMove(toParent: self)
+            memoryEditor = editor
+            memoryButton.setTitle("收起词库", for: .normal)
+        }
+        view.setNeedsLayout()
+        rebuildKeys()
+        updateCandidates()
+    }
+
+    private func insertText(_ text: String) {
+        if let editor = memoryEditor { editor.insertText(text); return }
+        performingOwnEdit = true
+        textDocumentProxy.insertText(text)
+        performingOwnEdit = false
+    }
+
+    private func canRemember(_ text: String) -> Bool {
+        guard !text.isEmpty, text.count <= 64 else { return false }
+        let han = text.unicodeScalars.contains { (0x3400...0x9fff).contains($0.value) }
+        if han && text.count > 16 { return false }
+        return text.unicodeScalars.allSatisfy {
+            (0x3400...0x9fff).contains($0.value) || (65...90).contains($0.value)
+                || (97...122).contains($0.value) || (48...57).contains($0.value)
+                || $0 == "'" || $0 == "-" || $0 == "_"
+        }
+    }
+
+    private func learn(_ text: String, reading: String) {
+        guard memoryEditor == nil, !forcedASCII, let wordMemory, canRemember(text) else { return }
+        do { try wordMemory.learn(text: text, input: reading); memoryError = "" }
+        catch { memoryError = error.localizedDescription }
+    }
+
     private func loadEngine() {
         guard !engineLoading else { return }
         engineLoading = true
         loadFailed = false
+        let memory = wordMemory
         DispatchQueue.global(qos: .userInitiated).async { [weak self] in
             do {
                 guard let lexicon = Bundle.main.url(forResource: "lexicon", withExtension: "json"),
@@ -79,7 +194,7 @@ final class KeyboardViewController: UIInputViewController {
                     throw CocoaError(.fileNoSuchFile)
                 }
                 let engine = try HerPinyinEngine(lexiconData: Data(contentsOf: lexicon),
-                                                rulesData: Data(contentsOf: rules))
+                                                rulesData: Data(contentsOf: rules), memory: memory)
                 DispatchQueue.main.async { [weak self] in
                     self?.engine = engine
                     self?.engineLoading = false
@@ -119,6 +234,11 @@ final class KeyboardViewController: UIInputViewController {
         brand.textColor = .secondaryLabel
         toolbar.addArrangedSubview(brand)
         toolbar.addArrangedSubview(UIView())
+        memoryButton.setTitle("词库", for: .normal)
+        memoryButton.titleLabel?.font = .systemFont(ofSize: 13, weight: .semibold)
+        memoryButton.accessibilityLabel = "管理本地词库、删除记忆与不再推荐"
+        memoryButton.addAction(UIAction { [weak self] _ in self?.toggleWordMemory() }, for: .touchUpInside)
+        toolbar.addArrangedSubview(memoryButton)
         modeButton.titleLabel?.font = .systemFont(ofSize: 13, weight: .semibold)
         modeButton.tintColor = .systemPurple
         modeButton.showsMenuAsPrimaryAction = true
@@ -137,8 +257,10 @@ final class KeyboardViewController: UIInputViewController {
         clear.setTitle("清除", for: .normal)
         clear.titleLabel?.font = .systemFont(ofSize: 12)
         clear.addAction(UIAction { [weak self] _ in
-            self?.input = ""
-            self?.updateCandidates()
+            guard let self else { return }
+            if self.input.isEmpty { self.memoryEditor?.clearCurrentField() }
+            self.clearComposition()
+            self.updateCandidates()
         }, for: .touchUpInside)
         clear.widthAnchor.constraint(equalToConstant: 42).isActive = true
         compositionRow.addArrangedSubview(clear)
@@ -182,9 +304,15 @@ final class KeyboardViewController: UIInputViewController {
 
     private func updateInputType() {
         let type = textDocumentProxy.keyboardType
-        let ascii = type == .asciiCapable || type == .emailAddress || type == .URL || type == .asciiCapableNumberPad
+        let ascii: Bool
+        switch type {
+        case .asciiCapable, .emailAddress, .URL, .asciiCapableNumberPad,
+             .numberPad, .decimalPad, .phonePad, .numbersAndPunctuation:
+            ascii = true
+        default: ascii = false
+        }
         if ascii != forcedASCII {
-            input = ""
+            clearComposition()
             if ascii { languageBeforeASCII = english; english = true }
             else { english = languageBeforeASCII }
             forcedASCII = ascii
@@ -241,9 +369,11 @@ final class KeyboardViewController: UIInputViewController {
         }
         let language = makeKey(english ? "英" : "中", action: "language")
         language.accessibilityLabel = "切换中文或英文"
+        language.isEnabled = !forcedASCII || memoryEditor != nil
+        language.accessibilityHint = language.isEnabled ? "" : "此输入框使用英文或数字，不提供个人词库候选"
         language.widthAnchor.constraint(equalToConstant: 37).isActive = true
         bottom.addArrangedSubview(language)
-        let space = makeKey(english ? "space" : "空格 · 她优先", action: "space")
+        let space = makeKey(english || memoryEditor?.isReadingField == true ? "space" : "空格 · 她优先", action: "space")
         space.titleLabel?.font = .systemFont(ofSize: 14)
         bottom.addArrangedSubview(space)
         let punctuation = makeKey(english ? "." : "。", action: "punctuation")
@@ -289,37 +419,67 @@ final class KeyboardViewController: UIInputViewController {
     }
 
     private func press(_ key: String) {
+        let editingReading = memoryEditor?.isReadingField == true
         switch key {
-        case "globe": break // System handler supports both tap and long press.
+        case "globe": clearComposition() // System handler supports both tap and long press.
         case "layout": numeric.toggle(); symbols = false; rebuildKeys()
         case "#+=", "123": symbols.toggle(); rebuildKeys()
         case "language":
+            guard !forcedASCII || memoryEditor != nil else { return }
             guard commitAllComposition() else { return }
             english.toggle(); uppercase = false; rebuildKeys(); updateCandidates()
         case "⇧":
-            if english { uppercase.toggle(); rebuildKeys() }
-            else { input.append("'"); updateCandidates() }
+            if english || editingReading { uppercase.toggle(); rebuildKeys() }
+            else { combinedInput = ""; combinedText = ""; input.append("'"); updateCandidates() }
         case "⌫": deleteOne()
         case "space":
-            if input.isEmpty { textDocumentProxy.insertText(" ") }
+            if editingReading { insertText(" ") }
+            else if english && !forcedASCII { commitEnglish(separator: " ") }
+            else if input.isEmpty { insertText(" ") }
             else { _ = commitComposition() }
         case "return":
-            if input.isEmpty { textDocumentProxy.insertText("\n") }
+            if memoryEditor != nil {
+                if input.isEmpty { memoryEditor?.acceptReturn() }
+                else if english { commitEnglish() }
+                else { _ = commitComposition() }
+            } else if english && !forcedASCII { commitEnglish(separator: "\n") }
+            else if input.isEmpty { insertText("\n") }
             else { _ = commitComposition() }
         case "punctuation":
-            if commitAllComposition() { textDocumentProxy.insertText(english ? "." : "。") }
+            if english && !forcedASCII { commitEnglish(separator: ".") }
+            else if commitAllComposition() { insertText(english ? "." : "。") }
         default:
-            if !numeric && !english {
+            if editingReading {
+                insertText(uppercase ? key.uppercased() : key)
+            } else if !numeric && !english && (!forcedASCII || memoryEditor != nil) {
                 guard input.count < 64 else { return }
+                combinedInput = ""
+                combinedText = ""
                 input.append(key)
                 updateCandidates()
             } else {
-                guard commitAllComposition() else { return }
                 let punctuation = [",": "，", ".": "。", "?": "？", "!": "！", ";": "；", ":": "："]
                 let text = !english ? punctuation[key] ?? key : uppercase ? key.uppercased() : key
-                textDocumentProxy.insertText(text)
+                let tokenCharacter = text.unicodeScalars.allSatisfy {
+                    (65...90).contains($0.value) || (97...122).contains($0.value)
+                        || (48...57).contains($0.value) || $0 == "'" || $0 == "-" || $0 == "_"
+                }
+                if english && !forcedASCII && tokenCharacter {
+                    guard input.count < 64 else { return }
+                    input += text
+                    updateCandidates()
+                } else if english && !forcedASCII { commitEnglish(separator: text) }
+                else if commitAllComposition() { insertText(text) }
             }
         }
+    }
+
+    private func commitEnglish(separator: String = "") {
+        let text = input
+        clearComposition()
+        if !text.isEmpty { insertText(text); learn(text, reading: text) }
+        if !separator.isEmpty { insertText(separator) }
+        updateCandidates()
     }
 
     @objc private func repeatDelete(_ gesture: UILongPressGestureRecognizer) {
@@ -334,17 +494,26 @@ final class KeyboardViewController: UIInputViewController {
     }
 
     private func deleteOne() {
+        combinedInput = ""
+        combinedText = ""
         if !input.isEmpty { input.removeLast(); updateCandidates() }
-        else { textDocumentProxy.deleteBackward() }
+        else if let memoryEditor { memoryEditor.deleteBackward() }
+        else {
+            performingOwnEdit = true
+            textDocumentProxy.deleteBackward()
+            performingOwnEdit = false
+        }
     }
 
     @discardableResult private func commitComposition() -> Bool {
         guard !input.isEmpty else { return true }
+        if english && !forcedASCII { commitEnglish(); return true }
         guard engine != nil else { return false }
         if let candidate = candidates.first { select(candidate) }
         else {
-            textDocumentProxy.insertText(input)
-            input = ""
+            let raw = input
+            clearComposition()
+            insertText(raw)
             updateCandidates()
         }
         return true
@@ -360,21 +529,70 @@ final class KeyboardViewController: UIInputViewController {
     }
 
     private func select(_ candidate: HerCandidate) {
-        textDocumentProxy.insertText(candidate.text)
-        input = String(input.dropFirst(candidate.consumedInputCount))
+        guard !forcedASCII || memoryEditor != nil else { clearComposition(); updateCandidates(); return }
+        let before = input
+        guard !before.isEmpty else { return }
+        let consumed = String(before.prefix(candidate.consumedInputCount))
+        input = String(before.dropFirst(candidate.consumedInputCount))
         while input.first == "'" { input.removeFirst() }
+        if !english {
+            if combinedInput.isEmpty && !input.isEmpty {
+                combinedInput = before
+                combinedText = candidate.originalText
+            } else if !combinedInput.isEmpty { combinedText += candidate.originalText }
+        }
+        let wholeReading = combinedInput
+        let wholeWord = combinedText
+        if input.isEmpty { combinedInput = ""; combinedText = "" }
+        insertText(candidate.text)
+        learn(candidate.originalText, reading: consumed)
+        if input.isEmpty && !wholeReading.isEmpty { learn(wholeWord, reading: wholeReading) }
         updateCandidates()
     }
 
+    private func candidateMenu(_ candidate: HerCandidate) -> UIMenu? {
+        guard let wordMemory else { return nil }
+        return UIMenu(children: [
+            UIAction(title: "忘记使用记忆", image: UIImage(systemName: "eraser"), attributes: .destructive) { [weak self] _ in
+                do { try wordMemory.forget(text: candidate.originalText); self?.memoryError = "" }
+                catch { self?.memoryError = error.localizedDescription }
+                self?.updateCandidates()
+            },
+            UIAction(title: "不再推荐这个词", image: UIImage(systemName: "eye.slash"), attributes: .destructive) { [weak self] _ in
+                do {
+                    // Block source and displayed spellings so a wording-mode
+                    // change cannot reveal the same candidate again.
+                    try wordMemory.block(text: candidate.originalText)
+                    if candidate.originalText != candidate.text { try wordMemory.block(text: candidate.text) }
+                    self?.memoryError = ""
+                }
+                catch { self?.memoryError = error.localizedDescription }
+                self?.updateCandidates()
+            }
+        ])
+    }
+
     private func updateCandidates() {
-        compositionLabel.text = input.isEmpty ? (english ? "English" : "全拼 · v 代表 ü") : input
+        compositionLabel.text = !memoryError.isEmpty ? "本地词库：" + memoryError : input.isEmpty
+            ? (memoryEditor?.isReadingField == true ? "拼音／缩写 · 直接输入英文" : english ? "英文词 · 空格确认，点击候选补全" : "全拼 · v 代表 ü") : input
+        compositionLabel.textColor = memoryError.isEmpty ? .systemPurple : .systemRed
+        memoryButton.tintColor = memoryError.isEmpty ? .systemPurple : .systemRed
         candidateStack.arrangedSubviews.forEach { candidateStack.removeArrangedSubview($0); $0.removeFromSuperview() }
-        candidates = input.isEmpty ? [] : engine?.candidates(for: input, mode: mode, limit: 40) ?? []
+        if input.isEmpty || memoryEditor?.isReadingField == true || (forcedASCII && memoryEditor == nil) { candidates = [] }
+        else if english {
+            var seen = Set<String>()
+            candidates = (wordMemory?.suggestions(for: input, limit: 40) ?? []).compactMap { item in
+                let text = engine?.rewrite(item.text, mode: mode) ?? item.text
+                guard wordMemory?.isBlocked(text) != true, seen.insert(text).inserted else { return nil }
+                return HerCandidate(text: text, originalText: item.text, consumedInputCount: input.count,
+                                    annotation: "本地词库", isCompletion: text != input, score: Double(item.count))
+            }
+        } else { candidates = engine?.candidates(for: input, mode: mode, limit: 40) ?? [] }
         if candidates.isEmpty {
             let hint = UILabel()
             hint.font = .systemFont(ofSize: 13)
             hint.textColor = .secondaryLabel
-            hint.text = loadFailed ? "词库载入失败，请切换其他键盘后重试" : engine == nil ? "正在准备离线词库…" : input.isEmpty ? "输入拼音，左右滑动候选选词" : "暂无候选，空格可输入原拼音"
+            hint.text = loadFailed ? "词库载入失败，请切换其他键盘后重试" : engine == nil ? "正在准备离线词库…" : input.isEmpty ? "长按候选可忘记或不再推荐；词库可手动添加人名" : english ? "空格确认原词；词库补全需点击选择" : "暂无候选，空格可输入原拼音"
             candidateStack.addArrangedSubview(hint)
         } else {
             for (index, candidate) in candidates.enumerated() {
@@ -398,6 +616,7 @@ final class KeyboardViewController: UIInputViewController {
                     return result
                 }
                 button.configuration = configuration
+                button.menu = candidateMenu(candidate)
                 button.accessibilityLabel = candidate.text + (candidate.annotation.isEmpty ? "" : "，" + candidate.annotation)
                 button.addAction(UIAction { [weak self] _ in self?.select(candidate) }, for: .touchUpInside)
                 candidateStack.addArrangedSubview(button)

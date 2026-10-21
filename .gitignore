@@ -23,3 +23,9 @@ xcuserdata/
 .build/
 .swiftpm/
 dist/
+
+# Personal words and suppression lists are local user data, never language packs.
+word-memory.json
+her_memory_policy.tsv
+her_memory_learned.tsv
+her_memory_policy.lock

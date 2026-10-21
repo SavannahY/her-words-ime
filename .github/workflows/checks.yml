@@ -47,6 +47,16 @@ jobs:
         run: |
           swiftc -swift-version 5 -O ios/Shared/*.swift ios/Tests/SpeechTextChecks.swift -o "$RUNNER_TEMP/her-speech-checks"
           "$RUNNER_TEMP/her-speech-checks" "$GITHUB_WORKSPACE"
+      - name: Verify local word memory and suppression
+        run: |
+          swiftc -swift-version 5 -O ios/Shared/*.swift ios/Tests/WordMemoryChecks.swift -o "$RUNNER_TEMP/her-memory-checks"
+          "$RUNNER_TEMP/her-memory-checks" "$GITHUB_WORKSPACE"
+      - name: Verify Mac word memory file protocol
+        run: |
+          swiftc -swift-version 5 -O native/Sources/HerSpeechMac/MacWordMemoryStore.swift native/Tests/MacWordMemoryChecks.swift -o "$RUNNER_TEMP/her-mac-memory-checks"
+          "$RUNNER_TEMP/her-mac-memory-checks"
+          python3 tests/integration_memory_protocol.py
+          python3 scripts/build_macos_word_memory_app.py
       - name: Verify native speech model and dependency boundary
         run: swift test --disable-keychain --disable-netrc
       - name: Package and verify standalone Mac speech app
@@ -60,6 +70,7 @@ jobs:
         run: |
           mkdir -p "$RUNNER_TEMP/her-mac-tools/cli"
           ditto -c -k --keepParent "dist/她说语音.app" "$RUNNER_TEMP/her-mac-tools/HerWordsSpeech-mac.zip"
+          ditto -c -k --keepParent "dist/她说词库.app" "$RUNNER_TEMP/her-mac-tools/HerWordsMemory-mac.zip"
           cp .build/debug/her-transcribe "$RUNNER_TEMP/her-mac-tools/cli/"
           cp -R .build/debug/HerWordsSpeech_HerBilingualASR.bundle "$RUNNER_TEMP/her-mac-tools/cli/"
           ditto -c -k --keepParent "$RUNNER_TEMP/her-mac-tools/cli" "$RUNNER_TEMP/her-mac-tools/HerWordsTranscribe-mac.zip"
@@ -112,3 +123,5 @@ jobs:
         run: python3 scripts/compile_packs.py --output rime/lua/her_rewrite_rules.lua
       - name: Verify actual librime candidates and commits
         run: python3 tests/integration_rime.py --app "$RUNNER_TEMP/squirrel/Payload/Squirrel.app" --config rime --report "$RUNNER_TEMP/her-words-results.json"
+      - name: Verify real local word learning and deletion
+        run: python3 tests/integration_word_memory.py --app "$RUNNER_TEMP/squirrel/Payload/Squirrel.app"

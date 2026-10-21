@@ -118,10 +118,12 @@ public final class HerPinyinEngine {
     private let longestKey: Int
     private let normalization: Double
     private let rewriter: HerRewriter
+    private let memory: HerWordMemoryStore?
     public let lexiconEntryCount: Int
 
     public convenience init(lexiconData: Data, rulesData: Data,
-                            useTraditional: Bool = false) throws {
+                            useTraditional: Bool = false,
+                            memory: HerWordMemoryStore? = nil) throws {
         let decoder = JSONDecoder()
         let entries: [HerLexiconEntry]
         if let array = try? decoder.decode([HerLexiconEntry].self, from: lexiconData) {
@@ -130,11 +132,11 @@ public final class HerPinyinEngine {
             entries = try decoder.decode(WrappedLexicon.self, from: lexiconData).entries
         }
         let rules = try decoder.decode(HerRuleSet.self, from: rulesData)
-        try self.init(lexicon: entries, ruleSet: rules, useTraditional: useTraditional)
+        try self.init(lexicon: entries, ruleSet: rules, useTraditional: useTraditional, memory: memory)
     }
 
     public init(lexicon: [HerLexiconEntry], ruleSet: HerRuleSet = HerRuleSet(),
-                useTraditional: Bool = false) throws {
+                useTraditional: Bool = false, memory: HerWordMemoryStore? = nil) throws {
         guard !lexicon.isEmpty else { throw HerEngineError.emptyLexicon }
         var unique: [String: Record] = [:]
         for (index, entry) in lexicon.enumerated() {
@@ -183,6 +185,7 @@ public final class HerPinyinEngine {
         self.longestKey = ordered.reduce(1) { max($0, $1.length) }
         self.normalization = max(10, logTotal)
         self.rewriter = try HerRewriter(ruleSet: ruleSet, useTraditional: useTraditional)
+        self.memory = memory
         self.lexiconEntryCount = ordered.count
     }
 
@@ -310,6 +313,10 @@ public final class HerPinyinEngine {
         var seen = Set<String>()
         func append(_ candidate: HerCandidate) {
             guard result.count < limit else { return }
+            // Apply after every rewriting/composition path. Suppression also
+            // covers base dictionary entries, partial selections and phrases.
+            guard memory?.isBlocked(candidate.text) != true,
+                  memory?.isBlocked(candidate.originalText) != true else { return }
             let identity = String(candidate.consumedInputCount) + ":" + candidate.text
             if seen.insert(identity).inserted { result.append(candidate) }
         }
@@ -325,6 +332,26 @@ public final class HerPinyinEngine {
             let text = input.key == "ta" ? "她" : (rewriter.useTraditional ? "她們" : "她们")
             append(HerCandidate(text: text, originalText: text,
                                 consumedInputCount: input.originalCount, score: 1_000_000))
+        }
+        if let memory = memory {
+            for word in memory.entries {
+                guard let savedInput = Reading.parse(word.input), !savedInput.bytes.isEmpty else { continue }
+                let completion = savedInput.key.hasPrefix(input.key)
+                let partial = input.key.hasPrefix(savedInput.key)
+                guard completion || partial else { continue }
+                let end = min(input.bytes.count, savedInput.bytes.count)
+                // Preserve explicit syllable distinctions such as xi'an/xian.
+                guard input.explicitBoundaries.allSatisfy({ boundary in
+                    boundary >= end || savedInput.explicitBoundaries.contains(boundary)
+                }) else { continue }
+                let rewritten = rewriter.rewrite(word.text, mode: mode)
+                let note = rewritten.changedWording ? "本地词库 · " + rewriter.annotation(mode: mode) : "本地词库"
+                append(HerCandidate(text: rewritten.text, originalText: word.text,
+                                    consumedInputCount: input.consumed(upTo: end),
+                                    annotation: note,
+                                    isCompletion: savedInput.bytes.count > input.bytes.count,
+                                    score: 100_000 + Double(word.count)))
+            }
         }
         let primary = exact.first ?? strongCompletions.first ?? combined.first ??
             completions.first ?? partial.first

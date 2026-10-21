@@ -31,7 +31,7 @@ except ImportError:
 
 ROOT = Path(__file__).resolve().parents[1]
 OWN_FILES = ['her_words.schema.yaml', 'her_pinyin.dict.yaml', 'her_words.dict.yaml',
-             'lua/her_filter.lua', 'lua/her_rewrite_rules.lua']
+             'lua/her_filter.lua', 'lua/her_memory.lua', 'lua/her_rewrite_rules.lua']
 TOUCHED_FILES = OWN_FILES + ['default.custom.yaml', 'squirrel.custom.yaml', 'user.yaml']
 
 
@@ -209,6 +209,11 @@ def backup_target(target, backup):
 def write_plan(plan):
     check_target(plan.target)
     plan.target.mkdir(parents=True, exist_ok=True)
+    if plan.target.stat().st_uid != os.getuid():
+        raise RuntimeError('输入法配置目录必须属于当前用户。')
+    # The Lua memory file and Rime's adaptive database contain personal words.
+    # A private parent also protects atomic temporary files created by Lua.
+    plan.target.chmod(0o700)
     for name, data in plan.files.items():
         destination = plan.target / name
         check_destination(destination)

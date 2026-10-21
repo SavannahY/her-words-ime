@@ -58,7 +58,7 @@ def build(configuration, skip_build=False):
             "CFBundleDevelopmentRegion": "zh_CN", "CFBundleIdentifier": IDENTIFIER,
             "CFBundleExecutable": "her-speech-mac", "CFBundleName": "她说语音",
             "CFBundleDisplayName": "她说语音", "CFBundlePackageType": "APPL",
-            "CFBundleShortVersionString": "0.2.0", "CFBundleVersion": "1",
+            "CFBundleShortVersionString": "0.3.0", "CFBundleVersion": "1",
             "LSMinimumSystemVersion": "13.0", "LSUIElement": False,
             "NSHighResolutionCapable": True, "NSPrincipalClass": "NSApplication",
             "NSMicrophoneUsageDescription": "仅在你点击开始录音后使用麦克风，在本机将中文和英文转成文字。",
