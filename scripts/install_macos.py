@@ -24,13 +24,16 @@ except ImportError as error:
 
 try:
     from .compile_packs import compile_project
+    from .compile_public_lexicon import build_public_resources
     from .validate_packs import ValidationError, load_project
 except ImportError:
     from compile_packs import compile_project
+    from compile_public_lexicon import build_public_resources
     from validate_packs import ValidationError, load_project
 
 ROOT = Path(__file__).resolve().parents[1]
 OWN_FILES = ['her_words.schema.yaml', 'her_pinyin.dict.yaml', 'her_words.dict.yaml',
+             'her_public.dict.yaml', 'lua/her_public_aliases.lua',
              'lua/her_filter.lua', 'lua/her_memory.lua', 'lua/her_rewrite_rules.lua']
 TOUCHED_FILES = OWN_FILES + ['default.custom.yaml', 'squirrel.custom.yaml', 'user.yaml']
 
@@ -174,9 +177,11 @@ def prepare_plan(target, manifest, theme=False):
         raise RuntimeError('default.custom.yaml 必须是有效 UTF-8。') from error
     default_custom, schema_patch = plan_default_custom(original)
     project = load_project(manifest)
-    files = {name: (ROOT / 'rime' / name).read_bytes() for name in OWN_FILES
-             if name != 'lua/her_rewrite_rules.lua'}
+    compiled_public = build_public_resources()
+    generated = {'lua/her_rewrite_rules.lua'} | compiled_public.keys()
+    files = {name: (ROOT / 'rime' / name).read_bytes() for name in OWN_FILES if name not in generated}
     files['lua/her_rewrite_rules.lua'] = compile_project(project).encode('utf-8')
+    files.update(compiled_public)
     files['default.custom.yaml'] = default_custom.encode('utf-8')
     if theme or not (target / 'squirrel.custom.yaml').exists():
         files['squirrel.custom.yaml'] = (ROOT / 'rime/squirrel.custom.yaml').read_bytes()

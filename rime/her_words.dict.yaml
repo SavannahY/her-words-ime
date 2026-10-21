@@ -1,5 +1,6 @@
 # 她说 · 女性友好词库
-# 拼音与词语可直接增补。来源见 lexicon-sources.json。
+# 拼音与词语可直接增补。来源见 packs/love-women-sources.json。
+# 公共姓名、成语、品牌来源另见 data/public-lexicon/*.json；收录不代表人物评选或品牌背书。
 ---
 name: her_words
 version: "1.1"

@@ -112,6 +112,8 @@ public final class HerPinyinEngine {
     }
 
     private let records: [Record]
+    private let publicRecords: [Record]
+    private let publicAliases: [String: [String]]
     private let exactIndex: [String: [Int]]
     private let sortedKeys: [String]
     private let shortPrefixIndex: [String: [Int]]
@@ -139,16 +141,37 @@ public final class HerPinyinEngine {
                 useTraditional: Bool = false, memory: HerWordMemoryStore? = nil) throws {
         guard !lexicon.isEmpty else { throw HerEngineError.emptyLexicon }
         var unique: [String: Record] = [:]
+        var supplements: [String: Record] = [:]
+        var publicAliases: [String: Set<String>] = [:]
         for (index, entry) in lexicon.enumerated() {
             guard !entry.text.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty,
                   entry.weight.isFinite, entry.weight >= 0,
                   let reading = Reading.parse(entry.pinyin), !reading.bytes.isEmpty else {
                 throw HerEngineError.invalidLexiconEntry(index)
             }
+            guard entry.category == nil || ["woman", "idiom", "brand"].contains(entry.category!),
+                  entry.supplemental != true || entry.category != nil else {
+                throw HerEngineError.invalidLexiconEntry(index)
+            }
+            if let aliases = entry.aliases {
+                guard entry.category == "brand", aliases.count <= 8, Set(aliases).count == aliases.count,
+                      aliases.allSatisfy({ !$0.isEmpty && $0.utf8.count <= 64 && $0.utf8.allSatisfy { (97...122).contains($0) } }) else {
+                    throw HerEngineError.invalidLexiconEntry(index)
+                }
+                for alias in aliases { publicAliases[alias, default: []].insert(entry.text) }
+            }
             let record = Record(text: entry.text, reading: reading, weight: entry.weight)
             // Syllable boundaries distinguish xian from xi an.
             let identity = reading.key + "\u{0}" + String(record.lowerBoundaries) + ":" +
                 String(record.upperBoundaries) + "\u{0}" + entry.text
+            if entry.category != nil {
+                if supplements[identity] == nil || supplements[identity]!.weight < entry.weight {
+                    supplements[identity] = record
+                }
+            }
+            if entry.supplemental == true {
+                continue
+            }
             if let existing = unique[identity], existing.weight >= entry.weight { continue }
             unique[identity] = record
         }
@@ -158,6 +181,11 @@ public final class HerPinyinEngine {
             if $0.key != $1.key { return $0.key < $1.key }
             if $0.lowerBoundaries != $1.lowerBoundaries { return $0.lowerBoundaries < $1.lowerBoundaries }
             return $0.upperBoundaries < $1.upperBoundaries
+        }
+        let addedPublicCount = supplements.keys.filter { unique[$0] == nil }.count
+        let publicOrdered = supplements.values.sorted {
+            if $0.key != $1.key { return $0.key < $1.key }
+            return $0.text < $1.text
         }
         // Release the temporary deduplication table before allocating indexes.
         unique.removeAll(keepingCapacity: false)
@@ -179,6 +207,8 @@ public final class HerPinyinEngine {
         let logTotal = totalWeight.isFinite ? log1p(totalWeight)
             : (ordered.map(\.logWeight).max() ?? 0) + log(Double(ordered.count))
         self.records = ordered
+        self.publicRecords = publicOrdered
+        self.publicAliases = publicAliases.mapValues { $0.sorted() }
         self.exactIndex = exact
         self.sortedKeys = exact.keys.sorted()
         self.shortPrefixIndex = prefixes
@@ -186,7 +216,7 @@ public final class HerPinyinEngine {
         self.normalization = max(10, logTotal)
         self.rewriter = try HerRewriter(ruleSet: ruleSet, useTraditional: useTraditional)
         self.memory = memory
-        self.lexiconEntryCount = ordered.count
+        self.lexiconEntryCount = ordered.count + addedPublicCount
     }
 
     public func rewrite(_ text: String, mode: HerWordingMode = .neutral) -> String {
@@ -311,20 +341,22 @@ public final class HerPinyinEngine {
         let combined = combinedMatches(input, width: min(80, max(16, limit * 2)))
         var result: [HerCandidate] = []
         var seen = Set<String>()
-        func append(_ candidate: HerCandidate) {
-            guard result.count < limit else { return }
+        @discardableResult func append(_ candidate: HerCandidate) -> Bool {
+            guard result.count < limit else { return false }
             // Apply after every rewriting/composition path. Suppression also
             // covers base dictionary entries, partial selections and phrases.
             guard memory?.isBlocked(candidate.text) != true,
-                  memory?.isBlocked(candidate.originalText) != true else { return }
+                  memory?.isBlocked(candidate.originalText) != true else { return false }
             let identity = String(candidate.consumedInputCount) + ":" + candidate.text
-            if seen.insert(identity).inserted { result.append(candidate) }
+            guard seen.insert(identity).inserted else { return false }
+            result.append(candidate)
+            return true
         }
-        func appendDraft(_ draft: Draft) {
+        @discardableResult func appendDraft(_ draft: Draft) -> Bool {
             let rewritten = rewriter.rewrite(draft.text, mode: mode)
             let annotation = rewritten.changedWording ? rewriter.annotation(mode: mode)
                 : (draft.end < length ? "分段" : "")
-            append(HerCandidate(text: rewritten.text, originalText: draft.text,
+            return append(HerCandidate(text: rewritten.text, originalText: draft.text,
                                 consumedInputCount: input.consumed(upTo: draft.end),
                                 annotation: annotation, isCompletion: draft.completion, score: draft.score))
         }
@@ -355,7 +387,34 @@ public final class HerPinyinEngine {
         }
         let primary = exact.first ?? strongCompletions.first ?? combined.first ??
             completions.first ?? partial.first
-        if let primary = primary { appendDraft(primary) }
+        let ordinaryPools = [Array(exact.prefix(4)), Array(strongCompletions.prefix(2)),
+                             Array(combined.prefix(2)), Array(partial.prefix(2)),
+                             exact, combined, completions, Array(partial)]
+        let appendedPrimary = primary.map { appendDraft($0) } ?? false
+        if !appendedPrimary {
+            // A deleted/blocked first translation must not let a public word
+            // jump above the next ordinary homophone that is still allowed.
+            outer: for pool in ordinaryPools {
+                for draft in pool where appendDraft(draft) { break outer }
+            }
+        }
+        // Public contributions are supplemental suggestions. Do not feed them
+        // into the ordinary beam or promote them above its existing first word.
+        for record in publicRecords {
+            let partial = input.key.hasPrefix(record.key)
+            guard partial else { continue }
+            let end = min(record.length, length)
+            guard input.explicitBoundaries.allSatisfy({ $0 >= end || record.hasBoundary($0) }) else { continue }
+            let rewritten = rewriter.rewrite(record.text, mode: mode)
+            append(HerCandidate(text: rewritten.text, originalText: record.text,
+                                consumedInputCount: input.consumed(upTo: end), annotation: "公共词库",
+                                isCompletion: false, score: record.logWeight))
+        }
+        for original in publicAliases[input.key] ?? [] {
+            let rewritten = rewriter.rewrite(original, mode: mode)
+            append(HerCandidate(text: rewritten.text, originalText: original,
+                                consumedInputCount: input.originalCount, annotation: "公共词库 · 英文别名"))
+        }
         // Preserve the first ordinary translation before offering friendly
         // aliases; then deduplicate rewrites by their output and input coverage.
         if mode != .original {
@@ -369,11 +428,7 @@ public final class HerPinyinEngine {
         }
         // Reserve early places for whole-word alternatives and segment choices,
         // then fill the scrollable list with the remaining translations.
-        for draft in exact.prefix(4) { appendDraft(draft) }
-        for draft in strongCompletions.prefix(2) { appendDraft(draft) }
-        for draft in combined.prefix(2) { appendDraft(draft) }
-        for draft in partial.prefix(2) { appendDraft(draft) }
-        for pool in [exact, combined, completions, Array(partial)] {
+        for pool in ordinaryPools {
             for draft in pool { appendDraft(draft) }
         }
         return result

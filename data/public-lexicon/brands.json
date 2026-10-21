@@ -1,0 +1,39 @@
+{
+  "version": 1,
+  "description": "品牌名称输入词条。来源核实名称、女性创办历史或品牌公开女性项目；不构成消费推荐，也不是对企业全部行为的女性友好认证。英文输入码省略大小写、空格与标点。",
+  "sources": [
+    {"id": "brand-neiwai-story", "title": "NEIWAI 官方：内外名称与女性社区合作项目自述", "url": "https://neiwai.life/pages/our-story"},
+    {"id": "brand-maia-name", "title": "安踏官方：玛伊娅 MAIA ACTIVE 中文名称", "url": "https://www.anta.cn/culture/story"},
+    {"id": "brand-maia-positioning", "title": "安踏投资者关系：MAIA ACTIVE 女性运动服定位", "url": "https://ir.anta.com/tc/brand.php"},
+    {"id": "brand-bodyshop-history", "title": "The Body Shop 官方：Anita Roddick 创办及女性项目自述", "url": "https://www.thebodyshop.com/pages/about-the-body-shop"},
+    {"id": "brand-loccitane-name", "title": "L'OCCITANE 欧舒丹中国官网", "url": "https://www.loccitane.cn/"},
+    {"id": "brand-loccitane-women", "title": "L'OCCITANE 官方：女性乳木果生产合作项目自述", "url": "https://uk.loccitane.com/empowering-women"},
+    {"id": "brand-estee-name", "title": "雅诗兰黛中国官网：品牌名称及创办历史", "url": "https://www.esteelauder.com.cn/"},
+    {"id": "brand-estee-founder", "title": "雅诗兰黛集团：创始人 Estée Lauder", "url": "https://www.elcompanies.com/en/who-we-are/our-heritage/our-founder"},
+    {"id": "brand-bobbi-name", "title": "芭比波朗中国官网：品牌名称", "url": "https://www.bobbibrown.com.cn/pro-artist-sara/"},
+    {"id": "brand-bobbi-program", "title": "Bobbi Brown 官方：Pretty Powerful Fund 女性教育项目历史", "url": "https://www.bobbibrowncosmetics.com/pretty-powerful-art-contest-2024"},
+    {"id": "brand-lvmh-names", "title": "LVMH 中文官网：贝玲妃、馥蕾诗、玫珂菲品牌名称", "url": "https://www.lvmh.cn/our-maisons/perfumes-cosmetics"},
+    {"id": "brand-benefit-founder", "title": "Benefit 官方：Jean 与 Jane Ford 创办历史及 Bold is Beautiful 项目", "url": "https://www.benefitcosmetics.com/en-gb/about-us.html"},
+    {"id": "brand-arden-history", "title": "Elizabeth Arden 官方：女性创业者创办历史", "url": "https://www.elizabetharden.com/pages/about-us"},
+    {"id": "brand-hr-name", "title": "HR 赫莲娜中国官网", "url": "https://www.helenarubinstein.cn/"},
+    {"id": "brand-hr-history", "title": "赫莲娜台湾官网：Helena Rubinstein 创办历史", "url": "https://www.helenarubinstein.com.tw/pages/brand-story"},
+    {"id": "brand-caudalie-name", "title": "CAUDALIE 欧缇丽中国官网", "url": "https://cn.caudalie.com/license.php"},
+    {"id": "brand-caudalie-history", "title": "Caudalie 官方：Mathilde 与 Bertrand Thomas 共同创办历史", "url": "https://hk.caudalie.com/about-caudalie/our-commitments"},
+    {"id": "brand-mufe-history", "title": "LVMH 中文官网：Dany Sanz 创立玫珂菲", "url": "https://www.lvmh.cn/our-maisons/perfumes-cosmetics/make-up-for-ever"},
+    {"id": "brand-fresh-history", "title": "LVMH 中文官网：Alina Roytberg 与 Lev Glazman 共同创办馥蕾诗", "url": "https://www.lvmh.cn/our-maisons/perfumes-cosmetics/fresh"}
+  ],
+  "entries": [
+    {"text": "内外", "pinyin": "nei wai", "category": "brand", "aliases": ["neiwai"], "tags": ["apparel", "public-women-program"], "source_ids": ["brand-neiwai-story"], "note": "品牌官网自述与支持女性健康和尊严的机构合作；仅记录公开项目，不作独立效果认证。"},
+    {"text": "玛伊娅", "pinyin": "ma yi ya", "category": "brand", "aliases": ["maiaactive"], "tags": ["sportswear", "women-focused-design"], "source_ids": ["brand-maia-name", "brand-maia-positioning"], "note": "官方中文名为玛伊娅；品牌公开定位为面向亚洲女性的运动服，不据此保证全部企业行为。"},
+    {"text": "美体小铺", "pinyin": "mei ti xiao pu", "category": "brand", "aliases": ["thebodyshop"], "tags": ["body-care", "historical-female-founder"], "source_ids": ["brand-bodyshop-history"], "note": "The Body Shop 常用中文译名；历史创办人为 Anita Roddick，不将创办历史等同当前持有人评价。"},
+    {"text": "欧舒丹", "pinyin": "ou shu dan", "category": "brand", "aliases": ["loccitane"], "tags": ["body-care", "public-women-program"], "source_ids": ["brand-loccitane-name", "brand-loccitane-women"], "note": "品牌公开女性乳木果生产合作项目；项目材料来自品牌自述，不代表全方面女性友好评级。"},
+    {"text": "雅诗兰黛", "pinyin": "ya shi lan dai", "category": "brand", "aliases": ["esteelauder"], "tags": ["beauty", "historical-female-founder"], "source_ids": ["brand-estee-name", "brand-estee-founder"], "note": "记录 Estée Lauder 女性共同创办人的历史事实；不评价产品功效、价格或当前经营行为。"},
+    {"text": "芭比波朗", "pinyin": "ba bi bo lang", "category": "brand", "aliases": ["bobbibrown"], "tags": ["beauty", "public-women-program"], "source_ids": ["brand-bobbi-name", "brand-bobbi-program"], "note": "品牌公开 Pretty Powerful Fund 支持女性和女孩教育的项目历史；不据宣传推断所有行为。"},
+    {"text": "贝玲妃", "pinyin": "bei ling fei", "category": "brand", "aliases": ["benefit"], "tags": ["beauty", "historical-female-founder", "public-women-program"], "source_ids": ["brand-lvmh-names", "brand-benefit-founder"], "note": "记录 Jean 与 Jane Ford 姐妹创办历史及品牌公开女性项目；名称收录不等于商业推荐。"},
+    {"text": "伊丽莎白雅顿", "pinyin": "yi li sha bai ya dun", "category": "brand", "aliases": ["elizabetharden"], "tags": ["beauty", "historical-female-founder"], "source_ids": ["brand-arden-history"], "note": "品牌常用中文名称；依据官方创办历史收录，不将早期女性创业经历等同当前品牌认证。"},
+    {"text": "赫莲娜", "pinyin": "he lian na", "category": "brand", "aliases": ["helenarubinstein"], "tags": ["beauty", "historical-female-founder"], "source_ids": ["brand-hr-name", "brand-hr-history"], "note": "记录 Helena Rubinstein 女性创业者的创办历史；不评价当前品牌所有经营行为。"},
+    {"text": "欧缇丽", "pinyin": "ou ti li", "category": "brand", "aliases": ["caudalie"], "tags": ["beauty", "historical-female-founder"], "source_ids": ["brand-caudalie-name", "brand-caudalie-history"], "note": "品牌由 Mathilde 与 Bertrand Thomas 共同创办；仅据此记录有女性共同创办人的历史。"},
+    {"text": "玫珂菲", "pinyin": "mei ke fei", "category": "brand", "aliases": ["makeupforever"], "tags": ["beauty", "historical-female-founder"], "source_ids": ["brand-lvmh-names", "brand-mufe-history"], "note": "记录 Dany Sanz 创办品牌及化妆教学的官方历史，不构成产品或企业行为背书。"},
+    {"text": "馥蕾诗", "pinyin": "fu lei shi", "category": "brand", "aliases": ["fresh"], "tags": ["beauty", "historical-female-founder"], "source_ids": ["brand-lvmh-names", "brand-fresh-history"], "note": "记录 Alina Roytberg 与 Lev Glazman 共同创办的历史；不据此推断所有消费者都喜欢该品牌。"}
+  ]
+}

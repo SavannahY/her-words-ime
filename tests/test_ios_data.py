@@ -56,10 +56,14 @@ class IOSDataTests(unittest.TestCase):
         self.assertNotIn(("忮忌", "ji du"), self.entries, "aliases must not masquerade as word pronunciations")
         self.assertEqual(len(self.entries), len(self.lexicon))
         for entry in self.lexicon:
-            self.assertEqual(set(entry), {"text", "pinyin", "weight"})
+            self.assertTrue({"text", "pinyin", "weight"} <= entry.keys())
+            self.assertTrue(entry.keys() <= {"text", "pinyin", "weight", "category", "aliases", "supplemental"})
             self.assertGreaterEqual(entry["weight"], 0)
             self.assertIsInstance(entry["weight"], int)
-            self.assertEqual(len(entry["text"]), len(entry["pinyin"].split()))
+            self.assertEqual(len(entry["text"].replace("·", "").replace("・", "")), len(entry["pinyin"].split()))
+            if "aliases" in entry:
+                self.assertEqual(entry["category"], "brand")
+                self.assertTrue(all(alias.isascii() and alias.isalpha() and alias.islower() for alias in entry["aliases"]))
 
     def test_all_existing_upstream_alias_homophones_survive_the_frequency_cutoff(self):
         rules = json.loads(self.resources["rules.json"])
@@ -67,7 +71,8 @@ class IOSDataTests(unittest.TestCase):
         matched = [entry for entry in self.upstream if entry["pinyin"].replace(" ", "") in alias_inputs]
         self.assertEqual(len(matched), 36)
         for entry in matched:
-            self.assertEqual(self.entries[(entry["text"], entry["pinyin"])], entry)
+            selected = self.entries[(entry["text"], entry["pinyin"])]
+            self.assertEqual({key: selected[key] for key in ("text", "pinyin", "weight")}, entry)
         self.assertEqual(self.entries[("圣女", "sheng nv")]["weight"], 189)
         # Do not fabricate a corpus frequency for a word absent upstream.
         self.assertNotIn(("剩女", "sheng nv"), self.entries)

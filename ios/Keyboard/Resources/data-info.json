@@ -2,12 +2,16 @@
   "counts": {
     "alias_input_codes": 43,
     "alias_restored_upstream_readings": 10,
-    "lexicon_readings": 47084,
-    "lexicon_unique_texts": 46436,
+    "lexicon_readings": 47275,
+    "lexicon_unique_texts": 46627,
     "maximum_weight": 4828294,
     "project_added_new_readings": 25,
     "project_dictionary_readings": 42,
     "project_restored_upstream_readings": 2,
+    "public_added_new_readings": 163,
+    "public_english_aliases": 12,
+    "public_readings": 213,
+    "public_restored_upstream_readings": 28,
     "selected_upstream_multi_character_readings": 30000,
     "upstream_alias_readings": 36,
     "upstream_readings": 65125,
@@ -24,8 +28,8 @@
       "sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30"
     },
     "lexicon.json": {
-      "bytes": 2303287,
-      "sha256": "b9bc49c5c4e08c306362a56f1d3ff2844afa4376da1c4be637f3e2538e0d6176"
+      "bytes": 2322733,
+      "sha256": "c2e5ef24d1e3f92c67e8be8aa3f7bcc099fcc645e9c926f6b1afac2ba40b6cfc"
     },
     "rules.json": {
       "bytes": 14663,
@@ -33,11 +37,853 @@
     }
   },
   "format": "her-words-ios-data",
+  "public_lexicon": {
+    "files": {
+      "brands.json": "ca26aea4d61222556a71c65a32e09ec6915df10aa638b7b008bb145dd85fdc62",
+      "idioms.json": "730b2088be693f001780aebb391fc8b852836110a1ba0c9fc89efd66a0b9a31e",
+      "women.json": "6742490eae4ce21d3fc27a4d474c339e500bd1afaec8a51a9d2ad7df4820f257"
+    },
+    "sources": [
+      {
+        "id": "brand-arden-history",
+        "title": "Elizabeth Arden 官方：女性创业者创办历史",
+        "url": "https://www.elizabetharden.com/pages/about-us"
+      },
+      {
+        "id": "brand-benefit-founder",
+        "title": "Benefit 官方：Jean 与 Jane Ford 创办历史及 Bold is Beautiful 项目",
+        "url": "https://www.benefitcosmetics.com/en-gb/about-us.html"
+      },
+      {
+        "id": "brand-bobbi-name",
+        "title": "芭比波朗中国官网：品牌名称",
+        "url": "https://www.bobbibrown.com.cn/pro-artist-sara/"
+      },
+      {
+        "id": "brand-bobbi-program",
+        "title": "Bobbi Brown 官方：Pretty Powerful Fund 女性教育项目历史",
+        "url": "https://www.bobbibrowncosmetics.com/pretty-powerful-art-contest-2024"
+      },
+      {
+        "id": "brand-bodyshop-history",
+        "title": "The Body Shop 官方：Anita Roddick 创办及女性项目自述",
+        "url": "https://www.thebodyshop.com/pages/about-the-body-shop"
+      },
+      {
+        "id": "brand-caudalie-history",
+        "title": "Caudalie 官方：Mathilde 与 Bertrand Thomas 共同创办历史",
+        "url": "https://hk.caudalie.com/about-caudalie/our-commitments"
+      },
+      {
+        "id": "brand-caudalie-name",
+        "title": "CAUDALIE 欧缇丽中国官网",
+        "url": "https://cn.caudalie.com/license.php"
+      },
+      {
+        "id": "brand-estee-founder",
+        "title": "雅诗兰黛集团：创始人 Estée Lauder",
+        "url": "https://www.elcompanies.com/en/who-we-are/our-heritage/our-founder"
+      },
+      {
+        "id": "brand-estee-name",
+        "title": "雅诗兰黛中国官网：品牌名称及创办历史",
+        "url": "https://www.esteelauder.com.cn/"
+      },
+      {
+        "id": "brand-fresh-history",
+        "title": "LVMH 中文官网：Alina Roytberg 与 Lev Glazman 共同创办馥蕾诗",
+        "url": "https://www.lvmh.cn/our-maisons/perfumes-cosmetics/fresh"
+      },
+      {
+        "id": "brand-hr-history",
+        "title": "赫莲娜台湾官网：Helena Rubinstein 创办历史",
+        "url": "https://www.helenarubinstein.com.tw/pages/brand-story"
+      },
+      {
+        "id": "brand-hr-name",
+        "title": "HR 赫莲娜中国官网",
+        "url": "https://www.helenarubinstein.cn/"
+      },
+      {
+        "id": "brand-loccitane-name",
+        "title": "L'OCCITANE 欧舒丹中国官网",
+        "url": "https://www.loccitane.cn/"
+      },
+      {
+        "id": "brand-loccitane-women",
+        "title": "L'OCCITANE 官方：女性乳木果生产合作项目自述",
+        "url": "https://uk.loccitane.com/empowering-women"
+      },
+      {
+        "id": "brand-lvmh-names",
+        "title": "LVMH 中文官网：贝玲妃、馥蕾诗、玫珂菲品牌名称",
+        "url": "https://www.lvmh.cn/our-maisons/perfumes-cosmetics"
+      },
+      {
+        "id": "brand-maia-name",
+        "title": "安踏官方：玛伊娅 MAIA ACTIVE 中文名称",
+        "url": "https://www.anta.cn/culture/story"
+      },
+      {
+        "id": "brand-maia-positioning",
+        "title": "安踏投资者关系：MAIA ACTIVE 女性运动服定位",
+        "url": "https://ir.anta.com/tc/brand.php"
+      },
+      {
+        "id": "brand-mufe-history",
+        "title": "LVMH 中文官网：Dany Sanz 创立玫珂菲",
+        "url": "https://www.lvmh.cn/our-maisons/perfumes-cosmetics/make-up-for-ever"
+      },
+      {
+        "id": "brand-neiwai-story",
+        "title": "NEIWAI 官方：内外名称与女性社区合作项目自述",
+        "url": "https://neiwai.life/pages/our-story"
+      },
+      {
+        "id": "idiom-moe-bai-lian-cheng-gang",
+        "title": "教育部《成语典》：百炼成钢（词头和读音复核）",
+        "url": "https://dict.idioms.moe.edu.tw/idiomView.jsp?ID=12095&la=0&webMd=2"
+      },
+      {
+        "id": "idiom-moe-bai-zhe-bu-nao",
+        "title": "教育部《成语典》：百折不挠（词头和读音复核）",
+        "url": "https://dict.idioms.moe.edu.tw/idiomView.jsp?ID=114&la=0&webMd=2"
+      },
+      {
+        "id": "idiom-moe-ben-niao-xian-fei",
+        "title": "教育部《成语典》：笨鸟先飞（词头和读音复核）",
+        "url": "https://dict.idioms.moe.edu.tw/idiomView.jsp?ID=8503&la=0&webMd=2"
+      },
+      {
+        "id": "idiom-moe-bo-xue-duo-cai",
+        "title": "教育部《成语典》：博学多才（词头和读音复核）",
+        "url": "https://dict.idioms.moe.edu.tw/idiomView.jsp?ID=10551&la=0&webMd=2"
+      },
+      {
+        "id": "idiom-moe-bu-qu-bu-nao",
+        "title": "教育部《成语典》：不屈不挠（词头和读音复核）",
+        "url": "https://dict.idioms.moe.edu.tw/idiomView.jsp?ID=-600&la=0&webMd=2"
+      },
+      {
+        "id": "idiom-moe-chu-bian-bu-jing",
+        "title": "教育部《成语典》：处变不惊（词头和读音复核）",
+        "url": "https://dict.idioms.moe.edu.tw/idiomView.jsp?ID=17918&la=0&webMd=2"
+      },
+      {
+        "id": "idiom-moe-chu-kou-cheng-zhang",
+        "title": "教育部《成语典》：出口成章（词头和读音复核）",
+        "url": "https://dict.idioms.moe.edu.tw/idiomView.jsp?ID=1313&la=0&webMd=2"
+      },
+      {
+        "id": "idiom-moe-chu-lei-ba-cui",
+        "title": "教育部《成语典》：出类拔萃（词头和读音复核）",
+        "url": "https://dict.idioms.moe.edu.tw/idiomView.jsp?ID=5217&la=0&webMd=2"
+      },
+      {
+        "id": "idiom-moe-fen-yong-zheng-xian",
+        "title": "教育部《成语典》：奋勇争先（词头和读音复核）",
+        "url": "https://dict.idioms.moe.edu.tw/idiomView.jsp?ID=15998&la=0&webMd=2"
+      },
+      {
+        "id": "idiom-moe-hai-kuo-tian-kong",
+        "title": "教育部《成语典》：海阔天空（词头和读音复核）",
+        "url": "https://dict.idioms.moe.edu.tw/idiomView.jsp?ID=5569&la=0&webMd=2"
+      },
+      {
+        "id": "idiom-moe-ji-shao-cheng-duo",
+        "title": "教育部《成语典》：积少成多（词头和读音复核）",
+        "url": "https://dict.idioms.moe.edu.tw/idiomView.jsp?ID=-100476&la=0&webMd=2"
+      },
+      {
+        "id": "idiom-moe-jian-ren-bu-ba",
+        "title": "教育部《成语典》：坚韧不拔（词头和读音复核）",
+        "url": "https://dict.idioms.moe.edu.tw/idiomView.jsp?ID=12117&la=0&webMd=2"
+      },
+      {
+        "id": "idiom-moe-jin-guo-ying-xiong",
+        "title": "教育部《成语典》：巾帼英雄（词头和读音复核）",
+        "url": "https://dict.idioms.moe.edu.tw/idiomView.jsp?ID=7744&la=0&webMd=2"
+      },
+      {
+        "id": "idiom-moe-jin-li-er-wei",
+        "title": "教育部《成语典》：尽力而为（词头和读音复核）",
+        "url": "https://dict.idioms.moe.edu.tw/idiomView.jsp?ID=12075&la=0&webMd=2"
+      },
+      {
+        "id": "idiom-moe-jing-jing-ye-ye",
+        "title": "教育部《成语典》：兢兢业业（词头和读音复核）",
+        "url": "https://dict.idioms.moe.edu.tw/idiomView.jsp?ID=-811&la=0&webMd=2"
+      },
+      {
+        "id": "idiom-moe-le-zai-qi-zhong",
+        "title": "教育部《成语典》：乐在其中（词头和读音复核）",
+        "url": "https://dict.idioms.moe.edu.tw/idiomView.jsp?ID=12626&la=0&webMd=2"
+      },
+      {
+        "id": "idiom-moe-mao-se-dun-kai",
+        "title": "教育部《成语典》：茅塞顿开（词头和读音复核）",
+        "url": "https://dict.idioms.moe.edu.tw/idiomView.jsp?ID=395&la=0&webMd=2"
+      },
+      {
+        "id": "idiom-moe-qie-er-bu-she",
+        "title": "教育部《成语典》：锲而不舍（词头和读音复核）",
+        "url": "https://dict.idioms.moe.edu.tw/idiomView.jsp?ID=7016&la=0&webMd=2"
+      },
+      {
+        "id": "idiom-moe-shen-shi-duo-shi",
+        "title": "教育部《成语典》：审时度势（词头和读音复核）",
+        "url": "https://dict.idioms.moe.edu.tw/idiomView.jsp?ID=8740&la=0&webMd=2"
+      },
+      {
+        "id": "idiom-moe-shi-ru-po-zhu",
+        "title": "教育部《成语典》：势如破竹（词头和读音复核）",
+        "url": "https://dict.idioms.moe.edu.tw/idiomView.jsp?ID=5177&la=0&webMd=2"
+      },
+      {
+        "id": "idiom-moe-tai-ran-zi-ruo",
+        "title": "教育部《成语典》：泰然自若（词头和读音复核）",
+        "url": "https://dict.idioms.moe.edu.tw/idiomView.jsp?ID=11785&la=0&webMd=2"
+      },
+      {
+        "id": "idiom-moe-tuo-ying-er-chu",
+        "title": "教育部《成语典》：脱颖而出（词头和读音复核）",
+        "url": "https://dict.idioms.moe.edu.tw/idiomView.jsp?ID=823&la=0&webMd=2"
+      },
+      {
+        "id": "idiom-moe-wen-si-quan-yong",
+        "title": "教育部《成语典》：文思泉涌（词头和读音复核）",
+        "url": "https://dict.idioms.moe.edu.tw/idiomView.jsp?ID=-127725&la=0&webMd=2"
+      },
+      {
+        "id": "idiom-moe-xin-kuang-shen-yi",
+        "title": "教育部《成语典》：心旷神怡（词头和读音复核）",
+        "url": "https://dict.idioms.moe.edu.tw/idiomView.jsp?ID=5678&la=0&webMd=2"
+      },
+      {
+        "id": "idiom-moe-xiong-you-cheng-zhu",
+        "title": "教育部《成语典》：胸有成竹（词头和读音复核）",
+        "url": "https://dict.idioms.moe.edu.tw/idiomView.jsp?ID=9&la=0&webMd=2"
+      },
+      {
+        "id": "idiom-moe-xun-xu-jian-jin",
+        "title": "教育部《成语典》：循序渐进（词头和读音复核）",
+        "url": "https://dict.idioms.moe.edu.tw/idiomView.jsp?ID=6608&la=0&webMd=2"
+      },
+      {
+        "id": "idiom-moe-ying-fu-zi-ru",
+        "title": "教育部《成语典》：应付自如（词头和读音复核）",
+        "url": "https://dict.idioms.moe.edu.tw/idiomView.jsp?ID=12934&la=0&webMd=2"
+      },
+      {
+        "id": "idiom-moe-ying-tou-gan-shang",
+        "title": "教育部《成语典》：迎头赶上（词头和读音复核）",
+        "url": "https://dict.idioms.moe.edu.tw/idiomView.jsp?ID=7581&la=0&webMd=2"
+      },
+      {
+        "id": "idiom-moe-yun-chou-wei-wo",
+        "title": "教育部《成语典》：运筹帷幄（词头和读音复核）",
+        "url": "https://dict.idioms.moe.edu.tw/idiomView.jsp?ID=693&la=0&webMd=2"
+      },
+      {
+        "id": "idiom-moe-zai-jie-zai-li",
+        "title": "教育部《成语典》：再接再厉（词头和读音复核）",
+        "url": "https://dict.idioms.moe.edu.tw/idiomView.jsp?ID=-242&la=0&webMd=2"
+      },
+      {
+        "id": "idiom-moe-zi-qiang-bu-xi",
+        "title": "教育部《成语典》：自强不息（词头和读音复核）",
+        "url": "https://dict.idioms.moe.edu.tw/idiomView.jsp?ID=1370&la=0&webMd=2"
+      },
+      {
+        "id": "idiom-zdic-bo-lan-qun-shu",
+        "title": "汉典：博览群书（词头和读音复核）",
+        "url": "https://www.zdic.net/hans/%E5%8D%9A%E8%A7%88%E7%BE%A4%E4%B9%A6"
+      },
+      {
+        "id": "idiom-zdic-cai-hua-heng-yi",
+        "title": "汉典：才华横溢（词头和读音复核）",
+        "url": "https://www.zdic.net/hans/%E6%89%8D%E5%8D%8E%E6%A8%AA%E6%BA%A2"
+      },
+      {
+        "id": "idiom-zdic-cai-si-min-jie",
+        "title": "汉典：才思敏捷（词头和读音复核）",
+        "url": "https://www.zdic.net/hans/%E6%89%8D%E6%80%9D%E6%95%8F%E6%8D%B7"
+      },
+      {
+        "id": "idiom-zdic-cheng-feng-po-lang",
+        "title": "汉典：乘风破浪（词头和读音复核）",
+        "url": "https://www.zdic.net/hans/%E4%B9%98%E9%A3%8E%E7%A0%B4%E6%B5%AA"
+      },
+      {
+        "id": "idiom-zdic-chi-zhi-yi-heng",
+        "title": "汉典：持之以恒（词头和读音复核）",
+        "url": "https://www.zdic.net/hans/%E6%8C%81%E4%B9%8B%E4%BB%A5%E6%81%92"
+      },
+      {
+        "id": "idiom-zdic-chu-lei-pang-tong",
+        "title": "汉典：触类旁通（词头和读音复核）",
+        "url": "https://www.zdic.net/hans/%E8%A7%A6%E7%B1%BB%E6%97%81%E9%80%9A"
+      },
+      {
+        "id": "idiom-zdic-cong-rong-bu-po",
+        "title": "汉典：从容不迫（词头和读音复核）",
+        "url": "https://www.zdic.net/hans/%E4%BB%8E%E5%AE%B9%E4%B8%8D%E8%BF%AB"
+      },
+      {
+        "id": "idiom-zdic-da-qi-wan-cheng",
+        "title": "汉典：大器晚成（词头和读音复核）",
+        "url": "https://www.zdic.net/hans/%E5%A4%A7%E5%99%A8%E6%99%9A%E6%88%90"
+      },
+      {
+        "id": "idiom-zdic-de-xin-ying-shou",
+        "title": "汉典：得心应手（词头和读音复核）",
+        "url": "https://www.zdic.net/hans/%E5%BE%97%E5%BF%83%E5%BA%94%E6%89%8B"
+      },
+      {
+        "id": "idiom-zdic-dou-zhi-ang-yang",
+        "title": "汉典：斗志昂扬（词头和读音复核）",
+        "url": "https://www.zdic.net/hans/%E6%96%97%E5%BF%97%E6%98%82%E6%89%AC"
+      },
+      {
+        "id": "idiom-zdic-du-dang-yi-mian",
+        "title": "汉典：独当一面（词头和读音复核）",
+        "url": "https://www.zdic.net/hans/%E7%8B%AC%E5%BD%93%E4%B8%80%E9%9D%A2"
+      },
+      {
+        "id": "idiom-zdic-du-ju-jiang-xin",
+        "title": "汉典：独具匠心（词头和读音复核）",
+        "url": "https://www.zdic.net/hans/%E7%8B%AC%E5%85%B7%E5%8C%A0%E5%BF%83"
+      },
+      {
+        "id": "idiom-zdic-fen-fa-tu-qiang",
+        "title": "汉典：奋发图强（词头和读音复核）",
+        "url": "https://www.zdic.net/hans/%E5%A5%8B%E5%8F%91%E5%9B%BE%E5%BC%BA"
+      },
+      {
+        "id": "idiom-zdic-fen-qi-zhi-zhui",
+        "title": "汉典：奋起直追（词头和读音复核）",
+        "url": "https://www.zdic.net/hans/%E5%A5%8B%E8%B5%B7%E7%9B%B4%E8%BF%BD"
+      },
+      {
+        "id": "idiom-zdic-ge-shu-ji-jian",
+        "title": "汉典：各抒己见（词头和读音复核）",
+        "url": "https://www.zdic.net/hans/%E5%90%84%E6%8A%92%E5%B7%B1%E8%A7%81"
+      },
+      {
+        "id": "idiom-zdic-hou-ji-bo-fa",
+        "title": "汉典：厚积薄发（词头和读音复核）",
+        "url": "https://www.zdic.net/hans/%E5%8E%9A%E7%A7%AF%E8%96%84%E5%8F%91"
+      },
+      {
+        "id": "idiom-zdic-huo-ran-kai-lang",
+        "title": "汉典：豁然开朗（词头和读音复核）",
+        "url": "https://www.zdic.net/hans/%E8%B1%81%E7%84%B6%E5%BC%80%E6%9C%97"
+      },
+      {
+        "id": "idiom-zdic-ji-si-guang-yi",
+        "title": "汉典：集思广益（词头和读音复核）",
+        "url": "https://www.zdic.net/hans/%E9%9B%86%E6%80%9D%E5%B9%BF%E7%9B%8A"
+      },
+      {
+        "id": "idiom-zdic-jian-bu-ru-fei",
+        "title": "汉典：健步如飞（词头和读音复核）",
+        "url": "https://www.zdic.net/hans/%E5%81%A5%E6%AD%A5%E5%A6%82%E9%A3%9E"
+      },
+      {
+        "id": "idiom-zdic-jian-chi-bu-xie",
+        "title": "汉典：坚持不懈（词头和读音复核）",
+        "url": "https://www.zdic.net/hans/%E5%9D%9A%E6%8C%81%E4%B8%8D%E6%87%88"
+      },
+      {
+        "id": "idiom-zdic-jian-wei-zhi-zhu",
+        "title": "汉典：见微知著（词头和读音复核）",
+        "url": "https://www.zdic.net/hans/%E8%A7%81%E5%BE%AE%E7%9F%A5%E8%91%97"
+      },
+      {
+        "id": "idiom-zdic-jiang-xin-du-yun",
+        "title": "汉典：匠心独运（词头和读音复核）",
+        "url": "https://www.zdic.net/hans/%E5%8C%A0%E5%BF%83%E7%8B%AC%E8%BF%90"
+      },
+      {
+        "id": "idiom-zdic-jiao-ta-shi-di",
+        "title": "汉典：脚踏实地（词头和读音复核）",
+        "url": "https://www.zdic.net/hans/%E8%84%9A%E8%B8%8F%E5%AE%9E%E5%9C%B0"
+      },
+      {
+        "id": "idiom-zdic-jing-jing-you-tiao",
+        "title": "汉典：井井有条（词头和读音复核）",
+        "url": "https://www.zdic.net/hans/%E4%BA%95%E4%BA%95%E6%9C%89%E6%9D%A1"
+      },
+      {
+        "id": "idiom-zdic-jing-yi-qiu-jing",
+        "title": "汉典：精益求精（词头和读音复核）",
+        "url": "https://www.zdic.net/hans/%E7%B2%BE%E7%9B%8A%E6%B1%82%E7%B2%BE"
+      },
+      {
+        "id": "idiom-zdic-ju-yi-fan-san",
+        "title": "汉典：举一反三（词头和读音复核）",
+        "url": "https://www.zdic.net/hans/%E4%B8%BE%E4%B8%80%E5%8F%8D%E4%B8%89"
+      },
+      {
+        "id": "idiom-zdic-kai-cheng-bu-gong",
+        "title": "汉典：开诚布公（词头和读音复核）",
+        "url": "https://www.zdic.net/hans/%E5%BC%80%E8%AF%9A%E5%B8%83%E5%85%AC"
+      },
+      {
+        "id": "idiom-zdic-kai-juan-you-yi",
+        "title": "汉典：开卷有益（词头和读音复核）",
+        "url": "https://www.zdic.net/hans/%E5%BC%80%E5%8D%B7%E6%9C%89%E7%9B%8A"
+      },
+      {
+        "id": "idiom-zdic-li-suo-neng-ji",
+        "title": "汉典：力所能及（词头和读音复核）",
+        "url": "https://www.zdic.net/hans/%E5%8A%9B%E6%89%80%E8%83%BD%E5%8F%8A"
+      },
+      {
+        "id": "idiom-zdic-long-teng-hu-yue",
+        "title": "汉典：龙腾虎跃（词头和读音复核）",
+        "url": "https://www.zdic.net/hans/%E9%BE%99%E8%85%BE%E8%99%8E%E8%B7%83"
+      },
+      {
+        "id": "idiom-zdic-miao-bi-sheng-hua",
+        "title": "汉典：妙笔生花（词头和读音复核）",
+        "url": "https://www.zdic.net/hans/%E5%A6%99%E7%AC%94%E7%94%9F%E8%8A%B1"
+      },
+      {
+        "id": "idiom-zdic-qi-xin-xie-li",
+        "title": "汉典：齐心协力（词头和读音复核）",
+        "url": "https://www.zdic.net/hans/%E9%BD%90%E5%BF%83%E5%8D%8F%E5%8A%9B"
+      },
+      {
+        "id": "idiom-zdic-qin-xue-hao-wen",
+        "title": "汉典：勤学好问（词头和读音复核）",
+        "url": "https://www.zdic.net/hans/%E5%8B%A4%E5%AD%A6%E5%A5%BD%E9%97%AE"
+      },
+      {
+        "id": "idiom-zdic-qiu-tong-cun-yi",
+        "title": "汉典：求同存异（词头和读音复核）",
+        "url": "https://www.zdic.net/hans/%E6%B1%82%E5%90%8C%E5%AD%98%E5%BC%82"
+      },
+      {
+        "id": "idiom-zdic-qu-chang-bu-duan",
+        "title": "汉典：取长补短（词头和读音复核）",
+        "url": "https://www.zdic.net/hans/%E5%8F%96%E9%95%BF%E8%A1%A5%E7%9F%AD"
+      },
+      {
+        "id": "idiom-zdic-quan-li-yi-fu",
+        "title": "汉典：全力以赴（词头和读音复核）",
+        "url": "https://www.zdic.net/hans/%E5%85%A8%E5%8A%9B%E4%BB%A5%E8%B5%B4"
+      },
+      {
+        "id": "idiom-zdic-ri-ji-yue-lei",
+        "title": "汉典：日积月累（词头和读音复核）",
+        "url": "https://www.zdic.net/hans/%E6%97%A5%E7%A7%AF%E6%9C%88%E7%B4%AF"
+      },
+      {
+        "id": "idiom-zdic-ri-xin-yue-yi",
+        "title": "汉典：日新月异（词头和读音复核）",
+        "url": "https://www.zdic.net/hans/%E6%97%A5%E6%96%B0%E6%9C%88%E5%BC%82"
+      },
+      {
+        "id": "idiom-zdic-rong-hui-guan-tong",
+        "title": "汉典：融会贯通（词头和读音复核）",
+        "url": "https://www.zdic.net/hans/%E8%9E%8D%E4%BC%9A%E8%B4%AF%E9%80%9A"
+      },
+      {
+        "id": "idiom-zdic-shen-cai-yi-yi",
+        "title": "汉典：神采奕奕（词头和读音复核）",
+        "url": "https://www.zdic.net/hans/%E7%A5%9E%E9%87%87%E5%A5%95%E5%A5%95"
+      },
+      {
+        "id": "idiom-zdic-sheng-ju-mu-duan",
+        "title": "汉典：绳锯木断（词头和读音复核）",
+        "url": "https://www.zdic.net/hans/%E7%BB%B3%E9%94%AF%E6%9C%A8%E6%96%AD"
+      },
+      {
+        "id": "idiom-zdic-sheng-long-huo-hu",
+        "title": "汉典：生龙活虎（词头和读音复核）",
+        "url": "https://www.zdic.net/hans/%E7%94%9F%E9%BE%99%E6%B4%BB%E8%99%8E"
+      },
+      {
+        "id": "idiom-zdic-shi-ban-gong-bei",
+        "title": "汉典：事半功倍（词头和读音复核）",
+        "url": "https://www.zdic.net/hans/%E4%BA%8B%E5%8D%8A%E5%8A%9F%E5%80%8D"
+      },
+      {
+        "id": "idiom-zdic-shi-shi-qiu-shi",
+        "title": "汉典：实事求是（词头和读音复核）",
+        "url": "https://www.zdic.net/hans/%E5%AE%9E%E4%BA%8B%E6%B1%82%E6%98%AF"
+      },
+      {
+        "id": "idiom-zdic-shui-di-shi-chuan",
+        "title": "汉典：水滴石穿（词头和读音复核）",
+        "url": "https://www.zdic.net/hans/%E6%B0%B4%E6%BB%B4%E7%9F%B3%E7%A9%BF"
+      },
+      {
+        "id": "idiom-zdic-sui-yu-er-an",
+        "title": "汉典：随遇而安（词头和读音复核）",
+        "url": "https://www.zdic.net/hans/%E9%9A%8F%E9%81%87%E8%80%8C%E5%AE%89"
+      },
+      {
+        "id": "idiom-zdic-tong-xin-xie-li",
+        "title": "汉典：同心协力（词头和读音复核）",
+        "url": "https://www.zdic.net/hans/%E5%90%8C%E5%BF%83%E5%8D%8F%E5%8A%9B"
+      },
+      {
+        "id": "idiom-zdic-wei-yu-chou-mou",
+        "title": "汉典：未雨绸缪（词头和读音复核）",
+        "url": "https://www.zdic.net/hans/%E6%9C%AA%E9%9B%A8%E7%BB%B8%E7%BC%AA"
+      },
+      {
+        "id": "idiom-zdic-wen-gu-zhi-xin",
+        "title": "汉典：温故知新（词头和读音复核）",
+        "url": "https://www.zdic.net/hans/%E6%B8%A9%E6%95%85%E7%9F%A5%E6%96%B0"
+      },
+      {
+        "id": "idiom-zdic-xiang-de-yi-zhang",
+        "title": "汉典：相得益彰（词头和读音复核）",
+        "url": "https://www.zdic.net/hans/%E7%9B%B8%E5%BE%97%E7%9B%8A%E5%BD%B0"
+      },
+      {
+        "id": "idiom-zdic-xiang-fu-xiang-cheng",
+        "title": "汉典：相辅相成（词头和读音复核）",
+        "url": "https://www.zdic.net/hans/%E7%9B%B8%E8%BE%85%E7%9B%B8%E6%88%90"
+      },
+      {
+        "id": "idiom-zdic-xin-xin-xiang-rong",
+        "title": "汉典：欣欣向荣（词头和读音复核）",
+        "url": "https://www.zdic.net/hans/%E6%AC%A3%E6%AC%A3%E5%90%91%E8%8D%A3"
+      },
+      {
+        "id": "idiom-zdic-xing-zhi-bo-bo",
+        "title": "汉典：兴致勃勃（词头和读音复核）",
+        "url": "https://www.zdic.net/hans/%E5%85%B4%E8%87%B4%E5%8B%83%E5%8B%83"
+      },
+      {
+        "id": "idiom-zdic-xue-wu-zhi-jing",
+        "title": "汉典：学无止境（词头和读音复核）",
+        "url": "https://www.zdic.net/hans/%E5%AD%A6%E6%97%A0%E6%AD%A2%E5%A2%83"
+      },
+      {
+        "id": "idiom-zdic-xue-yi-zhi-yong",
+        "title": "汉典：学以致用（词头和读音复核）",
+        "url": "https://www.zdic.net/hans/%E5%AD%A6%E4%BB%A5%E8%87%B4%E7%94%A8"
+      },
+      {
+        "id": "idiom-zdic-xun-xun-shan-you",
+        "title": "汉典：循循善诱（词头和读音复核）",
+        "url": "https://www.zdic.net/hans/%E5%BE%AA%E5%BE%AA%E5%96%84%E8%AF%B1"
+      },
+      {
+        "id": "idiom-zdic-yi-qi-feng-fa",
+        "title": "汉典：意气风发（词头和读音复核）",
+        "url": "https://www.zdic.net/hans/%E6%84%8F%E6%B0%94%E9%A3%8E%E5%8F%91"
+      },
+      {
+        "id": "idiom-zdic-yi-ran-zi-de",
+        "title": "汉典：怡然自得（词头和读音复核）",
+        "url": "https://www.zdic.net/hans/%E6%80%A1%E7%84%B6%E8%87%AA%E5%BE%97"
+      },
+      {
+        "id": "idiom-zdic-yi-si-bu-gou",
+        "title": "汉典：一丝不苟（词头和读音复核）",
+        "url": "https://www.zdic.net/hans/%E4%B8%80%E4%B8%9D%E4%B8%8D%E8%8B%9F"
+      },
+      {
+        "id": "idiom-zdic-yi-wang-wu-qian",
+        "title": "汉典：一往无前（词头和读音复核）",
+        "url": "https://www.zdic.net/hans/%E4%B8%80%E5%BE%80%E6%97%A0%E5%89%8D"
+      },
+      {
+        "id": "idiom-zdic-yong-wang-zhi-qian",
+        "title": "汉典：勇往直前（词头和读音复核）",
+        "url": "https://www.zdic.net/hans/%E5%8B%87%E5%BE%80%E7%9B%B4%E5%89%8D"
+      },
+      {
+        "id": "idiom-zdic-you-ren-you-yu",
+        "title": "汉典：游刃有余（词头和读音复核）",
+        "url": "https://www.zdic.net/hans/%E6%B8%B8%E5%88%83%E6%9C%89%E4%BD%99"
+      },
+      {
+        "id": "idiom-zdic-you-tiao-bu-wen",
+        "title": "汉典：有条不紊（词头和读音复核）",
+        "url": "https://www.zdic.net/hans/%E6%9C%89%E6%9D%A1%E4%B8%8D%E7%B4%8A"
+      },
+      {
+        "id": "idiom-zdic-yu-gong-yi-shan",
+        "title": "汉典：愚公移山（词头和读音复核）",
+        "url": "https://www.zdic.net/hans/%E6%84%9A%E5%85%AC%E7%A7%BB%E5%B1%B1"
+      },
+      {
+        "id": "idiom-zdic-zheng-zheng-ri-shang",
+        "title": "汉典：蒸蒸日上（词头和读音复核）",
+        "url": "https://www.zdic.net/hans/%E8%92%B8%E8%92%B8%E6%97%A5%E4%B8%8A"
+      },
+      {
+        "id": "idiom-zdic-zhi-tong-dao-he",
+        "title": "汉典：志同道合（词头和读音复核）",
+        "url": "https://www.zdic.net/hans/%E5%BF%97%E5%90%8C%E9%81%93%E5%90%88"
+      },
+      {
+        "id": "idiom-zdic-zhi-zu-chang-le",
+        "title": "汉典：知足常乐（词头和读音复核）",
+        "url": "https://www.zdic.net/hans/%E7%9F%A5%E8%B6%B3%E5%B8%B8%E4%B9%90"
+      },
+      {
+        "id": "idiom-zdic-zhuo-you-cheng-xiao",
+        "title": "汉典：卓有成效（词头和读音复核）",
+        "url": "https://www.zdic.net/hans/%E5%8D%93%E6%9C%89%E6%88%90%E6%95%88"
+      },
+      {
+        "id": "idiom-zdic-zi-zi-bu-juan",
+        "title": "汉典：孜孜不倦（词头和读音复核）",
+        "url": "https://www.zdic.net/hans/%E5%AD%9C%E5%AD%9C%E4%B8%8D%E5%80%A6"
+      },
+      {
+        "id": "women-beauvoir-interview-wa",
+        "title": "中国作家网：波伏瓦逝世四十周年，访谈与本人女性身份表述",
+        "url": "https://www.chinawriter.com.cn/n1/2026/0415/c404090-40701795.html"
+      },
+      {
+        "id": "women-beauvoir-translator-interview",
+        "title": "中国作家网：郑克鲁，每个人都能读懂波伏娃",
+        "url": "https://www.chinawriter.com.cn/n1/2017/0206/c405057-29060488.html"
+      },
+      {
+        "id": "women-cacms-tu-youyou",
+        "title": "中国中医科学院：向屠呦呦学习，弘扬青蒿素精神",
+        "url": "https://www.cacms.ac.cn/comprehensive_news/detail/4510.html"
+      },
+      {
+        "id": "women-cas-chen-hualan",
+        "title": "中国科学院武汉病毒所：陈化兰院士葛洪论坛报告",
+        "url": "https://whiov.cas.cn/xwdt_160278/xsdt2019/201911/t20191103_5419826.html"
+      },
+      {
+        "id": "women-cas-shi-yunyu",
+        "title": "中国科学院：施蕴渝，孜孜探寻生物大分子奥秘",
+        "url": "https://www.cas.cn/xzfc/202209/t20220926_4848781.shtml"
+      },
+      {
+        "id": "women-cas-wang-enduo",
+        "title": "中国科学院上海有机所：2005年当选院士名单（王恩多女）",
+        "url": "https://sioc.cas.cn/news/zhxw/202306/t20230601_6766555.html"
+      },
+      {
+        "id": "women-cas-wang-zhizhen",
+        "title": "中国科学院：院士说，作为优秀女性科学家的代表",
+        "url": "https://scicn.casad.cas.cn/spn/202407/t20240717_5026138.html"
+      },
+      {
+        "id": "women-cas-yan-ning",
+        "title": "中国科学院学部：颜宁获世界杰出女科学家成就奖",
+        "url": "https://www.ad.cas.cn/ysdt2022/202406/t20240627_5023395.html"
+      },
+      {
+        "id": "women-cas-ye-shuhua",
+        "title": "中国科学院上海天文台：叶叔华（女）简介",
+        "url": "https://shao.cas.cn/sourcedb/zw/lnpt/staff/202401/t20240123_6968593.html"
+      },
+      {
+        "id": "women-cas-yearbook-2019-roster",
+        "title": "中国科学院年鉴（2019）：2018年院士名单，女性明确标注",
+        "url": "https://english.ihep.cas.cn/cepc/adrc/pc/202110/W020220220716582815022.pdf"
+      },
+      {
+        "id": "women-cas-zhang-miman",
+        "title": "中国科学院古脊椎所：张弥曼院士获颁世界杰出女科学家奖",
+        "url": "https://ivpp.cas.cn/xwdt/zhxw/201811/t20181103_5157027.html"
+      },
+      {
+        "id": "women-cas-zhang-yonglian",
+        "title": "中国科学院分子细胞科学卓越创新中心：张永莲研究员简介",
+        "url": "https://cemcs.cas.cn/sourcedb/zw/pi/202008/t20200823_5670143.html"
+      },
+      {
+        "id": "women-cnpubg-yin-jianling",
+        "title": "中国出版集团英文作者页：殷健灵 Yin Jianling",
+        "url": "https://en.cnpubg.com/portal/article/index/id/141/cid/1.html"
+      },
+      {
+        "id": "women-cwa-bing-xin",
+        "title": "中国作家网：冰心（女）",
+        "url": "https://www.chinawriter.com.cn/xdzj/52.shtml"
+      },
+      {
+        "id": "women-cwa-delegates-2016",
+        "title": "中国作家协会第九次全国代表大会代表名单（女性标注明确）",
+        "url": "https://www.chinawriter.com.cn/n1/2016/1130/c407951-28911166.html"
+      },
+      {
+        "id": "women-cwa-doris-lessing",
+        "title": "中国作家网：诺贝尔文学奖得主莱辛，我只是个讲故事的",
+        "url": "https://www.chinawriter.com.cn/news/2013/2013-11-28/183154.html"
+      },
+      {
+        "id": "women-cwa-ernaux",
+        "title": "中国作家网：连续四年诺贝尔文学奖得主作品花落上海",
+        "url": "https://www.chinawriter.com.cn/n1/2022/1009/c403994-32541387.html"
+      },
+      {
+        "id": "women-cwa-han-kang-interview",
+        "title": "中国作家网：新世界文学光谱与韩江获奖的极化现象，学者对谈",
+        "url": "https://www.chinawriter.com.cn/n1/2025/0721/c404090-40526271.html"
+      },
+      {
+        "id": "women-cwa-han-nobel-feature",
+        "title": "文艺报：聚焦2024年诺贝尔文学奖，韩江专题（含路易丝·格丽克中文名）",
+        "url": "https://wyb.chinawriter.com.cn/attachment/202410/14/16dada4e-db56-4e1e-a8b1-1d4dd5d410a4.pdf"
+      },
+      {
+        "id": "women-cwa-morrison-women-literature",
+        "title": "中国作家网：麦芒谈2020年诺贝尔文学奖、纽斯塔特国际文学奖及普遍性",
+        "url": "https://www.chinawriter.com.cn/n1/2020/1029/c404090-31910451.html"
+      },
+      {
+        "id": "women-cwa-olga-publisher-profile",
+        "title": "中国作家网书汇：糜骨之壤，奥尔加·托卡尔丘克作者简介",
+        "url": "https://www.chinawriter.com.cn/n1/2021/0112/c405074-31996740.html"
+      },
+      {
+        "id": "women-cwa-women-writing-survey",
+        "title": "张莉：当代六十七位新锐女作家的女性写作观调查",
+        "url": "https://www.chinawriter.com.cn/n1/2019/0322/c405057-30988965.html"
+      },
+      {
+        "id": "women-cwa-yang-jiang",
+        "title": "中国作家网：杨绛（女）",
+        "url": "https://www.chinawriter.com.cn/xdzj/80.shtml"
+      },
+      {
+        "id": "women-duke-ueno",
+        "title": "昆山杜克大学：上野千鹤子在昆杜开讲",
+        "url": "https://news.dukekunshan.edu.cn/zh-hans/campus-news/leading-feminist-scholar-chizuko-ueno-gives-dku-lecture/"
+      },
+      {
+        "id": "women-goldenhorse-anita-mui",
+        "title": "金马影展：关锦鹏寄梅艳芳的两封信",
+        "url": "https://goldenhorse.org.tw/news/detail/372"
+      },
+      {
+        "id": "women-goldenhorse-brigitte-lin",
+        "title": "金马影展：1990年最佳女主角名单（林青霞）",
+        "url": "https://www.goldenhorse.org.tw/awards/nw/?ins=25&sc=8&search_regist_year=1990&serach_type=award"
+      },
+      {
+        "id": "women-goldenhorse-maggie-cheung",
+        "title": "金马影展：张曼玉荣膺金马五十大使",
+        "url": "https://www.goldenhorse.org.tw/news/detail/320"
+      },
+      {
+        "id": "women-goldenhorse-sylvia-chang",
+        "title": "金马影展：焦点影人张艾嘉",
+        "url": "https://goldenhorse.org.tw/news/detail/139"
+      },
+      {
+        "id": "women-hk-michelle-yeoh",
+        "title": "香港特区政府：恭贺杨紫琼荣获奥斯卡最佳女主角",
+        "url": "https://www.info.gov.hk/gia/general/202303/13/P2023031300295.htm"
+      },
+      {
+        "id": "women-moe-zhang-guimei",
+        "title": "教育部：张桂梅照亮大山女孩的梦想",
+        "url": "https://www.moe.gov.cn/jyb_xwfb/s5147/202107/t20210719_545483.html"
+      },
+      {
+        "id": "women-ncpa-huang-ying",
+        "title": "国家大剧院：中国夜莺黄英艺术资料中心见面会",
+        "url": "https://www.chncpa.org/zxdt_331/zxdtlm/jyxw_333/201608/t20160823_100774.shtml"
+      },
+      {
+        "id": "women-ncpa-wang-lida-lei-jia",
+        "title": "国家大剧院：运河谣演员雷佳、王丽达",
+        "url": "https://www.chncpa.org/zxdt_331/zxdtlm/mtsj_334/201608/t20160823_128688.shtml"
+      },
+      {
+        "id": "women-ncpa-wu-bixia",
+        "title": "国家大剧院：女高音吴碧霞歌剧观摩活动",
+        "url": "https://www.chncpa.org/zxdt_331/zxdtlm/mtsj_334/201608/t20160823_114722.shtml"
+      },
+      {
+        "id": "women-nobel-awarded-women",
+        "title": "诺贝尔奖官网：Nobel Prize awarded women",
+        "url": "https://www.nobelprize.org/prizes/lists/nobel-prize-awarded-women/?images=yes"
+      },
+      {
+        "id": "women-nobel-tu-facts",
+        "title": "诺贝尔奖官网：Tu Youyou – Facts",
+        "url": "https://www.nobelprize.org/prizes/medicine/2015/tu/facts/"
+      },
+      {
+        "id": "women-sport-li-na-roland-garros",
+        "title": "国家体育总局：李娜勇夺法网女单冠军",
+        "url": "https://www.sport.gov.cn/n20001280/n20767351/n20767722/c20836162/content.html"
+      },
+      {
+        "id": "women-sport-new-champions-2021",
+        "title": "国家体育总局：新冠军、新起点、新期待（女子蹦床）",
+        "url": "https://www.sport.gov.cn/n20001280/n20067662/n20067613/c23885460/content.html"
+      },
+      {
+        "id": "women-sport-table-tennis-women-final",
+        "title": "国家体育总局北京体育大学：东京奥运会女团决赛（中日队员中文名）",
+        "url": "https://www.sport.gov.cn/btd/n5567/c23467035/content.html"
+      },
+      {
+        "id": "women-sport-tokyo-women-team",
+        "title": "国家体育总局：东京奥运会女子乒乓球团体报道",
+        "url": "https://www.sport.gov.cn/n4/n23367510/n23367711/c23572777/content.html"
+      },
+      {
+        "id": "women-sport-women-canoe-2021",
+        "title": "国家体育总局：第十四届全运会女子双人划艇报道",
+        "url": "https://www.sport.gov.cn/n4/n23367606/n23367836/c23600262/content.html"
+      },
+      {
+        "id": "women-sport-women-diving-2024",
+        "title": "国家体育总局：2024年度最佳女子跳水运动员候选名单",
+        "url": "https://www.sport.gov.cn/n20001280/n20067662/n20067613/c28395032/content.html"
+      },
+      {
+        "id": "women-sport-women-swimming-2023",
+        "title": "国家体育总局：杭州亚运会国家游泳队参赛名单（女运动员列明）",
+        "url": "https://www.sport.gov.cn/n20001280/n20067662/n20067613/c25750438/content.html"
+      },
+      {
+        "id": "women-sport-women-tennis-wimbledon",
+        "title": "国家体育总局湖北省体育局：郑钦文、李娜与温网女子参赛名单",
+        "url": "https://www.sport.gov.cn/n14471/n14488/n14525/c25760808/content.html"
+      },
+      {
+        "id": "women-tsinghua-lin-huiyin",
+        "title": "清华大学出版社：林徽因作者简介",
+        "url": "https://www.tup.tsinghua.edu.cn/bookscenter/bookauthorbrief?id=10705901"
+      },
+      {
+        "id": "women-tsinghua-wang-xiaoyun",
+        "title": "清华大学高等研究院：王小云教授当选中国科学院院士（简介标明女）",
+        "url": "https://www.ias.tsinghua.edu.cn/info/1042/1253.htm"
+      },
+      {
+        "id": "women-umusic-taylor-swift",
+        "title": "环球音乐：Taylor Swift专辑页（中文名泰勒·斯威夫特）",
+        "url": "https://www.umusic.com.cn/index.php?c=show&id=1643"
+      },
+      {
+        "id": "women-woolf-publisher-profile",
+        "title": "中国作家网书汇：思考就是我的抵抗，伍尔夫作者简介",
+        "url": "https://www.chinawriter.com.cn/n1/2022/0926/c405080-32534119.html"
+      }
+    ],
+    "version": 1
+  },
   "selection": {
     "all_upstream_single_character_readings": true,
     "all_upstream_whole_word_alias_homophones": true,
     "multi_word_limit": 30000,
     "project_new_reading_seed_weight": 200,
+    "public_new_reading_seed_weight": 1,
+    "public_supplements_follow_ordinary_first_candidate": true,
     "upstream_frequency_preserved": true
   },
   "source_sha256": {
@@ -46,7 +892,7 @@
       "community-zh-cn": "76efc5a44e6967795578e40deaaeb58523af4d812b91bdf09845540416243e14",
       "neutral-zh-cn": "8448733d8fa99b5e71a17093dc6a536f47bbd0fda3170adfed61dc826e272cbc"
     },
-    "project_dictionary": "900a381104458de96db147b6404e95b623494af051c0ce450bc1eca7d73fb5e0"
+    "project_dictionary": "b866a01bfa70aed358ef1043fabe4f14d1bb7cf7994b2702f24249c9cc2429c9"
   },
   "upstream": {
     "commit": "0c6861ef7420ee780270ca6d993d18d4101049d0",

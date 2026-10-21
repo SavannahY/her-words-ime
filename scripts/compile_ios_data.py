@@ -16,9 +16,11 @@ import tempfile
 
 try:
     from .compile_packs import compile_data
+    from .compile_public_lexicon import DEFAULT_INPUT as DEFAULT_PUBLIC_LEXICON, PUBLIC_SEED_WEIGHT, load_public_lexicon
     from .validate_packs import DEFAULT_MANIFEST, ValidationError, load_project
 except ImportError:
     from compile_packs import compile_data
+    from compile_public_lexicon import DEFAULT_INPUT as DEFAULT_PUBLIC_LEXICON, PUBLIC_SEED_WEIGHT, load_public_lexicon
     from validate_packs import DEFAULT_MANIFEST, ValidationError, load_project
 
 
@@ -164,16 +166,53 @@ def select_lexicon(upstream, project_entries, multi_limit=MULTI_WORD_LIMIT, alia
     }
 
 
+def merge_public_lexicon(lexicon, upstream, public):
+    """Preserve baseline frequencies/ranking; new public words are supplements.
+
+    Aliases are explicit metadata, never dictionary pronunciations. A word that
+    was already selected stays ordinary; restored/new public words are offered
+    after the first ordinary candidate by the native input engine.
+    """
+    selected = {(entry["text"], entry["pinyin"]): dict(entry) for entry in lexicon}
+    originals = {(entry["text"], entry["pinyin"]): entry for entry in upstream}
+    added = restored = aliases = 0
+    for item in public["entries"]:
+        key = (item["text"], item["pinyin"])
+        if key not in selected:
+            if key in originals:
+                selected[key] = dict(originals[key])
+                restored += 1
+            else:
+                selected[key] = {"text": item["text"], "pinyin": item["pinyin"], "weight": PUBLIC_SEED_WEIGHT}
+                added += 1
+            selected[key]["supplemental"] = True
+        selected[key]["category"] = item["category"]
+        if item.get("aliases"):
+            selected[key]["aliases"] = sorted(item["aliases"])
+            aliases += len(item["aliases"])
+    return sorted(selected.values(), key=lambda entry: (entry["pinyin"], -entry["weight"], entry["text"])), {
+        "public_readings": len(public["entries"]), "public_added_new_readings": added,
+        "public_restored_upstream_readings": restored, "public_english_aliases": aliases,
+    }
+
+
 def build_resources(manifest=DEFAULT_MANIFEST, source_dir=DEFAULT_SOURCE,
-                    project_dictionary=DEFAULT_PROJECT_DICTIONARY, multi_limit=MULTI_WORD_LIMIT):
+                    project_dictionary=DEFAULT_PROJECT_DICTIONARY, multi_limit=MULTI_WORD_LIMIT,
+                    public_directory=DEFAULT_PUBLIC_LEXICON):
     source_dir, project_dictionary = Path(source_dir), Path(project_dictionary)
     upstream = verify_source(source_dir)
     raw = (source_dir / "pinyin_simp.dict.yaml").read_text(encoding="utf-8")
     project_text = project_dictionary.read_text(encoding="utf-8")
     project = load_project(Path(manifest))
     rules = compile_data(project)
-    lexicon, counts = select_lexicon(parse_dictionary(raw), parse_dictionary(project_text), multi_limit,
+    parsed_upstream = parse_dictionary(raw)
+    lexicon, counts = select_lexicon(parsed_upstream, parse_dictionary(project_text), multi_limit,
                                    [alias["input"] for alias in rules["exact_aliases"]])
+    public = load_public_lexicon(public_directory)
+    lexicon, public_counts = merge_public_lexicon(lexicon, parsed_upstream, public)
+    counts.update(public_counts)
+    counts["lexicon_readings"] = len(lexicon)
+    counts["lexicon_unique_texts"] = len({entry["text"] for entry in lexicon})
     payloads = {
         "lexicon.json": encode_json(lexicon, compact=True),
         # Keep exact_aliases separate: e.g. 忮忌 has real pinyin zhi ji;
@@ -189,8 +228,11 @@ def build_resources(manifest=DEFAULT_MANIFEST, source_dir=DEFAULT_SOURCE,
                       "all_upstream_single_character_readings": True,
                       "all_upstream_whole_word_alias_homophones": True,
                       "project_new_reading_seed_weight": PROJECT_SEED_WEIGHT,
+                      "public_new_reading_seed_weight": PUBLIC_SEED_WEIGHT,
+                      "public_supplements_follow_ordinary_first_candidate": True,
                       "upstream_frequency_preserved": True},
         "counts": counts,
+        "public_lexicon": {"version": public["version"], "sources": public["sources"], "files": public["files"]},
         "source_sha256": {"project_dictionary": digest(project_text.encode("utf-8")),
                           "manifest": digest(project.manifest.read_bytes()),
                           "packs": {pack.data["id"]: digest(pack.path.read_bytes())
@@ -207,12 +249,13 @@ def main():
     parser.add_argument("--manifest", type=Path, default=DEFAULT_MANIFEST)
     parser.add_argument("--source-dir", type=Path, default=DEFAULT_SOURCE)
     parser.add_argument("--project-dictionary", type=Path, default=DEFAULT_PROJECT_DICTIONARY)
+    parser.add_argument("--public-directory", type=Path, default=DEFAULT_PUBLIC_LEXICON)
     parser.add_argument("--output-dir", type=Path, default=DEFAULT_OUTPUT)
     parser.add_argument("--multi-word-limit", type=int, default=MULTI_WORD_LIMIT)
     parser.add_argument("--check", action="store_true", help="verify committed resources without writing")
     args = parser.parse_args()
     try:
-        resources = build_resources(args.manifest, args.source_dir, args.project_dictionary, args.multi_word_limit)
+        resources = build_resources(args.manifest, args.source_dir, args.project_dictionary, args.multi_word_limit, args.public_directory)
         if args.check:
             stale = [name for name, data in resources.items()
                      if not (args.output_dir / name).is_file() or (args.output_dir / name).read_bytes() != data]

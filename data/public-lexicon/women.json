@@ -1,0 +1,1389 @@
+{
+  "version": 1,
+  "description": "本项目独立整理的公开女性人物中文姓名首批词头，覆盖文学、科学、教育、体育、音乐与影视。仅提供拼音输入召回，不表示人物排名或价值背书。外文人物按收录中文名生成普通话全拼输入码，并非本名语言的发音转写。仅整理姓名、读音及来源，不复制来源传记。",
+  "sources": [
+    {
+      "id": "women-cwa-delegates-2016",
+      "title": "中国作家协会第九次全国代表大会代表名单（女性标注明确）",
+      "url": "https://www.chinawriter.com.cn/n1/2016/1130/c407951-28911166.html"
+    },
+    {
+      "id": "women-cwa-yang-jiang",
+      "title": "中国作家网：杨绛（女）",
+      "url": "https://www.chinawriter.com.cn/xdzj/80.shtml"
+    },
+    {
+      "id": "women-cwa-bing-xin",
+      "title": "中国作家网：冰心（女）",
+      "url": "https://www.chinawriter.com.cn/xdzj/52.shtml"
+    },
+    {
+      "id": "women-tsinghua-lin-huiyin",
+      "title": "清华大学出版社：林徽因作者简介",
+      "url": "https://www.tup.tsinghua.edu.cn/bookscenter/bookauthorbrief?id=10705901"
+    },
+    {
+      "id": "women-cwa-women-writing-survey",
+      "title": "张莉：当代六十七位新锐女作家的女性写作观调查",
+      "url": "https://www.chinawriter.com.cn/n1/2019/0322/c405057-30988965.html"
+    },
+    {
+      "id": "women-duke-ueno",
+      "title": "昆山杜克大学：上野千鹤子在昆杜开讲",
+      "url": "https://news.dukekunshan.edu.cn/zh-hans/campus-news/leading-feminist-scholar-chizuko-ueno-gives-dku-lecture/"
+    },
+    {
+      "id": "women-beauvoir-interview-wa",
+      "title": "中国作家网：波伏瓦逝世四十周年，访谈与本人女性身份表述",
+      "url": "https://www.chinawriter.com.cn/n1/2026/0415/c404090-40701795.html"
+    },
+    {
+      "id": "women-beauvoir-translator-interview",
+      "title": "中国作家网：郑克鲁，每个人都能读懂波伏娃",
+      "url": "https://www.chinawriter.com.cn/n1/2017/0206/c405057-29060488.html"
+    },
+    {
+      "id": "women-woolf-publisher-profile",
+      "title": "中国作家网书汇：思考就是我的抵抗，伍尔夫作者简介",
+      "url": "https://www.chinawriter.com.cn/n1/2022/0926/c405080-32534119.html"
+    },
+    {
+      "id": "women-cwa-doris-lessing",
+      "title": "中国作家网：诺贝尔文学奖得主莱辛，我只是个讲故事的",
+      "url": "https://www.chinawriter.com.cn/news/2013/2013-11-28/183154.html"
+    },
+    {
+      "id": "women-cwa-han-kang-interview",
+      "title": "中国作家网：新世界文学光谱与韩江获奖的极化现象，学者对谈",
+      "url": "https://www.chinawriter.com.cn/n1/2025/0721/c404090-40526271.html"
+    },
+    {
+      "id": "women-cwa-ernaux",
+      "title": "中国作家网：连续四年诺贝尔文学奖得主作品花落上海",
+      "url": "https://www.chinawriter.com.cn/n1/2022/1009/c403994-32541387.html"
+    },
+    {
+      "id": "women-cwa-morrison-women-literature",
+      "title": "中国作家网：麦芒谈2020年诺贝尔文学奖、纽斯塔特国际文学奖及普遍性",
+      "url": "https://www.chinawriter.com.cn/n1/2020/1029/c404090-31910451.html"
+    },
+    {
+      "id": "women-cwa-han-nobel-feature",
+      "title": "文艺报：聚焦2024年诺贝尔文学奖，韩江专题（含路易丝·格丽克中文名）",
+      "url": "https://wyb.chinawriter.com.cn/attachment/202410/14/16dada4e-db56-4e1e-a8b1-1d4dd5d410a4.pdf"
+    },
+    {
+      "id": "women-cwa-olga-publisher-profile",
+      "title": "中国作家网书汇：糜骨之壤，奥尔加·托卡尔丘克作者简介",
+      "url": "https://www.chinawriter.com.cn/n1/2021/0112/c405074-31996740.html"
+    },
+    {
+      "id": "women-nobel-awarded-women",
+      "title": "诺贝尔奖官网：Nobel Prize awarded women",
+      "url": "https://www.nobelprize.org/prizes/lists/nobel-prize-awarded-women/?images=yes"
+    },
+    {
+      "id": "women-cacms-tu-youyou",
+      "title": "中国中医科学院：向屠呦呦学习，弘扬青蒿素精神",
+      "url": "https://www.cacms.ac.cn/comprehensive_news/detail/4510.html"
+    },
+    {
+      "id": "women-nobel-tu-facts",
+      "title": "诺贝尔奖官网：Tu Youyou – Facts",
+      "url": "https://www.nobelprize.org/prizes/medicine/2015/tu/facts/"
+    },
+    {
+      "id": "women-cas-ye-shuhua",
+      "title": "中国科学院上海天文台：叶叔华（女）简介",
+      "url": "https://shao.cas.cn/sourcedb/zw/lnpt/staff/202401/t20240123_6968593.html"
+    },
+    {
+      "id": "women-cas-zhang-miman",
+      "title": "中国科学院古脊椎所：张弥曼院士获颁世界杰出女科学家奖",
+      "url": "https://ivpp.cas.cn/xwdt/zhxw/201811/t20181103_5157027.html"
+    },
+    {
+      "id": "women-cas-yan-ning",
+      "title": "中国科学院学部：颜宁获世界杰出女科学家成就奖",
+      "url": "https://www.ad.cas.cn/ysdt2022/202406/t20240627_5023395.html"
+    },
+    {
+      "id": "women-tsinghua-wang-xiaoyun",
+      "title": "清华大学高等研究院：王小云教授当选中国科学院院士（简介标明女）",
+      "url": "https://www.ias.tsinghua.edu.cn/info/1042/1253.htm"
+    },
+    {
+      "id": "women-cas-yearbook-2019-roster",
+      "title": "中国科学院年鉴（2019）：2018年院士名单，女性明确标注",
+      "url": "https://english.ihep.cas.cn/cepc/adrc/pc/202110/W020220220716582815022.pdf"
+    },
+    {
+      "id": "women-cas-wang-zhizhen",
+      "title": "中国科学院：院士说，作为优秀女性科学家的代表",
+      "url": "https://scicn.casad.cas.cn/spn/202407/t20240717_5026138.html"
+    },
+    {
+      "id": "women-cas-wang-enduo",
+      "title": "中国科学院上海有机所：2005年当选院士名单（王恩多女）",
+      "url": "https://sioc.cas.cn/news/zhxw/202306/t20230601_6766555.html"
+    },
+    {
+      "id": "women-cas-chen-hualan",
+      "title": "中国科学院武汉病毒所：陈化兰院士葛洪论坛报告",
+      "url": "https://whiov.cas.cn/xwdt_160278/xsdt2019/201911/t20191103_5419826.html"
+    },
+    {
+      "id": "women-cas-zhang-yonglian",
+      "title": "中国科学院分子细胞科学卓越创新中心：张永莲研究员简介",
+      "url": "https://cemcs.cas.cn/sourcedb/zw/pi/202008/t20200823_5670143.html"
+    },
+    {
+      "id": "women-cas-shi-yunyu",
+      "title": "中国科学院：施蕴渝，孜孜探寻生物大分子奥秘",
+      "url": "https://www.cas.cn/xzfc/202209/t20220926_4848781.shtml"
+    },
+    {
+      "id": "women-moe-zhang-guimei",
+      "title": "教育部：张桂梅照亮大山女孩的梦想",
+      "url": "https://www.moe.gov.cn/jyb_xwfb/s5147/202107/t20210719_545483.html"
+    },
+    {
+      "id": "women-sport-tokyo-women-team",
+      "title": "国家体育总局：东京奥运会女子乒乓球团体报道",
+      "url": "https://www.sport.gov.cn/n4/n23367510/n23367711/c23572777/content.html"
+    },
+    {
+      "id": "women-sport-table-tennis-women-final",
+      "title": "国家体育总局北京体育大学：东京奥运会女团决赛（中日队员中文名）",
+      "url": "https://www.sport.gov.cn/btd/n5567/c23467035/content.html"
+    },
+    {
+      "id": "women-sport-women-diving-2024",
+      "title": "国家体育总局：2024年度最佳女子跳水运动员候选名单",
+      "url": "https://www.sport.gov.cn/n20001280/n20067662/n20067613/c28395032/content.html"
+    },
+    {
+      "id": "women-sport-women-swimming-2023",
+      "title": "国家体育总局：杭州亚运会国家游泳队参赛名单（女运动员列明）",
+      "url": "https://www.sport.gov.cn/n20001280/n20067662/n20067613/c25750438/content.html"
+    },
+    {
+      "id": "women-sport-new-champions-2021",
+      "title": "国家体育总局：新冠军、新起点、新期待（女子蹦床）",
+      "url": "https://www.sport.gov.cn/n20001280/n20067662/n20067613/c23885460/content.html"
+    },
+    {
+      "id": "women-sport-women-canoe-2021",
+      "title": "国家体育总局：第十四届全运会女子双人划艇报道",
+      "url": "https://www.sport.gov.cn/n4/n23367606/n23367836/c23600262/content.html"
+    },
+    {
+      "id": "women-sport-women-tennis-wimbledon",
+      "title": "国家体育总局湖北省体育局：郑钦文、李娜与温网女子参赛名单",
+      "url": "https://www.sport.gov.cn/n14471/n14488/n14525/c25760808/content.html"
+    },
+    {
+      "id": "women-umusic-taylor-swift",
+      "title": "环球音乐：Taylor Swift专辑页（中文名泰勒·斯威夫特）",
+      "url": "https://www.umusic.com.cn/index.php?c=show&id=1643"
+    },
+    {
+      "id": "women-hk-michelle-yeoh",
+      "title": "香港特区政府：恭贺杨紫琼荣获奥斯卡最佳女主角",
+      "url": "https://www.info.gov.hk/gia/general/202303/13/P2023031300295.htm"
+    },
+    {
+      "id": "women-goldenhorse-maggie-cheung",
+      "title": "金马影展：张曼玉荣膺金马五十大使",
+      "url": "https://www.goldenhorse.org.tw/news/detail/320"
+    },
+    {
+      "id": "women-goldenhorse-sylvia-chang",
+      "title": "金马影展：焦点影人张艾嘉",
+      "url": "https://goldenhorse.org.tw/news/detail/139"
+    },
+    {
+      "id": "women-goldenhorse-brigitte-lin",
+      "title": "金马影展：1990年最佳女主角名单（林青霞）",
+      "url": "https://www.goldenhorse.org.tw/awards/nw/?ins=25&sc=8&search_regist_year=1990&serach_type=award"
+    },
+    {
+      "id": "women-goldenhorse-anita-mui",
+      "title": "金马影展：关锦鹏寄梅艳芳的两封信",
+      "url": "https://goldenhorse.org.tw/news/detail/372"
+    },
+    {
+      "id": "women-ncpa-wang-lida-lei-jia",
+      "title": "国家大剧院：运河谣演员雷佳、王丽达",
+      "url": "https://www.chncpa.org/zxdt_331/zxdtlm/mtsj_334/201608/t20160823_128688.shtml"
+    },
+    {
+      "id": "women-ncpa-wu-bixia",
+      "title": "国家大剧院：女高音吴碧霞歌剧观摩活动",
+      "url": "https://www.chncpa.org/zxdt_331/zxdtlm/mtsj_334/201608/t20160823_114722.shtml"
+    },
+    {
+      "id": "women-ncpa-huang-ying",
+      "title": "国家大剧院：中国夜莺黄英艺术资料中心见面会",
+      "url": "https://www.chncpa.org/zxdt_331/zxdtlm/jyxw_333/201608/t20160823_100774.shtml"
+    },
+    {
+      "id": "women-sport-li-na-roland-garros",
+      "title": "国家体育总局：李娜勇夺法网女单冠军",
+      "url": "https://www.sport.gov.cn/n20001280/n20767351/n20767722/c20836162/content.html"
+    },
+    {
+      "id": "women-cnpubg-yin-jianling",
+      "title": "中国出版集团英文作者页：殷健灵 Yin Jianling",
+      "url": "https://en.cnpubg.com/portal/article/index/id/141/cid/1.html"
+    }
+  ],
+  "entries": [
+    {
+      "text": "王安忆",
+      "pinyin": "wang an yi",
+      "category": "woman",
+      "source_ids": [
+        "women-cwa-delegates-2016"
+      ],
+      "tags": [
+        "writer"
+      ]
+    },
+    {
+      "text": "迟子建",
+      "pinyin": "chi zi jian",
+      "category": "woman",
+      "source_ids": [
+        "women-cwa-delegates-2016"
+      ],
+      "tags": [
+        "writer"
+      ]
+    },
+    {
+      "text": "铁凝",
+      "pinyin": "tie ning",
+      "category": "woman",
+      "source_ids": [
+        "women-cwa-delegates-2016"
+      ],
+      "tags": [
+        "writer"
+      ]
+    },
+    {
+      "text": "叶文玲",
+      "pinyin": "ye wen ling",
+      "category": "woman",
+      "source_ids": [
+        "women-cwa-delegates-2016"
+      ],
+      "tags": [
+        "writer"
+      ]
+    },
+    {
+      "text": "池莉",
+      "pinyin": "chi li",
+      "category": "woman",
+      "source_ids": [
+        "women-cwa-delegates-2016"
+      ],
+      "tags": [
+        "writer"
+      ]
+    },
+    {
+      "text": "毕淑敏",
+      "pinyin": "bi shu min",
+      "category": "woman",
+      "source_ids": [
+        "women-cwa-delegates-2016"
+      ],
+      "tags": [
+        "writer"
+      ]
+    },
+    {
+      "text": "方方",
+      "pinyin": "fang fang",
+      "category": "woman",
+      "source_ids": [
+        "women-cwa-delegates-2016"
+      ],
+      "tags": [
+        "writer"
+      ]
+    },
+    {
+      "text": "叶广芩",
+      "pinyin": "ye guang qin",
+      "category": "woman",
+      "source_ids": [
+        "women-cwa-delegates-2016"
+      ],
+      "tags": [
+        "writer"
+      ]
+    },
+    {
+      "text": "李娟",
+      "pinyin": "li juan",
+      "category": "woman",
+      "source_ids": [
+        "women-cwa-delegates-2016"
+      ],
+      "tags": [
+        "writer"
+      ]
+    },
+    {
+      "text": "李兰妮",
+      "pinyin": "li lan ni",
+      "category": "woman",
+      "source_ids": [
+        "women-cwa-delegates-2016"
+      ],
+      "tags": [
+        "writer"
+      ]
+    },
+    {
+      "text": "杨红樱",
+      "pinyin": "yang hong ying",
+      "category": "woman",
+      "source_ids": [
+        "women-cwa-delegates-2016"
+      ],
+      "tags": [
+        "writer"
+      ]
+    },
+    {
+      "text": "张抗抗",
+      "pinyin": "zhang kang kang",
+      "category": "woman",
+      "source_ids": [
+        "women-cwa-delegates-2016"
+      ],
+      "tags": [
+        "writer"
+      ]
+    },
+    {
+      "text": "张悦然",
+      "pinyin": "zhang yue ran",
+      "category": "woman",
+      "source_ids": [
+        "women-cwa-delegates-2016"
+      ],
+      "tags": [
+        "writer"
+      ]
+    },
+    {
+      "text": "张怡微",
+      "pinyin": "zhang yi wei",
+      "category": "woman",
+      "source_ids": [
+        "women-cwa-delegates-2016"
+      ],
+      "tags": [
+        "writer"
+      ]
+    },
+    {
+      "text": "陈丹燕",
+      "pinyin": "chen dan yan",
+      "category": "woman",
+      "source_ids": [
+        "women-cwa-delegates-2016"
+      ],
+      "tags": [
+        "writer"
+      ]
+    },
+    {
+      "text": "邵丽",
+      "pinyin": "shao li",
+      "category": "woman",
+      "source_ids": [
+        "women-cwa-delegates-2016"
+      ],
+      "tags": [
+        "writer"
+      ]
+    },
+    {
+      "text": "范小青",
+      "pinyin": "fan xiao qing",
+      "category": "woman",
+      "source_ids": [
+        "women-cwa-delegates-2016"
+      ],
+      "tags": [
+        "writer"
+      ]
+    },
+    {
+      "text": "金仁顺",
+      "pinyin": "jin ren shun",
+      "category": "woman",
+      "source_ids": [
+        "women-cwa-delegates-2016"
+      ],
+      "tags": [
+        "writer"
+      ]
+    },
+    {
+      "text": "周晓枫",
+      "pinyin": "zhou xiao feng",
+      "category": "woman",
+      "source_ids": [
+        "women-cwa-delegates-2016"
+      ],
+      "tags": [
+        "writer"
+      ]
+    },
+    {
+      "text": "周嘉宁",
+      "pinyin": "zhou jia ning",
+      "category": "woman",
+      "source_ids": [
+        "women-cwa-delegates-2016"
+      ],
+      "tags": [
+        "writer"
+      ]
+    },
+    {
+      "text": "宗璞",
+      "pinyin": "zong pu",
+      "category": "woman",
+      "source_ids": [
+        "women-cwa-delegates-2016"
+      ],
+      "tags": [
+        "writer"
+      ]
+    },
+    {
+      "text": "须一瓜",
+      "pinyin": "xu yi gua",
+      "category": "woman",
+      "source_ids": [
+        "women-cwa-delegates-2016"
+      ],
+      "tags": [
+        "writer"
+      ]
+    },
+    {
+      "text": "姚鄂梅",
+      "pinyin": "yao e mei",
+      "category": "woman",
+      "source_ids": [
+        "women-cwa-delegates-2016"
+      ],
+      "tags": [
+        "writer"
+      ]
+    },
+    {
+      "text": "秦文君",
+      "pinyin": "qin wen jun",
+      "category": "woman",
+      "source_ids": [
+        "women-cwa-delegates-2016"
+      ],
+      "tags": [
+        "writer"
+      ]
+    },
+    {
+      "text": "徐坤",
+      "pinyin": "xu kun",
+      "category": "woman",
+      "source_ids": [
+        "women-cwa-delegates-2016"
+      ],
+      "tags": [
+        "writer"
+      ]
+    },
+    {
+      "text": "徐小斌",
+      "pinyin": "xu xiao bin",
+      "category": "woman",
+      "source_ids": [
+        "women-cwa-delegates-2016"
+      ],
+      "tags": [
+        "writer"
+      ]
+    },
+    {
+      "text": "黄咏梅",
+      "pinyin": "huang yong mei",
+      "category": "woman",
+      "source_ids": [
+        "women-cwa-delegates-2016"
+      ],
+      "tags": [
+        "writer"
+      ]
+    },
+    {
+      "text": "黄蓓佳",
+      "pinyin": "huang bei jia",
+      "category": "woman",
+      "source_ids": [
+        "women-cwa-delegates-2016"
+      ],
+      "tags": [
+        "writer"
+      ]
+    },
+    {
+      "text": "梁鸿",
+      "pinyin": "liang hong",
+      "category": "woman",
+      "source_ids": [
+        "women-cwa-delegates-2016"
+      ],
+      "tags": [
+        "writer"
+      ]
+    },
+    {
+      "text": "葛水平",
+      "pinyin": "ge shui ping",
+      "category": "woman",
+      "source_ids": [
+        "women-cwa-delegates-2016"
+      ],
+      "tags": [
+        "writer"
+      ]
+    },
+    {
+      "text": "蒋胜男",
+      "pinyin": "jiang sheng nan",
+      "category": "woman",
+      "source_ids": [
+        "women-cwa-delegates-2016"
+      ],
+      "tags": [
+        "writer"
+      ]
+    },
+    {
+      "text": "舒婷",
+      "pinyin": "shu ting",
+      "category": "woman",
+      "source_ids": [
+        "women-cwa-delegates-2016"
+      ],
+      "tags": [
+        "writer"
+      ]
+    },
+    {
+      "text": "鲁敏",
+      "pinyin": "lu min",
+      "category": "woman",
+      "source_ids": [
+        "women-cwa-delegates-2016"
+      ],
+      "tags": [
+        "writer"
+      ]
+    },
+    {
+      "text": "裘山山",
+      "pinyin": "qiu shan shan",
+      "category": "woman",
+      "source_ids": [
+        "women-cwa-delegates-2016"
+      ],
+      "tags": [
+        "writer"
+      ]
+    },
+    {
+      "text": "潘向黎",
+      "pinyin": "pan xiang li",
+      "category": "woman",
+      "source_ids": [
+        "women-cwa-delegates-2016"
+      ],
+      "tags": [
+        "writer"
+      ]
+    },
+    {
+      "text": "马金莲",
+      "pinyin": "ma jin lian",
+      "category": "woman",
+      "source_ids": [
+        "women-cwa-delegates-2016"
+      ],
+      "tags": [
+        "writer"
+      ]
+    },
+    {
+      "text": "文洁若",
+      "pinyin": "wen jie ruo",
+      "category": "woman",
+      "source_ids": [
+        "women-cwa-delegates-2016"
+      ],
+      "tags": [
+        "writer"
+      ]
+    },
+    {
+      "text": "乔叶",
+      "pinyin": "qiao ye",
+      "category": "woman",
+      "source_ids": [
+        "women-cwa-delegates-2016"
+      ],
+      "tags": [
+        "writer"
+      ]
+    },
+    {
+      "text": "杨绛",
+      "pinyin": "yang jiang",
+      "category": "woman",
+      "source_ids": [
+        "women-cwa-yang-jiang"
+      ],
+      "tags": [
+        "writer",
+        "translator"
+      ]
+    },
+    {
+      "text": "冰心",
+      "pinyin": "bing xin",
+      "category": "woman",
+      "source_ids": [
+        "women-cwa-bing-xin"
+      ],
+      "tags": [
+        "writer"
+      ]
+    },
+    {
+      "text": "林徽因",
+      "pinyin": "lin hui yin",
+      "category": "woman",
+      "source_ids": [
+        "women-tsinghua-lin-huiyin"
+      ],
+      "tags": [
+        "architect",
+        "writer"
+      ]
+    },
+    {
+      "text": "张爱玲",
+      "pinyin": "zhang ai ling",
+      "category": "woman",
+      "source_ids": [
+        "women-cwa-women-writing-survey"
+      ],
+      "tags": [
+        "writer"
+      ]
+    },
+    {
+      "text": "萧红",
+      "pinyin": "xiao hong",
+      "category": "woman",
+      "source_ids": [
+        "women-cwa-women-writing-survey"
+      ],
+      "tags": [
+        "writer"
+      ]
+    },
+    {
+      "text": "丁玲",
+      "pinyin": "ding ling",
+      "category": "woman",
+      "source_ids": [
+        "women-cwa-women-writing-survey"
+      ],
+      "tags": [
+        "writer"
+      ]
+    },
+    {
+      "text": "上野千鹤子",
+      "pinyin": "shang ye qian he zi",
+      "category": "woman",
+      "source_ids": [
+        "women-duke-ueno"
+      ],
+      "tags": [
+        "sociologist",
+        "writer"
+      ]
+    },
+    {
+      "text": "波伏瓦",
+      "pinyin": "bo fu wa",
+      "category": "woman",
+      "source_ids": [
+        "women-beauvoir-interview-wa"
+      ],
+      "tags": [
+        "philosopher",
+        "writer"
+      ],
+      "note": "与“波伏娃”指同一人物 Simone de Beauvoir；两种中文译名分别保留为可选词形。"
+    },
+    {
+      "text": "波伏娃",
+      "pinyin": "bo fu wa",
+      "category": "woman",
+      "source_ids": [
+        "women-beauvoir-translator-interview"
+      ],
+      "tags": [
+        "philosopher",
+        "writer"
+      ],
+      "note": "与“波伏瓦”指同一人物 Simone de Beauvoir；这是已有出版用名，不是另造汉字写法。"
+    },
+    {
+      "text": "伍尔夫",
+      "pinyin": "wu er fu",
+      "category": "woman",
+      "source_ids": [
+        "women-woolf-publisher-profile"
+      ],
+      "tags": [
+        "writer"
+      ]
+    },
+    {
+      "text": "多丽丝·莱辛",
+      "pinyin": "duo li si lai xin",
+      "category": "woman",
+      "source_ids": [
+        "women-cwa-doris-lessing",
+        "women-nobel-awarded-women"
+      ],
+      "tags": [
+        "writer"
+      ]
+    },
+    {
+      "text": "韩江",
+      "pinyin": "han jiang",
+      "category": "woman",
+      "source_ids": [
+        "women-cwa-han-kang-interview",
+        "women-nobel-awarded-women"
+      ],
+      "tags": [
+        "writer"
+      ]
+    },
+    {
+      "text": "安妮·埃尔诺",
+      "pinyin": "an ni ai er nuo",
+      "category": "woman",
+      "source_ids": [
+        "women-cwa-ernaux",
+        "women-nobel-awarded-women"
+      ],
+      "tags": [
+        "writer"
+      ]
+    },
+    {
+      "text": "托妮·莫里森",
+      "pinyin": "tuo ni mo li sen",
+      "category": "woman",
+      "source_ids": [
+        "women-cwa-morrison-women-literature",
+        "women-nobel-awarded-women"
+      ],
+      "tags": [
+        "writer"
+      ]
+    },
+    {
+      "text": "路易丝·格丽克",
+      "pinyin": "lu yi si ge li ke",
+      "category": "woman",
+      "source_ids": [
+        "women-cwa-han-nobel-feature",
+        "women-nobel-awarded-women"
+      ],
+      "tags": [
+        "poet",
+        "writer"
+      ]
+    },
+    {
+      "text": "奥尔加·托卡尔丘克",
+      "pinyin": "ao er jia tuo ka er qiu ke",
+      "category": "woman",
+      "source_ids": [
+        "women-cwa-olga-publisher-profile",
+        "women-nobel-awarded-women"
+      ],
+      "tags": [
+        "writer"
+      ]
+    },
+    {
+      "text": "屠呦呦",
+      "pinyin": "tu you you",
+      "category": "woman",
+      "source_ids": [
+        "women-cacms-tu-youyou",
+        "women-nobel-tu-facts"
+      ],
+      "tags": [
+        "scientist"
+      ]
+    },
+    {
+      "text": "叶叔华",
+      "pinyin": "ye shu hua",
+      "category": "woman",
+      "source_ids": [
+        "women-cas-ye-shuhua"
+      ],
+      "tags": [
+        "scientist"
+      ]
+    },
+    {
+      "text": "张弥曼",
+      "pinyin": "zhang mi man",
+      "category": "woman",
+      "source_ids": [
+        "women-cas-zhang-miman"
+      ],
+      "tags": [
+        "scientist"
+      ]
+    },
+    {
+      "text": "颜宁",
+      "pinyin": "yan ning",
+      "category": "woman",
+      "source_ids": [
+        "women-cas-yan-ning"
+      ],
+      "tags": [
+        "scientist"
+      ]
+    },
+    {
+      "text": "王小云",
+      "pinyin": "wang xiao yun",
+      "category": "woman",
+      "source_ids": [
+        "women-tsinghua-wang-xiaoyun"
+      ],
+      "tags": [
+        "scientist"
+      ]
+    },
+    {
+      "text": "王志珍",
+      "pinyin": "wang zhi zhen",
+      "category": "woman",
+      "source_ids": [
+        "women-cas-yearbook-2019-roster",
+        "women-cas-wang-zhizhen"
+      ],
+      "tags": [
+        "scientist"
+      ]
+    },
+    {
+      "text": "王恩多",
+      "pinyin": "wang en duo",
+      "category": "woman",
+      "source_ids": [
+        "women-cas-yearbook-2019-roster",
+        "women-cas-wang-enduo"
+      ],
+      "tags": [
+        "scientist"
+      ]
+    },
+    {
+      "text": "陈化兰",
+      "pinyin": "chen hua lan",
+      "category": "woman",
+      "source_ids": [
+        "women-cas-yearbook-2019-roster",
+        "women-cas-chen-hualan"
+      ],
+      "tags": [
+        "scientist"
+      ]
+    },
+    {
+      "text": "陈文新",
+      "pinyin": "chen wen xin",
+      "category": "woman",
+      "source_ids": [
+        "women-cas-yearbook-2019-roster"
+      ],
+      "tags": [
+        "scientist"
+      ]
+    },
+    {
+      "text": "张永莲",
+      "pinyin": "zhang yong lian",
+      "category": "woman",
+      "source_ids": [
+        "women-cas-yearbook-2019-roster",
+        "women-cas-zhang-yonglian"
+      ],
+      "tags": [
+        "scientist"
+      ]
+    },
+    {
+      "text": "郑儒永",
+      "pinyin": "zheng ru yong",
+      "category": "woman",
+      "source_ids": [
+        "women-cas-yearbook-2019-roster"
+      ],
+      "tags": [
+        "scientist"
+      ]
+    },
+    {
+      "text": "施蕴渝",
+      "pinyin": "shi yun yu",
+      "category": "woman",
+      "source_ids": [
+        "women-cas-yearbook-2019-roster",
+        "women-cas-shi-yunyu"
+      ],
+      "tags": [
+        "scientist"
+      ]
+    },
+    {
+      "text": "张桂梅",
+      "pinyin": "zhang gui mei",
+      "category": "woman",
+      "source_ids": [
+        "women-moe-zhang-guimei"
+      ],
+      "tags": [
+        "educator"
+      ]
+    },
+    {
+      "text": "孙颖莎",
+      "pinyin": "sun ying sha",
+      "category": "woman",
+      "source_ids": [
+        "women-sport-tokyo-women-team"
+      ],
+      "tags": [
+        "athlete"
+      ]
+    },
+    {
+      "text": "陈梦",
+      "pinyin": "chen meng",
+      "category": "woman",
+      "source_ids": [
+        "women-sport-tokyo-women-team"
+      ],
+      "tags": [
+        "athlete"
+      ]
+    },
+    {
+      "text": "王曼昱",
+      "pinyin": "wang man yu",
+      "category": "woman",
+      "source_ids": [
+        "women-sport-tokyo-women-team"
+      ],
+      "tags": [
+        "athlete"
+      ]
+    },
+    {
+      "text": "石川佳纯",
+      "pinyin": "shi chuan jia chun",
+      "category": "woman",
+      "source_ids": [
+        "women-sport-table-tennis-women-final"
+      ],
+      "tags": [
+        "athlete"
+      ]
+    },
+    {
+      "text": "平野美宇",
+      "pinyin": "ping ye mei yu",
+      "category": "woman",
+      "source_ids": [
+        "women-sport-table-tennis-women-final"
+      ],
+      "tags": [
+        "athlete"
+      ]
+    },
+    {
+      "text": "伊藤美诚",
+      "pinyin": "yi teng mei cheng",
+      "category": "woman",
+      "source_ids": [
+        "women-sport-table-tennis-women-final"
+      ],
+      "tags": [
+        "athlete"
+      ]
+    },
+    {
+      "text": "全红婵",
+      "pinyin": "quan hong chan",
+      "category": "woman",
+      "source_ids": [
+        "women-sport-women-diving-2024"
+      ],
+      "tags": [
+        "athlete"
+      ]
+    },
+    {
+      "text": "陈芋汐",
+      "pinyin": "chen yu xi",
+      "category": "woman",
+      "source_ids": [
+        "women-sport-women-diving-2024"
+      ],
+      "tags": [
+        "athlete"
+      ]
+    },
+    {
+      "text": "陈艺文",
+      "pinyin": "chen yi wen",
+      "category": "woman",
+      "source_ids": [
+        "women-sport-women-diving-2024"
+      ],
+      "tags": [
+        "athlete"
+      ]
+    },
+    {
+      "text": "昌雅妮",
+      "pinyin": "chang ya ni",
+      "category": "woman",
+      "source_ids": [
+        "women-sport-women-diving-2024"
+      ],
+      "tags": [
+        "athlete"
+      ]
+    },
+    {
+      "text": "张雨霏",
+      "pinyin": "zhang yu fei",
+      "category": "woman",
+      "source_ids": [
+        "women-sport-women-swimming-2023"
+      ],
+      "tags": [
+        "athlete"
+      ]
+    },
+    {
+      "text": "叶诗文",
+      "pinyin": "ye shi wen",
+      "category": "woman",
+      "source_ids": [
+        "women-sport-women-swimming-2023"
+      ],
+      "tags": [
+        "athlete"
+      ]
+    },
+    {
+      "text": "李冰洁",
+      "pinyin": "li bing jie",
+      "category": "woman",
+      "source_ids": [
+        "women-sport-women-swimming-2023"
+      ],
+      "tags": [
+        "athlete"
+      ]
+    },
+    {
+      "text": "余依婷",
+      "pinyin": "yu yi ting",
+      "category": "woman",
+      "source_ids": [
+        "women-sport-women-swimming-2023"
+      ],
+      "tags": [
+        "athlete"
+      ]
+    },
+    {
+      "text": "唐钱婷",
+      "pinyin": "tang qian ting",
+      "category": "woman",
+      "source_ids": [
+        "women-sport-women-swimming-2023"
+      ],
+      "tags": [
+        "athlete"
+      ]
+    },
+    {
+      "text": "朱雪莹",
+      "pinyin": "zhu xue ying",
+      "category": "woman",
+      "source_ids": [
+        "women-sport-new-champions-2021"
+      ],
+      "tags": [
+        "athlete"
+      ]
+    },
+    {
+      "text": "刘灵玲",
+      "pinyin": "liu ling ling",
+      "category": "woman",
+      "source_ids": [
+        "women-sport-new-champions-2021"
+      ],
+      "tags": [
+        "athlete"
+      ]
+    },
+    {
+      "text": "徐诗晓",
+      "pinyin": "xu shi xiao",
+      "category": "woman",
+      "source_ids": [
+        "women-sport-women-canoe-2021"
+      ],
+      "tags": [
+        "athlete"
+      ]
+    },
+    {
+      "text": "孙梦雅",
+      "pinyin": "sun meng ya",
+      "category": "woman",
+      "source_ids": [
+        "women-sport-women-canoe-2021"
+      ],
+      "tags": [
+        "athlete"
+      ]
+    },
+    {
+      "text": "郑钦文",
+      "pinyin": "zheng qin wen",
+      "category": "woman",
+      "source_ids": [
+        "women-sport-women-tennis-wimbledon"
+      ],
+      "tags": [
+        "athlete"
+      ]
+    },
+    {
+      "text": "李娜",
+      "pinyin": "li na",
+      "category": "woman",
+      "source_ids": [
+        "women-sport-women-tennis-wimbledon",
+        "women-sport-li-na-roland-garros"
+      ],
+      "tags": [
+        "athlete"
+      ]
+    },
+    {
+      "text": "张帅",
+      "pinyin": "zhang shuai",
+      "category": "woman",
+      "source_ids": [
+        "women-sport-women-tennis-wimbledon"
+      ],
+      "tags": [
+        "athlete"
+      ]
+    },
+    {
+      "text": "王欣瑜",
+      "pinyin": "wang xin yu",
+      "category": "woman",
+      "source_ids": [
+        "women-sport-women-tennis-wimbledon"
+      ],
+      "tags": [
+        "athlete"
+      ]
+    },
+    {
+      "text": "泰勒·斯威夫特",
+      "pinyin": "tai le si wei fu te",
+      "category": "woman",
+      "source_ids": [
+        "women-umusic-taylor-swift"
+      ],
+      "tags": [
+        "musician",
+        "artist"
+      ]
+    },
+    {
+      "text": "杨紫琼",
+      "pinyin": "yang zi qiong",
+      "category": "woman",
+      "source_ids": [
+        "women-hk-michelle-yeoh"
+      ],
+      "tags": [
+        "actor",
+        "artist"
+      ]
+    },
+    {
+      "text": "张曼玉",
+      "pinyin": "zhang man yu",
+      "category": "woman",
+      "source_ids": [
+        "women-goldenhorse-maggie-cheung"
+      ],
+      "tags": [
+        "actor",
+        "artist"
+      ]
+    },
+    {
+      "text": "张艾嘉",
+      "pinyin": "zhang ai jia",
+      "category": "woman",
+      "source_ids": [
+        "women-goldenhorse-sylvia-chang"
+      ],
+      "tags": [
+        "actor",
+        "director",
+        "artist"
+      ]
+    },
+    {
+      "text": "林青霞",
+      "pinyin": "lin qing xia",
+      "category": "woman",
+      "source_ids": [
+        "women-goldenhorse-brigitte-lin"
+      ],
+      "tags": [
+        "actor",
+        "artist"
+      ]
+    },
+    {
+      "text": "梅艳芳",
+      "pinyin": "mei yan fang",
+      "category": "woman",
+      "source_ids": [
+        "women-goldenhorse-anita-mui"
+      ],
+      "tags": [
+        "actor",
+        "musician",
+        "artist"
+      ]
+    },
+    {
+      "text": "王丽达",
+      "pinyin": "wang li da",
+      "category": "woman",
+      "source_ids": [
+        "women-ncpa-wang-lida-lei-jia"
+      ],
+      "tags": [
+        "musician",
+        "artist"
+      ]
+    },
+    {
+      "text": "雷佳",
+      "pinyin": "lei jia",
+      "category": "woman",
+      "source_ids": [
+        "women-ncpa-wang-lida-lei-jia"
+      ],
+      "tags": [
+        "musician",
+        "artist"
+      ]
+    },
+    {
+      "text": "吴碧霞",
+      "pinyin": "wu bi xia",
+      "category": "woman",
+      "source_ids": [
+        "women-ncpa-wu-bixia"
+      ],
+      "tags": [
+        "musician",
+        "artist"
+      ]
+    },
+    {
+      "text": "黄英",
+      "pinyin": "huang ying",
+      "category": "woman",
+      "source_ids": [
+        "women-ncpa-huang-ying"
+      ],
+      "tags": [
+        "musician",
+        "artist"
+      ]
+    },
+    {
+      "text": "殷健灵",
+      "pinyin": "yin jian ling",
+      "category": "woman",
+      "source_ids": [
+        "women-cnpubg-yin-jianling",
+        "women-cwa-delegates-2016"
+      ],
+      "tags": [
+        "writer"
+      ],
+      "note": "殷姓输入音 yin 已与中国出版集团官方英文作者页 Yin Jianling 核对。"
+    }
+  ]
+}

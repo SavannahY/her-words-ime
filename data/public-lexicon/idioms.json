@@ -1,0 +1,1608 @@
+{
+  "version": 1,
+  "description": "本项目原创选编的通用成语词头及逐字无声调全拼，覆盖求学、坚持、工作、合作、运动、日常和才能。不按性别限定能力或兴趣，不复制释义、例句或整部第三方词表。",
+  "sources": [
+    {
+      "id": "idiom-zdic-xue-yi-zhi-yong",
+      "title": "汉典：学以致用（词头和读音复核）",
+      "url": "https://www.zdic.net/hans/%E5%AD%A6%E4%BB%A5%E8%87%B4%E7%94%A8"
+    },
+    {
+      "id": "idiom-zdic-wen-gu-zhi-xin",
+      "title": "汉典：温故知新（词头和读音复核）",
+      "url": "https://www.zdic.net/hans/%E6%B8%A9%E6%95%85%E7%9F%A5%E6%96%B0"
+    },
+    {
+      "id": "idiom-zdic-ju-yi-fan-san",
+      "title": "汉典：举一反三（词头和读音复核）",
+      "url": "https://www.zdic.net/hans/%E4%B8%BE%E4%B8%80%E5%8F%8D%E4%B8%89"
+    },
+    {
+      "id": "idiom-zdic-chu-lei-pang-tong",
+      "title": "汉典：触类旁通（词头和读音复核）",
+      "url": "https://www.zdic.net/hans/%E8%A7%A6%E7%B1%BB%E6%97%81%E9%80%9A"
+    },
+    {
+      "id": "idiom-zdic-rong-hui-guan-tong",
+      "title": "汉典：融会贯通（词头和读音复核）",
+      "url": "https://www.zdic.net/hans/%E8%9E%8D%E4%BC%9A%E8%B4%AF%E9%80%9A"
+    },
+    {
+      "id": "idiom-moe-xun-xu-jian-jin",
+      "title": "教育部《成语典》：循序渐进（词头和读音复核）",
+      "url": "https://dict.idioms.moe.edu.tw/idiomView.jsp?ID=6608&la=0&webMd=2"
+    },
+    {
+      "id": "idiom-zdic-zi-zi-bu-juan",
+      "title": "汉典：孜孜不倦（词头和读音复核）",
+      "url": "https://www.zdic.net/hans/%E5%AD%9C%E5%AD%9C%E4%B8%8D%E5%80%A6"
+    },
+    {
+      "id": "idiom-zdic-qin-xue-hao-wen",
+      "title": "汉典：勤学好问（词头和读音复核）",
+      "url": "https://www.zdic.net/hans/%E5%8B%A4%E5%AD%A6%E5%A5%BD%E9%97%AE"
+    },
+    {
+      "id": "idiom-moe-bo-xue-duo-cai",
+      "title": "教育部《成语典》：博学多才（词头和读音复核）",
+      "url": "https://dict.idioms.moe.edu.tw/idiomView.jsp?ID=10551&la=0&webMd=2"
+    },
+    {
+      "id": "idiom-zdic-bo-lan-qun-shu",
+      "title": "汉典：博览群书（词头和读音复核）",
+      "url": "https://www.zdic.net/hans/%E5%8D%9A%E8%A7%88%E7%BE%A4%E4%B9%A6"
+    },
+    {
+      "id": "idiom-zdic-kai-juan-you-yi",
+      "title": "汉典：开卷有益（词头和读音复核）",
+      "url": "https://www.zdic.net/hans/%E5%BC%80%E5%8D%B7%E6%9C%89%E7%9B%8A"
+    },
+    {
+      "id": "idiom-zdic-huo-ran-kai-lang",
+      "title": "汉典：豁然开朗（词头和读音复核）",
+      "url": "https://www.zdic.net/hans/%E8%B1%81%E7%84%B6%E5%BC%80%E6%9C%97"
+    },
+    {
+      "id": "idiom-moe-mao-se-dun-kai",
+      "title": "教育部《成语典》：茅塞顿开（词头和读音复核）",
+      "url": "https://dict.idioms.moe.edu.tw/idiomView.jsp?ID=395&la=0&webMd=2"
+    },
+    {
+      "id": "idiom-zdic-shi-shi-qiu-shi",
+      "title": "汉典：实事求是（词头和读音复核）",
+      "url": "https://www.zdic.net/hans/%E5%AE%9E%E4%BA%8B%E6%B1%82%E6%98%AF"
+    },
+    {
+      "id": "idiom-zdic-jiao-ta-shi-di",
+      "title": "汉典：脚踏实地（词头和读音复核）",
+      "url": "https://www.zdic.net/hans/%E8%84%9A%E8%B8%8F%E5%AE%9E%E5%9C%B0"
+    },
+    {
+      "id": "idiom-zdic-hou-ji-bo-fa",
+      "title": "汉典：厚积薄发（词头和读音复核）",
+      "url": "https://www.zdic.net/hans/%E5%8E%9A%E7%A7%AF%E8%96%84%E5%8F%91"
+    },
+    {
+      "id": "idiom-zdic-jing-yi-qiu-jing",
+      "title": "汉典：精益求精（词头和读音复核）",
+      "url": "https://www.zdic.net/hans/%E7%B2%BE%E7%9B%8A%E6%B1%82%E7%B2%BE"
+    },
+    {
+      "id": "idiom-zdic-xue-wu-zhi-jing",
+      "title": "汉典：学无止境（词头和读音复核）",
+      "url": "https://www.zdic.net/hans/%E5%AD%A6%E6%97%A0%E6%AD%A2%E5%A2%83"
+    },
+    {
+      "id": "idiom-zdic-chi-zhi-yi-heng",
+      "title": "汉典：持之以恒（词头和读音复核）",
+      "url": "https://www.zdic.net/hans/%E6%8C%81%E4%B9%8B%E4%BB%A5%E6%81%92"
+    },
+    {
+      "id": "idiom-moe-qie-er-bu-she",
+      "title": "教育部《成语典》：锲而不舍（词头和读音复核）",
+      "url": "https://dict.idioms.moe.edu.tw/idiomView.jsp?ID=7016&la=0&webMd=2"
+    },
+    {
+      "id": "idiom-moe-zi-qiang-bu-xi",
+      "title": "教育部《成语典》：自强不息（词头和读音复核）",
+      "url": "https://dict.idioms.moe.edu.tw/idiomView.jsp?ID=1370&la=0&webMd=2"
+    },
+    {
+      "id": "idiom-moe-bai-zhe-bu-nao",
+      "title": "教育部《成语典》：百折不挠（词头和读音复核）",
+      "url": "https://dict.idioms.moe.edu.tw/idiomView.jsp?ID=114&la=0&webMd=2"
+    },
+    {
+      "id": "idiom-moe-jian-ren-bu-ba",
+      "title": "教育部《成语典》：坚韧不拔（词头和读音复核）",
+      "url": "https://dict.idioms.moe.edu.tw/idiomView.jsp?ID=12117&la=0&webMd=2"
+    },
+    {
+      "id": "idiom-zdic-jian-chi-bu-xie",
+      "title": "汉典：坚持不懈（词头和读音复核）",
+      "url": "https://www.zdic.net/hans/%E5%9D%9A%E6%8C%81%E4%B8%8D%E6%87%88"
+    },
+    {
+      "id": "idiom-zdic-yong-wang-zhi-qian",
+      "title": "汉典：勇往直前（词头和读音复核）",
+      "url": "https://www.zdic.net/hans/%E5%8B%87%E5%BE%80%E7%9B%B4%E5%89%8D"
+    },
+    {
+      "id": "idiom-moe-bu-qu-bu-nao",
+      "title": "教育部《成语典》：不屈不挠（词头和读音复核）",
+      "url": "https://dict.idioms.moe.edu.tw/idiomView.jsp?ID=-600&la=0&webMd=2"
+    },
+    {
+      "id": "idiom-zdic-fen-fa-tu-qiang",
+      "title": "汉典：奋发图强（词头和读音复核）",
+      "url": "https://www.zdic.net/hans/%E5%A5%8B%E5%8F%91%E5%9B%BE%E5%BC%BA"
+    },
+    {
+      "id": "idiom-moe-zai-jie-zai-li",
+      "title": "教育部《成语典》：再接再厉（词头和读音复核）",
+      "url": "https://dict.idioms.moe.edu.tw/idiomView.jsp?ID=-242&la=0&webMd=2"
+    },
+    {
+      "id": "idiom-zdic-quan-li-yi-fu",
+      "title": "汉典：全力以赴（词头和读音复核）",
+      "url": "https://www.zdic.net/hans/%E5%85%A8%E5%8A%9B%E4%BB%A5%E8%B5%B4"
+    },
+    {
+      "id": "idiom-moe-jin-li-er-wei",
+      "title": "教育部《成语典》：尽力而为（词头和读音复核）",
+      "url": "https://dict.idioms.moe.edu.tw/idiomView.jsp?ID=12075&la=0&webMd=2"
+    },
+    {
+      "id": "idiom-zdic-li-suo-neng-ji",
+      "title": "汉典：力所能及（词头和读音复核）",
+      "url": "https://www.zdic.net/hans/%E5%8A%9B%E6%89%80%E8%83%BD%E5%8F%8A"
+    },
+    {
+      "id": "idiom-zdic-ri-ji-yue-lei",
+      "title": "汉典：日积月累（词头和读音复核）",
+      "url": "https://www.zdic.net/hans/%E6%97%A5%E7%A7%AF%E6%9C%88%E7%B4%AF"
+    },
+    {
+      "id": "idiom-moe-ji-shao-cheng-duo",
+      "title": "教育部《成语典》：积少成多（词头和读音复核）",
+      "url": "https://dict.idioms.moe.edu.tw/idiomView.jsp?ID=-100476&la=0&webMd=2"
+    },
+    {
+      "id": "idiom-zdic-shui-di-shi-chuan",
+      "title": "汉典：水滴石穿（词头和读音复核）",
+      "url": "https://www.zdic.net/hans/%E6%B0%B4%E6%BB%B4%E7%9F%B3%E7%A9%BF"
+    },
+    {
+      "id": "idiom-zdic-sheng-ju-mu-duan",
+      "title": "汉典：绳锯木断（词头和读音复核）",
+      "url": "https://www.zdic.net/hans/%E7%BB%B3%E9%94%AF%E6%9C%A8%E6%96%AD"
+    },
+    {
+      "id": "idiom-zdic-yi-wang-wu-qian",
+      "title": "汉典：一往无前（词头和读音复核）",
+      "url": "https://www.zdic.net/hans/%E4%B8%80%E5%BE%80%E6%97%A0%E5%89%8D"
+    },
+    {
+      "id": "idiom-moe-bai-lian-cheng-gang",
+      "title": "教育部《成语典》：百炼成钢（词头和读音复核）",
+      "url": "https://dict.idioms.moe.edu.tw/idiomView.jsp?ID=12095&la=0&webMd=2"
+    },
+    {
+      "id": "idiom-zdic-da-qi-wan-cheng",
+      "title": "汉典：大器晚成（词头和读音复核）",
+      "url": "https://www.zdic.net/hans/%E5%A4%A7%E5%99%A8%E6%99%9A%E6%88%90"
+    },
+    {
+      "id": "idiom-moe-ben-niao-xian-fei",
+      "title": "教育部《成语典》：笨鸟先飞（词头和读音复核）",
+      "url": "https://dict.idioms.moe.edu.tw/idiomView.jsp?ID=8503&la=0&webMd=2"
+    },
+    {
+      "id": "idiom-zdic-yu-gong-yi-shan",
+      "title": "汉典：愚公移山（词头和读音复核）",
+      "url": "https://www.zdic.net/hans/%E6%84%9A%E5%85%AC%E7%A7%BB%E5%B1%B1"
+    },
+    {
+      "id": "idiom-moe-xiong-you-cheng-zhu",
+      "title": "教育部《成语典》：胸有成竹（词头和读音复核）",
+      "url": "https://dict.idioms.moe.edu.tw/idiomView.jsp?ID=9&la=0&webMd=2"
+    },
+    {
+      "id": "idiom-zdic-you-tiao-bu-wen",
+      "title": "汉典：有条不紊（词头和读音复核）",
+      "url": "https://www.zdic.net/hans/%E6%9C%89%E6%9D%A1%E4%B8%8D%E7%B4%8A"
+    },
+    {
+      "id": "idiom-zdic-jing-jing-you-tiao",
+      "title": "汉典：井井有条（词头和读音复核）",
+      "url": "https://www.zdic.net/hans/%E4%BA%95%E4%BA%95%E6%9C%89%E6%9D%A1"
+    },
+    {
+      "id": "idiom-zdic-wei-yu-chou-mou",
+      "title": "汉典：未雨绸缪（词头和读音复核）",
+      "url": "https://www.zdic.net/hans/%E6%9C%AA%E9%9B%A8%E7%BB%B8%E7%BC%AA"
+    },
+    {
+      "id": "idiom-zdic-xun-xun-shan-you",
+      "title": "汉典：循循善诱（词头和读音复核）",
+      "url": "https://www.zdic.net/hans/%E5%BE%AA%E5%BE%AA%E5%96%84%E8%AF%B1"
+    },
+    {
+      "id": "idiom-moe-yun-chou-wei-wo",
+      "title": "教育部《成语典》：运筹帷幄（词头和读音复核）",
+      "url": "https://dict.idioms.moe.edu.tw/idiomView.jsp?ID=693&la=0&webMd=2"
+    },
+    {
+      "id": "idiom-moe-shen-shi-duo-shi",
+      "title": "教育部《成语典》：审时度势（词头和读音复核）",
+      "url": "https://dict.idioms.moe.edu.tw/idiomView.jsp?ID=8740&la=0&webMd=2"
+    },
+    {
+      "id": "idiom-zdic-jian-wei-zhi-zhu",
+      "title": "汉典：见微知著（词头和读音复核）",
+      "url": "https://www.zdic.net/hans/%E8%A7%81%E5%BE%AE%E7%9F%A5%E8%91%97"
+    },
+    {
+      "id": "idiom-moe-chu-bian-bu-jing",
+      "title": "教育部《成语典》：处变不惊（词头和读音复核）",
+      "url": "https://dict.idioms.moe.edu.tw/idiomView.jsp?ID=17918&la=0&webMd=2"
+    },
+    {
+      "id": "idiom-moe-ying-fu-zi-ru",
+      "title": "教育部《成语典》：应付自如（词头和读音复核）",
+      "url": "https://dict.idioms.moe.edu.tw/idiomView.jsp?ID=12934&la=0&webMd=2"
+    },
+    {
+      "id": "idiom-zdic-du-dang-yi-mian",
+      "title": "汉典：独当一面（词头和读音复核）",
+      "url": "https://www.zdic.net/hans/%E7%8B%AC%E5%BD%93%E4%B8%80%E9%9D%A2"
+    },
+    {
+      "id": "idiom-zdic-zhuo-you-cheng-xiao",
+      "title": "汉典：卓有成效（词头和读音复核）",
+      "url": "https://www.zdic.net/hans/%E5%8D%93%E6%9C%89%E6%88%90%E6%95%88"
+    },
+    {
+      "id": "idiom-zdic-shi-ban-gong-bei",
+      "title": "汉典：事半功倍（词头和读音复核）",
+      "url": "https://www.zdic.net/hans/%E4%BA%8B%E5%8D%8A%E5%8A%9F%E5%80%8D"
+    },
+    {
+      "id": "idiom-zdic-yi-si-bu-gou",
+      "title": "汉典：一丝不苟（词头和读音复核）",
+      "url": "https://www.zdic.net/hans/%E4%B8%80%E4%B8%9D%E4%B8%8D%E8%8B%9F"
+    },
+    {
+      "id": "idiom-moe-jing-jing-ye-ye",
+      "title": "教育部《成语典》：兢兢业业（词头和读音复核）",
+      "url": "https://dict.idioms.moe.edu.tw/idiomView.jsp?ID=-811&la=0&webMd=2"
+    },
+    {
+      "id": "idiom-zdic-tong-xin-xie-li",
+      "title": "汉典：同心协力（词头和读音复核）",
+      "url": "https://www.zdic.net/hans/%E5%90%8C%E5%BF%83%E5%8D%8F%E5%8A%9B"
+    },
+    {
+      "id": "idiom-zdic-qi-xin-xie-li",
+      "title": "汉典：齐心协力（词头和读音复核）",
+      "url": "https://www.zdic.net/hans/%E9%BD%90%E5%BF%83%E5%8D%8F%E5%8A%9B"
+    },
+    {
+      "id": "idiom-zdic-ji-si-guang-yi",
+      "title": "汉典：集思广益（词头和读音复核）",
+      "url": "https://www.zdic.net/hans/%E9%9B%86%E6%80%9D%E5%B9%BF%E7%9B%8A"
+    },
+    {
+      "id": "idiom-zdic-ge-shu-ji-jian",
+      "title": "汉典：各抒己见（词头和读音复核）",
+      "url": "https://www.zdic.net/hans/%E5%90%84%E6%8A%92%E5%B7%B1%E8%A7%81"
+    },
+    {
+      "id": "idiom-zdic-qu-chang-bu-duan",
+      "title": "汉典：取长补短（词头和读音复核）",
+      "url": "https://www.zdic.net/hans/%E5%8F%96%E9%95%BF%E8%A1%A5%E7%9F%AD"
+    },
+    {
+      "id": "idiom-zdic-xiang-fu-xiang-cheng",
+      "title": "汉典：相辅相成（词头和读音复核）",
+      "url": "https://www.zdic.net/hans/%E7%9B%B8%E8%BE%85%E7%9B%B8%E6%88%90"
+    },
+    {
+      "id": "idiom-zdic-xiang-de-yi-zhang",
+      "title": "汉典：相得益彰（词头和读音复核）",
+      "url": "https://www.zdic.net/hans/%E7%9B%B8%E5%BE%97%E7%9B%8A%E5%BD%B0"
+    },
+    {
+      "id": "idiom-zdic-kai-cheng-bu-gong",
+      "title": "汉典：开诚布公（词头和读音复核）",
+      "url": "https://www.zdic.net/hans/%E5%BC%80%E8%AF%9A%E5%B8%83%E5%85%AC"
+    },
+    {
+      "id": "idiom-zdic-qiu-tong-cun-yi",
+      "title": "汉典：求同存异（词头和读音复核）",
+      "url": "https://www.zdic.net/hans/%E6%B1%82%E5%90%8C%E5%AD%98%E5%BC%82"
+    },
+    {
+      "id": "idiom-zdic-zhi-tong-dao-he",
+      "title": "汉典：志同道合（词头和读音复核）",
+      "url": "https://www.zdic.net/hans/%E5%BF%97%E5%90%8C%E9%81%93%E5%90%88"
+    },
+    {
+      "id": "idiom-zdic-sheng-long-huo-hu",
+      "title": "汉典：生龙活虎（词头和读音复核）",
+      "url": "https://www.zdic.net/hans/%E7%94%9F%E9%BE%99%E6%B4%BB%E8%99%8E"
+    },
+    {
+      "id": "idiom-zdic-long-teng-hu-yue",
+      "title": "汉典：龙腾虎跃（词头和读音复核）",
+      "url": "https://www.zdic.net/hans/%E9%BE%99%E8%85%BE%E8%99%8E%E8%B7%83"
+    },
+    {
+      "id": "idiom-zdic-jian-bu-ru-fei",
+      "title": "汉典：健步如飞（词头和读音复核）",
+      "url": "https://www.zdic.net/hans/%E5%81%A5%E6%AD%A5%E5%A6%82%E9%A3%9E"
+    },
+    {
+      "id": "idiom-zdic-yi-qi-feng-fa",
+      "title": "汉典：意气风发（词头和读音复核）",
+      "url": "https://www.zdic.net/hans/%E6%84%8F%E6%B0%94%E9%A3%8E%E5%8F%91"
+    },
+    {
+      "id": "idiom-zdic-dou-zhi-ang-yang",
+      "title": "汉典：斗志昂扬（词头和读音复核）",
+      "url": "https://www.zdic.net/hans/%E6%96%97%E5%BF%97%E6%98%82%E6%89%AC"
+    },
+    {
+      "id": "idiom-moe-fen-yong-zheng-xian",
+      "title": "教育部《成语典》：奋勇争先（词头和读音复核）",
+      "url": "https://dict.idioms.moe.edu.tw/idiomView.jsp?ID=15998&la=0&webMd=2"
+    },
+    {
+      "id": "idiom-zdic-cheng-feng-po-lang",
+      "title": "汉典：乘风破浪（词头和读音复核）",
+      "url": "https://www.zdic.net/hans/%E4%B9%98%E9%A3%8E%E7%A0%B4%E6%B5%AA"
+    },
+    {
+      "id": "idiom-moe-shi-ru-po-zhu",
+      "title": "教育部《成语典》：势如破竹（词头和读音复核）",
+      "url": "https://dict.idioms.moe.edu.tw/idiomView.jsp?ID=5177&la=0&webMd=2"
+    },
+    {
+      "id": "idiom-moe-ying-tou-gan-shang",
+      "title": "教育部《成语典》：迎头赶上（词头和读音复核）",
+      "url": "https://dict.idioms.moe.edu.tw/idiomView.jsp?ID=7581&la=0&webMd=2"
+    },
+    {
+      "id": "idiom-zdic-fen-qi-zhi-zhui",
+      "title": "汉典：奋起直追（词头和读音复核）",
+      "url": "https://www.zdic.net/hans/%E5%A5%8B%E8%B5%B7%E7%9B%B4%E8%BF%BD"
+    },
+    {
+      "id": "idiom-zdic-cong-rong-bu-po",
+      "title": "汉典：从容不迫（词头和读音复核）",
+      "url": "https://www.zdic.net/hans/%E4%BB%8E%E5%AE%B9%E4%B8%8D%E8%BF%AB"
+    },
+    {
+      "id": "idiom-zdic-you-ren-you-yu",
+      "title": "汉典：游刃有余（词头和读音复核）",
+      "url": "https://www.zdic.net/hans/%E6%B8%B8%E5%88%83%E6%9C%89%E4%BD%99"
+    },
+    {
+      "id": "idiom-zdic-de-xin-ying-shou",
+      "title": "汉典：得心应手（词头和读音复核）",
+      "url": "https://www.zdic.net/hans/%E5%BE%97%E5%BF%83%E5%BA%94%E6%89%8B"
+    },
+    {
+      "id": "idiom-moe-tai-ran-zi-ruo",
+      "title": "教育部《成语典》：泰然自若（词头和读音复核）",
+      "url": "https://dict.idioms.moe.edu.tw/idiomView.jsp?ID=11785&la=0&webMd=2"
+    },
+    {
+      "id": "idiom-zdic-sui-yu-er-an",
+      "title": "汉典：随遇而安（词头和读音复核）",
+      "url": "https://www.zdic.net/hans/%E9%9A%8F%E9%81%87%E8%80%8C%E5%AE%89"
+    },
+    {
+      "id": "idiom-zdic-zhi-zu-chang-le",
+      "title": "汉典：知足常乐（词头和读音复核）",
+      "url": "https://www.zdic.net/hans/%E7%9F%A5%E8%B6%B3%E5%B8%B8%E4%B9%90"
+    },
+    {
+      "id": "idiom-moe-le-zai-qi-zhong",
+      "title": "教育部《成语典》：乐在其中（词头和读音复核）",
+      "url": "https://dict.idioms.moe.edu.tw/idiomView.jsp?ID=12626&la=0&webMd=2"
+    },
+    {
+      "id": "idiom-zdic-xing-zhi-bo-bo",
+      "title": "汉典：兴致勃勃（词头和读音复核）",
+      "url": "https://www.zdic.net/hans/%E5%85%B4%E8%87%B4%E5%8B%83%E5%8B%83"
+    },
+    {
+      "id": "idiom-zdic-shen-cai-yi-yi",
+      "title": "汉典：神采奕奕（词头和读音复核）",
+      "url": "https://www.zdic.net/hans/%E7%A5%9E%E9%87%87%E5%A5%95%E5%A5%95"
+    },
+    {
+      "id": "idiom-moe-xin-kuang-shen-yi",
+      "title": "教育部《成语典》：心旷神怡（词头和读音复核）",
+      "url": "https://dict.idioms.moe.edu.tw/idiomView.jsp?ID=5678&la=0&webMd=2"
+    },
+    {
+      "id": "idiom-zdic-yi-ran-zi-de",
+      "title": "汉典：怡然自得（词头和读音复核）",
+      "url": "https://www.zdic.net/hans/%E6%80%A1%E7%84%B6%E8%87%AA%E5%BE%97"
+    },
+    {
+      "id": "idiom-moe-hai-kuo-tian-kong",
+      "title": "教育部《成语典》：海阔天空（词头和读音复核）",
+      "url": "https://dict.idioms.moe.edu.tw/idiomView.jsp?ID=5569&la=0&webMd=2"
+    },
+    {
+      "id": "idiom-zdic-xin-xin-xiang-rong",
+      "title": "汉典：欣欣向荣（词头和读音复核）",
+      "url": "https://www.zdic.net/hans/%E6%AC%A3%E6%AC%A3%E5%90%91%E8%8D%A3"
+    },
+    {
+      "id": "idiom-zdic-zheng-zheng-ri-shang",
+      "title": "汉典：蒸蒸日上（词头和读音复核）",
+      "url": "https://www.zdic.net/hans/%E8%92%B8%E8%92%B8%E6%97%A5%E4%B8%8A"
+    },
+    {
+      "id": "idiom-zdic-ri-xin-yue-yi",
+      "title": "汉典：日新月异（词头和读音复核）",
+      "url": "https://www.zdic.net/hans/%E6%97%A5%E6%96%B0%E6%9C%88%E5%BC%82"
+    },
+    {
+      "id": "idiom-zdic-cai-hua-heng-yi",
+      "title": "汉典：才华横溢（词头和读音复核）",
+      "url": "https://www.zdic.net/hans/%E6%89%8D%E5%8D%8E%E6%A8%AA%E6%BA%A2"
+    },
+    {
+      "id": "idiom-zdic-cai-si-min-jie",
+      "title": "汉典：才思敏捷（词头和读音复核）",
+      "url": "https://www.zdic.net/hans/%E6%89%8D%E6%80%9D%E6%95%8F%E6%8D%B7"
+    },
+    {
+      "id": "idiom-moe-wen-si-quan-yong",
+      "title": "教育部《成语典》：文思泉涌（词头和读音复核）",
+      "url": "https://dict.idioms.moe.edu.tw/idiomView.jsp?ID=-127725&la=0&webMd=2"
+    },
+    {
+      "id": "idiom-moe-chu-kou-cheng-zhang",
+      "title": "教育部《成语典》：出口成章（词头和读音复核）",
+      "url": "https://dict.idioms.moe.edu.tw/idiomView.jsp?ID=1313&la=0&webMd=2"
+    },
+    {
+      "id": "idiom-zdic-miao-bi-sheng-hua",
+      "title": "汉典：妙笔生花（词头和读音复核）",
+      "url": "https://www.zdic.net/hans/%E5%A6%99%E7%AC%94%E7%94%9F%E8%8A%B1"
+    },
+    {
+      "id": "idiom-zdic-du-ju-jiang-xin",
+      "title": "汉典：独具匠心（词头和读音复核）",
+      "url": "https://www.zdic.net/hans/%E7%8B%AC%E5%85%B7%E5%8C%A0%E5%BF%83"
+    },
+    {
+      "id": "idiom-zdic-jiang-xin-du-yun",
+      "title": "汉典：匠心独运（词头和读音复核）",
+      "url": "https://www.zdic.net/hans/%E5%8C%A0%E5%BF%83%E7%8B%AC%E8%BF%90"
+    },
+    {
+      "id": "idiom-moe-chu-lei-ba-cui",
+      "title": "教育部《成语典》：出类拔萃（词头和读音复核）",
+      "url": "https://dict.idioms.moe.edu.tw/idiomView.jsp?ID=5217&la=0&webMd=2"
+    },
+    {
+      "id": "idiom-moe-tuo-ying-er-chu",
+      "title": "教育部《成语典》：脱颖而出（词头和读音复核）",
+      "url": "https://dict.idioms.moe.edu.tw/idiomView.jsp?ID=823&la=0&webMd=2"
+    },
+    {
+      "id": "idiom-moe-jin-guo-ying-xiong",
+      "title": "教育部《成语典》：巾帼英雄（词头和读音复核）",
+      "url": "https://dict.idioms.moe.edu.tw/idiomView.jsp?ID=7744&la=0&webMd=2"
+    }
+  ],
+  "entries": [
+    {
+      "text": "学以致用",
+      "pinyin": "xue yi zhi yong",
+      "category": "idiom",
+      "source_ids": [
+        "idiom-zdic-xue-yi-zhi-yong"
+      ],
+      "tags": [
+        "learning"
+      ]
+    },
+    {
+      "text": "温故知新",
+      "pinyin": "wen gu zhi xin",
+      "category": "idiom",
+      "source_ids": [
+        "idiom-zdic-wen-gu-zhi-xin"
+      ],
+      "tags": [
+        "learning"
+      ]
+    },
+    {
+      "text": "举一反三",
+      "pinyin": "ju yi fan san",
+      "category": "idiom",
+      "source_ids": [
+        "idiom-zdic-ju-yi-fan-san"
+      ],
+      "tags": [
+        "learning"
+      ]
+    },
+    {
+      "text": "触类旁通",
+      "pinyin": "chu lei pang tong",
+      "category": "idiom",
+      "source_ids": [
+        "idiom-zdic-chu-lei-pang-tong"
+      ],
+      "tags": [
+        "learning"
+      ]
+    },
+    {
+      "text": "融会贯通",
+      "pinyin": "rong hui guan tong",
+      "category": "idiom",
+      "source_ids": [
+        "idiom-zdic-rong-hui-guan-tong"
+      ],
+      "tags": [
+        "learning"
+      ]
+    },
+    {
+      "text": "循序渐进",
+      "pinyin": "xun xu jian jin",
+      "category": "idiom",
+      "source_ids": [
+        "idiom-moe-xun-xu-jian-jin"
+      ],
+      "tags": [
+        "learning"
+      ]
+    },
+    {
+      "text": "孜孜不倦",
+      "pinyin": "zi zi bu juan",
+      "category": "idiom",
+      "source_ids": [
+        "idiom-zdic-zi-zi-bu-juan"
+      ],
+      "tags": [
+        "learning"
+      ]
+    },
+    {
+      "text": "勤学好问",
+      "pinyin": "qin xue hao wen",
+      "category": "idiom",
+      "source_ids": [
+        "idiom-zdic-qin-xue-hao-wen"
+      ],
+      "tags": [
+        "learning"
+      ]
+    },
+    {
+      "text": "博学多才",
+      "pinyin": "bo xue duo cai",
+      "category": "idiom",
+      "source_ids": [
+        "idiom-moe-bo-xue-duo-cai"
+      ],
+      "tags": [
+        "learning"
+      ]
+    },
+    {
+      "text": "博览群书",
+      "pinyin": "bo lan qun shu",
+      "category": "idiom",
+      "source_ids": [
+        "idiom-zdic-bo-lan-qun-shu"
+      ],
+      "tags": [
+        "learning"
+      ]
+    },
+    {
+      "text": "开卷有益",
+      "pinyin": "kai juan you yi",
+      "category": "idiom",
+      "source_ids": [
+        "idiom-zdic-kai-juan-you-yi"
+      ],
+      "tags": [
+        "learning"
+      ]
+    },
+    {
+      "text": "豁然开朗",
+      "pinyin": "huo ran kai lang",
+      "category": "idiom",
+      "source_ids": [
+        "idiom-zdic-huo-ran-kai-lang"
+      ],
+      "tags": [
+        "learning"
+      ]
+    },
+    {
+      "text": "茅塞顿开",
+      "pinyin": "mao se dun kai",
+      "category": "idiom",
+      "source_ids": [
+        "idiom-moe-mao-se-dun-kai"
+      ],
+      "tags": [
+        "learning"
+      ]
+    },
+    {
+      "text": "实事求是",
+      "pinyin": "shi shi qiu shi",
+      "category": "idiom",
+      "source_ids": [
+        "idiom-zdic-shi-shi-qiu-shi"
+      ],
+      "tags": [
+        "learning"
+      ]
+    },
+    {
+      "text": "脚踏实地",
+      "pinyin": "jiao ta shi di",
+      "category": "idiom",
+      "source_ids": [
+        "idiom-zdic-jiao-ta-shi-di"
+      ],
+      "tags": [
+        "learning"
+      ]
+    },
+    {
+      "text": "厚积薄发",
+      "pinyin": "hou ji bo fa",
+      "category": "idiom",
+      "source_ids": [
+        "idiom-zdic-hou-ji-bo-fa"
+      ],
+      "tags": [
+        "learning"
+      ]
+    },
+    {
+      "text": "精益求精",
+      "pinyin": "jing yi qiu jing",
+      "category": "idiom",
+      "source_ids": [
+        "idiom-zdic-jing-yi-qiu-jing"
+      ],
+      "tags": [
+        "learning"
+      ]
+    },
+    {
+      "text": "学无止境",
+      "pinyin": "xue wu zhi jing",
+      "category": "idiom",
+      "source_ids": [
+        "idiom-zdic-xue-wu-zhi-jing"
+      ],
+      "tags": [
+        "learning"
+      ]
+    },
+    {
+      "text": "持之以恒",
+      "pinyin": "chi zhi yi heng",
+      "category": "idiom",
+      "source_ids": [
+        "idiom-zdic-chi-zhi-yi-heng"
+      ],
+      "tags": [
+        "learning"
+      ]
+    },
+    {
+      "text": "锲而不舍",
+      "pinyin": "qie er bu she",
+      "category": "idiom",
+      "source_ids": [
+        "idiom-moe-qie-er-bu-she"
+      ],
+      "tags": [
+        "learning"
+      ]
+    },
+    {
+      "text": "自强不息",
+      "pinyin": "zi qiang bu xi",
+      "category": "idiom",
+      "source_ids": [
+        "idiom-moe-zi-qiang-bu-xi"
+      ],
+      "tags": [
+        "resilience"
+      ]
+    },
+    {
+      "text": "百折不挠",
+      "pinyin": "bai zhe bu nao",
+      "category": "idiom",
+      "source_ids": [
+        "idiom-moe-bai-zhe-bu-nao"
+      ],
+      "tags": [
+        "resilience"
+      ]
+    },
+    {
+      "text": "坚韧不拔",
+      "pinyin": "jian ren bu ba",
+      "category": "idiom",
+      "source_ids": [
+        "idiom-moe-jian-ren-bu-ba"
+      ],
+      "tags": [
+        "resilience"
+      ]
+    },
+    {
+      "text": "坚持不懈",
+      "pinyin": "jian chi bu xie",
+      "category": "idiom",
+      "source_ids": [
+        "idiom-zdic-jian-chi-bu-xie"
+      ],
+      "tags": [
+        "resilience"
+      ]
+    },
+    {
+      "text": "勇往直前",
+      "pinyin": "yong wang zhi qian",
+      "category": "idiom",
+      "source_ids": [
+        "idiom-zdic-yong-wang-zhi-qian"
+      ],
+      "tags": [
+        "resilience"
+      ]
+    },
+    {
+      "text": "不屈不挠",
+      "pinyin": "bu qu bu nao",
+      "category": "idiom",
+      "source_ids": [
+        "idiom-moe-bu-qu-bu-nao"
+      ],
+      "tags": [
+        "resilience"
+      ]
+    },
+    {
+      "text": "奋发图强",
+      "pinyin": "fen fa tu qiang",
+      "category": "idiom",
+      "source_ids": [
+        "idiom-zdic-fen-fa-tu-qiang"
+      ],
+      "tags": [
+        "resilience"
+      ]
+    },
+    {
+      "text": "再接再厉",
+      "pinyin": "zai jie zai li",
+      "category": "idiom",
+      "source_ids": [
+        "idiom-moe-zai-jie-zai-li"
+      ],
+      "tags": [
+        "resilience"
+      ]
+    },
+    {
+      "text": "全力以赴",
+      "pinyin": "quan li yi fu",
+      "category": "idiom",
+      "source_ids": [
+        "idiom-zdic-quan-li-yi-fu"
+      ],
+      "tags": [
+        "resilience"
+      ]
+    },
+    {
+      "text": "尽力而为",
+      "pinyin": "jin li er wei",
+      "category": "idiom",
+      "source_ids": [
+        "idiom-moe-jin-li-er-wei"
+      ],
+      "tags": [
+        "resilience"
+      ]
+    },
+    {
+      "text": "力所能及",
+      "pinyin": "li suo neng ji",
+      "category": "idiom",
+      "source_ids": [
+        "idiom-zdic-li-suo-neng-ji"
+      ],
+      "tags": [
+        "resilience"
+      ]
+    },
+    {
+      "text": "日积月累",
+      "pinyin": "ri ji yue lei",
+      "category": "idiom",
+      "source_ids": [
+        "idiom-zdic-ri-ji-yue-lei"
+      ],
+      "tags": [
+        "resilience"
+      ]
+    },
+    {
+      "text": "积少成多",
+      "pinyin": "ji shao cheng duo",
+      "category": "idiom",
+      "source_ids": [
+        "idiom-moe-ji-shao-cheng-duo"
+      ],
+      "tags": [
+        "resilience"
+      ]
+    },
+    {
+      "text": "水滴石穿",
+      "pinyin": "shui di shi chuan",
+      "category": "idiom",
+      "source_ids": [
+        "idiom-zdic-shui-di-shi-chuan"
+      ],
+      "tags": [
+        "resilience"
+      ]
+    },
+    {
+      "text": "绳锯木断",
+      "pinyin": "sheng ju mu duan",
+      "category": "idiom",
+      "source_ids": [
+        "idiom-zdic-sheng-ju-mu-duan"
+      ],
+      "tags": [
+        "resilience"
+      ]
+    },
+    {
+      "text": "一往无前",
+      "pinyin": "yi wang wu qian",
+      "category": "idiom",
+      "source_ids": [
+        "idiom-zdic-yi-wang-wu-qian"
+      ],
+      "tags": [
+        "resilience"
+      ]
+    },
+    {
+      "text": "百炼成钢",
+      "pinyin": "bai lian cheng gang",
+      "category": "idiom",
+      "source_ids": [
+        "idiom-moe-bai-lian-cheng-gang"
+      ],
+      "tags": [
+        "resilience"
+      ]
+    },
+    {
+      "text": "大器晚成",
+      "pinyin": "da qi wan cheng",
+      "category": "idiom",
+      "source_ids": [
+        "idiom-zdic-da-qi-wan-cheng"
+      ],
+      "tags": [
+        "resilience"
+      ]
+    },
+    {
+      "text": "笨鸟先飞",
+      "pinyin": "ben niao xian fei",
+      "category": "idiom",
+      "source_ids": [
+        "idiom-moe-ben-niao-xian-fei"
+      ],
+      "tags": [
+        "resilience"
+      ]
+    },
+    {
+      "text": "愚公移山",
+      "pinyin": "yu gong yi shan",
+      "category": "idiom",
+      "source_ids": [
+        "idiom-zdic-yu-gong-yi-shan"
+      ],
+      "tags": [
+        "resilience"
+      ]
+    },
+    {
+      "text": "胸有成竹",
+      "pinyin": "xiong you cheng zhu",
+      "category": "idiom",
+      "source_ids": [
+        "idiom-moe-xiong-you-cheng-zhu"
+      ],
+      "tags": [
+        "work"
+      ]
+    },
+    {
+      "text": "有条不紊",
+      "pinyin": "you tiao bu wen",
+      "category": "idiom",
+      "source_ids": [
+        "idiom-zdic-you-tiao-bu-wen"
+      ],
+      "tags": [
+        "work"
+      ]
+    },
+    {
+      "text": "井井有条",
+      "pinyin": "jing jing you tiao",
+      "category": "idiom",
+      "source_ids": [
+        "idiom-zdic-jing-jing-you-tiao"
+      ],
+      "tags": [
+        "work"
+      ]
+    },
+    {
+      "text": "未雨绸缪",
+      "pinyin": "wei yu chou mou",
+      "category": "idiom",
+      "source_ids": [
+        "idiom-zdic-wei-yu-chou-mou"
+      ],
+      "tags": [
+        "work"
+      ]
+    },
+    {
+      "text": "循循善诱",
+      "pinyin": "xun xun shan you",
+      "category": "idiom",
+      "source_ids": [
+        "idiom-zdic-xun-xun-shan-you"
+      ],
+      "tags": [
+        "work"
+      ]
+    },
+    {
+      "text": "运筹帷幄",
+      "pinyin": "yun chou wei wo",
+      "category": "idiom",
+      "source_ids": [
+        "idiom-moe-yun-chou-wei-wo"
+      ],
+      "tags": [
+        "work"
+      ]
+    },
+    {
+      "text": "审时度势",
+      "pinyin": "shen shi duo shi",
+      "category": "idiom",
+      "source_ids": [
+        "idiom-moe-shen-shi-duo-shi"
+      ],
+      "tags": [
+        "work"
+      ]
+    },
+    {
+      "text": "见微知著",
+      "pinyin": "jian wei zhi zhu",
+      "category": "idiom",
+      "source_ids": [
+        "idiom-zdic-jian-wei-zhi-zhu"
+      ],
+      "tags": [
+        "work"
+      ]
+    },
+    {
+      "text": "处变不惊",
+      "pinyin": "chu bian bu jing",
+      "category": "idiom",
+      "source_ids": [
+        "idiom-moe-chu-bian-bu-jing"
+      ],
+      "tags": [
+        "work"
+      ]
+    },
+    {
+      "text": "应付自如",
+      "pinyin": "ying fu zi ru",
+      "category": "idiom",
+      "source_ids": [
+        "idiom-moe-ying-fu-zi-ru"
+      ],
+      "tags": [
+        "work"
+      ]
+    },
+    {
+      "text": "独当一面",
+      "pinyin": "du dang yi mian",
+      "category": "idiom",
+      "source_ids": [
+        "idiom-zdic-du-dang-yi-mian"
+      ],
+      "tags": [
+        "work"
+      ]
+    },
+    {
+      "text": "卓有成效",
+      "pinyin": "zhuo you cheng xiao",
+      "category": "idiom",
+      "source_ids": [
+        "idiom-zdic-zhuo-you-cheng-xiao"
+      ],
+      "tags": [
+        "work"
+      ]
+    },
+    {
+      "text": "事半功倍",
+      "pinyin": "shi ban gong bei",
+      "category": "idiom",
+      "source_ids": [
+        "idiom-zdic-shi-ban-gong-bei"
+      ],
+      "tags": [
+        "work"
+      ]
+    },
+    {
+      "text": "一丝不苟",
+      "pinyin": "yi si bu gou",
+      "category": "idiom",
+      "source_ids": [
+        "idiom-zdic-yi-si-bu-gou"
+      ],
+      "tags": [
+        "work"
+      ]
+    },
+    {
+      "text": "兢兢业业",
+      "pinyin": "jing jing ye ye",
+      "category": "idiom",
+      "source_ids": [
+        "idiom-moe-jing-jing-ye-ye"
+      ],
+      "tags": [
+        "work"
+      ]
+    },
+    {
+      "text": "同心协力",
+      "pinyin": "tong xin xie li",
+      "category": "idiom",
+      "source_ids": [
+        "idiom-zdic-tong-xin-xie-li"
+      ],
+      "tags": [
+        "cooperation"
+      ]
+    },
+    {
+      "text": "齐心协力",
+      "pinyin": "qi xin xie li",
+      "category": "idiom",
+      "source_ids": [
+        "idiom-zdic-qi-xin-xie-li"
+      ],
+      "tags": [
+        "cooperation"
+      ]
+    },
+    {
+      "text": "集思广益",
+      "pinyin": "ji si guang yi",
+      "category": "idiom",
+      "source_ids": [
+        "idiom-zdic-ji-si-guang-yi"
+      ],
+      "tags": [
+        "cooperation"
+      ]
+    },
+    {
+      "text": "各抒己见",
+      "pinyin": "ge shu ji jian",
+      "category": "idiom",
+      "source_ids": [
+        "idiom-zdic-ge-shu-ji-jian"
+      ],
+      "tags": [
+        "cooperation"
+      ]
+    },
+    {
+      "text": "取长补短",
+      "pinyin": "qu chang bu duan",
+      "category": "idiom",
+      "source_ids": [
+        "idiom-zdic-qu-chang-bu-duan"
+      ],
+      "tags": [
+        "cooperation"
+      ]
+    },
+    {
+      "text": "相辅相成",
+      "pinyin": "xiang fu xiang cheng",
+      "category": "idiom",
+      "source_ids": [
+        "idiom-zdic-xiang-fu-xiang-cheng"
+      ],
+      "tags": [
+        "cooperation"
+      ]
+    },
+    {
+      "text": "相得益彰",
+      "pinyin": "xiang de yi zhang",
+      "category": "idiom",
+      "source_ids": [
+        "idiom-zdic-xiang-de-yi-zhang"
+      ],
+      "tags": [
+        "cooperation"
+      ]
+    },
+    {
+      "text": "开诚布公",
+      "pinyin": "kai cheng bu gong",
+      "category": "idiom",
+      "source_ids": [
+        "idiom-zdic-kai-cheng-bu-gong"
+      ],
+      "tags": [
+        "cooperation"
+      ]
+    },
+    {
+      "text": "求同存异",
+      "pinyin": "qiu tong cun yi",
+      "category": "idiom",
+      "source_ids": [
+        "idiom-zdic-qiu-tong-cun-yi"
+      ],
+      "tags": [
+        "cooperation"
+      ]
+    },
+    {
+      "text": "志同道合",
+      "pinyin": "zhi tong dao he",
+      "category": "idiom",
+      "source_ids": [
+        "idiom-zdic-zhi-tong-dao-he"
+      ],
+      "tags": [
+        "cooperation"
+      ]
+    },
+    {
+      "text": "生龙活虎",
+      "pinyin": "sheng long huo hu",
+      "category": "idiom",
+      "source_ids": [
+        "idiom-zdic-sheng-long-huo-hu"
+      ],
+      "tags": [
+        "sport"
+      ]
+    },
+    {
+      "text": "龙腾虎跃",
+      "pinyin": "long teng hu yue",
+      "category": "idiom",
+      "source_ids": [
+        "idiom-zdic-long-teng-hu-yue"
+      ],
+      "tags": [
+        "sport"
+      ]
+    },
+    {
+      "text": "健步如飞",
+      "pinyin": "jian bu ru fei",
+      "category": "idiom",
+      "source_ids": [
+        "idiom-zdic-jian-bu-ru-fei"
+      ],
+      "tags": [
+        "sport"
+      ]
+    },
+    {
+      "text": "意气风发",
+      "pinyin": "yi qi feng fa",
+      "category": "idiom",
+      "source_ids": [
+        "idiom-zdic-yi-qi-feng-fa"
+      ],
+      "tags": [
+        "sport"
+      ]
+    },
+    {
+      "text": "斗志昂扬",
+      "pinyin": "dou zhi ang yang",
+      "category": "idiom",
+      "source_ids": [
+        "idiom-zdic-dou-zhi-ang-yang"
+      ],
+      "tags": [
+        "sport"
+      ]
+    },
+    {
+      "text": "奋勇争先",
+      "pinyin": "fen yong zheng xian",
+      "category": "idiom",
+      "source_ids": [
+        "idiom-moe-fen-yong-zheng-xian"
+      ],
+      "tags": [
+        "sport"
+      ]
+    },
+    {
+      "text": "乘风破浪",
+      "pinyin": "cheng feng po lang",
+      "category": "idiom",
+      "source_ids": [
+        "idiom-zdic-cheng-feng-po-lang"
+      ],
+      "tags": [
+        "sport"
+      ]
+    },
+    {
+      "text": "势如破竹",
+      "pinyin": "shi ru po zhu",
+      "category": "idiom",
+      "source_ids": [
+        "idiom-moe-shi-ru-po-zhu"
+      ],
+      "tags": [
+        "sport"
+      ]
+    },
+    {
+      "text": "迎头赶上",
+      "pinyin": "ying tou gan shang",
+      "category": "idiom",
+      "source_ids": [
+        "idiom-moe-ying-tou-gan-shang"
+      ],
+      "tags": [
+        "sport"
+      ]
+    },
+    {
+      "text": "奋起直追",
+      "pinyin": "fen qi zhi zhui",
+      "category": "idiom",
+      "source_ids": [
+        "idiom-zdic-fen-qi-zhi-zhui"
+      ],
+      "tags": [
+        "sport"
+      ]
+    },
+    {
+      "text": "从容不迫",
+      "pinyin": "cong rong bu po",
+      "category": "idiom",
+      "source_ids": [
+        "idiom-zdic-cong-rong-bu-po"
+      ],
+      "tags": [
+        "daily"
+      ]
+    },
+    {
+      "text": "游刃有余",
+      "pinyin": "you ren you yu",
+      "category": "idiom",
+      "source_ids": [
+        "idiom-zdic-you-ren-you-yu"
+      ],
+      "tags": [
+        "daily"
+      ]
+    },
+    {
+      "text": "得心应手",
+      "pinyin": "de xin ying shou",
+      "category": "idiom",
+      "source_ids": [
+        "idiom-zdic-de-xin-ying-shou"
+      ],
+      "tags": [
+        "daily"
+      ]
+    },
+    {
+      "text": "泰然自若",
+      "pinyin": "tai ran zi ruo",
+      "category": "idiom",
+      "source_ids": [
+        "idiom-moe-tai-ran-zi-ruo"
+      ],
+      "tags": [
+        "daily"
+      ]
+    },
+    {
+      "text": "随遇而安",
+      "pinyin": "sui yu er an",
+      "category": "idiom",
+      "source_ids": [
+        "idiom-zdic-sui-yu-er-an"
+      ],
+      "tags": [
+        "daily"
+      ]
+    },
+    {
+      "text": "知足常乐",
+      "pinyin": "zhi zu chang le",
+      "category": "idiom",
+      "source_ids": [
+        "idiom-zdic-zhi-zu-chang-le"
+      ],
+      "tags": [
+        "daily"
+      ]
+    },
+    {
+      "text": "乐在其中",
+      "pinyin": "le zai qi zhong",
+      "category": "idiom",
+      "source_ids": [
+        "idiom-moe-le-zai-qi-zhong"
+      ],
+      "tags": [
+        "daily"
+      ]
+    },
+    {
+      "text": "兴致勃勃",
+      "pinyin": "xing zhi bo bo",
+      "category": "idiom",
+      "source_ids": [
+        "idiom-zdic-xing-zhi-bo-bo"
+      ],
+      "tags": [
+        "daily"
+      ]
+    },
+    {
+      "text": "神采奕奕",
+      "pinyin": "shen cai yi yi",
+      "category": "idiom",
+      "source_ids": [
+        "idiom-zdic-shen-cai-yi-yi"
+      ],
+      "tags": [
+        "daily"
+      ]
+    },
+    {
+      "text": "心旷神怡",
+      "pinyin": "xin kuang shen yi",
+      "category": "idiom",
+      "source_ids": [
+        "idiom-moe-xin-kuang-shen-yi"
+      ],
+      "tags": [
+        "daily"
+      ]
+    },
+    {
+      "text": "怡然自得",
+      "pinyin": "yi ran zi de",
+      "category": "idiom",
+      "source_ids": [
+        "idiom-zdic-yi-ran-zi-de"
+      ],
+      "tags": [
+        "daily"
+      ]
+    },
+    {
+      "text": "海阔天空",
+      "pinyin": "hai kuo tian kong",
+      "category": "idiom",
+      "source_ids": [
+        "idiom-moe-hai-kuo-tian-kong"
+      ],
+      "tags": [
+        "daily"
+      ]
+    },
+    {
+      "text": "欣欣向荣",
+      "pinyin": "xin xin xiang rong",
+      "category": "idiom",
+      "source_ids": [
+        "idiom-zdic-xin-xin-xiang-rong"
+      ],
+      "tags": [
+        "daily"
+      ]
+    },
+    {
+      "text": "蒸蒸日上",
+      "pinyin": "zheng zheng ri shang",
+      "category": "idiom",
+      "source_ids": [
+        "idiom-zdic-zheng-zheng-ri-shang"
+      ],
+      "tags": [
+        "daily"
+      ]
+    },
+    {
+      "text": "日新月异",
+      "pinyin": "ri xin yue yi",
+      "category": "idiom",
+      "source_ids": [
+        "idiom-zdic-ri-xin-yue-yi"
+      ],
+      "tags": [
+        "daily"
+      ]
+    },
+    {
+      "text": "才华横溢",
+      "pinyin": "cai hua heng yi",
+      "category": "idiom",
+      "source_ids": [
+        "idiom-zdic-cai-hua-heng-yi"
+      ],
+      "tags": [
+        "talent"
+      ]
+    },
+    {
+      "text": "才思敏捷",
+      "pinyin": "cai si min jie",
+      "category": "idiom",
+      "source_ids": [
+        "idiom-zdic-cai-si-min-jie"
+      ],
+      "tags": [
+        "talent"
+      ]
+    },
+    {
+      "text": "文思泉涌",
+      "pinyin": "wen si quan yong",
+      "category": "idiom",
+      "source_ids": [
+        "idiom-moe-wen-si-quan-yong"
+      ],
+      "tags": [
+        "talent"
+      ]
+    },
+    {
+      "text": "出口成章",
+      "pinyin": "chu kou cheng zhang",
+      "category": "idiom",
+      "source_ids": [
+        "idiom-moe-chu-kou-cheng-zhang"
+      ],
+      "tags": [
+        "talent"
+      ]
+    },
+    {
+      "text": "妙笔生花",
+      "pinyin": "miao bi sheng hua",
+      "category": "idiom",
+      "source_ids": [
+        "idiom-zdic-miao-bi-sheng-hua"
+      ],
+      "tags": [
+        "talent"
+      ]
+    },
+    {
+      "text": "独具匠心",
+      "pinyin": "du ju jiang xin",
+      "category": "idiom",
+      "source_ids": [
+        "idiom-zdic-du-ju-jiang-xin"
+      ],
+      "tags": [
+        "talent"
+      ]
+    },
+    {
+      "text": "匠心独运",
+      "pinyin": "jiang xin du yun",
+      "category": "idiom",
+      "source_ids": [
+        "idiom-zdic-jiang-xin-du-yun"
+      ],
+      "tags": [
+        "talent"
+      ]
+    },
+    {
+      "text": "出类拔萃",
+      "pinyin": "chu lei ba cui",
+      "category": "idiom",
+      "source_ids": [
+        "idiom-moe-chu-lei-ba-cui"
+      ],
+      "tags": [
+        "talent"
+      ]
+    },
+    {
+      "text": "脱颖而出",
+      "pinyin": "tuo ying er chu",
+      "category": "idiom",
+      "source_ids": [
+        "idiom-moe-tuo-ying-er-chu"
+      ],
+      "tags": [
+        "talent"
+      ]
+    },
+    {
+      "text": "巾帼英雄",
+      "pinyin": "jin guo ying xiong",
+      "category": "idiom",
+      "source_ids": [
+        "idiom-moe-jin-guo-ying-xiong"
+      ],
+      "tags": [
+        "courage"
+      ]
+    }
+  ]
+}

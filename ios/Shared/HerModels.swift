@@ -31,11 +31,21 @@ public struct HerLexiconEntry: Codable, Sendable {
     /// Full pinyin, with syllables separated by ASCII spaces; v represents ü.
     public let pinyin: String
     public let weight: Double
+    /// Public catalog metadata. Aliases are input spellings, never pinyin.
+    public let category: String?
+    public let aliases: [String]?
+    /// Newly added/restored public words follow the existing ordinary first
+    /// candidate; they do not change the base dictionary's sentence ranking.
+    public let supplemental: Bool?
 
-    public init(text: String, pinyin: String, weight: Double) {
+    public init(text: String, pinyin: String, weight: Double,
+                category: String? = nil, aliases: [String]? = nil, supplemental: Bool? = nil) {
         self.text = text
         self.pinyin = pinyin
         self.weight = weight
+        self.category = category
+        self.aliases = aliases
+        self.supplemental = supplemental
     }
 }
 

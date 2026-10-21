@@ -3,6 +3,7 @@
 -- Rule data lives separately so wording changes do not require engine changes.
 local rule_data = require("her_rewrite_rules")
 local memory = require("her_memory")
+local public_data = require("her_public_aliases")
 local rules = {}
 
 for index, rule in ipairs(rule_data.rules or {}) do
@@ -89,6 +90,14 @@ local function annotation(comment, label)
   return comment .. " · " .. label
 end
 
+local function init(env)
+  memory.init(env)
+  -- The supported librime-lua Opencc object is created once per component,
+  -- rather than repeatedly allocating a converter while candidates are lazy.
+  local ok, converter = pcall(function() return Opencc("s2t.json") end)
+  env.her_public_traditional = ok and converter or nil
+end
+
 local function filter(input, env)
   memory.refresh(env)
   local context = env.engine.context
@@ -98,14 +107,15 @@ local function filter(input, env)
   local label = community and "社群写法" or "友好表达"
   local seen = {}
   local pending_aliases
+  local pending_public
 
   local function emit(candidate, text, comment)
     if memory.is_blocked(env, candidate.text) or memory.is_blocked(env, text)
-        or memory.is_blocked(env, comment) then return end
+        or memory.is_blocked(env, comment) then return false end
     local key = tostring(candidate.start) .. ":"
         .. tostring(candidate._end) .. ":" .. text
     if seen[key] then
-      return
+      return false
     end
     seen[key] = true
     if text ~= candidate.text or comment ~= (candidate.comment or "") then
@@ -115,6 +125,7 @@ local function filter(input, env)
     else
       yield(candidate)
     end
+    return true
   end
 
   local composition = context.composition
@@ -145,6 +156,41 @@ local function filter(input, env)
 
       if enabled then
         pending_aliases = { raw = raw, start = segment.start, finish = segment._end }
+      end
+      pending_public = { raw = raw, start = segment.start, finish = segment._end }
+    end
+  end
+
+  local function emit_public()
+    if not pending_public then return end
+    local segment = pending_public
+    pending_public = nil
+    for _, section in ipairs({ "readings", "aliases" }) do
+      for _, word in ipairs(public_data[section] or {}) do
+        if segment.raw == word.input then
+          local text, replaced = rewrite(word.text, enabled, community, simplified)
+          if not simplified then
+            -- Public data is canonical simplified Chinese and is injected after
+            -- the scheme's normal simplifier. Convert the complete display
+            -- through OpenCC; keep raw word.text for the private block check.
+            if env.her_public_traditional then
+              local ok, original = pcall(function() return env.her_public_traditional:convert(word.text) end)
+              if not ok or type(original) ~= "string" or original == "" or memory.is_blocked(env, original) then
+                text = nil
+              elseif text == word.text then
+                text = original
+              else
+                local converted_ok, converted = pcall(function() return env.her_public_traditional:convert(text) end)
+                text = converted_ok and type(converted) == "string" and converted ~= "" and converted or nil
+              end
+            else
+              text = nil
+            end
+          end
+          local comment = section == "aliases" and "公共词库 · 英文别名" or "公共词库"
+          if replaced then comment = annotation(comment, label) end
+          if text then emit(Candidate("her_public", segment.start, segment.finish, word.text, ""), text, comment) end
+        end
       end
     end
   end
@@ -193,11 +239,15 @@ local function filter(input, env)
       comment = annotation(comment, label)
     end
     if replaced then emit_aliases() end
-    emit(candidate, text, comment)
+    local emitted = emit(candidate, text, comment)
     emit_aliases()
+    -- Public facts and brand spellings never replace an existing normal first
+    -- candidate. Every addition still passes the same private suppression gate.
+    if emitted then emit_public() end
   end
   -- A translator with no candidates can still provide a friendly alias.
   emit_aliases()
+  emit_public()
 end
 
-return { init = memory.init, fini = memory.fini, func = filter }
+return { init = init, fini = memory.fini, func = filter }

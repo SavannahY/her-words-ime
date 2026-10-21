@@ -12,7 +12,7 @@
 
 安装后，在 iPhone「设置 → 通用 → 键盘 → 键盘 → 添加新键盘」启用 **她说键盘**，输入时长按地球键切换。
 
-- 离线全拼，47,084 条读音数据，支持候选横向滚动、分词、中英文、数字与常用标点。
+- 离线全拼，包含固定版本的基础读音数据与公共姓名、成语、品牌词库，支持候选横向滚动、分词、中英文、数字与常用标点。
 - 默认中性表达，键盘顶部可切换社群写法或保留措辞；三种模式都保留「他 → 她」。
 - 键盘无需「允许完全访问」，不联网、不读取聊天上下文或剪贴板；可在本机记住已确认的短词、人名和英文词，并随时关闭、删除或设为不再推荐。
 - 语音转文字在主 App 中使用：可下载约 60 MB 的离线中英模型，也可选择 Apple 设备端／联网识别。整理结果默认「他／它 → 她」，英文保留原文。检查结果后复制到目标 App。
@@ -64,6 +64,12 @@ python3 scripts/install_macos.py
 安装后从 macOS 输入菜单选择 **Squirrel - Simplified / 鼠须管**。如果是第一次安装鼠须管，请在「系统设置 → 键盘 → 文字输入 → 编辑」添加鼠须管；个别应用可能需要重开，或保存工作后注销再登录。
 
 Windows 与 Linux 的 Rime 理论上可使用本项目配置，但本轮只验证了 macOS；不提供未经验证的一键安装承诺。
+
+## 女性人物姓名、成语与品牌
+
+首批公共词库有 **101 条女性人物姓名词形、100 条常用成语和 12 个品牌名**。在中文全拼模式中，例如 `yangjiang → 杨绛`、`tuyouyou → 屠呦呦`、`shangyeqianhezi → 上野千鹤子`、`ziqiangbuxi → 自强不息`；品牌也可用收录的英文名输入，如 `bobbibrown → 芭比波朗`。Mac 与 iPhone 从同一数据生成，公共建议保留原有正常第一候选，本地「不再推荐」仍然优先。
+
+每条词有读音、类别及来源。品牌说明区分女性创办历史、设计定位与支持项目，不把收录当作整家企业的女性友好认证。可以[提议新词](https://github.com/SavannahY/her-words-ime/issues/new?template=public-word-proposal.yml)，或修改 [`data/public-lexicon/`](data/public-lexicon/)；格式和收录依据见 [公共词库说明](docs/public-lexicon.md)。
 
 ## 本地词库与不再推荐
 
@@ -144,6 +150,7 @@ python3 scripts/serve_voice.py
 python3 scripts/validate_packs.py
 python3 -m unittest discover -s tests -p 'test_*.py'
 python3 scripts/compile_packs.py --output rime/lua/her_rewrite_rules.lua
+python3 scripts/compile_public_lexicon.py --check
 ```
 
 macOS 上还可以使用鼠须管内置的真实引擎进行隔离验收：

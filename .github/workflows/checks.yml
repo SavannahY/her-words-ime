@@ -29,6 +29,8 @@ jobs:
         run: node web/verify-speech-text.mjs
       - name: Compile selected language packs
         run: python3 scripts/compile_packs.py --output generated/her_rewrite_rules.lua
+      - name: Verify public names, idioms and brand spelling artifacts
+        run: python3 scripts/compile_public_lexicon.py --check
       - name: Compile the same language packs for the voice tool
         run: python3 scripts/compile_web_rules.py --output generated/web-rules.json
       - name: Verify committed iPhone resources and project
@@ -51,6 +53,10 @@ jobs:
         run: |
           swiftc -swift-version 5 -O ios/Shared/*.swift ios/Tests/WordMemoryChecks.swift -o "$RUNNER_TEMP/her-memory-checks"
           "$RUNNER_TEMP/her-memory-checks" "$GITHUB_WORKSPACE"
+      - name: Verify supplemental public candidates and private suppression
+        run: |
+          swiftc -swift-version 5 -O ios/Shared/*.swift ios/Tests/PublicLexiconChecks.swift -o "$RUNNER_TEMP/her-public-checks"
+          "$RUNNER_TEMP/her-public-checks" "$GITHUB_WORKSPACE"
       - name: Verify Mac word memory file protocol
         run: |
           swiftc -swift-version 5 -O native/Sources/HerSpeechMac/MacWordMemoryStore.swift native/Tests/MacWordMemoryChecks.swift -o "$RUNNER_TEMP/her-mac-memory-checks"
@@ -125,3 +131,5 @@ jobs:
         run: python3 tests/integration_rime.py --app "$RUNNER_TEMP/squirrel/Payload/Squirrel.app" --config rime --report "$RUNNER_TEMP/her-words-results.json"
       - name: Verify real local word learning and deletion
         run: python3 tests/integration_word_memory.py --app "$RUNNER_TEMP/squirrel/Payload/Squirrel.app"
+      - name: Verify public names, idioms, aliases and private suppression
+        run: python3 tests/integration_public_lexicon.py --app "$RUNNER_TEMP/squirrel/Payload/Squirrel.app"
