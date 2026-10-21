@@ -29,6 +29,42 @@ jobs:
         run: python3 scripts/compile_packs.py --output generated/her_rewrite_rules.lua
       - name: Compile the same language packs for the voice tool
         run: python3 scripts/compile_web_rules.py --output generated/web-rules.json
+      - name: Verify committed iPhone resources and project
+        run: |
+          python3 scripts/compile_ios_data.py --check
+          python3 scripts/generate_ios_project.py --check
+  iphone:
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Verify shared Swift input engine
+        run: |
+          swiftc -swift-version 5 -O ios/Shared/*.swift ios/Tests/EngineChecks.swift -o "$RUNNER_TEMP/her-engine-checks"
+          "$RUNNER_TEMP/her-engine-checks" "$GITHUB_WORKSPACE"
+      - name: Build iPhone simulator app and keyboard
+        run: |
+          if ! xcodebuild -project ios/HerWords.xcodeproj -scheme HerWords -configuration Debug -sdk iphonesimulator -destination 'generic/platform=iOS Simulator' -derivedDataPath "$RUNNER_TEMP/her-simulator" CODE_SIGNING_ALLOWED=NO build > "$RUNNER_TEMP/her-simulator.log" 2>&1; then
+            tail -n 120 "$RUNNER_TEMP/her-simulator.log"
+            exit 1
+          fi
+          test -d "$RUNNER_TEMP/her-simulator/Build/Products/Debug-iphonesimulator/HerWords.app/PlugIns/HerWordsKeyboard.appex"
+      - name: Build iPhone device app and keyboard without signing
+        run: |
+          if ! xcodebuild -project ios/HerWords.xcodeproj -scheme HerWords -configuration Release -sdk iphoneos -destination 'generic/platform=iOS' -derivedDataPath "$RUNNER_TEMP/her-device" CODE_SIGNING_ALLOWED=NO build > "$RUNNER_TEMP/her-device.log" 2>&1; then
+            tail -n 120 "$RUNNER_TEMP/her-device.log"
+            exit 1
+          fi
+          test -d "$RUNNER_TEMP/her-device/Build/Products/Release-iphoneos/HerWords.app/PlugIns/HerWordsKeyboard.appex"
+      - name: Preserve unsigned build and diagnostics
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: iPhone-unsigned-build-and-logs
+          path: |
+            ${{ runner.temp }}/her-device/Build/Products/Release-iphoneos/HerWords.app
+            ${{ runner.temp }}/her-device.log
+            ${{ runner.temp }}/her-simulator.log
+          retention-days: 7
   macos-engine:
     runs-on: macos-latest
     steps:

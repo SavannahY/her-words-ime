@@ -1,10 +1,30 @@
 # 她说 · Her Words IME
 
-一个女性友好的中文系统输入方案。基于 Rime，在微信、备忘录、浏览器等应用里使用键盘全拼输入。
+女性友好的中文输入法，包含 **iPhone 原生键盘扩展**、macOS Rime 方案与语音转文字工具。iPhone 版目前用于个人试装，需要用自己的 Apple 账户签名。
 
 默认以「她」为第三人称，按具体词语提供更友好的表达。正常的女字旁用词与正常同音词保留。**语言包可以通过 Pull Request 共同维护；社群借字包单独收录，手动启用。**
 
 同一仓库也包含本地打开的中文语音转文字工具，与系统输入法共用语言包。
+
+## iPhone 个人试用
+
+打开 [`ios/HerWords.xcodeproj`](ios/HerWords.xcodeproj)，选择 **HerWords** scheme，用 Xcode 给主 App 和键盘扩展设置自己的 Team，连接 iPhone 后运行。免费 Personal Team 可用于个人试装，通常每七天需要重新签名安装。完整步骤见 **[iPhone 安装说明](docs/iphone-install.md)**。
+
+安装后，在 iPhone「设置 → 通用 → 键盘 → 键盘 → 添加新键盘」启用 **她说键盘**，输入时长按地球键切换。
+
+- 离线全拼，47,084 条读音数据，支持候选横向滚动、分词、中英文、数字与常用标点。
+- 默认中性表达，键盘顶部可切换社群写法或保留措辞；三种模式都保留「他 → 她」。
+- 键盘无需「允许完全访问」，不联网、不记录打字内容，也不读取剪贴板。
+- 语音转文字在主 App 中使用，默认只在设备端识别；联网识别需主动选择。检查结果后复制到目标 App。
+
+这是首个试用版本，采用本地词频和有限拼句，没有商业输入法的云端预测或自适应学习。密码框等系统限制场景会回到系统键盘。设备签名、触摸手感和内存表现需要继续在真机试用；CI 编译通过不能代替安装验收。
+
+第三方拼音数据来自固定版本的 Rime 简体拼音词典，按 Apache-2.0 分发，详见 [iOS 数据与许可](ios/THIRD_PARTY_NOTICES.md)。手机规则直接从同一社区语言包生成：
+
+```sh
+python3 scripts/compile_ios_data.py
+python3 scripts/generate_ios_project.py
+```
 
 ## 输入体验
 
@@ -97,7 +117,7 @@ macOS 上还可以使用鼠须管内置的真实引擎进行隔离验收：
 python3 tests/integration_rime.py --config rime
 ```
 
-引擎验收使用临时目录，不动当前 Rime 用户目录。范围与结果见 [验证记录](docs/validation.md)。GitHub Actions 执行词包校验、编译、单元测试与 macOS 真实引擎验收。
+引擎验收使用临时目录，不动当前 Rime 用户目录。范围与结果见 [验证记录](docs/validation.md)。GitHub Actions 执行词包校验、编译、单元测试、macOS 真实引擎验收，以及 iPhone 模拟器和设备架构的无签名构建。
 
 ## 实现与许可
 

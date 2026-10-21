@@ -1,0 +1,3 @@
+// Keep personal signing values in ignored Local.xcconfig.
+HER_BUNDLE_PREFIX = org.herwords.personal
+#include? "Local.xcconfig"

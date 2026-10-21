@@ -2,6 +2,8 @@
 
 本仓库提供 Rime 用户方案、独立 Lua 过滤器和语言包，没有打包鼠须管应用、librime、OpenCC 或朙月拼音的完整字典。
 
+iPhone 版本另含经筛选的 Rime 简体拼音文本数据，来源与 Apache-2.0 许可见 [iOS 第三方说明](ios/THIRD_PARTY_NOTICES.md)。该数据的许可独立于根目录 MIT License，随 App 提供原始署名及许可证。
+
 - [Squirrel / 鼠须管](https://github.com/rime/squirrel)：macOS 输入法前端，按其上游 GPL-3.0 等许可分发。
 - [librime](https://github.com/rime/librime)：输入引擎，按其上游 BSD-3-Clause 许可分发。
 - [librime-lua](https://github.com/hchunhui/librime-lua)：Lua 扩展，按其上游许可分发。

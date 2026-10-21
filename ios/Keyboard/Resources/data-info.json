@@ -1,0 +1,80 @@
+{
+  "counts": {
+    "alias_input_codes": 43,
+    "alias_restored_upstream_readings": 10,
+    "lexicon_readings": 47084,
+    "lexicon_unique_texts": 46436,
+    "maximum_weight": 4828294,
+    "project_added_new_readings": 25,
+    "project_dictionary_readings": 42,
+    "project_restored_upstream_readings": 2,
+    "selected_upstream_multi_character_readings": 30000,
+    "upstream_alias_readings": 36,
+    "upstream_readings": 65125,
+    "upstream_single_character_readings": 17047,
+    "upstream_unique_single_characters": 16472
+  },
+  "files": {
+    "Rime-Pinyin-Simp-AUTHORS.txt": {
+      "bytes": 177,
+      "sha256": "f4cff0fcbca4668ac449c24a53be547e162bc60cce63fdc5d5906801a452edc4"
+    },
+    "Rime-Pinyin-Simp-LICENSE.txt": {
+      "bytes": 11358,
+      "sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30"
+    },
+    "lexicon.json": {
+      "bytes": 2303287,
+      "sha256": "b9bc49c5c4e08c306362a56f1d3ff2844afa4376da1c4be637f3e2538e0d6176"
+    },
+    "rules.json": {
+      "bytes": 14663,
+      "sha256": "a25fe5171054439552a98e53130417098239909d5b9933a82dd5ba4107570fd7"
+    }
+  },
+  "format": "her-words-ios-data",
+  "selection": {
+    "all_upstream_single_character_readings": true,
+    "all_upstream_whole_word_alias_homophones": true,
+    "multi_word_limit": 30000,
+    "project_new_reading_seed_weight": 200,
+    "upstream_frequency_preserved": true
+  },
+  "source_sha256": {
+    "manifest": "02a3616481a9398ac663e6a7d4cd714566c2ce62af12229a33190f285cf07ddf",
+    "packs": {
+      "community-zh-cn": "76efc5a44e6967795578e40deaaeb58523af4d812b91bdf09845540416243e14",
+      "neutral-zh-cn": "8448733d8fa99b5e71a17093dc6a536f47bbd0fda3170adfed61dc826e272cbc"
+    },
+    "project_dictionary": "900a381104458de96db147b6404e95b623494af051c0ce450bc1eca7d73fb5e0"
+  },
+  "upstream": {
+    "commit": "0c6861ef7420ee780270ca6d993d18d4101049d0",
+    "commit_date": "2024-12-29T09:47:36Z",
+    "files": {
+      "AUTHORS": {
+        "bytes": 177,
+        "sha256": "f4cff0fcbca4668ac449c24a53be547e162bc60cce63fdc5d5906801a452edc4",
+        "url": "https://raw.githubusercontent.com/rime/rime-pinyin-simp/0c6861ef7420ee780270ca6d993d18d4101049d0/AUTHORS"
+      },
+      "LICENSE": {
+        "bytes": 11358,
+        "sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+        "url": "https://raw.githubusercontent.com/rime/rime-pinyin-simp/0c6861ef7420ee780270ca6d993d18d4101049d0/LICENSE"
+      },
+      "README.md": {
+        "bytes": 255,
+        "sha256": "bc51038baf2408cc5ec9eba680634cfd4ec07f905a636644839daff1a94055c9",
+        "url": "https://raw.githubusercontent.com/rime/rime-pinyin-simp/0c6861ef7420ee780270ca6d993d18d4101049d0/README.md"
+      },
+      "pinyin_simp.dict.yaml": {
+        "bytes": 1266216,
+        "sha256": "e341598343a0f0f2035bb1aafc34a7f3bb7887deeecb3f60796262aaa2983e6b",
+        "url": "https://raw.githubusercontent.com/rime/rime-pinyin-simp/0c6861ef7420ee780270ca6d993d18d4101049d0/pinyin_simp.dict.yaml"
+      }
+    },
+    "license": "Apache-2.0",
+    "repository": "https://github.com/rime/rime-pinyin-simp"
+  },
+  "version": 1
+}

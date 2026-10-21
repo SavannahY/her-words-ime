@@ -22,7 +22,7 @@ python3 scripts/validate_packs.py --manifest language-packs.json
 python3 scripts/compile_packs.py --manifest language-packs.json --output generated/her_rewrite_rules.lua
 ```
 
-提交词包及相关测试；生成文件用于本地验收，由 CI 重新生成，无需提交。请在词包中修改规则，再重新编译。PR 中简要说明改了什么、来源支持什么，以及测试结果。
+提交词包及相关测试。Lua 与浏览器生成文件用于本地验收，由 CI 重新生成，无需提交；iPhone 随包资源需要运行 `python3 scripts/compile_ios_data.py` 并提交更新后的 `ios/Keyboard/Resources/`，CI 会比较它们与词包是否一致。请在词包中修改规则，再重新编译。PR 中简要说明改了什么、来源支持什么，以及测试结果。
 
 词语替换与拼音候选排序是两件事。`pinyin` 记录原词的输入码，不能因此挤掉同音的正常首项，例如 `ji du` 的“极度”、`sheng nv` 的“圣女”；`jian ren` 的“坚韧”等正常候选也应保留。原本的首项排序随词典和用户习惯变化，测试应与同一引擎的原词模式比较。
 
