@@ -23,11 +23,8 @@ final class MacAppDelegate: NSObject, NSApplicationDelegate {
 
 @main
 @MainActor
-struct HerSpeechMacApp: App {
-    @NSApplicationDelegateAdaptor(MacAppDelegate.self) private var delegate
-    @StateObject private var model = MacSpeechModel()
-
-    init() {
+private enum MacSpeechLauncher {
+    static func main() {
         if CommandLine.arguments.contains("--check-resources") {
             do {
                 for name in ["rules.json", "profiles.json", "asr-model.json", "Speech-Notice.txt",
@@ -49,7 +46,14 @@ struct HerSpeechMacApp: App {
                 exit(1)
             }
         }
+        HerSpeechMacApp.main()
     }
+}
+
+@MainActor
+struct HerSpeechMacApp: App {
+    @NSApplicationDelegateAdaptor(MacAppDelegate.self) private var delegate
+    @StateObject private var model = MacSpeechModel()
 
     var body: some Scene {
         Window("她说语音", id: "main") {

@@ -50,8 +50,8 @@ Apple 设备端识别应先检查支持情况；不支持时须明确选择联�
 在仓库根目录、安装可用的 Swift 5.9+ 工具链后运行。首次构建需要获取 SwiftPM 依赖；主动下载模型后，文件识别在本机进行，不请求麦克风权限。
 
 ```sh
-swift run her-transcribe --download-model
-swift run her-transcribe --audio "/音频所在目录/中英录音.m4a" --hotword "GitHub" --hotword "Swift" --json
+swift run --disable-keychain --disable-netrc her-transcribe --download-model
+swift run --disable-keychain --disable-netrc her-transcribe --audio "/音频所在目录/中英录音.m4a" --hotword "GitHub" --hotword "Swift" --json
 ```
 
 单独 `--audio` 不会自动下载模型。可加 `--model-directory "/模型目录"` 指定模型位置；只下载时也可使用。普通输出显示原文与结果，`--json` 输出 `rawText`、`text`、模型修订、音频时长和处理耗时。系统支持的本地音频通过 `AVAudioFile` / `AVAudioConverter` 分块转换为 16 kHz 单声道浮点数据，不把整段解码音频一次性载入内存。

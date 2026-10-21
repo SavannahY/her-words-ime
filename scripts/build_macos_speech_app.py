@@ -22,10 +22,11 @@ def build(configuration, skip_build=False):
                    capture_output=True, text=True).stdout.strip()
     environment = os.environ.copy()
     environment["SDKROOT"] = sdk_path
+    swift_build = ["swift", "build", "--disable-keychain", "--disable-netrc"]
     if not skip_build:
-        run(["swift", "build", "-c", configuration, "--product", "her-speech-mac"], env=environment)
+        run(swift_build + ["-c", configuration, "--product", "her-speech-mac"], env=environment)
     binary_directory = Path(run(
-        ["swift", "build", "-c", configuration, "--show-bin-path"],
+        swift_build + ["-c", configuration, "--show-bin-path"],
         capture_output=True, text=True, env=environment).stdout.strip())
     binary = binary_directory / "her-speech-mac"
     if not binary.is_file():

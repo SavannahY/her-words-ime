@@ -21,6 +21,7 @@ final class MacAudioTranscriber {
     private(set) var state: State = .idle
     private let inference = MacInferenceQueue()
     private var engine: AVAudioEngine?
+    private var configurationObserver: NSObjectProtocol?
     private var hasTap = false
     private var generation = 0
     private var transcript = ""
@@ -112,6 +113,14 @@ final class MacAudioTranscriber {
             audio.prepare()
             try audio.start()
             state = .listening
+            configurationObserver = NotificationCenter.default.addObserver(
+                forName: .AVAudioEngineConfigurationChange, object: audio, queue: .main
+            ) { [weak self] _ in
+                DispatchQueue.main.async {
+                    guard let self = self, self.generation == token, self.state == .listening else { return }
+                    self.cancel(message: "音频输入设备发生变化，录音已停止。请检查麦克风后重新开始。")
+                }
+            }
             publish("正在本机识别中文与英文；音频不上传、不写入文件。")
         } catch {
             cancel(message: "无法开始录音：" + error.localizedDescription)
@@ -145,6 +154,10 @@ final class MacAudioTranscriber {
     }
 
     private func stopAudio() {
+        if let observer = configurationObserver {
+            NotificationCenter.default.removeObserver(observer)
+            configurationObserver = nil
+        }
         engine?.stop()
         if hasTap { engine?.inputNode.removeTap(onBus: 0); hasTap = false }
         engine = nil

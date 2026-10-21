@@ -10,6 +10,7 @@ final class BilingualAudioTranscriber {
     private var recognizer: HerBilingualRecognizer? // queue only
     private var activeToken: Int? // queue only; rejects delayed taps from earlier recordings
     private var engine: AVAudioEngine?
+    private var configurationObserver: NSObjectProtocol?
     private var hasTap = false
     private var activated = false
     private var generation = 0 // main queue only
@@ -17,6 +18,7 @@ final class BilingualAudioTranscriber {
     private var transcript = ""
 
     deinit {
+        if let observer = configurationObserver { NotificationCenter.default.removeObserver(observer) }
         engine?.stop()
         if hasTap { engine?.inputNode.removeTap(onBus: 0) }
         if activated { try? AVAudioSession.sharedInstance().setActive(false, options: .notifyOthersOnDeactivation) }
@@ -104,6 +106,12 @@ final class BilingualAudioTranscriber {
             audio.prepare()
             try audio.start()
             state = .listening
+            configurationObserver = NotificationCenter.default.addObserver(
+                forName: .AVAudioEngineConfigurationChange, object: audio, queue: .main
+            ) { [weak self] _ in
+                guard let self = self, self.generation == token, self.state == .listening else { return }
+                self.cancel(message: "音频输入设备发生变化，录音已停止。请检查麦克风后重新开始。")
+            }
             publish("正在离线识别中文与英文，音频留在设备内。")
         } catch { cancel(message: "无法开始录音：" + error.localizedDescription) }
     }
@@ -142,6 +150,10 @@ final class BilingualAudioTranscriber {
     }
 
     private func stopAudio() {
+        if let observer = configurationObserver {
+            NotificationCenter.default.removeObserver(observer)
+            configurationObserver = nil
+        }
         engine?.stop()
         if hasTap { engine?.inputNode.removeTap(onBus: 0); hasTap = false }
         engine = nil

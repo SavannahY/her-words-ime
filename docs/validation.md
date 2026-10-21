@@ -53,3 +53,14 @@ python3 tests/integration_rime.py --casesJSON /path/to/cases.json
 CI 应使用 macOS runner，下载固定版本的官方安装包、校验 SHA-256、展开到 runner 的临时目录，编译语言包后将展开的应用路径传给 `--app`。不需要安装或启用系统输入法。其他平台可以运行语言包静态检查；这些真实引擎用例依赖 macOS 动态库，文件名也有意避开 `test_`，防止被通用 Python 测试发现流程自动执行。
 
 底层封装通过 [librime 公开 C API](https://github.com/rime/librime/blob/1.16.0/src/rime_api.h) 的版本与结构大小检查绑定函数，不依赖私有实现接口。
+
+
+## 2026-10-20：离线中英语音
+
+在 [bad5118 的 GitHub Actions](https://github.com/SavannahY/her-words-ime/actions/runs/39525536501) 的 macOS 26 arm64 runner 上，真实 SwiftPM 原生构建、公开混合音频推理及 iPhone 模拟器／设备无签名构建均通过。键盘扩展不链接语音运行时。文字层另有 Swift 71 项与 JavaScript 63 项，检查三种模式、网址／邮箱／代码保护；这些文字测试不代表声学识别质量。
+
+真实推理使用 `speech/test-audio.json` 中固定修订、固定大小和 SHA-256 的上游公开 `0.wav`，以及 `speech/asr-model.json` 的五个文件。没有打开用户麦克风或读取私人录音。greedy 与热词 beam 两种解码输出相同：
+
+> 昨天是 MONDAY TODAY IS THEY AFTER TOMORROW是星期三
+
+该例保留了中英文，但英语部分仍存在误识别，不能据此宣称准确率优于 Apple。真实测试还验证了结束幂等、结束后拒绝追加音频、重建流后结果一致。公开样例及模型文件下载与真人口音、噪声环境、真机速度和麦克风生命周期验收分开记录；用户自己的录音尚未实测。

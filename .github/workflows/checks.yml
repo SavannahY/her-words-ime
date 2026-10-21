@@ -48,12 +48,27 @@ jobs:
           swiftc -swift-version 5 -O ios/Shared/*.swift ios/Tests/SpeechTextChecks.swift -o "$RUNNER_TEMP/her-speech-checks"
           "$RUNNER_TEMP/her-speech-checks" "$GITHUB_WORKSPACE"
       - name: Verify native speech model and dependency boundary
-        run: swift test
+        run: swift test --disable-keychain --disable-netrc
+      - name: Package and verify standalone Mac speech app
+        run: python3 scripts/build_macos_speech_app.py --configuration debug
       - name: Verify real public Chinese and English audio
         run: |
-          swift run her-transcribe --download-model
+          swift run --disable-keychain --disable-netrc her-transcribe --download-model
           python3 scripts/fetch_speech_sample.py --output "$RUNNER_TEMP/her-public-mixed.wav"
-          HER_ASR_TEST_MODEL_DIR="$HOME/Library/Application Support/HerWordsSpeech/zipformer-small-zh-en-2023-02-16" HER_ASR_TEST_WAV="$RUNNER_TEMP/her-public-mixed.wav" swift test --filter RecognitionIntegrationTests
+          HER_ASR_TEST_MODEL_DIR="$HOME/Library/Application Support/HerWordsSpeech/zipformer-small-zh-en-2023-02-16" HER_ASR_TEST_WAV="$RUNNER_TEMP/her-public-mixed.wav" swift test --disable-keychain --disable-netrc --filter RecognitionIntegrationTests
+      - name: Preserve standalone Mac tools
+        run: |
+          mkdir -p "$RUNNER_TEMP/her-mac-tools/cli"
+          ditto -c -k --keepParent "dist/她说语音.app" "$RUNNER_TEMP/her-mac-tools/HerWordsSpeech-mac.zip"
+          cp .build/debug/her-transcribe "$RUNNER_TEMP/her-mac-tools/cli/"
+          cp -R .build/debug/HerWordsSpeech_HerBilingualASR.bundle "$RUNNER_TEMP/her-mac-tools/cli/"
+          ditto -c -k --keepParent "$RUNNER_TEMP/her-mac-tools/cli" "$RUNNER_TEMP/her-mac-tools/HerWordsTranscribe-mac.zip"
+      - name: Upload Mac personal trial builds
+        uses: actions/upload-artifact@v4
+        with:
+          name: Mac-personal-trial-builds
+          path: ${{ runner.temp }}/her-mac-tools/*.zip
+          retention-days: 7
       - name: Build iPhone simulator app and keyboard
         run: |
           if ! xcodebuild -project ios/HerWords.xcodeproj -scheme HerWords -configuration Debug -sdk iphonesimulator -destination 'generic/platform=iOS Simulator' -derivedDataPath "$RUNNER_TEMP/her-simulator" CODE_SIGNING_ALLOWED=NO build > "$RUNNER_TEMP/her-simulator.log" 2>&1; then

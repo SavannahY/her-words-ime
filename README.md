@@ -77,11 +77,20 @@ Windows 与 Linux 的 Rime 理论上可使用本项目配置，但本轮只验�
 
 ## 语音转文字
 
-原生离线后端采用 [sherpa-onnx](https://github.com/k2-fsa/sherpa-onnx) 的小型中英双语 Zipformer，代码、模型修订与每个下载文件的 SHA-256 都已固定。iPhone 主 App 中点击下载后使用；键盘扩展不包含语音运行时。Mac 也可从音频文件转写：
+原生离线后端采用 [sherpa-onnx](https://github.com/k2-fsa/sherpa-onnx) 的小型中英双语 Zipformer，代码、模型修订与每个下载文件的 SHA-256 都已固定。iPhone 主 App 中点击下载后使用；键盘扩展不包含语音运行时。Mac 可以构建可直接打开的录音窗口（需要 Swift 和 macOS SDK，Apple 官方 Command Line Tools 可提供）：
 
 ```sh
-swift run her-transcribe --download-model
-swift run her-transcribe --audio /path/to/recording.wav --hotword GitHub --json
+python3 scripts/build_macos_speech_app.py
+open dist/她说语音.app
+```
+
+窗口内可开始／停止／取消录音、选择热词提示、编辑原文和复制完整词包整理结果。失焦或退出会结束录音，只有主动点击开始才申请麦克风权限。
+
+Mac 也可从音频文件转写：
+
+```sh
+swift run --disable-keychain --disable-netrc her-transcribe --download-model
+swift run --disable-keychain --disable-netrc her-transcribe --audio /path/to/recording.wav --hotword GitHub --json
 ```
 
 下载模型需要网络，识别本身在本机进行，不上传音频；工具不会主动打开麦克风。Mac 命令行版本当前只做代词整理，完整措辞包可在下方语音页面继续处理。中英支持不等于保证每句准确；开源方案比较与调用方式见 [语音后端说明](docs/asr-options.md)。
