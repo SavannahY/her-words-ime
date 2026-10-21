@@ -1,7 +1,8 @@
 import UIKit
+import HerBilingualASR
 
 final class AppViewController: UIViewController, UITextViewDelegate {
-    private var engine: HerPinyinEngine?
+    private var engine: HerSpeechWording?
     private let speech = SpeechTranscriber()
     private let scrollView = UIScrollView()
     private let stack = UIStackView()
@@ -9,6 +10,12 @@ final class AppViewController: UIViewController, UITextViewDelegate {
     private let originalTextView = UITextView()
     private let resultTextView = UITextView()
     private let modeControl = UISegmentedControl(items: ["中性表达", "社群写法", "保留措辞"])
+    private let backendControl = UISegmentedControl(items: ["离线中英", "Apple 识别"])
+    private let profileControl = UISegmentedControl(items: ["常规", "中文与英文", "技术词"])
+    private let modelStatus = UILabel()
+    private let downloadButton = UIButton(type: .system)
+    private var modelDownload: Task<Void, Never>?
+    private var profiles: [String: SpeechProfile] = [:]
     private let routeControl = UISegmentedControl(items: ["仅设备端", "允许联网"])
     private let modeHint = UILabel()
     private let routeHint = UILabel()
@@ -27,6 +34,9 @@ final class AppViewController: UIViewController, UITextViewDelegate {
         title = "她说"
         buildInterface()
         loadEngine()
+        do { profiles = try SpeechProfile.load() }
+        catch { modelStatus.text = error.localizedDescription }
+        refreshModelStatus()
         speech.onUpdate = { [weak self] update in self?.applySpeechUpdate(update) }
         updateModeHint()
         updateRouteHint()
@@ -82,6 +92,20 @@ final class AppViewController: UIViewController, UITextViewDelegate {
         configureHint(modeHint)
         stack.addArrangedSubview(modeHint)
 
+        backendControl.selectedSegmentIndex = 0
+        backendControl.accessibilityLabel = "语音引擎"
+        backendControl.addTarget(self, action: #selector(backendChanged), for: .valueChanged)
+        stack.addArrangedSubview(backendControl)
+        configureHint(modelStatus)
+        stack.addArrangedSubview(modelStatus)
+        configureButton(downloadButton, title: "下载离线中英模型 · 约 60 MB", prominent: false)
+        downloadButton.addTarget(self, action: #selector(downloadModel), for: .touchUpInside)
+        stack.addArrangedSubview(downloadButton)
+        profileControl.selectedSegmentIndex = 1
+        profileControl.accessibilityLabel = "语音词汇提示"
+        stack.addArrangedSubview(profileControl)
+        stack.addArrangedSubview(label("词汇提示有助于识别专名，但不能保证识别正确。英文保持原文，不翻译。", style: .footnote, color: .secondaryLabel))
+
         routeControl.selectedSegmentIndex = 0
         routeControl.accessibilityLabel = "语音识别方式"
         routeControl.addTarget(self, action: #selector(routeChanged), for: .valueChanged)
@@ -121,6 +145,10 @@ final class AppViewController: UIViewController, UITextViewDelegate {
         copyButton.addTarget(self, action: #selector(copyResult), for: .touchUpInside)
         stack.addArrangedSubview(copyButton)
         stack.addArrangedSubview(label("按词包规则调整措辞，不能判断所有引文与专名；请在使用前检查。语音录制在这个 App 内进行，键盘不录音。", style: .footnote, color: .secondaryLabel))
+        let licenses = UIButton(type: .system)
+        licenses.setTitle("开源组件与许可", for: .normal)
+        licenses.addTarget(self, action: #selector(showLicenses), for: .touchUpInside)
+        stack.addArrangedSubview(licenses)
     }
 
     private func label(_ text: String, style: UIFont.TextStyle, color: UIColor = .label) -> UILabel {
@@ -183,13 +211,11 @@ final class AppViewController: UIViewController, UITextViewDelegate {
 
     private func loadEngine() {
         do {
-            guard let lexiconURL = Bundle.main.url(forResource: "lexicon", withExtension: "json"),
-                  let rulesURL = Bundle.main.url(forResource: "rules", withExtension: "json") else {
+            guard let rulesURL = Bundle.main.url(forResource: "rules", withExtension: "json") else {
                 throw NSError(domain: "HerWords.Resources", code: 1,
                               userInfo: [NSLocalizedDescriptionKey: "安装包缺少离线词包。"])
             }
-            engine = try HerPinyinEngine(lexiconData: Data(contentsOf: lexiconURL),
-                                        rulesData: Data(contentsOf: rulesURL))
+            engine = try HerSpeechWording(rulesData: Data(contentsOf: rulesURL))
         } catch {
             resourceStatus.text = "文字改写暂不可用：" + error.localizedDescription
             resourceStatus.isHidden = false
@@ -211,9 +237,9 @@ final class AppViewController: UIViewController, UITextViewDelegate {
         switch wordingMode {
         case .neutral: detail = "默认采用中性表达。"
         case .community: detail = "采用可选社群借字；这些写法不是统一规范。"
-        case .original: detail = "保留原措辞，仍将「他／他们」写作「她／她们」。"
+        case .original: detail = "保留原措辞，仍将「他／它」写作「她」。"
         }
-        modeHint.text = detail + "这里的选择只影响主 App，键盘里的模式需单独选择。"
+        modeHint.text = detail + "语音和整理结果默认用「她」，网址、邮箱和代码片段保留。键盘模式需单独选择。"
     }
 
     @objc private func routeChanged() {
@@ -221,9 +247,65 @@ final class AppViewController: UIViewController, UITextViewDelegate {
     }
 
     private func updateRouteHint() {
-        routeHint.text = routeControl.selectedSegmentIndex == 0
+        let offline = backendControl.selectedSegmentIndex == 0
+        routeControl.isHidden = offline
+        routeHint.text = offline ? "离线中英：下载模型后，识别全程在设备内进行。模型仅下载一次，不上传录音。" : routeControl.selectedSegmentIndex == 0
             ? "仅设备端：不支持中文设备端识别时会停下，不会自动改用联网识别。"
             : "允许联网：Apple 可能通过服务器处理音频，需要网络；请按需要选择。"
+    }
+
+
+    private var canRecord: Bool {
+        modelDownload == nil && (backendControl.selectedSegmentIndex == 1 || (try? HerASRModelStore().isReady) == true)
+    }
+
+    @objc private func backendChanged() {
+        updateRouteHint()
+        refreshModelStatus()
+    }
+
+    private func refreshModelStatus() {
+        let ready = (try? HerASRModelStore().isReady) == true
+        let offline = backendControl.selectedSegmentIndex == 0
+        modelStatus.text = ready ? "离线中英模型已下载；开始时会校验完整性。" : "先下载约 60 MB 的开源中英模型，或选择 Apple 识别。"
+        modelStatus.isHidden = !offline
+        downloadButton.isHidden = !offline
+        if modelDownload == nil {
+            var configuration = downloadButton.configuration
+            configuration?.title = ready ? "校验或重新下载模型" : "下载离线中英模型 · 约 60 MB"
+            downloadButton.configuration = configuration
+        }
+        if !speech.state.isBusy { recordButton.isEnabled = canRecord }
+    }
+
+    @objc private func downloadModel() {
+        if let task = modelDownload { task.cancel(); return }
+        guard !speech.state.isBusy else { return }
+        recordButton.isEnabled = false
+        backendControl.isEnabled = false
+        var configuration = downloadButton.configuration
+        configuration?.title = "取消模型下载"
+        downloadButton.configuration = configuration
+        modelDownload = Task { [weak self] in
+            guard let self = self else { return }
+            do {
+                let store = try HerASRModelStore()
+                try await store.download { [weak self] fraction in
+                    DispatchQueue.main.async {
+                        guard let self = self, self.modelDownload != nil else { return }
+                        self.modelStatus.text = "正在下载离线中英模型：\(Int(fraction * 100))%"
+                    }
+                }
+                self.modelDownload = nil
+                self.refreshModelStatus()
+            } catch {
+                self.modelDownload = nil
+                self.refreshModelStatus()
+                self.modelStatus.text = Task.isCancelled ? "下载已取消，可稍后继续。" : error.localizedDescription
+            }
+            self.backendControl.isEnabled = true
+
+        }
     }
 
     @objc private func recordPressed() {
@@ -234,7 +316,10 @@ final class AppViewController: UIViewController, UITextViewDelegate {
             if !recordingPrefix.isEmpty && !recordingPrefix.hasSuffix("\n") {
                 recordingPrefix += "\n"
             }
-            speech.start(route: routeControl.selectedSegmentIndex == 0 ? .onDevice : .allowNetwork)
+            let keys = ["neutral", "contextual", "hotword"]
+            let profile = profiles[keys[max(0, profileControl.selectedSegmentIndex)]]
+            speech.start(route: routeControl.selectedSegmentIndex == 0 ? .onDevice : .allowNetwork,
+                         backend: backendControl.selectedSegmentIndex == 0 ? .bilingual : .apple, profile: profile)
         case .listening:
             speech.stop()
         case .authorizing, .finishing:
@@ -253,13 +338,16 @@ final class AppViewController: UIViewController, UITextViewDelegate {
         }
         originalTextView.isEditable = !update.state.isBusy
         routeControl.isEnabled = !update.state.isBusy
+        backendControl.isEnabled = !update.state.isBusy
+        profileControl.isEnabled = !update.state.isBusy
+        downloadButton.isEnabled = !update.state.isBusy
         cancelButton.isEnabled = update.state.isBusy
         speechStatus.text = update.message
         var configuration = recordButton.configuration
         switch update.state {
         case .idle:
             configuration?.title = "开始录音"
-            recordButton.isEnabled = true
+            recordButton.isEnabled = canRecord
         case .authorizing:
             configuration?.title = "等待授权…"
             recordButton.isEnabled = false
@@ -278,13 +366,8 @@ final class AppViewController: UIViewController, UITextViewDelegate {
     }
 
     private func updateResult() {
-        guard let engine = engine else {
-            latestResult = ""
-            resultTextView.text = ""
-            copyButton.isEnabled = false
-            return
-        }
-        latestResult = engine.rewrite(originalTextView.text ?? "", mode: wordingMode)
+        let raw = originalTextView.text ?? ""
+        latestResult = engine?.process(raw, mode: wordingMode) ?? HerSpeechText.feminine(raw)
         resultTextView.text = latestResult
         copyButton.isEnabled = !latestResult.isEmpty
     }
@@ -303,6 +386,35 @@ final class AppViewController: UIViewController, UITextViewDelegate {
             self.copyButton.configuration = configuration
         }
     }
+
+    @objc private func showLicenses() {
+        let controller = UIViewController()
+        controller.title = "开源组件与许可"
+        controller.view.backgroundColor = .systemBackground
+        let text = UITextView()
+        text.isEditable = false
+        text.font = .preferredFont(forTextStyle: .footnote)
+        let names = ["Speech-Notice", "Sherpa-LICENSE", "ONNXRuntime-LICENSE", "ONNXRuntime-ThirdPartyNotices", "LICENSE", "AUTHORS"]
+        text.text = names.compactMap { name in
+            guard let url = Bundle.main.url(forResource: name, withExtension: "txt"),
+                  let content = try? String(contentsOf: url, encoding: .utf8) else { return nil }
+            return name + "\n\n" + content
+        }.joined(separator: "\n\n────────\n\n")
+        text.translatesAutoresizingMaskIntoConstraints = false
+        controller.view.addSubview(text)
+        NSLayoutConstraint.activate([
+            text.leadingAnchor.constraint(equalTo: controller.view.safeAreaLayoutGuide.leadingAnchor, constant: 16),
+            text.trailingAnchor.constraint(equalTo: controller.view.safeAreaLayoutGuide.trailingAnchor, constant: -16),
+            text.topAnchor.constraint(equalTo: controller.view.safeAreaLayoutGuide.topAnchor),
+            text.bottomAnchor.constraint(equalTo: controller.view.safeAreaLayoutGuide.bottomAnchor)
+        ])
+        let navigation = UINavigationController(rootViewController: controller)
+        controller.navigationItem.rightBarButtonItem = UIBarButtonItem(
+            barButtonSystemItem: .done, target: self, action: #selector(closeLicenses))
+        present(navigation, animated: true)
+    }
+
+    @objc private func closeLicenses() { dismiss(animated: true) }
 
     @objc private func dismissEditing() {
         view.endEditing(true)

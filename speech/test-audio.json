@@ -1,0 +1,6 @@
+{
+  "url": "https://huggingface.co/csukuangfj/k2fsa-zipformer-bilingual-zh-en-t/resolve/e2382758de9a0219b4efe682b95af30b399db3b8/test_wavs/0.wav",
+  "bytes": 321744,
+  "sha256": "7d93384ca14702cc584a7a33fe2fed92e89e708549161cb12ea38c916882103b",
+  "source": "Official public mixed Chinese/English test fixture; downloaded temporarily, not redistributed in this repository. The upstream model card declares Apache-2.0; no separate audio license was found."
+}

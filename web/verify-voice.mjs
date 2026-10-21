@@ -1,5 +1,7 @@
 import assert from 'node:assert/strict';
 import { VoiceController } from './voice.mjs';
+import { readFile } from 'node:fs/promises';
+import { fileURLToPath } from 'node:url';
 
 // Run with: node web/verify-voice.mjs
 // These checks simulate browser events; they never access a real microphone,
@@ -143,6 +145,27 @@ try {
     assert.match(events.states.at(-1)[1], /末尾文字已保留/);
   });
 
+  check('English selection and chunk joins preserve provider whitespace', () => {
+    const { voice, events } = makeVoice();
+    voice.start('en-US');
+    const recognition = instances.at(-1);
+    assert.equal(recognition.lang, 'en-US');
+    recognition.onresult({ results: [result('Hello'), result('world')] });
+    assert.equal(events.interims.at(-1), 'Hello world');
+    recognition.onresult({ results: [result('Hello', true), result('world', true)] });
+    assert.deepEqual(events.finals, ['Hello world']);
+    voice.cancel();
+    voice.start('en-US');
+    const next = instances.at(-1);
+    next.onresult({ results: [result('Hello ', true), result(' world', true)] });
+    assert.equal(events.finals.at(-1), 'Hello  world', 'Existing whitespace must not be trimmed');
+    voice.cancel();
+    voice.start();
+    instances.at(-1).onresult({ results: [result('她用', true), result('GitHub', true), result(' API', true)] });
+    assert.equal(events.finals.at(-1), '她用GitHub API');
+    voice.cancel();
+  });
+
   check('Cancel discards stop tails and queued events, resets UI, and permits a new session', () => {
     const { voice, events } = makeVoice();
     voice.start();
@@ -250,6 +273,80 @@ try {
     assert.equal(JSON.stringify(events), snapshot);
   });
 
+  // Exercise the real app against DOM/provider fakes, including its separate
+  // raw-source and protected-result paths.
+  const productionData = JSON.parse(await readFile(
+    fileURLToPath(new URL('../ios/Keyboard/Resources/rules.json', import.meta.url)), 'utf8'));
+  const names = ['document', 'window', 'navigator', 'fetch'];
+  const saved = new Map(names.map(name => [name, Object.getOwnPropertyDescriptor(globalThis, name)]));
+  const elements = new Map();
+  const windowHandlers = new Map();
+  function element(id) {
+    if (!elements.has(id)) elements.set(id, {
+      value: id === 'mode' ? 'friendly' : id === 'language' ? 'en-US' : '',
+      checked: false, textContent: '', disabled: false, hidden: false,
+      selectionStart: 0, selectionEnd: 0, listeners: new Map(),
+      classList: { toggle() {} }, focus() {}, select() {},
+      addEventListener(name, callback) { this.listeners.set(name, callback); },
+      emit(name) { return this.listeners.get(name)?.({}); },
+    });
+    return elements.get(id);
+  }
+  try {
+    Object.defineProperty(globalThis, 'document', { configurable: true, value: { getElementById: element } });
+    Object.defineProperty(globalThis, 'window', { configurable: true, value: {
+      addEventListener: (name, callback) => windowHandlers.set(name, callback),
+    } });
+    Object.defineProperty(globalThis, 'navigator', { configurable: true, value: {
+      clipboard: { writeText: async () => {} },
+    } });
+    Object.defineProperty(globalThis, 'fetch', { configurable: true, value: async () => ({
+      ok: true, json: async () => ({ format: 'her-words-web-rules', rules: productionData.rules, packs: [{}] }),
+    }) });
+    await import('./app.mjs');
+    await new Promise(resolve => setImmediate(resolve));
+    const raw = '他很奸诈，它在 GitHub。链接 https://他.example/它 和代码 `他它`';
+    element('source').value = raw;
+    element('source').emit('input');
+    assert.equal(element('source').value, raw, 'Raw source stays unchanged');
+    assert.equal(element('result').value,
+      '她很狡诈，她在 GitHub。链接 https://他.example/它 和代码 `他它`');
+    assert.match(element('changes').textContent, /措辞调整 1 处/);
+    assert.match(element('changes').textContent, /他\/它→她 2 处/,
+      'Protected pronouns must not count as conversions');
+    element('mode').value = 'original';
+    element('mode').emit('change');
+    assert.equal(element('result').value,
+      '她很奸诈，她在 GitHub。链接 https://他.example/它 和代码 `他它`');
+    element('start').emit('click');
+    const recognition = instances.at(-1);
+    assert.equal(recognition.lang, 'en-US', 'App forwards manual English selection');
+    recognition.onstart();
+    recognition.onresult({ results: [result('他访问 https://他.example/它')] });
+    assert.equal(element('interim').textContent, '正在识别：她访问 https://他.example/它');
+    assert.equal(element('source').value, raw, 'Interim display leaves the raw source unchanged');
+    element('source').value = 'Existing';
+    element('source').emit('input');
+    recognition.onresult({ results: [result('Hello', true), result('world', true)] });
+    assert.equal(element('source').value, 'Existing Hello world', 'Batch and append joins work');
+    recognition.onresult({ results: [result('Hello', true), result('world', true), result('它', true)] });
+    assert.equal(element('source').value, 'Existing Hello world它');
+    assert.equal(element('result').value, 'Existing Hello world她');
+    element('clear').emit('click');
+    assert.equal(element('source').value, '');
+    assert.equal(element('result').value, '');
+    const markup = await readFile(fileURLToPath(new URL('./index.html', import.meta.url)), 'utf8');
+    assert.match(markup, /value="en-US"/);
+    assert.match(markup, /不自动检测或切换语言/);
+    checks += 1;
+    console.log('✓ App preserves raw transcripts, protects code/URLs, and joins English chunks');
+  } finally {
+    windowHandlers.get('pagehide')?.();
+    for (const [name, descriptor] of saved) {
+      if (descriptor) Object.defineProperty(globalThis, name, descriptor);
+      else delete globalThis[name];
+    }
+  }
   console.log(`Verified ${checks} speech-controller checks without microphone or network access.`);
 } finally {
   for (const voice of controllers) voice.destroy();

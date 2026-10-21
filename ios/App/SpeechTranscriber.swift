@@ -5,6 +5,8 @@ import Speech
 /// Owns one foreground recognition session. UI calls and all state callbacks
 /// run on the main queue; the audio tap only feeds its captured request.
 final class SpeechTranscriber: NSObject {
+    enum Backend { case apple, bilingual }
+
     enum Route {
         case onDevice
         case allowNetwork
@@ -27,6 +29,9 @@ final class SpeechTranscriber: NSObject {
 
     var onUpdate: ((Update) -> Void)?
     private(set) var state: State = .idle
+    private var backend: Backend = .apple
+    private let bilingual = BilingualAudioTranscriber()
+    private var contextualStrings: [String] = []
     private var transcript = ""
     private var message = "点击开始后才会申请麦克风和语音识别权限。"
     private var generation = 0
@@ -42,6 +47,13 @@ final class SpeechTranscriber: NSObject {
 
     override init() {
         super.init()
+        bilingual.onUpdate = { [weak self] update in
+            guard let self = self, self.backend == .bilingual else { return }
+            self.state = update.state
+            self.transcript = update.transcript
+            self.message = update.message
+            self.publish()
+        }
         interruptionObserver = NotificationCenter.default.addObserver(
             forName: AVAudioSession.interruptionNotification,
             object: AVAudioSession.sharedInstance(), queue: .main
@@ -69,8 +81,14 @@ final class SpeechTranscriber: NSObject {
         }
     }
 
-    func start(route: Route) {
+    func start(route: Route, backend: Backend = .apple, profile: SpeechProfile? = nil) {
         guard !state.isBusy else { return }
+        self.backend = backend
+        if backend == .bilingual {
+            bilingual.start(hotwords: (profile?.contextualStrings ?? []) + (profile?.hotwords ?? []))
+            return
+        }
+        contextualStrings = (profile?.contextualStrings ?? []) + (profile?.hotwords ?? [])
         generation += 1
         let token = generation
         transcript = ""
@@ -142,7 +160,7 @@ final class SpeechTranscriber: NSObject {
             request.shouldReportPartialResults = true
             request.requiresOnDeviceRecognition = route == .onDevice
             request.taskHint = .dictation
-            request.contextualStrings = ["她们", "女性互助", "女性友好", "女力"]
+            request.contextualStrings = contextualStrings
             let input = engine.inputNode
             let format = input.outputFormat(forBus: 0)
             guard format.sampleRate > 0, format.channelCount > 0 else {
@@ -193,6 +211,11 @@ final class SpeechTranscriber: NSObject {
     /// End audio input while retaining the task long enough for its final result.
     func stop() {
         guard state.isBusy else { return }
+        if backend == .bilingual {
+            if state == .authorizing { bilingual.cancel(message: "已取消本次录音。") }
+            else { bilingual.stop() }
+            return
+        }
         if state == .authorizing {
             cancel(message: "已取消本次录音。")
             return
@@ -216,6 +239,7 @@ final class SpeechTranscriber: NSObject {
     /// Cancels immediately and invalidates permission and recognition callbacks.
     func cancel(message: String = "已取消录音，已保留已识别文字。") {
         guard state.isBusy else { return }
+        if backend == .bilingual { bilingual.cancel(message: message); return }
         complete(message: message, cancelTask: true)
     }
 

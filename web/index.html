@@ -10,11 +10,12 @@
 <body>
   <main>
     <header><a class="brand" href="./">她说<span>语音书写</span></a><span class="local">仅在本机打开</span></header>
-    <section class="intro"><p class="eyebrow">你的声音，由你落笔</p><h1>说出来，<br>写成你想要的样子。</h1><p>中文听写、自由校对，再用你选择的措辞表达。输出始终「他 → 她」。</p></section>
+    <section class="intro"><p class="eyebrow">你的声音，由你落笔</p><h1>说出来，<br>写成你想要的样子。</h1><p>中文与英文听写、自由校对，再用你选择的措辞表达。普通文字中的「他、它」默认写成「她」，英文保持原样。</p></section>
     <section class="voice-card" aria-label="语音听写">
       <div class="voice-heading"><span id="state-dot" aria-hidden="true"></span><strong id="voice-title">准备听写</strong><span id="timer">00:00</span></div>
       <p class="privacy">浏览器可能将音频发送给它的识别服务商，听写可能需要联网。本页面不自行录制或上传音频，本地服务不接收、也不保存你的文字。</p>
-      <div class="voice-controls"><button class="primary" id="start" type="button">开始听写</button><button id="stop" type="button" disabled>停止</button><label>识别语言<select id="language"><option value="zh-CN">普通话 · 简体</option><option value="zh-TW">国语 · 繁体</option><option value="zh-HK">粤语</option></select></label></div>
+      <div class="voice-controls"><button class="primary" id="start" type="button">开始听写</button><button id="stop" type="button" disabled>停止</button><label>识别语言<select id="language"><option value="zh-CN">普通话 · 简体</option><option value="zh-TW">国语 · 繁体</option><option value="zh-HK">粤语</option><option value="en-US">English · 美国英语</option></select></label></div>
+      <p class="privacy">请手动选择主要识别语言。中英夹杂的识别效果取决于浏览器及服务商；本页不自动检测或切换语言。</p>
       <p id="voice-status" class="status" role="status" aria-live="polite">点击开始后，浏览器会请求麦克风权限。也可以直接在下方输入文字。</p>
       <p id="interim" class="interim" aria-live="off"></p>
     </section>
@@ -25,7 +26,7 @@
     </div>
     <div class="actions"><button id="clear" type="button">清空本页文字</button><button id="selection" type="button">仅处理选中文字</button><span id="changes"></span><button class="primary" id="copy" type="button" disabled>复制结果</button></div>
     <p id="action-status" class="status" role="status" aria-live="polite"></p>
-    <details><summary>关于措辞与隐私</summary><p>默认使用与系统输入法相同的中性语言包。「社群借字」是个人借写偏好，不代表规范汉字或标准读音。「保留措辞」仅保留词语，仍将所有「他」写成「她」。左侧原文供你核对识别是否准确。</p><p>按完整词条匹配的规则，仅在整段原文就是该词条时生效，例如「嫉妒」；长句中不保证过滤。可在原文选中该词，点击「仅处理选中文字」，右侧将只输出选区结果，原文仍保留。短语规则可在句中生效。繁体选项选择语言包的繁体替换结果，不负责把整段原文简繁互转。</p><p>本页面不使用账号、Cookie、浏览记录存储或分析服务。文字只在当前页面内存中，刷新或关闭即清空；复制后文字会进入系统剪贴板。浏览器识别服务本身的音频处理与留存政策由其服务商决定。</p></details>
+    <details><summary>关于措辞与隐私</summary><p>默认使用与系统输入法相同的中性语言包。「社群借字」是个人借写偏好，不代表规范汉字或标准读音。「保留措辞」仅保留词语，普通文字中的「他、它」仍写成「她」；「牠、祂」和英文 he/him/it 保留。网址、邮箱和用反引号或围栏标记的代码保持原样；未标记的任意代码无法可靠识别。左侧保留识别原文供你核对，临时识别区显示「她」优先版本。</p><p>按完整词条匹配的规则，仅在一个待处理普通文字片段就是该词条时生效，例如「嫉妒」；长句中不保证过滤。可在原文选中该词，点击「仅处理选中文字」，右侧将只输出选区结果，原文仍保留。短语规则可在句中生效。繁体选项选择语言包的繁体替换结果，不负责把整段原文简繁互转。文本整理不会改善声学识别准确率，也不自动翻译或猜测同音词。</p><p>本页面不使用账号、Cookie、浏览记录存储或分析服务。文字只在当前页面内存中，刷新或关闭即清空；复制后文字会进入系统剪贴板。浏览器识别服务本身的音频处理与留存政策由其服务商决定。</p></details>
     <footer>她说 · 开源中文输入与表达工具 <span>本地文字处理 · 浏览器语音识别</span></footer>
   </main>
 </body>

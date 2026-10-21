@@ -19,7 +19,8 @@ except ImportError:
 WEB = Path(__file__).resolve().parents[1] / "web"
 ASSETS = {"/": "index.html", "/index.html": "index.html",
           "/style.css": "style.css", "/app.mjs": "app.mjs",
-          "/voice.mjs": "voice.mjs", "/rewrite.mjs": "rewrite.mjs"}
+          "/voice.mjs": "voice.mjs", "/rewrite.mjs": "rewrite.mjs",
+          "/speech-text.mjs": "speech-text.mjs"}
 
 
 def make_handler(payload, directory=WEB):

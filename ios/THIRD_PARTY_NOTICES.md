@@ -46,3 +46,6 @@ python3 -m unittest discover -s tests -p 'test_ios_data.py' -v
 生成器校验固定提交及原始文件 SHA-256，输出确定性的 UTF-8 JSON、资源内许可与 `data-info.json`。`data-info.json` 记录规则包、项目词库、输出资源的散列和实际规模。`--check` 只比较已提交资源，不改写文件；更新词包或基础词库后需重新生成。也可用 `--output-dir` 写到临时目录。
 
 升级外部词典时，应同时更新固定提交、下载地址、原文、SHA-256、许可材料、规模说明和覆盖测试。请保留第三方许可，不要把外部词库改标为 MIT。
+
+
+主 App 的可选原生语音运行时（sherpa-onnx / ONNX Runtime）及模型来源与独立许可，另见 [根目录第三方说明](../NOTICE.md#原生语音运行时与可选模型)。键盘扩展不链接语音运行时。

@@ -2,6 +2,8 @@
  * A small browser speech controller. Audio is handled by the browser's speech
  * provider; this module does not record or upload audio itself.
  */
+import { joinSpeechSegments } from './speech-text.mjs';
+
 export class VoiceController {
   #callbacks;
   #state = 'idle';
@@ -32,7 +34,7 @@ export class VoiceController {
     let recognition;
     try {
       recognition = new Recognition();
-      recognition.lang = ['zh-CN', 'zh-TW', 'zh-HK'].includes(lang) ? lang : 'zh-CN';
+      recognition.lang = ['zh-CN', 'zh-TW', 'zh-HK', 'en-US'].includes(lang) ? lang : 'zh-CN';
       recognition.continuous = true;
       recognition.interimResults = true;
       recognition.maxAlternatives = 1;
@@ -75,7 +77,7 @@ export class VoiceController {
       // Results include the full session. Mutable interim entries can be
       // replaced or removed, so rebuild that snapshot instead of appending it.
       session.entries = Array.from(event.results, (result) => ({
-        text: String(result[0]?.transcript ?? '').trim(),
+        text: String(result[0]?.transcript ?? ''),
         final: Boolean(result.isFinal),
       }));
       this.#deliverFinals(session);
@@ -190,19 +192,20 @@ export class VoiceController {
     session.entries.forEach((entry, index) => {
       if (!entry.final || session.delivered.has(index)) return;
       session.delivered.add(index);
-      if (entry.text) newlyFinal.push(entry.text);
+      if (entry.text.trim()) newlyFinal.push(entry.text);
     });
     if (newlyFinal.length) {
       session.hasText = true;
-      this.#emit('onFinal', newlyFinal.join(''));
+      this.#emit('onFinal', newlyFinal.reduce(joinSpeechSegments, ''));
     }
   }
 
   #pendingText(session) {
-    return session.entries
+    const pending = session.entries
       .filter((entry, index) => !entry.final && !session.delivered.has(index))
       .map((entry) => entry.text)
-      .join('');
+      .reduce(joinSpeechSegments, '');
+    return pending.trim() ? pending : '';
   }
 
   #requestStop(session) {
@@ -261,7 +264,7 @@ export class VoiceController {
       'audio-capture': '没有找到可用的麦克风。请检查设备连接，以及系统和浏览器的麦克风权限。',
       'no-speech': '暂时没有听到语音，请靠近麦克风，点击开始后重试。',
       network: '语音服务连接失败，请检查网络后重试。浏览器语音识别可能需要联网。',
-      'language-not-supported': '当前语音服务不支持所选语言，请切换中文语言后重试。',
+      'language-not-supported': '当前语音服务不支持所选语言，请手动切换其他识别语言后重试。',
       aborted: '本次语音识别已中断，点击开始可重试。',
     };
     return messages[error] || '语音识别暂时不可用，请稍后重试，或直接输入文字。';

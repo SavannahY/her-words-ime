@@ -25,6 +25,8 @@ jobs:
         run: python3 scripts/validate_packs.py
       - name: Run pack compiler tests
         run: python3 -m unittest discover -s tests -p 'test_*.py'
+      - name: Verify speech output processing
+        run: node web/verify-speech-text.mjs
       - name: Compile selected language packs
         run: python3 scripts/compile_packs.py --output generated/her_rewrite_rules.lua
       - name: Compile the same language packs for the voice tool
@@ -41,6 +43,17 @@ jobs:
         run: |
           swiftc -swift-version 5 -O ios/Shared/*.swift ios/Tests/EngineChecks.swift -o "$RUNNER_TEMP/her-engine-checks"
           "$RUNNER_TEMP/her-engine-checks" "$GITHUB_WORKSPACE"
+      - name: Verify speech text cleanup
+        run: |
+          swiftc -swift-version 5 -O ios/Shared/*.swift ios/Tests/SpeechTextChecks.swift -o "$RUNNER_TEMP/her-speech-checks"
+          "$RUNNER_TEMP/her-speech-checks" "$GITHUB_WORKSPACE"
+      - name: Verify native speech model and dependency boundary
+        run: swift test
+      - name: Verify real public Chinese and English audio
+        run: |
+          swift run her-transcribe --download-model
+          python3 scripts/fetch_speech_sample.py --output "$RUNNER_TEMP/her-public-mixed.wav"
+          HER_ASR_TEST_MODEL_DIR="$HOME/Library/Application Support/HerWordsSpeech/zipformer-small-zh-en-2023-02-16" HER_ASR_TEST_WAV="$RUNNER_TEMP/her-public-mixed.wav" swift test --filter RecognitionIntegrationTests
       - name: Build iPhone simulator app and keyboard
         run: |
           if ! xcodebuild -project ios/HerWords.xcodeproj -scheme HerWords -configuration Debug -sdk iphonesimulator -destination 'generic/platform=iOS Simulator' -derivedDataPath "$RUNNER_TEMP/her-simulator" CODE_SIGNING_ALLOWED=NO build > "$RUNNER_TEMP/her-simulator.log" 2>&1; then

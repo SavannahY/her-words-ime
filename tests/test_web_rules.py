@@ -46,7 +46,7 @@ class WebRulesTests(unittest.TestCase):
         result = subprocess.run([shutil.which("node"), str(ROOT / "web/verify-voice.mjs")],
                                 text=True, capture_output=True)
         self.assertEqual(result.returncode, 0, result.stdout + result.stderr)
-        self.assertIn("Verified 7 speech-controller checks", result.stdout)
+        self.assertIn("Verified 9 speech-controller checks", result.stdout)
 
     def test_server_loopback_read_only_and_no_traversal(self):
         server = create_server(0)

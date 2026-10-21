@@ -8,7 +8,7 @@
 
 1. 在 Mac 安装 Apple 官方完整 [Xcode](https://developer.apple.com/xcode/)，预留下载、展开、iOS SDK 和构建所需空间。只有 Command Line Tools 或 Swift 命令行工具还不够。
 2. 首次打开 Xcode，按提示完成组件安装，并安装 iOS 平台支持。
-3. 下载或克隆本仓库，然后在 Xcode 打开 `ios/HerWords.xcodeproj`。
+3. 下载或克隆完整仓库，然后在 Xcode 打开 `ios/HerWords.xcodeproj`。首次打开时 SwiftPM 会从官方仓库下载语音依赖，需要网络；不要只拷贝 `ios` 子目录。
 4. 在 **Xcode → Settings → Accounts** 登录自己的 Apple Account。此操作在本机 Xcode 完成，无需把密码、验证码或签名证书交给项目维护者，也不需要上传到 GitHub。
 
 ## 2. 给主 App 和键盘都设置签名
@@ -52,6 +52,10 @@ HER_BUNDLE_PREFIX = com.yourname.herwords
 ## 5. 语音转文字在主 App 使用
 
 录音与语音识别放在主 App「她说」，不放进第三方键盘扩展。Apple 的键盘沙箱不允许键盘访问麦克风，开启完全访问也不能据此获得录音能力。使用主 App 的语音功能时，再按系统提示授予麦克风和语音识别权限；完成后检查文字并复制到目标 App。[Apple 键盘限制](https://developer.apple.com/documentation/uikit/configuring-open-access-for-a-custom-keyboard)、[键盘扩展与麦克风说明](https://developer.apple.com/library/archive/documentation/General/Conceptual/ExtensibilityPG/CustomKeyboard.html)、[语音与麦克风权限说明](https://developer.apple.com/documentation/bundleresources/protected-resources)
+
+主 App 默认显示「离线中英」：先点「下载离线中英模型」，约 60 MB，只下载模型文件；校验成功后点击开始录音，仅申请麦克风权限，识别时不上传音频。可在「常规／中文与英文／技术词」间选择提示，常规关闭热词。提示可能造成误识别，请核对结果。
+
+也可主动切换到「Apple 识别」，再选择仅设备端或允许联网。此引擎会额外请求系统语音识别权限。原文保留供编辑；三种措辞模式的整理结果都默认「他／它 → 她」，英文保持原文，网址、邮箱与显式代码片段保留。这个偏好只作用于本项目的整理结果，不能接管其他 App 的系统听写。
 
 键盘不联网与语音识别是否联网是两件事。Apple Speech 能否离线识别取决于设备、语言及可用模型；未提供可用的设备端识别时，不能承诺语音完全离线。请以主 App 显示的识别模式和权限说明为准。[Apple 设备端识别能力](https://developer.apple.com/documentation/speech/sfspeechrecognizer/supportsondevicerecognition)、[设备端识别请求](https://developer.apple.com/documentation/speech/sfspeechrecognitionrequest/requiresondevicerecognition)
 

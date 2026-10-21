@@ -1,5 +1,6 @@
 import { VoiceController } from './voice.mjs';
 import { prepareRules, rewriteText } from './rewrite.mjs';
+import { feminineSpeechText, joinSpeechSegments, processSpeechText } from './speech-text.mjs';
 
 const $ = id => document.getElementById(id);
 const source = $('source');
@@ -11,17 +12,23 @@ const labels = { friendly: '友好表达', community: '社群借字', original: 
 
 function render() {
   const input = selectionOnly ? source.value.slice(selectionOnly.start, selectionOnly.end) : source.value;
-  const output = rewriteText(input, rules, { mode: $('mode').value, traditional: $('traditional').checked });
-  result.value = output.text;
+  const changes = [];
+  let pronouns = 0;
+  const output = processSpeechText(input, { rewrite: (plain) => {
+    pronouns += (plain.match(/[他它]/gu) || []).length;
+    const rewritten = rewriteText(plain, rules, { mode: $('mode').value, traditional: $('traditional').checked });
+    changes.push(...rewritten.changes);
+    return rewritten.text;
+  } });
+  result.value = output;
   $('source-count').textContent = [...source.value].length + ' 字';
-  $('result-count').textContent = [...output.text].length + ' 字';
+  $('result-count').textContent = [...output].length + ' 字';
   $('result-label').textContent = (selectionOnly ? '仅选区 · ' : '') + labels[$('mode').value];
   $('selection').textContent = selectionOnly ? '恢复处理全文' : '仅处理选中文字';
-  const pronouns = (input.match(/他/gu) || []).length;
-  $('changes').textContent = output.changes.length || pronouns
-    ? `措辞调整 ${output.changes.length} 处 · 他→她 ${pronouns} 处` : '';
-  $('copy').disabled = !output.text;
-  if (!rulesLoaded) $('rules-status').textContent = '词包未就绪，暂仅执行「他→她」';
+  $('changes').textContent = changes.length || pronouns
+    ? `措辞调整 ${changes.length} 处 · 他/它→她 ${pronouns} 处` : '';
+  $('copy').disabled = !output;
+  if (!rulesLoaded) $('rules-status').textContent = '词包未就绪，暂仅执行「他/它→她」';
 }
 
 async function loadRules() {
@@ -53,8 +60,8 @@ const voice = new VoiceController({
     $('voice-title').textContent = ({ starting: '正在连接', listening: '正在聆听', stopping: '正在结束', error: '听写暂不可用' })[state] || '准备听写';
     $('voice-status').textContent = message;
   },
-  onInterim(text) { $('interim').textContent = text ? '正在识别：' + text : ''; },
-  onFinal(text) { selectionOnly = null; source.value += text; render(); },
+  onInterim(text) { $('interim').textContent = text ? '正在识别：' + feminineSpeechText(text) : ''; },
+  onFinal(text) { selectionOnly = null; source.value = joinSpeechSegments(source.value, text); render(); },
   onTick(seconds) { $('timer').textContent = `${String(Math.floor(seconds / 60)).padStart(2, '0')}:${String(seconds % 60).padStart(2, '0')}`; },
 });
 

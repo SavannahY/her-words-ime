@@ -1,0 +1,24 @@
+{
+  "version": 1,
+  "default_profile": "contextual",
+  "profiles": {
+    "neutral": {
+      "label": "常规",
+      "contextual_strings": [],
+      "hotwords": []
+    },
+    "contextual": {
+      "label": "中文与英文",
+      "contextual_strings": ["她", "她们", "女性", "女性互助", "姐妹", "女本位"],
+      "hotwords": ["GitHub", "API", "SwiftUI", "iPhone", "Mac", "Xcode"]
+    },
+    "hotword": {
+      "label": "技术词",
+      "contextual_strings": [],
+      "hotwords": [
+        "GitHub", "API", "SwiftUI", "iPhone", "Mac", "Xcode", "Python",
+        "JavaScript", "TypeScript", "OpenAI", "ChatGPT", "Rime", "Squirrel"
+      ]
+    }
+  }
+}

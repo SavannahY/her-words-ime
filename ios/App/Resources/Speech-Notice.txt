@@ -1,0 +1,33 @@
+她说：语音组件与模型来源
+
+本说明记录本应用使用的语音组件及可选下载模型。各上游许可全文另附；本说明不替代它们。
+
+Sherpa-ONNX
+版本：v1.13.8
+固定提交：11afbd009a7f8c08f4bcf2fc1b265d0df4670fbf
+来源：https://github.com/k2-fsa/sherpa-onnx/tree/v1.13.8
+许可：Apache License 2.0，见 Sherpa-LICENSE.txt
+许可原文：https://github.com/k2-fsa/sherpa-onnx/blob/v1.13.8/LICENSE
+本应用通过 SwiftPM 的 sherpa-onnx 产品使用原生运行时。
+
+ONNX Runtime
+版本：1.28.2
+SwiftPM 二进制分发：https://github.com/csukuangfj/onnxruntime-libs/tree/8ebc5ebf92190903c274a7621ba4c96a732335ec
+运行时上游：https://github.com/microsoft/onnxruntime/tree/v1.28.2
+许可：MIT，见 ONNXRuntime-LICENSE.txt
+第三方声明：见 ONNXRuntime-ThirdPartyNotices.txt，该文件完整保留上游此版本的综合声明；不表示其中每个可选组件都启用于本应用。
+许可原文：https://github.com/microsoft/onnxruntime/blob/v1.28.2/LICENSE
+声明原文：https://github.com/microsoft/onnxruntime/blob/v1.28.2/ThirdPartyNotices.txt
+
+可选中英双语 Zipformer Small 模型
+模型仓库：csukuangfj/k2fsa-zipformer-bilingual-zh-en-t
+固定修订：e2382758de9a0219b4efe682b95af30b399db3b8
+来源：https://huggingface.co/csukuangfj/k2fsa-zipformer-bilingual-zh-en-t/tree/e2382758de9a0219b4efe682b95af30b399db3b8
+模型卡：https://huggingface.co/csukuangfj/k2fsa-zipformer-bilingual-zh-en-t/blob/e2382758de9a0219b4efe682b95af30b399db3b8/README.md
+模型卡标记许可：Apache-2.0；全文可参阅随附 Sherpa-LICENSE.txt 中的 Apache License 2.0。
+所选文件：exp/32/encoder-epoch-99-avg-1.int8.onnx、exp/32/decoder-epoch-99-avg-1.onnx、exp/32/joiner-epoch-99-avg-1.int8.onnx、data/lang_char_bpe/tokens.txt、data/lang_char_bpe/bpe.vocab。
+合计 60,155,435 字节，仅在用户主动下载后存于设备；这不是运行内存大小。版本、文件大小及 SHA-256 由应用内模型清单固定。
+
+语音转写与文字处理
+模型用于识别所说的中文和英文，不进行英文翻译。最终「他／它→她」由本应用文字规则完成，保留 URL、邮箱和显式代码；这不改变上游模型，也不表示上游项目认可本应用措辞。
+识别可能出错；保留原文供校对。此构建没有捆绑 WhisperKit、whisper.cpp、MLX Whisper 或 SenseVoice 模型。
