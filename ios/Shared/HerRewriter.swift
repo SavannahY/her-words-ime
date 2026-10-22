@@ -5,8 +5,9 @@ struct HerRewriteResult {
     let changedWording: Bool
 }
 
-/// Shared by the keyboard and host app. Uses literal matching over the original
-/// string; replacement output never enters the rules a second time.
+/// Shared wording rules only. Keyboard pronouns keep their selected spelling;
+/// speech adapters apply their separate default through HerSpeechText.
+/// Replacement output never enters the rules a second time.
 struct HerRewriter {
     let rules: [HerRewriteRule]
     let aliases: [String: [HerExactAlias]]
@@ -66,7 +67,7 @@ struct HerRewriter {
 
     func rewrite(_ source: String, mode: HerWordingMode) -> HerRewriteResult {
         if mode == .original || source.isEmpty {
-            return HerRewriteResult(text: feminine(source), changedWording: false)
+            return HerRewriteResult(text: source, changedWording: false)
         }
         var position = source.startIndex
         var result = ""
@@ -91,10 +92,6 @@ struct HerRewriter {
             changed = changed || replacement != String(source[range])
             position = range.upperBound
         }
-        return HerRewriteResult(text: feminine(result), changedWording: changed)
-    }
-
-    func feminine(_ text: String) -> String {
-        text.replacingOccurrences(of: "他", with: "她", options: .literal)
+        return HerRewriteResult(text: result, changedWording: changed)
     }
 }

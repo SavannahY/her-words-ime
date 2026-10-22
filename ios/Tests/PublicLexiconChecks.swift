@@ -33,6 +33,8 @@ private enum PublicLexiconChecks {
                             category: "woman", supplemental: true),
             HerLexiconEntry(text: "自强不息", pinyin: "zi qiang bu xi", weight: 1,
                             category: "idiom", supplemental: true),
+            HerLexiconEntry(text: "他山之石", pinyin: "ta shan zhi shi", weight: 1,
+                            category: "idiom", supplemental: true),
         ]
         let base = try HerPinyinEngine(lexicon: ordinary)
         let engine = try HerPinyinEngine(lexicon: ordinary + additions, memory: memory)
@@ -56,6 +58,8 @@ private enum PublicLexiconChecks {
                   "official English input stays an alias")
             check(engine.candidates(for: "NIKE", mode: mode).contains { $0.text == "耐克" }, "ASCII input accepts uppercase typing")
             check(engine.candidates(for: "ta", mode: mode).first?.text == "她", "public layer keeps feminine priority")
+            check(engine.candidates(for: "ta", mode: mode).dropFirst().first?.text == "他", "public layer preserves immediately selectable male pronoun")
+            check(engine.candidates(for: "tashanzhishi", mode: mode).contains { $0.text == "他山之石" }, "public idiom keeps original 他 spelling")
         }
         check(!engine.candidates(for: "t").contains { $0.text == "屠呦呦" }, "public words do not flood one-letter prefixes")
         let middle = engine.candidates(for: "ximengnadebofuwa").first { $0.text == "西蒙娜·德·波伏瓦" }

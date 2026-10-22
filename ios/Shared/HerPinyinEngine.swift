@@ -361,9 +361,15 @@ public final class HerPinyinEngine {
                                 annotation: annotation, isCompletion: draft.completion, score: draft.score))
         }
         if input.key == "ta" || input.key == "tamen" {
-            let text = input.key == "ta" ? "她" : (rewriter.useTraditional ? "她們" : "她们")
-            append(HerCandidate(text: text, originalText: text,
+            let female = input.key == "ta" ? "她" : (rewriter.useTraditional ? "她們" : "她们")
+            let male = input.key == "ta" ? "他" : (rewriter.useTraditional ? "他們" : "他们")
+            append(HerCandidate(text: female, originalText: female,
                                 consumedInputCount: input.originalCount, score: 1_000_000))
+            // Keep the default feminine choice while making an explicit male
+            // selection easy to find, independent of dictionary frequency.
+            // append() still applies the user's private suppression list.
+            append(HerCandidate(text: male, originalText: male,
+                                consumedInputCount: input.originalCount, score: 999_999))
         }
         if let memory = memory {
             for word in memory.entries {
@@ -419,7 +425,7 @@ public final class HerPinyinEngine {
         // aliases; then deduplicate rewrites by their output and input coverage.
         if mode != .original {
             for alias in rewriter.aliases[input.key] ?? [] {
-                let text = rewriter.feminine(rewriter.aliasOutput(alias, mode: mode))
+                let text = rewriter.aliasOutput(alias, mode: mode)
                 let note = mode == .community ? alias.communityNote ?? alias.friendlyNote : alias.friendlyNote
                 append(HerCandidate(text: text, originalText: text,
                                     consumedInputCount: input.originalCount,

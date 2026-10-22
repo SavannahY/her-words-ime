@@ -7,7 +7,7 @@ Input Methods directories. Default config is this repository's rime directory.
 No real Rime userdata is opened or modified. Reports and engine logs default to
 an isolated system temporary directory, and --report sets a report destination.
 
-The checked-in integration-cases.json contains the 150-case acceptance matrix.
+The checked-in integration-cases.json contains the acceptance matrix.
 --casesJSON can select an alternate list or an object containing cases,
 additionalCases and forbidden. forbidden entries are substrings or {text, match}
 objects; match=exact is applied only to a whole candidate. --print-cases works
@@ -40,7 +40,7 @@ MODES = {
     "community": (False, False, True),
 }
 DEFAULT_FLAGS = dict(zip(FLAGS, MODES["friendly"]))
-FORBIDDEN = ["他", "奸诈", "姦詐", "贪婪", "貪婪",
+FORBIDDEN = ["奸诈", "姦詐", "贪婪", "貪婪",
              {"text": "妇人之仁", "match": "exact"},
              {"text": "婦人之仁", "match": "exact"},
              {"text": "剩女", "match": "exact"},
@@ -119,6 +119,22 @@ def select_first(engine, sid):
     failures = []
     if not engine.key(sid, " "):
         failures.append("Space was not handled")
+    committed = engine.commit(sid)
+    if engine.context(sid)["preedit"]:
+        engine.bind("commit_composition", C.c_int, C.c_size_t)(sid)
+        committed += engine.commit(sid)
+    if not committed:
+        failures.append("no committed text")
+    return committed, failures
+
+
+def select_text(engine, sid, text, candidates):
+    failures = []
+    if text not in candidates:
+        return "", ["requested selection missing: " + repr(text)]
+    index = candidates.index(text)
+    if not engine.bind("select_candidate", C.c_int, C.c_size_t, C.c_size_t)(sid, index):
+        failures.append("could not select candidate " + repr(text))
     committed = engine.commit(sid)
     if engine.context(sid)["preedit"]:
         engine.bind("commit_composition", C.c_int, C.c_size_t)(sid)
@@ -207,8 +223,9 @@ def run_case(engine, args, case, mode, global_forbidden):
         annotation = case.get("annotation")
         if annotation and candidates and annotation not in candidates[0]["comment"]:
             failures.append("first candidate comment lacks " + repr(annotation))
-        # Original mode disables rewrites while retaining the independent 她 preference.
-        forbidden = (["他"] if mode == "original" else global_forbidden) + case.get("forbidden", [])
+        # Original mode disables wording rewrites. Pronouns remain selectable in
+        # every mode; the separate candidate preference only changes ordering.
+        forbidden = ([] if mode == "original" else global_forbidden) + case.get("forbidden", [])
         if baseline and baseline["firstCandidate"]:
             baseline_matches_rule = bool(banned_hits([{"text": baseline["firstCandidate"]}], global_forbidden))
             result["baselineMatchesRewriteRule"] = baseline_matches_rule
@@ -220,14 +237,19 @@ def run_case(engine, args, case, mode, global_forbidden):
         result["forbiddenCandidateHits"] = hits
         if hits:
             failures.append("banned original text leaked through candidates")
-        selected, selection_failures = select_first(engine, sid)
+        if "selectText" in case:
+            selected, selection_failures = select_text(engine, sid, case["selectText"], texts)
+        else:
+            selected, selection_failures = select_first(engine, sid)
         failures.extend(selection_failures)
         committed += selected
         result["committed"] = committed
         if banned_hits([{"text": committed}], forbidden):
             failures.append("banned original text leaked through commit")
-        if expected_first and committed not in expected_first:
+        if expected_first and "selectText" not in case and committed not in expected_first:
             failures.append("committed text not among " + repr(expected_first))
+        if "expectedCommit" in case and committed != case["expectedCommit"]:
+            failures.append("selected text changed on commit: " + repr(case["expectedCommit"]))
         preferred = alternatives(case.get("preferredObservation"))
         if preferred:
             result["preferredSentenceObserved"] = bool(set(preferred) & set(texts))
@@ -237,30 +259,35 @@ def run_case(engine, args, case, mode, global_forbidden):
         engine.destroy(sid)
 
 
-def segmented_case(engine, args, mode):
+def segmented_case(engine, args, mode, masculine=False):
     sid = engine.session(args.schema)
     failures, chunks, combined = [], [], ""
     try:
         set_mode(engine, sid, mode)
-        for key_input, expected in [("ta", "她"), ("jianzha", "狡诈" if mode == "friendly" else "仠诈")]:
+        pronoun = "他" if masculine else "她"
+        for key_input, expected in [("ta", pronoun), ("jianzha", "狡诈" if mode == "friendly" else "仠诈")]:
             prefix, input_failures = enter(engine, sid, key_input)
             failures.extend(input_failures)
             candidates, truncated = enumerate_candidates(engine, sid, args.candidate_limit)
             if truncated:
                 failures.append("segmented enumeration truncated")
-            if not candidates or candidates[0]["text"] != expected:
+            selecting_male = masculine and key_input == "ta"
+            if not candidates or (not selecting_male and candidates[0]["text"] != expected):
                 failures.append("segmented first candidate mismatch for " + key_input)
             if banned_hits(candidates, FORBIDDEN):
                 failures.append("segmented candidate contains banned text")
-            committed, selection_failures = select_first(engine, sid)
+            if selecting_male:
+                committed, selection_failures = select_text(engine, sid, expected, [candidate["text"] for candidate in candidates])
+            else:
+                committed, selection_failures = select_first(engine, sid)
             failures.extend(selection_failures)
             combined += prefix + committed
             chunks.append({"input": key_input, "first": candidates[0] if candidates else None,
                            "candidateCount": len(candidates), "committed": committed})
-        expected_final = "她狡诈" if mode == "friendly" else "她仠诈"
+        expected_final = pronoun + ("狡诈" if mode == "friendly" else "仠诈")
         if combined != expected_final:
             failures.append("segmented commit differs from " + expected_final)
-        return {"id": "confirmed_segments", "mode": mode, "chunks": chunks,
+        return {"id": "confirmed_masculine_segments" if masculine else "confirmed_segments", "mode": mode, "chunks": chunks,
                 "committed": combined, "passed": not failures, "failures": failures}
     finally:
         engine.destroy(sid)
@@ -280,6 +307,7 @@ def worker(args):
                 for mode in case.get("modes", ["friendly"]):
                     report["cases"].append(run_case(engine, args, case, mode, forbidden))
             report["cases"].extend(segmented_case(engine, args, mode) for mode in ("friendly", "community"))
+            report["cases"].extend(segmented_case(engine, args, mode, masculine=True) for mode in ("friendly", "community"))
             sid = engine.session(args.schema)
             set_mode(engine, sid, "community")
             report["preRestartFlags"] = get_flags(engine, sid)

@@ -29,11 +29,6 @@ table.sort(rules, function(left, right)
   return #left.from > #right.from
 end)
 
-local function feminine(text)
-  -- Neither literal contains Lua pattern/replacement metacharacters.
-  return (text:gsub("他", "她"))
-end
-
 local function preferred(rule, community, simplified)
   if community then
     if not simplified and type(rule.community_traditional) == "string" then
@@ -51,7 +46,7 @@ end
 
 local function rewrite(text, enabled, community, simplified)
   if not enabled then
-    return feminine(text), false
+    return text, false
   end
 
   local parts = {}
@@ -78,9 +73,9 @@ local function rewrite(text, enabled, community, simplified)
     changed = changed or replacement ~= text:sub(first, last)
     position = last + 1
   end
-  -- Replacements are never passed through the rules again. The independent
-  -- pronoun preference applies to every output, including rule replacements.
-  return feminine(table.concat(parts)), changed
+  -- Replacements are never passed through the rules again. Pronoun preference
+  -- is candidate ordering, so an explicitly chosen 他 remains 他.
+  return table.concat(parts), changed
 end
 
 local function annotation(comment, label)
@@ -134,17 +129,20 @@ local function filter(input, env)
     if segment and segment:has_tag("abc") then
       local raw = context.input:sub(segment.start + 1, segment._end)
       raw = raw:gsub("[%s']", "")
-      local priority
+      local priority, masculine
       if raw == "ta" then
         priority = "她"
+        masculine = "他"
       elseif raw == "tamen" then
         priority = simplified and "她们" or "她們"
+        masculine = simplified and "他们" or "他們"
       end
       if priority then
         -- A new Candidate avoids learning a genuine candidate such as 塔.
         local candidate = Candidate("her_priority", segment.start,
             segment._end, priority, "")
         emit(candidate, priority, "")
+        emit(Candidate("her_priority", segment.start, segment._end, masculine, ""), masculine, "")
       end
 
       for _, word in ipairs(memory.suggestions(env, raw)) do
@@ -214,7 +212,6 @@ local function filter(input, env)
             text = alias.community
           end
         end
-        text = feminine(text)
         local note = community and alias.community_note or alias.friendly_note
         local comment = label
         if type(note) == "string" and note ~= "" then
@@ -234,7 +231,7 @@ local function filter(input, env)
   -- this avoids splicing 新机 + 婊子 into 新机言行失当的人 for xinjibiaozi.
   for candidate in input:iter() do
     local text, replaced = rewrite(candidate.text, enabled, community, simplified)
-    local comment = feminine(candidate.comment or "")
+    local comment = candidate.comment or ""
     if replaced then
       comment = annotation(comment, label)
     end

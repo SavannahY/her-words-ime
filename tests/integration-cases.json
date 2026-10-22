@@ -9,7 +9,9 @@
         "friendly",
         "community"
       ],
-      "expectedFirst": "她"
+      "expectedFirst": "她",
+      "expectedAny": ["她", "他"],
+      "requireAllExpected": true
     },
     {
       "id": "tamen_every_mode",
@@ -23,7 +25,55 @@
       "expectedFirst": [
         "她们",
         "她們"
-      ]
+      ],
+      "expectedAny": ["她们", "他们"],
+      "requireAllExpected": true
+    },
+    {
+      "id": "select_masculine_ta",
+      "input": "ta",
+      "modes": ["default", "original", "friendly", "community"],
+      "expectedFirst": "她",
+      "selectText": "他",
+      "expectedCommit": "他"
+    },
+    {
+      "id": "select_masculine_tamen",
+      "input": "tamen",
+      "modes": ["default", "original", "friendly", "community"],
+      "expectedFirst": "她们",
+      "selectText": "他们",
+      "expectedCommit": "他们"
+    },
+    {
+      "id": "traditional_masculine_tamen",
+      "input": "tamen",
+      "modes": ["original", "friendly", "community"],
+      "options": {"zh_simp": false, "zh_hans": false},
+      "expectedFirst": "她們",
+      "selectText": "他們",
+      "expectedCommit": "他們"
+    },
+    {
+      "id": "protected_qita",
+      "input": "qita",
+      "modes": ["original", "friendly", "community"],
+      "selectText": "其他",
+      "expectedCommit": "其他"
+    },
+    {
+      "id": "protected_jita",
+      "input": "jita",
+      "modes": ["original", "friendly", "community"],
+      "selectText": "吉他",
+      "expectedCommit": "吉他"
+    },
+    {
+      "id": "protected_taren",
+      "input": "taren",
+      "modes": ["original", "friendly", "community"],
+      "selectText": "他人",
+      "expectedCommit": "他人"
     },
     {
       "id": "jianzha_friendly",
@@ -192,8 +242,8 @@
         "community"
       ],
       "expectedAny": [
-        "她妈的名字",
-        "她媽的名字"
+        "他妈的名字",
+        "他媽的名字"
       ],
       "forbidden": [
         "真是的名字"
@@ -1615,7 +1665,6 @@
     }
   ],
   "forbidden": [
-    "他",
     {
       "text": "女强人",
       "match": "phrase"
