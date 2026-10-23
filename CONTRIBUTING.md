@@ -4,7 +4,11 @@
 
 项目默认采用中性表达。社群改字放在独立语言包中，即使安装，也要在输入法菜单中手动切换后才会使用。公开用例说明有人这样表达，不表示这是标准字形、标准读音或唯一正确的说法。
 
-若只是补充女性人物姓名、常用成语或品牌，不需要编写替换规则。请使用[公共词条提议表](https://github.com/SavannahY/her-words-ime/issues/new?template=public-word-proposal.yml)，或按 [公共词库格式](docs/public-lexicon.md) 修改 `data/public-lexicon/`。提供规范全拼和可核对来源；品牌需写清实际收录依据，不以个人喜好代替企业行为证据。公共数据仍受用户本地「不再推荐」偏好约束。
+若只是补充女性人物姓名、常用成语、品牌或网络常用词，不需要编写替换规则。请使用[公共词条提议表](https://github.com/SavannahY/her-words-ime/issues/new?template=public-word-proposal.yml)，或按 [公共词库格式](docs/public-lexicon.md) 修改 `data/public-lexicon/`。提供规范全拼和可核对来源；品牌需写清实际收录依据，不以个人喜好代替企业行为证据。公共数据仍受用户本地「不再推荐」偏好约束。
+
+西语词句使用[西语提议表](https://github.com/SavannahY/her-words-ime/issues/new?template=spanish-phrase-proposal.yml)。写清原文、中文含义、适用语境和公开核对来源；不确定输入码可以留空。会编辑 JSON 的贡献者可修改 `data/spanish-learning.json`，按[西语指南](docs/spanish-learning.md)补充 `zh_queries`、完整拼音和正确性别／称呼变体，再运行 `python3 scripts/compile_spanish_learning.py`，提交 JSON 与生成的 Lua 文件。这里是有限词句查询，通用翻译及语法检查不属于现有词表的能力。
+
+想改进安装、词库管理或学习辅助，可以先看[参考项目与设计依据](docs/references.md)，并在 Issue 或 PR 中写清当前问题、参考的具体行为和预期结果。若实际引入外部代码或数据，需同时记录来源文件、版本和许可；设计讨论与运行依赖分别记录。
 
 ## 提词时提供什么
 

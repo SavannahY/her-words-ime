@@ -2,176 +2,189 @@
 
 <img src="assets/brand/her-words-logo-v1.png" alt="她说 Logo：梅紫色对话气泡中的她字" width="128">
 
-[Logo 设计与资源](docs/brand.md)
+**女性友好的中文输入法与语音工具，让常用表达和个人词库由你掌握。**
 
-女性友好的输入法项目，包含 **macOS 中／英／西三语 Rime 方案**、iPhone 原生键盘扩展与语音转文字工具。Mac 版可离线输入西班牙语，并分别开启中文释义或中文拼音查西语；iPhone 版目前用于个人试装，需要用自己的 Apple 账户签名。
+Mac 键盘基于 [Rime／鼠须管](https://github.com/rime/squirrel)，提供中文、English、Español 三个输入方案：`ta` 优先显示「她」，也保留「他」供主动选择；友好措辞可以切换，个人词语可以记住、忘记或设为不再推荐。
 
-默认把「她」排在 `ta` 候选首位，同时保留「他」供明确指男性时选用；`tamen` 同样保留「她们／他们」。按具体词语提供更友好的表达，正常的女字旁用词与正常同音词保留。**语言包可以通过 Pull Request 共同维护；社群借字包单独收录，手动启用。**
+[Mac 快速安装](#mac-快速安装) · [使用指南](docs/macos-install.md) · [贡献词库](CONTRIBUTING.md) · [参考项目](docs/references.md) · [问题反馈](https://github.com/SavannahY/her-words-ime/issues)
 
-同一仓库也包含本地打开的中文语音转文字工具，与系统输入法共用语言包。
+[![检查与构建](https://github.com/SavannahY/her-words-ime/actions/workflows/checks.yml/badge.svg)](https://github.com/SavannahY/her-words-ime/actions/workflows/checks.yml)
+[MIT](LICENSE) · [第三方说明](NOTICE.md) · [Logo 资源](docs/brand.md)
 
-## iPhone 个人试用
+## 现在可以用什么
 
-打开 [`ios/HerWords.xcodeproj`](ios/HerWords.xcodeproj)，选择 **HerWords** scheme，用 Xcode 给主 App 和键盘扩展设置自己的 Team，连接 iPhone 后运行。免费 Personal Team 可用于个人试装，通常每七天需要重新签名安装。完整步骤见 **[iPhone 安装说明](docs/iphone-install.md)**。
+| 功能 | 当前状态 |
+| --- | --- |
+| **Mac 键盘** | 可按下面步骤安装；中文全拼、英文直输、西语输入与可选学习提示 |
+| **本地词库** | 可查看和管理人名、英文词、拼音／缩写，区分忘记与不再推荐 |
+| **Mac 语音工具** | 可从源码构建；下载约 60 MB 模型后在本机转写中英录音 |
+| **iPhone** | 实验源码，需要自行签名；尚未完成真机安装和触摸验收，见 [iPhone 说明](docs/iphone-install.md) |
 
-安装后，在 iPhone「设置 → 通用 → 键盘 → 键盘 → 添加新键盘」启用 **她说键盘**，输入时长按地球键切换。
+目前通过源码安装，尚无正式安装包或 App Store／TestFlight 发布。Mac 键盘的三语支持与语音工具的中英识别分别提供。
 
-- 离线全拼，包含固定版本的基础读音数据与公共姓名、成语、品牌词库，支持候选横向滚动、分词、中英文、数字与常用标点。
-- 默认中性表达，键盘顶部可切换社群写法或保留措辞；三种模式都将「她」优先展示，同时保留「他／他们」，所选字形原样上屏。
-- 键盘无需「允许完全访问」，不联网、不读取聊天上下文或剪贴板；可在本机记住已确认的短词、人名和英文词，并随时关闭、删除或设为不再推荐。
-- 语音转文字在主 App 中使用：可下载约 60 MB 的离线中英模型，也可选择 Apple 设备端／联网识别。整理结果默认「他／它 → 她」，英文保留原文。检查结果后复制到目标 App。
+## Mac 快速安装
 
-这是个人试用版本，采用本地词频、有限拼句及可管理的个人短词记忆，没有云端预测。密码框等系统限制场景会回到系统键盘。设备签名、触摸手感和内存表现需要继续在真机试用；CI 编译通过不能代替安装验收。
+### 1. 准备鼠须管和 Python
 
-第三方拼音数据来自固定版本的 Rime 简体拼音词典，按 Apache-2.0 分发，详见 [iOS 数据与许可](ios/THIRD_PARTY_NOTICES.md)。手机规则直接从同一社区语言包生成：
+- 安装[官方鼠须管 Squirrel](https://github.com/rime/squirrel/releases/tag/1.1.2)。已验证版本为 **Squirrel 1.1.2／librime 1.16.0**，该鼠须管版本要求 macOS 13 或更新系统。首次安装后按上游说明注销并重新登录。
+- 准备独立安装的 **Python 3.14 正式版**，可从 [Python 官方 Mac 下载页](https://www.python.org/downloads/macos/)选择 3.14 系列安装包，安装后新开终端。本机使用 3.14，CI 另验证 Python 3.12。
+- 只安装键盘需要鼠须管、Python 和一个 Python 依赖；原生图形管理器与语音工具的构建另需 Apple Command Line Tools。
+
+### 2. 下载并安装「她说」
+
+[下载项目 ZIP](https://github.com/SavannahY/her-words-ime/archive/refs/heads/main.zip)，解压。下面以文件夹位于「下载」为例；放在其他位置时，将第一行改成实际路径：
 
 ```sh
-python3 scripts/compile_ios_data.py
-python3 scripts/generate_ios_project.py
+cd ~/Downloads/her-words-ime-main
+python3 -m venv .venv
+.venv/bin/python -m pip install -r requirements.txt
+.venv/bin/python scripts/install_macos.py --dry-run
+.venv/bin/python scripts/install_macos.py
 ```
 
-## 输入体验
+`--dry-run` 先检查并显示计划；最后一行才安装。安装器会验证词包与西语资料、备份涉及的配置、添加三个方案并重新部署，保留其他 Rime 方案、已有主题和个人词库。配置注释与排版可能变化，备份中保留原件。普通使用者无需先编译语音工具或运行整套开发测试。
 
-| 输入意图 | 默认友好表达 | 可选社群写法 |
-| --- | --- | --- |
-| 奸诈 | 狡诈 | 仠诈 |
-| 嫉妒 | 忮忌（zhì jì，书面近义词） | 男疾男户 |
-| 贪婪 | 贪心 | 贪㑣 |
-| 妇人之仁 | 心慈手软 | 心慈手软 |
-| 剩女 | 单身女性 | 单身女性 |
-
-这是个人措辞偏好，不把所有原词都判作厌女，也不把社群借字说成规范字。部分改写是表达建议，含义不保证逐字相同。默认包目前含 **45 组规则**；可选社群包有 **13 组覆盖规则**，另收录女性友好词语。
-
-代词偏好通过候选顺序实现：`ta` 先显示「她、他」，`tamen` 先显示「她们、他们」。选择「他」就输入「他」，不会再变成「她」；「其他、吉他、他人」等普通词也保留原字。语音整理仍使用独立的默认「他／它 → 她」偏好，识别原文可校对。
-
-改写发生在候选与上屏阶段：候选中的原问题词在原位置变成友好表达，原本正常的第一候选保持位置。例如 `jidu` 的正常首项「极度」保留，「嫉妒」对应候选则改成「忮忌」。拼音别名不会抢占正常首项。
-
-「好、妈妈、姐姐、婚姻、小姐、嫌疑人、妲己、嫉恶如仇、奴隶制、强奸罪」等保持原有词形。不全局改「女、妈、娘、嫌、奸」等单字，不把竞争改成互助，也不把性别化辱骂直接换成另一种性别辱骂。
-
-## macOS 安装
-
-需要 Python 3 与[官方鼠须管 Squirrel](https://github.com/rime/squirrel/releases)。当前已验证 Squirrel 1.1.2 / librime 1.16.0。项目不包含鼠须管应用或其二进制词库；它们按上游许可独立分发。
+使用 Git 的贡献者也可以先克隆，再运行相同的安装命令：
 
 ```sh
 git clone https://github.com/SavannahY/her-words-ime.git
 cd her-words-ime
-python3 -m venv .venv
-source .venv/bin/activate
-python3 -m pip install -r requirements.txt
-python3 scripts/validate_packs.py
-python3 -m unittest discover -s tests -p 'test_*.py'
-python3 scripts/install_macos.py --dry-run
-python3 scripts/install_macos.py
 ```
 
-安装脚本会先验证语言包和西语资料、备份涉及的配置，再添加「她说」中文、English 和 Español 三个方案并重新部署。通过追加配置保留已有 Rime 方案，已有候选窗主题默认保留；`--theme` 可选择应用本项目主题。原配置的排版与注释可能变化，完整原件会保存在备份中。
+### 3. 启用并试打
 
-安装后从 macOS 输入菜单选择 **Squirrel - Simplified / 鼠须管**。如果是第一次安装鼠须管，请在「系统设置 → 键盘 → 文字输入 → 编辑」添加鼠须管；个别应用可能需要重开，或保存工作后注销再登录。
+在 macOS「系统设置 → 键盘 → 文字输入 → 编辑」中添加「简体中文 → Squirrel／鼠须管」，再从系统输入菜单选中鼠须管。
 
-按 **Control＋反引号（`）** 切换中文、English 或 Español。西语方案用 `;n` 输入 ñ、`;a` 输入 á、`;?` 输入 ¿；空格确认选词并保留真实空格。原拼写始终优先，带重音或短句建议需主动选择。
+按 **Control＋反引号**（或 F4）打开方案菜单，选 **她说 · 女性优先全拼**：
 
-西语学习资料包含 **76 种西语输出、86 个中文查询**。西语候选旁的中文释义首次默认开启；中文方案中的「中文查西语」首次默认关闭，开启后输入 `nihao` 等完整拼音可选择 `Hola.`。两个开关分别保存选择。资料为有限的离线常用词句，使用步骤、例子和贡献方式见 **[Mac 三语与西语学习](docs/spanish-learning.md)**。这次三语更新适用于 Mac 键盘；语音工具的声学识别仍使用原有中英模型。
+| 输入 | 可以看到的结果 |
+| --- | --- |
+| `ta` | 「她」在前，「他」仍可选 |
+| `tamen` | 「她们」在前，「他们」仍可选 |
+| `yangjiang` | 杨绛 |
+| `qingxujiazhi` | 情绪价值 |
+| `qubanwei` | 去班味 |
 
-Windows 与 Linux 的 Rime 理论上可使用本项目配置，但本轮只验证了 macOS；不提供未经验证的一键安装承诺。
+按空格确认中文候选。公共词会补到候选中，保留已有正常首项；如果第一项是其他同音词，继续查看候选即可。
 
-## 女性人物姓名、成语、品牌与网络常用词
+找不到方案、首次无法打字、端口占用、升级或停用，请看[完整安装与排错](docs/macos-install.md)。
 
-公共词库有 **101 条女性人物姓名词形、100 条常用成语、12 个品牌名和 337 条网络常用词与日常表达**。在中文全拼模式中，例如 `yangjiang → 杨绛`、`tuyouyou → 屠呦呦`、`ziqiangbuxi → 自强不息`、`dazi → 搭子`、`qubanwei → 去班味`、`qingxujiazhi → 情绪价值`；品牌也可用收录的英文名输入，如 `bobbibrown → 芭比波朗`。Mac 与 iPhone 从同一数据生成，公共建议保留原有正常第一候选，本地「不再推荐」仍然优先。
+## 切换语言与措辞
 
-每条词有读音、类别及来源。网络词结合近年公开用例，覆盖聊天回应、情绪关怀、工作学习、兴趣生活、创作分享与女性主题；不作为热度排名。[337 条完整清单](docs/internet-vocabulary.md)列出每词的全拼输入码与公开出处。这是额外补充词表，基础中文词库由 Rime 另行提供。品牌说明区分女性创办历史、设计定位与支持项目，不把收录当作整家企业的女性友好认证。可以[提议新词](https://github.com/SavannahY/her-words-ime/issues/new?template=public-word-proposal.yml)，或修改 [`data/public-lexicon/`](data/public-lexicon/)；格式和收录依据见 [公共词库说明](docs/public-lexicon.md)。
+同一方案菜单中可以选择：
 
-## 本地词库与不再推荐
+| 方案 | 日常输入 |
+| --- | --- |
+| **她说 · 女性优先全拼** | 中文全拼、公共词库、个人拼音和缩写 |
+| **她说 · English** | 英文原样输入，空格、大小写和标点交给当前应用 |
+| **她说 · Español 西班牙语** | 西语原拼写优先，重音与词句建议由你主动选择 |
 
-确认输入的短词可以留在本机，让常用人名和英文词更容易找到。可以手动添加词语及拼音／缩写，也可以关闭自动记忆。**忘记**撤销个人记忆；**不再推荐**还会隐藏基础词典、缩写及组合候选中的该词，并阻止重新学习。隐藏名单默认折叠，可以主动查看并恢复。
+中文措辞有 **友好表达／社群写法／保留措辞** 三种模式。若菜单把选项折叠成「中／半／汉／…」一行，先选择这一行展开；选项显示当前状态及切换后的状态。
 
-iPhone 点击键盘顶部的「词库」，或长按一个候选词操作。英文按词组成，空格确认原词，点候选补全；网址、邮箱等限定输入框不提供个人候选或自动记忆。Mac 使用「她说词库」管理器，独立管理窗口只需 Command Line Tools 即可构建，不需要下载语音模型：
+| 候选中的原表达 | 默认友好表达 | 可选社群写法 |
+| --- | --- | --- |
+| 奸诈 | 狡诈 | 仠诈 |
+| 嫉妒 | 忮忌（书面近义词） | 男疾男户 |
+| 贪婪 | 贪心 | 贪㑣 |
+| 妇人之仁 | 心慈手软 | 心慈手软 |
+| 剩女 | 单身女性 | 单身女性 |
+
+这是可选择的措辞偏好。部分近义改写存在语气与词义差异；引用原话或专业语境可以切到「保留措辞」。「好、妈妈、姐姐、婚姻、嫌疑人」等正常表达保留，正常同音词也保留，例如 `jidu` 的「极度」不会被改成「忮忌」。
+
+三种模式都把「她／她们」排前，也保留「他／他们」；明确选中的「他」原样上屏。「其他、吉他、他人」保留原字。规则按具体词条匹配，范围与保护例子见[语言包说明](docs/language-packs.md)。
+
+## 西语输入和学习
+
+西语方案中，`;n` 输入 **ñ**，`;a` 输入 **á**，`;?` 输入 **¿**，大写同理；`;;` 输入分号。例如 `ma;nana` 得到 `mañana`。空格确认当前候选并保留一个真实空格，Tab 或上下键选择其他候选。
+
+两个学习开关分别设置和保存：
+
+- **西语中文释义**：首次默认开启；中文说明只显示在候选旁，确认后只输入西语。
+- **中文查西语**：首次默认关闭；在中文方案中打开后，`nihao` 可选 `Hola.`，`xiexie` 可选 `Gracias.`，正常中文首项仍保留。
+
+目前收录 **76 种常用西语输出、86 个中文查询**，用于离线查词句和理解表达。完整字符表、查询示例、性别／称呼变体及收录范围见[三语与西语学习指南](docs/spanish-learning.md)。当前辅助范围是已收录词句，通用翻译和整句语法纠错属于后续方向。
+
+## 个人词库：记住，也能忘记
+
+Mac 在确认中文短词后可以自动记忆。可以手动添加名字或英文词及输入码，例如 `GitHub → gh`，然后在中文方案输入 `gh` 选词。英文直输和西语选词不会自动写入中文记忆。
+
+在项目文件夹另开终端运行：
 
 ```sh
-python3 scripts/build_macos_word_memory_app.py
-open dist/她说词库.app
+.venv/bin/python scripts/manage_word_memory.py
 ```
 
-Mac 西文直输不自动学习英文；手动添加 `GitHub → gh` 后，在中文模式输入 `gh` 选词。新版 Mac 语音窗口也可打开相同词库，允许的专名可作为识别提示。词库不会上传到 GitHub，Mac 与 iPhone 各自本地保存。完整行为、删除含义与数据位置见 [本地词库说明](docs/local-memory.md)。
+浏览器打开 **http://127.0.0.1:8767**，即可添加、搜索、忘记或隐藏词语，也能关闭自动记忆。按 Control＋C 结束管理服务，键盘仍可继续使用保存的词库。
 
-## 切换措辞
+- **忘记**：移除个人记忆和关联；基础词典中的词可能仍会出现，日后主动使用时允许重新学习。
+- **不再推荐**：保留本地隐藏偏好，过滤对应候选并阻止自动学回；可随时主动恢复。
+- **清空已记住的词**：保留隐藏名单，避免清空后又推荐不想看到的名字。
 
-按 **Control + 反引号**（或 F4）打开 Rime 方案菜单，找到本方案的措辞开关：
+个人数据保存在本机，项目不会把它上传到 GitHub；隐藏名单也保留在本机，默认折叠。候选屏蔽的范围、数据位置和可选「她说词库」原生窗口见[本地词库指南](docs/local-memory.md)。这些设置作用于本输入方案的候选；宿主已有文字、手动输入和粘贴由使用者控制。
 
-- **友好表达**：默认使用中性包。
-- **社群写法**：手动选择后使用已安装的社群覆盖包；没有覆盖的词回退中性表达。
-- **保留措辞**：关闭词汇改写，适合引用或专业语境；「她」仍排前，「他／他们」保持可选。
+## 公共词库与社区贡献
 
-部分易歧义词只对完整候选改写。词库不保证识别所有新词、引用、反讽和整句语义。复制粘贴与系统听写直接插入的文本不会经过拼音候选过滤器。
+补充词库共 **550 个公共读音条目**：101 条女性人物姓名词形、100 条成语、12 个品牌名、337 条网络常用词与日常表达。每条记录读音与来源，公共候选也遵从个人「不再推荐」设置。品牌收录依据单独说明，见[公共词库说明](docs/public-lexicon.md)和[网络词完整清单](docs/internet-vocabulary.md)。
 
-## 语音转文字
+不懂代码也可以参与：
 
-原生离线后端采用 [sherpa-onnx](https://github.com/k2-fsa/sherpa-onnx) 的小型中英双语 Zipformer，代码、模型修订与每个下载文件的 SHA-256 都已固定。iPhone 主 App 中点击下载后使用；键盘扩展不包含语音运行时。Mac 可以构建可直接打开的录音窗口（需要 Swift 和 macOS SDK，Apple 官方 Command Line Tools 可提供）：
+- [提议友好表达或社群写法](https://github.com/SavannahY/her-words-ime/issues/new?template=word-proposal.yml)：写出原词、建议、用例和不应误改的句子。
+- [补充姓名、成语、品牌或网络词](https://github.com/SavannahY/her-words-ime/issues/new?template=public-word-proposal.yml)：提供公开出处和完整拼音。
+- [补充西语词句](https://github.com/SavannahY/her-words-ime/issues/new?template=spanish-phrase-proposal.yml)：提供西语、中文含义、适用语境及核对来源。
+
+会编辑 JSON 的贡献者可从[贡献指南](CONTRIBUTING.md)开始。规则包、公共词和西语资料分开维护；社区写法由使用者主动启用。
+
+## 可选语音转文字
+
+| 入口 | 使用方式 | 识别与数据处理 |
+| --- | --- | --- |
+| **原生 Mac 语音窗口／文件工具** | 需 Swift 与 macOS SDK，可由 Apple Command Line Tools 提供；见[构建与模型说明](docs/asr-options.md) | 主动下载约 60 MB 的固定中英模型后，在本机识别；热词提示可选，原文可校对 |
+| **浏览器听写页** | 运行下方命令后打开 http://127.0.0.1:8765 | 浏览器语音识别可能联网；文字整理在当前页面完成，见[语音指南](docs/voice.md) |
 
 ```sh
-python3 scripts/build_macos_speech_app.py
-open dist/她说语音.app
+.venv/bin/python scripts/serve_voice.py
 ```
 
-窗口内可开始／停止／取消录音、选择热词提示、编辑原文和复制完整词包整理结果。失焦或退出会结束录音，只有主动点击开始才申请麦克风权限。
+语音整理结果默认「他／它 → 她」，识别原文保留供校对；网址、邮箱和 Markdown 代码片段受保护，英文代词保持原文。它与键盘上主动选择「他」的行为分别处理。本项目语音工具处理自己取得的识别结果，不接管其他 App 或系统听写。
 
-Mac 也可从音频文件转写：
+原生录音窗口只在主动开始录音时申请麦克风权限；下载模型需要联网，识别本身在本机完成。安装键盘和管理词库不需要语音模型。
+
+## 致谢与参考
+
+Mac 输入方案建立在 [Rime](https://github.com/rime/librime)、[Squirrel](https://github.com/rime/squirrel)、[librime-lua](https://github.com/hchunhui/librime-lua)、[朙月拼音](https://github.com/rime/rime-luna-pinyin)及 [OpenCC](https://github.com/BYVoid/OpenCC)之上；可选原生语音使用 [sherpa-onnx](https://github.com/k2-fsa/sherpa-onnx/tree/v1.13.8)与固定中英模型。具体接入和许可见[第三方说明](NOTICE.md)。
+
+本轮也研究了这些项目的产品设计：
+
+| 参考项目 | 对「她说」有价值的做法 |
+| --- | --- |
+| [FEKB／Feminist eKeyboard](https://github.com/enenmia/fekb) | 女性友好词库、语言实验的语境记录与字体兼容说明 |
+| [VoiceInk](https://github.com/Beingpax/VoiceInk) | 识别词典与确定替换分开，词库导入前预览和冲突处理 |
+| [Wispr Flow](https://docs.wisprflow.ai/articles/4052411709-Teach-Flow-your-words-with-the-dictionary)／[SwiftKey](https://support.microsoft.com/en-us/swiftkey-keyboard/how-to-use-the-microsoft-swiftkey-keyboard) | 明确删除、再次学习和持续隐藏的不同含义 |
+| [Gboard](https://support.google.com/gboard/answer/7421372?co=GENIE.Platform%3DiOS&hl=en)／[LanguageTool](https://languagetool.org/mac-desktop) | 翻译预览、主动确认，以及帮助学习者理解语言建议 |
+
+本轮参考用于研究与说明，没有导入这些竞品的代码、词库或字体。哪些行为已经实现、哪些仍是后续方向，以及原始资料链接，详见[参考项目与设计依据](docs/references.md)。
+
+## 开发与验证
+
+按快速安装创建 `.venv` 并安装依赖后，开发者可以运行：
 
 ```sh
-swift run --disable-keychain --disable-netrc her-transcribe --download-model
-swift run --disable-keychain --disable-netrc her-transcribe --audio /path/to/recording.wav --hotword GitHub --json
+.venv/bin/python scripts/validate_packs.py
+.venv/bin/python -m unittest discover -s tests -p 'test_*.py'
+.venv/bin/python scripts/compile_packs.py --output rime/lua/her_rewrite_rules.lua
+.venv/bin/python scripts/compile_public_lexicon.py --check
+.venv/bin/python scripts/compile_spanish_learning.py --check
 ```
 
-下载模型需要网络，识别本身在本机进行，不上传音频；工具不会主动打开麦克风。Mac 命令行版本当前只做代词整理，完整措辞包可在下方语音页面继续处理。中英支持不等于保证每句准确；开源方案比较与调用方式见 [语音后端说明](docs/asr-options.md)。
-
-所有本项目语音输出的整理结果默认将中文「他／它」改为「她」，保护网址、邮箱和 Markdown 代码片段；原始识别文字保留。英文 he/him/it 不翻译，不做英文性别推断。这不会接管其他 App 或系统自带的听写。
-
-浏览器即时听写：
-
-从仓库根目录运行：
+在 macOS 上，可用官方鼠须管的真实 librime 做隔离验收：
 
 ```sh
-python3 scripts/serve_voice.py
+.venv/bin/python tests/integration_rime.py --config rime
+.venv/bin/python tests/integration_word_memory.py
+.venv/bin/python tests/integration_trilingual.py
+.venv/bin/python tests/integration_public_lexicon.py
 ```
 
-在支持语音识别的浏览器中打开 **http://127.0.0.1:8765**，点击「开始听写」。可以校对原文、切换中性或社群表达，再复制结果。服务只监听本机，规则直接从相同语言包生成。
+集成检查使用临时目录，不打开当前个人词库。CI 运行词包与数据检查、真实引擎验收及 iPhone 无签名构建；范围和结果见[验证记录](docs/validation.md)。iPhone 源码、签名步骤及共享数据许可见[iPhone 安装说明](docs/iphone-install.md)和 [iOS 第三方说明](ios/THIRD_PARTY_NOTICES.md)。
 
-浏览器可能将音频发送给其识别服务，听写可能需要联网；本项目的本地服务不接收音频或文字。语音页不是系统全局听写，精确匹配规则也不会猜测整段话中的语义。支持范围与隐私说明见 [语音工具说明](docs/voice.md)。
-
-## 贡献语言包
-
-不熟悉代码也可以[提议一个词](https://github.com/SavannahY/her-words-ime/issues/new?template=word-proposal.yml)。提供原词、替代建议、真实用例、可能误改的句子即可。
-
-会编辑 JSON 的贡献者可以从以下文件开始：
-
-- [`packs/neutral-zh-CN/pack.json`](packs/neutral-zh-CN/pack.json)：默认中性表达。
-- [`packs/community-zh-CN/pack.json`](packs/community-zh-CN/pack.json)：可选借字、拆字表达。
-- [`language-packs.json`](language-packs.json)：用户选择的语言包清单。
-
-每条规则都有来源、匹配范围、备注和例句测试；默认中性表达与可选借字分开维护。新语言包需加入清单才会编译，未加入的第三方语言包不会被自动启用。
-
-详细说明见 [贡献指南](CONTRIBUTING.md)、[语言包格式](docs/language-packs.md)及 [JSON Schema](schemas/pack.schema.json)。
-
-## 编译与测试
-
-词包校验与编译只使用 Python 标准库；安装器及其测试需要上述 PyYAML 依赖：
-
-```sh
-python3 scripts/validate_packs.py
-python3 -m unittest discover -s tests -p 'test_*.py'
-python3 scripts/compile_packs.py --output rime/lua/her_rewrite_rules.lua
-python3 scripts/compile_public_lexicon.py --check
-```
-
-macOS 上还可以使用鼠须管内置的真实引擎进行隔离验收：
-
-```sh
-python3 tests/integration_rime.py --config rime
-```
-
-引擎验收使用临时目录，不动当前 Rime 用户目录。范围与结果见 [验证记录](docs/validation.md)。GitHub Actions 执行词包校验、编译、单元测试、macOS 真实引擎验收，以及 iPhone 模拟器和设备架构的无签名构建。
-
-## 实现与许可
-
-`rime/lua/her_filter.lua` 在 OpenCC 简繁转换后，以 `ShadowCandidate` 改写候选，保留原候选结构与分词信息。新学习统一进入可管理的本地短词库；本方案关闭 Rime 原生 userdb 的使用，旧数据库保留。规则按同位置最长词优先、单趟匹配，避免连锁替换。生成的数据文件不执行语言包提供的代码。
-
-本项目自行编写的代码与词包按 [MIT](LICENSE) 许可。公开网页只作为用例或词义依据，不代表原作者支持本项目全部改写。Rime、Squirrel 及其上游字典保留各自许可，详见 [第三方说明](NOTICE.md)。
+本项目原创代码、词包与注解采用 [MIT License](LICENSE)。外部组件、模型、词典和引用网页保留各自许可，记录在 [NOTICE.md](NOTICE.md)。

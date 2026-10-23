@@ -1,0 +1,60 @@
+name: 提议西语词句
+description: 补充常用西语表达、中文释义或查询入口，无需编写代码。
+title: "[西语词句] 表达名称"
+body:
+  - type: markdown
+    attributes:
+      value: |
+        欢迎补充日常西语词句。请使用自编的简短例子和公开核对链接，不要复制整课内容或私人对话。
+        需要性别、称呼或地区配合时，请说明适用对象；不确定的地方可以注明。
+  - type: input
+    id: spanish
+    attributes:
+      label: 西语原文
+      description: 尽量保留重音、ñ 和成对的 ¿?／¡!。
+      placeholder: ¿Puede repetir, por favor?
+    validations:
+      required: true
+  - type: input
+    id: meaning
+    attributes:
+      label: 中文含义
+      placeholder: 请您再说一遍，可以吗？
+    validations:
+      required: true
+  - type: textarea
+    id: context
+    attributes:
+      label: 适用语境
+      description: 说明说话者、对象、正式或非正式称呼、地区差异；有正确变体时可一并提供。
+      placeholder: 用 usted 称呼不熟悉的人，请对方重复。非正式 tú 形式可以另列。
+    validations:
+      required: true
+  - type: input
+    id: chinese_query
+    attributes:
+      label: 希望怎样用中文查到它？（可选）
+      placeholder: 请您再说一遍
+  - type: input
+    id: pinyin
+    attributes:
+      label: 中文查询的完整拼音（可选）
+      description: 小写音节用空格分隔；不确定可以留空。
+      placeholder: qing nin zai shuo yi bian
+  - type: textarea
+    id: sources
+    attributes:
+      label: 核对来源
+      description: 提供词典、语法机构、课程作者等直接来源的 HTTPS 链接，简述支持哪项词义或用法。
+      placeholder: |
+        来源标题及链接：
+        支持的词义、语法或语境：
+    validations:
+      required: true
+  - type: checkboxes
+    id: license
+    attributes:
+      label: 贡献许可
+      options:
+        - label: 我同意将原创词句选择、简短释义、说明和测试按项目 MIT 许可发布；外部来源仅以链接引用。
+          required: true
