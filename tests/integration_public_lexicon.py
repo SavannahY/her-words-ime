@@ -80,7 +80,8 @@ def worker(app, user, baseline_path, baseline):
                     checks += 1
         store = MemoryStore(user)
         for code, word in [("tuyouyou", "屠呦呦"), ("ziqiangbuxi", "自强不息"),
-                           ("bobbibrown", "芭比波朗")]:
+                           ("bobbibrown", "芭比波朗"), ("ainilaoji", "爱你老己"),
+                           ("qingxujiazhi", "情绪价值")]:
             query(code, select=word)
             checks += 1
             store.mutate("block", text=word)
@@ -93,7 +94,8 @@ def worker(app, user, baseline_path, baseline):
         for code, simplified, traditional_word in [("yashilandai", "雅诗兰黛", "雅詩蘭黛"),
                                                     ("esteelauder", "雅诗兰黛", "雅詩蘭黛"),
                                                     ("mayiya", "玛伊娅", "瑪伊婭"),
-                                                    ("maiaactive", "玛伊娅", "瑪伊婭")]:
+                                                    ("maiaactive", "玛伊娅", "瑪伊婭"),
+                                                    ("qingxujiazhi", "情绪价值", "情緒價值")]:
             for mode in ("friendly", "community", "original"):
                 traditional = query(code, mode, traditional=True)
                 require(traditional_word in traditional[:2] and simplified not in traditional,
@@ -105,6 +107,26 @@ def worker(app, user, baseline_path, baseline):
         store.mutate("unblock", text="雅诗兰黛")
         store.mutate("block", text="雅詩蘭黛")
         require("雅詩蘭黛" not in query("esteelauder", traditional=True), "Traditional block leaked through public alias")
+        checks += 1
+        store.mutate("block", text="情绪")
+        for mode in ("friendly", "community", "original"):
+            require("情绪价值" not in query("qingxujiazhi", mode), "Blocked internet phrase leaked: " + mode)
+            require("情緒價值" not in query("qingxujiazhi", mode, traditional=True), "Simplified block leaked through traditional internet phrase: " + mode)
+            checks += 2
+        store.mutate("unblock", text="情绪")
+        require("情绪价值" in query("qingxujiazhi"), "Internet phrase did not restore after substring unblock")
+        checks += 1
+        query("qingxujiazhi", select="情绪价值")
+        store.mutate("block", text="情緒")
+        for mode in ("friendly", "community", "original"):
+            require("情绪价值" not in query("qingxujiazhi", mode), "Traditional block leaked through simplified internet phrase: " + mode)
+            require("情緒價值" not in query("qingxujiazhi", mode, traditional=True), "Traditional internet block leaked: " + mode)
+            checks += 2
+        learned = (user / "her_memory_learned.tsv").read_text(encoding="utf-8")
+        require("情绪价值" not in learned and "情緒價值" not in learned, "Script variant of a blocked phrase remained learned")
+        checks += 1
+        store.mutate("unblock", text="情緒")
+        require("情绪价值" in query("qingxujiazhi") and "情緒價值" in query("qingxujiazhi", traditional=True), "Script variants did not restore after unblock")
         checks += 1
         print("Public real-Rime lexicon: {} checks passed ({} readings, {} input codes).".format(
             checks, len(catalog["entries"]), len(inputs)), flush=True)

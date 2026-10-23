@@ -7,6 +7,7 @@ import unittest
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "scripts"))
 from compile_ios_data import merge_public_lexicon, parse_dictionary
+from compile_packs import lua_quote
 from compile_public_lexicon import (DEFAULT_OUTPUT, PUBLIC_SEED_WEIGHT, build_public_resources,
                                     load_public_lexicon, validate_file)
 from validate_packs import ValidationError
@@ -26,7 +27,67 @@ def fixture():
     }
 
 
+def internet_fixture():
+    data = fixture()
+    data["entries"] = [
+        {"text": "情绪价值", "pinyin": "qing xu jia zhi", "category": "internet",
+         "source_ids": ["test-official"], "tags": ["daily"]},
+        {"text": "搭子", "pinyin": "da zi", "category": "internet", "source_ids": ["test-official"]},
+    ]
+    return data
+
+
 class PublicLexiconTests(unittest.TestCase):
+    def test_internet_words_use_regular_full_pinyin_without_aliases(self):
+        data = internet_fixture()
+        self.assertIs(validate_file(data, "internet.json"), data)
+        with tempfile.TemporaryDirectory() as temporary:
+            source = Path(temporary)
+            (source / "internet.json").write_text(json.dumps(data, ensure_ascii=False), encoding="utf-8")
+            resources = build_public_resources(source)
+            dictionary = resources["her_public.dict.yaml"].decode()
+            self.assertIn("情绪价值\tqing xu jia zhi\t1\n", dictionary)
+            self.assertIn("搭子\tda zi\t1\n", dictionary)
+            lua = resources["lua/her_public_aliases.lua"].decode()
+            for code, word in [("qingxujiazhi", "情绪价值"), ("dazi", "搭子")]:
+                self.assertIn("{ input = " + lua_quote(code) + ", text = " + lua_quote(word)
+                              + ", category = " + lua_quote("internet") + " }", lua)
+            self.assertEqual(lua.split("  aliases = {\n", 1)[1], "  },\n}\n")
+
+    def test_internet_category_does_not_relax_text_or_pronunciation_validation(self):
+        mutations = [
+            {"text": "AI搭子", "pinyin": "ai da zi"},
+            {"text": "搭子AI", "pinyin": "da zi ai"},
+            {"text": "搭·子", "pinyin": "da zi"},
+            {"text": "搭 子", "pinyin": "da zi"},
+            {"pinyin": "dazi"},
+            {"pinyin": "d z"},
+            {"pinyin": "da github"},
+            {"pinyin": "da"},
+            {"aliases": ["dazi"]},
+            {"category": "unknown"},
+            {"source_ids": ["missing"]},
+        ]
+        for change in mutations:
+            with self.subTest(change=change):
+                data = internet_fixture()
+                data["entries"][1].update(change)
+                with self.assertRaises(ValidationError):
+                    validate_file(data, "internet.json")
+
+    def test_internet_metadata_preserves_baseline_frequencies(self):
+        baseline = [{"text": "搭子", "pinyin": "da zi", "weight": 25}]
+        selected, counts = merge_public_lexicon(baseline, baseline, internet_fixture())
+        values = {(row["text"], row["pinyin"]): row for row in selected}
+        self.assertEqual(values[("搭子", "da zi")],
+                         {"text": "搭子", "pinyin": "da zi", "weight": 25, "category": "internet"})
+        self.assertEqual(values[("情绪价值", "qing xu jia zhi")],
+                         {"text": "情绪价值", "pinyin": "qing xu jia zhi", "weight": PUBLIC_SEED_WEIGHT,
+                          "category": "internet", "supplemental": True})
+        self.assertEqual(counts["public_added_new_readings"], 1)
+        self.assertEqual(counts["public_english_aliases"], 0)
+        self.assertEqual(baseline, [{"text": "搭子", "pinyin": "da zi", "weight": 25}])
+
     def test_checked_in_public_artifacts_are_reproducible(self):
         resources = build_public_resources()
         self.assertEqual(resources, build_public_resources())

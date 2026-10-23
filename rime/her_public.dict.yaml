@@ -7,14 +7,20 @@ name: her_public
 version: "1"
 sort: by_weight
 ...
+爱你老己	ai ni lao ji	1
 安妮·埃尔诺	an ni ai er nuo	1
+安排上	an pai shang	1
 奥尔加·托卡尔丘克	ao er jia tuo ka er qiu ke	1
 芭比波朗	ba bi bo lang	1
+拔草	ba cao	1
 百炼成钢	bai lian cheng gang	1
 百折不挠	bai zhe bu nao	1
+班味	ban wei	1
+班味儿	ban wei er	1
 贝玲妃	bei ling fei	1
 笨鸟先飞	ben niao xian fei	1
 毕淑敏	bi shu min	1
+边界感	bian jie gan	1
 冰心	bing xin	1
 波伏娃	bo fu wa	1
 波伏瓦	bo fu wa	1
@@ -23,14 +29,17 @@ sort: by_weight
 不屈不挠	bu qu bu nao	1
 才华横溢	cai hua heng yi	1
 才思敏捷	cai si min jie	1
+测评	ce ping	1
 昌雅妮	chang ya ni	1
 陈丹燕	chen dan yan	1
 陈化兰	chen hua lan	1
+沉浸式	chen jin shi	1
 陈梦	chen meng	1
 陈文新	chen wen xin	1
 陈艺文	chen yi wen	1
 陈芋汐	chen yu xi	1
 乘风破浪	cheng feng po lang	1
+吃谷	chi gu	1
 池莉	chi li	1
 持之以恒	chi zhi yi heng	1
 迟子建	chi zi jian	1
@@ -38,35 +47,53 @@ sort: by_weight
 出口成章	chu kou cheng zhang	1
 出类拔萃	chu lei ba cui	1
 触类旁通	chu lei pang tong	1
+出片	chu pian	1
+出圈	chu quan	1
 从容不迫	cong rong bu po	1
 大器晚成	da qi wan cheng	1
+搭子	da zi	1
+淡人	dan ren	1
 得心应手	de xin ying shou	1
+电子布洛芬	dian zi bu luo fen	1
+电子亲人	dian zi qin ren	1
+电子榨菜	dian zi zha cai	1
 丁玲	ding ling	1
 斗志昂扬	dou zhi ang yang	1
 独当一面	du dang yi mian	1
 独具匠心	du ju jiang xin	1
 多丽丝·莱辛	duo li si lai xin	1
+二创	er chuang	1
+饭搭子	fan da zi	1
+反内耗	fan nei hao	1
+反向旅游	fan xiang lv you	1
 范小青	fan xiao qing	1
 方方	fang fang	1
 奋发图强	fen fa tu qiang	1
 奋起直追	fen qi zhi zhui	1
+氛围感	fen wei gan	1
 奋勇争先	fen yong zheng xian	1
 馥蕾诗	fu lei shi	1
 各抒己见	ge shu ji jian	1
 葛水平	ge shui ping	1
+谷子	gu zi	1
 海阔天空	hai kuo tian kong	1
 韩江	han jiang	1
+含金量还在上升	han jin liang hai zai shang sheng	1
 赫莲娜	he lian na	1
+狠狠期待	hen hen qi dai	1
 厚积薄发	hou ji bo fa	1
 黄蓓佳	huang bei jia	1
 黄英	huang ying	1
 黄咏梅	huang yong mei	1
 豁然开朗	huo ran kai lang	1
+活人感	huo ren gan	1
 积少成多	ji shao cheng duo	1
 集思广益	ji si guang yi	1
+家人们	jia ren men	1
 健步如飞	jian bu ru fei	1
 坚持不懈	jian chi bu xie	1
 坚韧不拔	jian ren bu ba	1
+健身搭子	jian shen da zi	1
 见微知著	jian wei zhi zhu	1
 蒋胜男	jiang sheng nan	1
 匠心独运	jiang xin du yun	1
@@ -77,9 +104,13 @@ sort: by_weight
 兢兢业业	jing jing ye ye	1
 井井有条	jing jing you tiao	1
 精益求精	jing yi qiu jing	1
+敬自己一杯	jing zi ji yi bei	1
 举一反三	ju yi fan san	1
+绝绝子	jue jue zi	1
 开诚布公	kai cheng bu gong	1
 开卷有益	kai juan you yi	1
+开箱	kai xiang	1
+来财	lai cai	1
 乐在其中	le zai qi zhong	1
 雷佳	lei jia	1
 李冰洁	li bing jie	1
@@ -94,6 +125,7 @@ sort: by_weight
 龙腾虎跃	long teng hu yue	1
 鲁敏	lu min	1
 路易丝·格丽克	lu yi si ge li ke	1
+旅行搭子	lv xing da zi	1
 马金莲	ma jin lian	1
 玛伊娅	ma yi ya	1
 茅塞顿开	mao se dun kai	1
@@ -101,24 +133,37 @@ sort: by_weight
 美体小铺	mei ti xiao pu	1
 梅艳芳	mei yan fang	1
 妙笔生花	miao bi sheng hua	1
+拿捏	na nie	1
 内外	nei wai	1
+浓人	nong ren	1
 欧舒丹	ou shu dan	1
 欧缇丽	ou ti li	1
 潘向黎	pan xiang li	1
+偏偏你最争气	pian pian ni zui zheng qi	1
+平替	ping ti	1
 平野美宇	ping ye mei yu	1
+破圈	po quan	1
 齐心协力	qi xin xie li	1
 乔叶	qiao ye	1
 锲而不舍	qie er bu she	1
 秦文君	qin wen jun	1
 勤学好问	qin xue hao wen	1
+情感劳动	qing gan lao dong	1
+情绪价值	qing xu jia zhi	1
+轻养生	qing yang sheng	1
 裘山山	qiu shan shan	1
 求同存异	qiu tong cun yi	1
+去班味	qu ban wei	1
 取长补短	qu chang bu duan	1
 全红婵	quan hong chan	1
 全力以赴	quan li yi fu	1
 日积月累	ri ji yue lei	1
 日新月异	ri xin yue yi	1
 融会贯通	rong hui guan tong	1
+如何呢又能怎	ru he ne you neng zen	1
+赛博对账	sai bo dui zhang	1
+晒谷	shai gu	1
+上头	shang tou	1
 上野千鹤子	shang ye qian he zi	1
 邵丽	shao li	1
 神采奕奕	shen cai yi yi	1
@@ -131,12 +176,17 @@ sort: by_weight
 实事求是	shi shi qiu shi	1
 施蕴渝	shi yun yu	1
 舒婷	shu ting	1
+数字游民	shu zi you min	1
 水滴石穿	shui di shi chuan	1
+水灵灵地	shui ling ling de	1
+松弛感	song chi gan	1
 随遇而安	sui yu er an	1
 孙梦雅	sun meng ya	1
 孙颖莎	sun ying sha	1
+太会了	tai hui le	1
 泰勒·斯威夫特	tai le si wei fu te	1
 泰然自若	tai ran zi ruo	1
+探店	tan dian	1
 唐钱婷	tang qian ting	1
 铁凝	tie ning	1
 同心协力	tong xin xie li	1
@@ -145,6 +195,7 @@ sort: by_weight
 脱颖而出	tuo ying er chu	1
 王安忆	wang an yi	1
 王恩多	wang en duo	1
+网感	wang gan	1
 王丽达	wang li da	1
 王曼昱	wang man yu	1
 王小云	wang xiao yun	1
@@ -154,12 +205,17 @@ sort: by_weight
 温故知新	wen gu zhi xin	1
 文洁若	wen jie ruo	1
 文思泉涌	wen si quan yong	1
+我裂开了	wo lie kai le	1
+我真的会谢	wo zhen de hui xie	1
 吴碧霞	wu bi xia	1
 伍尔夫	wu er fu	1
+显眼包	xian yan bao	1
 相得益彰	xiang de yi zhang	1
 相辅相成	xiang fu xiang cheng	1
 萧红	xiao hong	1
+小确幸	xiao que xing	1
 心旷神怡	xin kuang shen yi	1
+信息断舍离	xin xi duan she li	1
 欣欣向荣	xin xin xiang rong	1
 兴致勃勃	xing zhi bo bo	1
 胸有成竹	xiong you cheng zhu	1
@@ -181,6 +237,7 @@ sort: by_weight
 叶诗文	ye shi wen	1
 叶叔华	ye shu hua	1
 叶文玲	ye wen ling	1
+已读乱回	yi du luan hui	1
 伊丽莎白雅顿	yi li sha bai ya dun	1
 意气风发	yi qi feng fa	1
 怡然自得	yi ran zi de	1
@@ -189,12 +246,14 @@ sort: by_weight
 一往无前	yi wang wu qian	1
 殷健灵	yin jian ling	1
 应付自如	ying fu zi ru	1
+硬控	ying kong	1
 迎头赶上	ying tou gan shang	1
 勇往直前	yong wang zhi qian	1
 游刃有余	you ren you yu	1
 有条不紊	you tiao bu wen	1
 愚公移山	yu gong yi shan	1
 余依婷	yu yi ting	1
+悦己	yue ji	1
 运筹帷幄	yun chou wei wo	1
 再接再厉	zai jie zai li	1
 张艾嘉	zhang ai jia	1
@@ -208,15 +267,22 @@ sort: by_weight
 张永莲	zhang yong lian	1
 张雨霏	zhang yu fei	1
 张悦然	zhang yue ran	1
+找搭子	zhao da zi	1
+整活	zheng huo	1
 郑钦文	zheng qin wen	1
 郑儒永	zheng ru yong	1
 蒸蒸日上	zheng zheng ri shang	1
 志同道合	zhi tong dao he	1
 知足常乐	zhi zu chang le	1
+种草	zhong cao	1
 周嘉宁	zhou jia ning	1
 周晓枫	zhou xiao feng	1
+主理人	zhu li ren	1
+主体性	zhu ti xing	1
 朱雪莹	zhu xue ying	1
 卓有成效	zhuo you cheng xiao	1
 自强不息	zi qiang bu xi	1
+自我关怀	zi wo guan huai	1
 孜孜不倦	zi zi bu juan	1
 宗璞	zong pu	1
+嘴替	zui ti	1

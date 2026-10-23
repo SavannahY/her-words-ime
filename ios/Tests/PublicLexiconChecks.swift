@@ -95,7 +95,10 @@ private enum PublicLexiconChecks {
         let realRules = try Data(contentsOf: resources.appendingPathComponent("rules.json"))
         let publicRows = try JSONDecoder().decode([HerLexiconEntry].self, from: realLexiconData).filter { $0.category != nil }
         check(publicRows.count >= 200, "actual contributed catalog is present")
-        check(Set(publicRows.compactMap(\.category)) == Set(["woman", "idiom", "brand"]), "actual catalog includes all three categories")
+        let categories = Set(publicRows.compactMap(\.category))
+        check(Set(["woman", "idiom", "brand"]).isSubset(of: categories)
+              && categories.isSubset(of: Set(["woman", "idiom", "brand", "internet"])),
+              "actual catalog retains the original categories and permits internet vocabulary")
         let realMemory = try HerWordMemoryStore(directory: root.appendingPathComponent("actual"))
         let realEngine = try HerPinyinEngine(lexiconData: realLexiconData, rulesData: realRules, memory: realMemory)
         for row in publicRows {

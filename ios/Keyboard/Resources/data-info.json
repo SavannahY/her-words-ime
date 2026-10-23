@@ -2,16 +2,16 @@
   "counts": {
     "alias_input_codes": 43,
     "alias_restored_upstream_readings": 10,
-    "lexicon_readings": 47275,
-    "lexicon_unique_texts": 46627,
+    "lexicon_readings": 47336,
+    "lexicon_unique_texts": 46688,
     "maximum_weight": 4828294,
     "project_added_new_readings": 25,
     "project_dictionary_readings": 42,
     "project_restored_upstream_readings": 2,
-    "public_added_new_readings": 163,
+    "public_added_new_readings": 222,
     "public_english_aliases": 12,
-    "public_readings": 213,
-    "public_restored_upstream_readings": 28,
+    "public_readings": 279,
+    "public_restored_upstream_readings": 30,
     "selected_upstream_multi_character_readings": 30000,
     "upstream_alias_readings": 36,
     "upstream_readings": 65125,
@@ -28,8 +28,8 @@
       "sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30"
     },
     "lexicon.json": {
-      "bytes": 2322733,
-      "sha256": "c2e5ef24d1e3f92c67e8be8aa3f7bcc099fcc645e9c926f6b1afac2ba40b6cfc"
+      "bytes": 2328857,
+      "sha256": "3d7f0bf71f8cd4fc284eac596777e088b38daf08bbc72ac23d9c640f30bbdbe2"
     },
     "rules.json": {
       "bytes": 14663,
@@ -41,6 +41,7 @@
     "files": {
       "brands.json": "ca26aea4d61222556a71c65a32e09ec6915df10aa638b7b008bb145dd85fdc62",
       "idioms.json": "730b2088be693f001780aebb391fc8b852836110a1ba0c9fc89efd66a0b9a31e",
+      "internet.json": "ab8b443b97fe5773d41495c45fd6fe6e63013bd8a9e89f531d5336e471bb36e8",
       "women.json": "6742490eae4ce21d3fc27a4d474c339e500bd1afaec8a51a9d2ad7df4820f257"
     },
     "sources": [
@@ -638,6 +639,191 @@
         "id": "idiom-zdic-zi-zi-bu-juan",
         "title": "汉典：孜孜不倦（词头和读音复核）",
         "url": "https://www.zdic.net/hans/%E5%AD%9C%E5%AD%9C%E4%B8%8D%E5%80%A6"
+      },
+      {
+        "id": "internet-chat-arrange-2026",
+        "title": "新华网：两会看“新”丨“空天地海”全覆盖，6G何时安排上？（2026-03-10）",
+        "url": "https://www.news.cn/20260310/1b1be684cee6487185911b3d75fc4ce0/c.html"
+      },
+      {
+        "id": "internet-chat-campus-2026",
+        "title": "新华网／光明日报：当网络梗溜进校园 如何让孩子“好好说话”（2026-01-27）",
+        "url": "https://www.news.cn/politics/20260127/585f79f3e6f141c2b76f1803859bf8cd/c.html"
+      },
+      {
+        "id": "internet-chat-cinema-2024",
+        "title": "人民网上海频道：带你逛！四平电影院试营业（2024-12-02）",
+        "url": "https://sh.people.com.cn/n2/2024/1202/c134768-41062097.html"
+      },
+      {
+        "id": "internet-chat-dazi-2024",
+        "title": "人民论坛：“搭子社交”：青年社交模式的新表征（2024-05-01）",
+        "url": "https://paper.people.com.cn/rmlt/html/2024-05/01/content_26070980.htm"
+      },
+      {
+        "id": "internet-chat-drama-2025",
+        "title": "人民日报：古偶剧创新不能“虎头蛇尾”（2025-07-15）",
+        "url": "https://ent.people.com.cn/n1/2025/0715/c1012-40521543.html"
+      },
+      {
+        "id": "internet-chat-gu-2025",
+        "title": "新华网／中国新闻网：“吃谷”流行 年轻一族乐为情绪价值买单（2025-04-30）",
+        "url": "https://www3.xinhuanet.com/fashion/20250430/d4a540cf6263423b9268b2f8f3651c20/c.html"
+      },
+      {
+        "id": "internet-chat-juejuezi-2025",
+        "title": "中国城市报：重庆市荣昌区：一只“鹅”带火一座城（2025-05-12）",
+        "url": "https://paper.people.com.cn/zgcsb/pad/content/202505/12/content_30072617.html"
+      },
+      {
+        "id": "internet-chat-language-2025",
+        "title": "人民日报：“能说会道”也是文化创造力（2025-08-19，版面原文）",
+        "url": "https://paper.people.com.cn/rmrb/pc/attachement/202508/19/1e97968b-f4a4-4739-9990-851034acf225.pdf"
+      },
+      {
+        "id": "internet-chat-mascot-2025",
+        "title": "新华社：秀我中国丨“大湾鸡”又“整活”：叶问蹲、倒立、仰卧起坐（2025-11-13）",
+        "url": "https://www.news.cn/20251113/c352a5c68ee842b7a8e05c6fca8ca065/c.html"
+      },
+      {
+        "id": "internet-chat-nanie-2025",
+        "title": "新华网江苏频道／盐城文旅：非遗年 盐城味（2025-01-21）",
+        "url": "https://js.news.cn/20250121/520bd0468d7c4d5883044b504d1c73ea/c.html"
+      },
+      {
+        "id": "internet-chat-night-school-2026",
+        "title": "人民网上海频道：上海夜校灯火照亮青年进阶路 引发奇妙连锁反应（2026-05-08）",
+        "url": "https://sh.people.com.cn/n2/2026/0508/c176737-41574746.html"
+      },
+      {
+        "id": "internet-chat-pandian-2024",
+        "title": "国家语言资源监测与研究中心：2024年度十大网络用语发布及解读",
+        "url": "https://nlp.ccnu.edu.cn/news/133"
+      },
+      {
+        "id": "internet-chat-self-2026",
+        "title": "人民日报：从“买有用”到“买开心”（商海观潮，2026-02-04）",
+        "url": "https://www.peopleapp.com/column/30051363619-500007339906"
+      },
+      {
+        "id": "internet-chat-short-drama-2024",
+        "title": "中国城市报：数百亿元的微短剧市场如何撑起观众期待（2024-04-08）",
+        "url": "https://paper.people.com.cn/zgcsb/html/2024-04/08/content_26051256.htm"
+      },
+      {
+        "id": "internet-chat-travel-2025",
+        "title": "新华网／广州日报：“躺进山海”是一场流量逃离（2025-04-17）",
+        "url": "https://www.news.cn/comments/20250417/75b48ecebb1a495396922c2533426c27/c.html"
+      },
+      {
+        "id": "internet-chat-words-2024",
+        "title": "新华网／工人日报：从年度流行语中感受时代脉动（2024-12-04）",
+        "url": "https://www.xinhuanet.com/comments/20241204/a4c1eeddb0934bbbb19bad078015afd1/c.html"
+      },
+      {
+        "id": "internet-laoji-2026",
+        "title": "新华社：千笔楼丨爱你，老己！",
+        "url": "https://www.news.cn/politics/20260218/74f12aa5b9614304b070394e78b91111/c.html"
+      },
+      {
+        "id": "internet-mac-consumption2025",
+        "title": "人民论坛：青年网民消费行为及心理的深层逻辑（2025-05-01）",
+        "url": "https://paper.people.com.cn/rmlt/pc/content/202505/01/content_30080964.html"
+      },
+      {
+        "id": "internet-mac-create2025",
+        "title": "三湘都市报／新湖南：科技生出“萌感”，官方账号整活（2025-12-14）",
+        "url": "https://www.hunantoday.cn/news/xhn/202512/31122149.html"
+      },
+      {
+        "id": "internet-mac-feeling2025",
+        "title": "文艺报：情感劳动与“电子布洛芬”（2025-01-20）",
+        "url": "https://wyb.chinawriter.com.cn/content/202501/20/content77876.html"
+      },
+      {
+        "id": "internet-mac-goods2025",
+        "title": "四川日报／人民网：开年以来 二次元经济线上火热（2025-02-18）",
+        "url": "https://sc.people.com.cn/n2/2025/0218/c345167-41138572.html"
+      },
+      {
+        "id": "internet-mac-health2025",
+        "title": "人民日报／中国青年报客户端：从年轻人“囤健康”看消费潜力（2025-05-16）",
+        "url": "https://m.cyol.com/gb/articles/2025-05/16/content_wdwLb3hRMA.html"
+      },
+      {
+        "id": "internet-mac-offline2026",
+        "title": "人民论坛：青年情绪旅游新样态新发展（2026-08-03）",
+        "url": "https://paper.people.com.cn/rmlt/pc/content/202608/03/content_30178526.html"
+      },
+      {
+        "id": "internet-mac-picture2025",
+        "title": "人民日报：旅拍，让旅途更有沉浸感（2025-06-28报纸版）",
+        "url": "https://paper.people.com.cn/rmrb/pc/attachement/202506/28/b85053a3-e905-4d25-8e2d-c24d8badb548.pdf"
+      },
+      {
+        "id": "internet-mac-shopping2021",
+        "title": "北京日报／人民网：“种草”经济退潮后 年轻人热衷于网上求“拔草”（2021-10-14；用于核对多义）",
+        "url": "https://yn.people.com.cn/n2/2021/1014/c378440-34955293.html"
+      },
+      {
+        "id": "internet-mac-shopping2025",
+        "title": "人民网：上海打造城市特色商业街区，更好激发消费潜能（2025-02-18）",
+        "url": "https://sh.people.com.cn/n2/2025/0218/c176738-41139402.html"
+      },
+      {
+        "id": "internet-mac-travel2026",
+        "title": "民生周刊：解码年轻人旅游新趋势（2026-04-27）",
+        "url": "https://paper.people.com.cn/mszk/pc/content/202604/27/content_30154281.html"
+      },
+      {
+        "id": "internet-mac-value2025",
+        "title": "人民日报：青年消费，从“性价比”走向“心价比”（2025-03-10报纸版）",
+        "url": "https://paper.people.com.cn/rmrb/pc/attachement/202503/10/e7f17810-0435-4d6b-89d2-d4e21bcb5040.pdf"
+      },
+      {
+        "id": "internet-mac-video2026",
+        "title": "人民日报：两会好声音｜蒋胜男：建议遏制算法制造信息茧房（2026-03-05）",
+        "url": "https://www.peopleapp.com/column/30051566584-500007379392"
+      },
+      {
+        "id": "internet-mac-visible2025",
+        "title": "人民网：百秒说｜记者会上的“显眼包”（2025-03-07）",
+        "url": "https://lianghui.people.com.cn/2025/n1/2025/0307/c460111-40432776.html"
+      },
+      {
+        "id": "internet-mac-visit2024",
+        "title": "云南日报／人民网：探店经济兴起 激发消费新潜力（2024-07-30）",
+        "url": "https://yn.people.com.cn/n2/2024/0730/c372456-40927620.html"
+      },
+      {
+        "id": "internet-mac-voice2025",
+        "title": "人民日报：古偶剧创新不能“虎头蛇尾”（2025-07-15）",
+        "url": "https://paper.people.com.cn/rmrb/pc/content/202507/15/content_30087676.html"
+      },
+      {
+        "id": "internet-mac-year2024",
+        "title": "人民网：《咬文嚼字》2024年度十大流行语（2024-12-02）",
+        "url": "https://finance.people.com.cn/n1/2024/1202/c1004-40373589.html"
+      },
+      {
+        "id": "internet-mac-year2025",
+        "title": "讽刺与幽默：2025年十大流行语（2025-12-26）",
+        "url": "https://paper.people.com.cn/fcyym/pad/content/202512/26/content_30133212.html"
+      },
+      {
+        "id": "internet-official-2025",
+        "title": "国家语言资源监测与研究网络媒体中心：2025年度十大网络流行语",
+        "url": "https://nlp.ccnu.edu.cn/news/146"
+      },
+      {
+        "id": "internet-reply-2025",
+        "title": "人民日报：已读乱回会寒群众心",
+        "url": "https://politics.people.com.cn/n1/2025/0512/c458474-40477892.html"
+      },
+      {
+        "id": "internet-youth-2026",
+        "title": "人民论坛：青年关注的十大话题（2026）：动向与趋势",
+        "url": "https://paper.people.com.cn/rmlt/pc/content/202605/18/content_30159241.html"
       },
       {
         "id": "women-beauvoir-interview-wa",

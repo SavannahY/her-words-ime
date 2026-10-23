@@ -27,7 +27,7 @@ ROOT = Path(__file__).resolve().parents[1]
 DEFAULT_INPUT = ROOT / "data/public-lexicon"
 DEFAULT_OUTPUT = ROOT / "rime"
 PUBLIC_SEED_WEIGHT = 1
-CATEGORIES = {"woman", "idiom", "brand"}
+CATEGORIES = {"woman", "idiom", "brand", "internet"}
 IDENTIFIER = re.compile(r"[a-z0-9][a-z0-9._-]{0,79}\Z")
 SLUG = re.compile(r"[a-z0-9]+(?:-[a-z0-9]+)*\Z")
 ALIAS = re.compile(r"[a-z]{1,64}\Z")
@@ -96,7 +96,7 @@ def validate_file(data, filename):
                 left in MIDDLE_DOTS and right in MIDDLE_DOTS for left, right in zip(value, value[1:])):
             fail(where, "middle dots may only separate name components")
         if not isinstance(entry["category"], str) or entry["category"] not in CATEGORIES:
-            fail(where, "category must be woman, idiom or brand")
+            fail(where, "category must be woman, idiom, brand or internet")
         if any(char in MIDDLE_DOTS for char in value) and entry["category"] != "woman":
             fail(where, "middle dots are only supported for person names")
         normalize_pinyin(entry["pinyin"], where + ".pinyin")

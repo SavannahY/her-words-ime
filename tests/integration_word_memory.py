@@ -88,6 +88,30 @@ def worker(app, user, phase):
             store.mutate('block', text='她')
             check('她' not in query('ta')[0] and query('ta')[0][0] == '他', 'blocking female default leaves male alternative available')
             store.mutate('unblock', text='她')
+            store.mutate('remember', text='情緒價值', input='qx')
+            sid = engine.session('her_words')
+            def in_same_session(code):
+                engine.bind('clear_composition', None, C.c_size_t)(sid)
+                committed, failures = enter(engine, sid, code)
+                if committed or failures:
+                    raise AssertionError('Unexpected persistent-session input result')
+                texts, truncated = engine.candidates(sid, 10000)
+                if truncated:
+                    raise AssertionError('Persistent-session candidates truncated')
+                return texts
+            try:
+                check('情緒價值' in in_same_session('qx'), 'manual traditional word is available before blocking')
+                store.mutate('block', text='情绪')
+                check('情緒價值' not in in_same_session('qx'), 'simplified block hides traditional manual word in existing session')
+                store.mutate('unblock', text='情绪')
+                check('情緒價值' in in_same_session('qx'), 'unblock invalidates normalized suppression in existing session')
+                store.mutate('block', text='情緒')
+                check('情绪价值' not in in_same_session('qingxujiazhi'), 'traditional block hides simplified dictionary and public word in existing session')
+                store.mutate('unblock', text='情緒')
+                check('情绪价值' in in_same_session('qingxujiazhi'), 'restored script variant returns in existing session')
+            finally:
+                engine.destroy(sid)
+                store.mutate('forget', text='情緒價值')
             policy = store.policy_path.read_bytes()
             store.policy_path.write_text('broken')
             check(query('zhangsan')[0] == [], 'corrupt policy fails closed for a new engine session')

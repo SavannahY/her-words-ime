@@ -81,9 +81,13 @@ local function policy(path)
   end
   return result
 end
-local function blocked(text, current)
-  local folded = lower(text)
-  for term, _ in pairs(current.blocked) do
+local function simplified_for_block(text, converter)
+  if not converter or not text:find("[\128-\255]") then return text end
+  local ok, converted = pcall(function() return converter:convert(text) end)
+  return ok and type(converted) == "string" and converted ~= "" and converted or text
+end
+local function contains_blocked(folded, terms)
+  for term, _ in pairs(terms) do
     local ascii = true
     for index = 1, #term do if term:byte(index) > 127 then ascii = false; break end end
     local begin_at = 1
@@ -97,6 +101,16 @@ local function blocked(text, current)
     end
   end
   return false
+end
+local function blocked(text, current)
+  if not next(current.blocked) then return false end
+  local folded = lower(text)
+  if contains_blocked(folded, current.blocked) then return true end
+  -- Match both sides in the same script, including ordinary dictionary
+  -- candidates already converted by the scheme's simplifier. This gate is
+  -- shared by display, learning and removal of previously learned words.
+  return current.blocked_simplified and contains_blocked(
+      simplified_for_block(folded, current.block_converter), current.blocked_simplified) or false
 end
 local function load_learned(path)
   local rows, ok = load_lines(path)
@@ -141,6 +155,17 @@ function M.refresh(env)
     env.engine.context:set_property("her_memory_error", "本地词库配置损坏，未更新记忆")
     return env.her_memory_current -- retain the last valid block rules
   end
+  current.block_converter = env.her_memory_simplifier
+  current.blocked_simplified = {}
+  local previous_forms, forms = env.her_memory_block_forms or {}, {}
+  for term, _ in pairs(current.blocked) do
+    local form = previous_forms[term] or simplified_for_block(term, current.block_converter)
+    forms[term] = form
+    current.blocked_simplified[form] = true
+  end
+  -- Cache only the current B set: bounded by MAX_WORDS and invalidated as soon
+  -- as a term is unblocked. Forgotten-word identities remain untouched.
+  env.her_memory_block_forms = forms
   env.her_memory_policy_valid = true
   env.her_memory_current = current
   local learned = load_learned(env.her_memory_learned)
@@ -191,6 +216,10 @@ function M.init(env)
   local directory = rime_api.get_user_data_dir()
   env.her_memory_policy = directory .. "/her_memory_policy.tsv"
   env.her_memory_learned = directory .. "/her_memory_learned.tsv"
+  -- Conversion is for private suppression comparisons only; never rewrite
+  -- saved words, policy identities or the user's chosen display text.
+  local ok, converter = pcall(function() return Opencc("t2s.json") end)
+  env.her_memory_simplifier = ok and converter or nil
   M.refresh(env)
   env.her_memory_connection = env.engine.context.commit_notifier:connect(function(context)
     local current = M.refresh(env)

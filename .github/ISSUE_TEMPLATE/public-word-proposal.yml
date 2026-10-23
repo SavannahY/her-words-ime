@@ -1,11 +1,11 @@
-name: 提议姓名、成语或品牌
+name: 提议姓名、成语、品牌或网络常用词
 description: 补充全拼可输入的公共词条，无需本地环境。
 title: "[公共词库] 词条名称"
 body:
   - type: markdown
     attributes:
       value: |
-        欢迎补充公开女性人物姓名、常用成语及有来源说明的品牌名。请勿提交联系人、聊天内容或私人词库。
+        欢迎补充公开女性人物姓名、常用成语、有来源说明的品牌名及全汉字网络常用词。请勿提交联系人、聊天内容或私人词库。
         品牌收录用于方便输入，创办历史或品牌自述不代表对其全部行为的评价。
   - type: dropdown
     id: category
@@ -15,13 +15,14 @@ body:
         - 女性人物姓名
         - 常用成语
         - 品牌名
+        - 网络常用词
     validations:
       required: true
   - type: input
     id: text
     attributes:
       label: 词条
-      description: 使用公开姓名、已有中文译名或正式品牌名。
+      description: 使用公开姓名、已有中文译名、正式品牌名或全汉字网络常用词。
       placeholder: 例如：屠呦呦
     validations:
       required: true

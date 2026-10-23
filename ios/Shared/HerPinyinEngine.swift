@@ -149,7 +149,7 @@ public final class HerPinyinEngine {
                   let reading = Reading.parse(entry.pinyin), !reading.bytes.isEmpty else {
                 throw HerEngineError.invalidLexiconEntry(index)
             }
-            guard entry.category == nil || ["woman", "idiom", "brand"].contains(entry.category!),
+            guard entry.category == nil || ["woman", "idiom", "brand", "internet"].contains(entry.category!),
                   entry.supplemental != true || entry.category != nil else {
                 throw HerEngineError.invalidLexiconEntry(index)
             }
