@@ -1,5 +1,9 @@
 # 她说 · Her Words IME
 
+<img src="assets/brand/her-words-logo-v1.png" alt="她说 Logo：梅紫色对话气泡中的她字" width="128">
+
+[Logo 设计与资源](docs/brand.md)
+
 女性友好的输入法项目，包含 **macOS 中／英／西三语 Rime 方案**、iPhone 原生键盘扩展与语音转文字工具。Mac 版可离线输入西班牙语，并分别开启中文释义或中文拼音查西语；iPhone 版目前用于个人试装，需要用自己的 Apple 账户签名。
 
 默认把「她」排在 `ta` 候选首位，同时保留「他」供明确指男性时选用；`tamen` 同样保留「她们／他们」。按具体词语提供更友好的表达，正常的女字旁用词与正常同音词保留。**语言包可以通过 Pull Request 共同维护；社群借字包单独收录，手动启用。**
