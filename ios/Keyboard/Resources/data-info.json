@@ -2,16 +2,16 @@
   "counts": {
     "alias_input_codes": 43,
     "alias_restored_upstream_readings": 10,
-    "lexicon_readings": 47336,
-    "lexicon_unique_texts": 46688,
+    "lexicon_readings": 47582,
+    "lexicon_unique_texts": 46934,
     "maximum_weight": 4828294,
     "project_added_new_readings": 25,
     "project_dictionary_readings": 42,
     "project_restored_upstream_readings": 2,
-    "public_added_new_readings": 222,
+    "public_added_new_readings": 459,
     "public_english_aliases": 12,
-    "public_readings": 279,
-    "public_restored_upstream_readings": 30,
+    "public_readings": 550,
+    "public_restored_upstream_readings": 39,
     "selected_upstream_multi_character_readings": 30000,
     "upstream_alias_readings": 36,
     "upstream_readings": 65125,
@@ -28,8 +28,8 @@
       "sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30"
     },
     "lexicon.json": {
-      "bytes": 2328857,
-      "sha256": "3d7f0bf71f8cd4fc284eac596777e088b38daf08bbc72ac23d9c640f30bbdbe2"
+      "bytes": 2354133,
+      "sha256": "51c49fec74a47640a1f0f068d0f39bc246219d94520f21badb47428375653fb8"
     },
     "rules.json": {
       "bytes": 14663,
@@ -41,7 +41,7 @@
     "files": {
       "brands.json": "ca26aea4d61222556a71c65a32e09ec6915df10aa638b7b008bb145dd85fdc62",
       "idioms.json": "730b2088be693f001780aebb391fc8b852836110a1ba0c9fc89efd66a0b9a31e",
-      "internet.json": "ab8b443b97fe5773d41495c45fd6fe6e63013bd8a9e89f531d5336e471bb36e8",
+      "internet.json": "317b35134200ee5283a2722d5defa3c9f28f97a5bc2e6170ef48ffe107d7a5bd",
       "women.json": "6742490eae4ce21d3fc27a4d474c339e500bd1afaec8a51a9d2ad7df4820f257"
     },
     "sources": [
@@ -666,6 +666,136 @@
         "url": "https://ent.people.com.cn/n1/2025/0715/c1012-40521543.html"
       },
       {
+        "id": "internet-chat-exp-allow",
+        "title": "新华网重庆频道：破除认知偏差，走出抑郁症的思维迷宫（2026-03-23）",
+        "url": "https://cq.news.cn/20260323/ea2fcd3a33d24c889fb932c2137ab8a3/c.html"
+      },
+      {
+        "id": "internet-chat-exp-baola",
+        "title": "新华社：何以为她丨在春晚后台，她更坚定了自己的选择（2025-10-09）",
+        "url": "https://www.news.cn/20251009/5e3727ff45a1430db46fe81f466f73c5/c.html"
+      },
+      {
+        "id": "internet-chat-exp-beng",
+        "title": "海报新闻：婚礼现场新娘致辞激动“0帧”哭泣，新娘：当时有点绷不住了（2025-10-03）",
+        "url": "https://www.dzwww.com/xinwen/shehuixinwen/202510/t20251003_16555691.htm"
+      },
+      {
+        "id": "internet-chat-exp-boundary",
+        "title": "人民论坛网：人民论坛每日推荐，含调适力、钝感力与心理边界用例（2026-04-06）",
+        "url": "https://theory.people.com.cn/n1/2026/0406/c40531-40695713.html"
+      },
+      {
+        "id": "internet-chat-exp-cute",
+        "title": "人民日报：该省省，该花花，这届年轻人会当家（2025-03-10）",
+        "url": "https://paper.people.com.cn/rmrb/pad/content/202503/10/content_30061089.html"
+      },
+      {
+        "id": "internet-chat-exp-dan",
+        "title": "南方日报／新华网：“淡人”也可以充满生命力（2024-03-21）",
+        "url": "https://www.news.cn/comments/20240321/1a999443790b4bb2995aec00ffac4d23/c.html"
+      },
+      {
+        "id": "internet-chat-exp-diving",
+        "title": "新华社：全国跳水冠军赛：“临时搭档”摘金夺银（2025-05-27）",
+        "url": "https://www.news.cn/sports/20250527/206ad3367f894d3483f295f2eeeca881/c.html"
+      },
+      {
+        "id": "internet-chat-exp-emotion",
+        "title": "光明日报／人民网：从“情绪价值”的流行看当代青年的社会心理诉求（2025-08-22）",
+        "url": "https://edu.people.com.cn/n1/2025/0822/c1006-40547871.html"
+      },
+      {
+        "id": "internet-chat-exp-film",
+        "title": "北京青年报／新华网：《过家家》首映 成龙：这是我最勇敢的一次演出（2025-12-29）",
+        "url": "https://www.news.cn/ent/20251229/585cb66555c6404fb634a3e099a4c41e/c.html"
+      },
+      {
+        "id": "internet-chat-exp-haojiahuo",
+        "title": "科技日报／新华网：“大模型+影视剧”玩出文化产业新花样（2024-07-22）",
+        "url": "https://www.news.cn/tech/20240722/042a796c5eca4c1390f35267a18c8455/c.html"
+      },
+      {
+        "id": "internet-chat-exp-hug",
+        "title": "光明日报／人民网：从“丑萌”形象兴起看大众情感追求（2026-02-28）",
+        "url": "https://yn.people.com.cn/n2/2026/0228/c372453-41510963.html"
+      },
+      {
+        "id": "internet-chat-exp-humor",
+        "title": "人民日报：自嘲是一种轻盈的治愈（2026-04-14）",
+        "url": "https://ha.people.com.cn/n2/2026/0414/c351638-41551076.html"
+      },
+      {
+        "id": "internet-chat-exp-language",
+        "title": "光明日报／人民网：语言规范表达更能承载复杂情感与深度思考（2025-12-03）",
+        "url": "https://ent.people.com.cn/n1/2025/1203/c1012-40616394.html"
+      },
+      {
+        "id": "internet-chat-exp-message",
+        "title": "人民日报海外版：少点“脑补”“内耗”，多点坦然表达（2025-12-01）",
+        "url": "https://society.people.com.cn/n1/2025/1201/c1008-40614461.html"
+      },
+      {
+        "id": "internet-chat-exp-newyear",
+        "title": "人民网：刚果（金）中企员工体验非遗中国年（2025-02-13）",
+        "url": "https://world.people.com.cn/n1/2025/0213/c1002-40417924.html"
+      },
+      {
+        "id": "internet-chat-exp-peer",
+        "title": "人民日报／中国青年网：话“同辈压力”（2025-11-11）",
+        "url": "https://news.youth.cn/jsxw/202511/t20251111_16342244.htm"
+      },
+      {
+        "id": "internet-chat-exp-real",
+        "title": "人民网：“预制朋友圈”退潮：我们为何追求“活人感”（2026-09-12）",
+        "url": "https://health.people.com.cn/n1/2026/0912/c14739-40797435.html"
+      },
+      {
+        "id": "internet-chat-exp-relation",
+        "title": "中国青年报／人民网：“情绪价值”标签下，大学生如何定位人际关系（2025-10-24）",
+        "url": "https://yn.people.com.cn/n2/2025/1024/c378440-41389391.html"
+      },
+      {
+        "id": "internet-chat-exp-self",
+        "title": "人民论坛：网络热词“老己”背后的青年心态变迁（2026-03-19）",
+        "url": "https://paper.people.com.cn/rmlt/pc/content/202603/19/content_30155755.html"
+      },
+      {
+        "id": "internet-chat-exp-sincere",
+        "title": "新华网：正定大咖说｜厉新建：从淄博烧烤到“尔滨”宠粉，真诚是必杀技（2025-12-21）",
+        "url": "https://www.news.cn/city/20251221/a5cf488ed791447ab8ff2fcee4462fb8/c.html"
+      },
+      {
+        "id": "internet-chat-exp-social",
+        "title": "新华报刊《环球》：“我也会有社交焦虑”（2023-05-18）",
+        "url": "https://www.news.cn/globe/2023-05/18/c_1310718842.htm"
+      },
+      {
+        "id": "internet-chat-exp-thanks",
+        "title": "新华网江苏频道：盐城开展“我向老师献朵花”教师节温暖主题活动（2025-09-10）",
+        "url": "https://js.news.cn/20250910/91eb7d84709649089b60314be04440b8/c.html"
+      },
+      {
+        "id": "internet-chat-exp-touched",
+        "title": "新华社：泪目！地震后让网友“破防”的暖心瞬间（2025-01-10）",
+        "url": "https://www.news.cn/20250110/4ebbed76baab4f39ac35d090c3a772bd/c.html"
+      },
+      {
+        "id": "internet-chat-exp-warm",
+        "title": "广州越秀发布／南方+：有被暖到！这些细节太贴心（2025-03-11）",
+        "url": "https://static.nfnews.com/content/202503/11/c11071007.html?enterColumnId=16"
+      },
+      {
+        "id": "internet-chat-exp-writing",
+        "title": "人民论坛：当代青年新型自我表达方式探析（2024-03-20）",
+        "url": "https://paper.people.com.cn/rmlt/html/2024-03/20/content_26068477.htm"
+      },
+      {
+        "id": "internet-chat-exp-ziqia",
+        "title": "工人日报／人民网：一位环卫工人的“诗与远方”（2024-09-18）",
+        "url": "https://acftu.people.com.cn/n1/2024/0918/c67502-40322343.html"
+      },
+      {
         "id": "internet-chat-gu-2025",
         "title": "新华网／中国新闻网：“吃谷”流行 年轻一族乐为情绪价值买单（2025-04-30）",
         "url": "https://www3.xinhuanet.com/fashion/20250430/d4a540cf6263423b9268b2f8f3651c20/c.html"
@@ -724,6 +854,246 @@
         "id": "internet-laoji-2026",
         "title": "新华社：千笔楼丨爱你，老己！",
         "url": "https://www.news.cn/politics/20260218/74f12aa5b9614304b070394e78b91111/c.html"
+      },
+      {
+        "id": "internet-life-autumn-tea-2025",
+        "title": "大众网：东营各大奶茶店“制茶”忙 秋天的第一杯奶茶你喝到了吗？（2025-08-07）",
+        "url": "https://dongying.dzwww.com/dyxw/202508/t20250807_16313429.htm"
+      },
+      {
+        "id": "internet-life-blind-2025",
+        "title": "人民日报海外版：文创设计何以圈粉“Z世代”？（2025-02-27）",
+        "url": "https://ent.people.com.cn/n1/2025/0227/c1012-40427176.html"
+      },
+      {
+        "id": "internet-life-boulder-2025",
+        "title": "解放日报·上观新闻／人民网：专业人士提醒：攀岩谨防风险 勿要“蹬腿就上”（2025-10-27）",
+        "url": "https://sh.people.com.cn/n2/2025/1027/c350122-41392507.html"
+      },
+      {
+        "id": "internet-life-candy-2025",
+        "title": "澎湃号·湃客／谈心社：没有待爆直接飞升，这才是内娱真赢家（2025-01-09）",
+        "url": "https://www.thepaper.cn/newsDetail_forward_29873914"
+      },
+      {
+        "id": "internet-life-cat-2025",
+        "title": "人民日报2025-11-10第20版：勇哥（撸猫用例）",
+        "url": "https://paper.people.com.cn/rmrb/pc/attachement/202511/10/8853461e-a560-44df-8382-a3b50ba047c3.pdf"
+      },
+      {
+        "id": "internet-life-climb-2025",
+        "title": "中国新闻网／人民网：多元体验激活全域旅游新格局（2025-10-13）",
+        "url": "https://ent.people.com.cn/n1/2025/1013/c1012-40580713.html"
+      },
+      {
+        "id": "internet-life-cloud-pet-2025",
+        "title": "澎湃号／字母榜：AI宠物短剧，年轻人的新“情感代糖”（2025-07-14）",
+        "url": "https://m.thepaper.cn/newsDetail_forward_31167795"
+      },
+      {
+        "id": "internet-life-coffee-wine-2023",
+        "title": "人民网：成都街头走一走，双节武侯游玩攻略请查收！（2023-09-28，早咖晚酒用例）",
+        "url": "https://sc.people.com.cn/n2/2023/0928/c379471-40590401.html"
+      },
+      {
+        "id": "internet-life-declutter-2025",
+        "title": "人民网－人民论坛：人民论坛每日推荐（2025-12-28，断舍离用例）",
+        "url": "https://theory.people.com.cn/n1/2025/1228/c40531-40633856.html"
+      },
+      {
+        "id": "internet-life-discount-2025",
+        "title": "人民日报海外版：盘点今年“双11”的新变化（2025-11-21）",
+        "url": "https://paper.people.com.cn/rmrbhwb/pc/content/202511/21/content_30116192.html"
+      },
+      {
+        "id": "internet-life-drama-2025",
+        "title": "澎湃号·湃客：2025“小而美”黑马剧集图鉴（2025-12-21）",
+        "url": "https://www.thepaper.cn/detail/32221394"
+      },
+      {
+        "id": "internet-life-dream-2025",
+        "title": "人民网：WTT中国大满贯将联动中国网球公开赛 打造“城市体育赛事超级周”（2025-08-25）",
+        "url": "https://bj.people.com.cn/n2/2025/0825/c14540-41332504.html"
+      },
+      {
+        "id": "internet-life-dress-2025",
+        "title": "人民日报：读懂服装里的新经纬（金台随笔，2025-07-04）",
+        "url": "https://opinion.people.com.cn/n1/2025/0704/c1003-40514433.html"
+      },
+      {
+        "id": "internet-life-fan-2025",
+        "title": "人民日报：剧场何以“圈粉”年轻人（2025-12-21）",
+        "url": "https://society.people.com.cn/n1/2025/1221/c1008-40628684.html"
+      },
+      {
+        "id": "internet-life-fashion-2023",
+        "title": "新华网：继“多巴胺”、“内啡肽”穿搭后，火热秋冬的“美拉德”穿搭登场（2023-08-25）",
+        "url": "https://www.xinhuanet.com/fashion/20230825/ef6b7bdc215f409ab2bde18d0d582b55/c.html"
+      },
+      {
+        "id": "internet-life-game-2025",
+        "title": "澎湃号·湃客／互联网那些事：为什么我要在蛇年春节和贪吃蛇说“谢谢”（2025-02-01）",
+        "url": "https://www.thepaper.cn/newsDetail_forward_29994643"
+      },
+      {
+        "id": "internet-life-game-official-2025",
+        "title": "TapTap：归途官方公告（2025年公告中的卡关、通关用例）",
+        "url": "https://www.taptap.cn/app/779910/topic?type=official"
+      },
+      {
+        "id": "internet-life-goods-2024",
+        "title": "人民网：年轻人“吃谷”的风会吹多久（2024-08-30）",
+        "url": "https://sc.people.com.cn/BIG5/n2/2024/0830/c345167-40960942.html"
+      },
+      {
+        "id": "internet-life-holiday-2025",
+        "title": "南宁晚报／人民网：8天长假，你打算怎么安排？（2025-09-26）",
+        "url": "https://gx.people.com.cn/n2/2025/0926/c179430-41364495.html"
+      },
+      {
+        "id": "internet-life-layers-2024",
+        "title": "人民日报海外版2024-03-20第12版：“新中式”穿搭及叠穿用例",
+        "url": "https://paper.people.com.cn/rmrbhwb/images/2024-03/20/12/rmrbhwb2024032012.pdf"
+      },
+      {
+        "id": "internet-life-light-food-2025",
+        "title": "北京青年报／人民网：吹进高校的“轻食风”是一次观念革新（2025-05-15）",
+        "url": "https://health.people.com.cn/n1/2025/0515/c14739-40480298.html"
+      },
+      {
+        "id": "internet-life-marathon-2025",
+        "title": "人民网：跑完这一程，感受南京的马拉松基因（2025-03-18）",
+        "url": "https://js.people.com.cn/n2/2025/0318/c360303-41167972.html"
+      },
+      {
+        "id": "internet-life-merch-2025",
+        "title": "澎湃号·湃客：这届二次元不太“宅”（2025）",
+        "url": "https://www.thepaper.cn/newsDetail_forward_31592531"
+      },
+      {
+        "id": "internet-life-micro-2025",
+        "title": "央视网：一起解锁“微度假”多种打开方式（2025-01-05）",
+        "url": "https://news.cctv.cn/2025/01/05/ARTIgJ8GgumZ7UfotgeKEBE1250105.shtml"
+      },
+      {
+        "id": "internet-life-minimal-2024",
+        "title": "北京青年报／人民网：碎片运动收获健康效益 自律构建生活秩序（2024-12-31）",
+        "url": "https://sc.people.com.cn/n2/2024/1231/c345167-41093675.html"
+      },
+      {
+        "id": "internet-life-mint-2024",
+        "title": "新华网：薄荷曼波 和春意轻盈共舞（2024-04-11）",
+        "url": "https://www.xinhuanet.com/fashion/20240411/0d786037595c45cbb05e61d3d6ac2a0e/c.html"
+      },
+      {
+        "id": "internet-life-mix-2025",
+        "title": "人民日报2025-04-18第17版：如何挑选“新中式”服装（混搭用例）",
+        "url": "https://paper.people.com.cn/rmrb/pc/attachement/202504/18/0e5a4c60-969e-4f2c-a662-7a03fce54a8e.pdf"
+      },
+      {
+        "id": "internet-life-mountain-2024",
+        "title": "中国城市报2024-01-22第8版：山系穿搭用例",
+        "url": "https://paper.people.com.cn/zgcsb/images/2024-01/22/08/zgcsb2024012208.pdf"
+      },
+      {
+        "id": "internet-life-night-food-2026",
+        "title": "新华社：秀我中国丨品尝咸阳版“深夜食堂”里的汇通面（2026-08-16）",
+        "url": "https://www.xinhuanet.com/20260816/e040f18044194f4fb60a4dc72ad4c48a/c.html"
+      },
+      {
+        "id": "internet-life-night-run-2025",
+        "title": "北京青年报／人民网：运动组局解锁社交新玩法 夜跑和骑行拥有高人气（2025-01-22）",
+        "url": "https://ent.people.com.cn/n1/2025/0122/c1012-40406764.html"
+      },
+      {
+        "id": "internet-life-noodles-2025",
+        "title": "中国新闻网：“嗦粉”经济火热 中国多地“食力”出圈（2025-06-14）",
+        "url": "https://www.chinanews.com/sh/2025/06-14/10432377.shtml"
+      },
+      {
+        "id": "internet-life-orders-2025",
+        "title": "人民论坛：拼单社交：当代青年创新社会连接的实践（2025-12-17）",
+        "url": "https://paper.people.com.cn/rmlt/pc/content/202512/17/content_30130628.html"
+      },
+      {
+        "id": "internet-life-paddle-2025",
+        "title": "人民日报2025-04-23第19版：户外运动消费报道（桨板用例）",
+        "url": "https://paper.people.com.cn/rmrb/pc/attachement/202504/23/3f443143-5551-46da-b795-8795c27e353f.pdf"
+      },
+      {
+        "id": "internet-life-paper-person-2023",
+        "title": "澎湃号·湃客：乙女游戏玩家：我爱老公，也爱“纸片人”（2023）",
+        "url": "https://www.thepaper.cn/newsDetail_forward_23454476"
+      },
+      {
+        "id": "internet-life-park-2025",
+        "title": "人民日报：来公园，20分钟感受自然“疗愈”（2025-05-21）",
+        "url": "https://env.people.com.cn/n1/2025/0521/c1010-40484195.html"
+      },
+      {
+        "id": "internet-life-pets-2025",
+        "title": "人民网：宠物用品功效宣传大揭秘，“铲屎官”必知要点（2025-12-31）",
+        "url": "https://health.people.com.cn/n1/2025/1231/c14739-40636725.html"
+      },
+      {
+        "id": "internet-life-quick-tour-2024",
+        "title": "人民日报海外版：周末来场“微度假”（2024-03-18，特种兵式旅游用例）",
+        "url": "https://paper.people.com.cn/rmrbhwb/html/2024-03/18/content_26047262.htm"
+      },
+      {
+        "id": "internet-life-reverse-2026",
+        "title": "人民日报：最好的年味，是双向奔赴的亲情（2026-02-11）",
+        "url": "https://politics.people.com.cn/n1/2026/0211/c461001-40663482.html"
+      },
+      {
+        "id": "internet-life-script-game-2024",
+        "title": "澎湃号·湃客：“学习成本”决定流行度？金融圈的掼蛋PK年轻人的剧本杀（2024）",
+        "url": "https://www.thepaper.cn/newsDetail_forward_27799623"
+      },
+      {
+        "id": "internet-life-small-town-2025",
+        "title": "重庆市人民政府网：从“捡漏”到万亿级生态圈 重庆如何抢抓二手经济新机遇（2025-12-08）",
+        "url": "https://www.cq.gov.cn/ywdt/jrcq/202512/t20251208_15217595.html"
+      },
+      {
+        "id": "internet-life-sport-buddy-2025",
+        "title": "人民网：前10月，成都落户首店总计超700家（2025-12-02，运动搭子用例）",
+        "url": "https://sc.people.com.cn/n2/2025/1202/c345167-41429641.html"
+      },
+      {
+        "id": "internet-life-sports-2024",
+        "title": "人民网：杨浦的“体育+”，在做怎样的“新文章”？（2024-12-04）",
+        "url": "https://sh.people.com.cn/n2/2024/1204/c134768-41064564.html"
+      },
+      {
+        "id": "internet-life-stay-2025",
+        "title": "云南网：云岭时评｜在旅居中打开新的生活方式（2025-03-10）",
+        "url": "https://llw.yunnan.cn/system/2025/03/10/033414049.shtml"
+      },
+      {
+        "id": "internet-life-tea-2026",
+        "title": "人民日报：围炉煮茶，传统生活展新颜（2026-01-14）",
+        "url": "https://paper.people.com.cn/rmrb/pc/content/202601/14/content_30132156.html"
+      },
+      {
+        "id": "internet-life-treasure-town-2025",
+        "title": "中国旅游协会：2025中国“宝藏小城”旅游报告发布（2025）",
+        "url": "https://www.chinata.com.cn/sys-nd/856.html"
+      },
+      {
+        "id": "internet-life-update-2025",
+        "title": "人民日报：中国网络文学吸引全球粉丝“追更”（2025-10-14）",
+        "url": "https://ent.people.com.cn/n1/2025/1014/c1012-40581390.html"
+      },
+      {
+        "id": "internet-life-walk-2026",
+        "title": "人民网天津频道：游展会读懂文旅产业新风尚（2026-09-04）",
+        "url": "https://tj.people.com.cn/n2/2026/0904/c375366-41686753.html"
+      },
+      {
+        "id": "internet-life-wool-2025",
+        "title": "人民日报：平台竞争，不能“薅商户羊毛”（2025-10-13，消费者薅羊毛用例）",
+        "url": "https://sc.people.com.cn/n2/2025/1013/c345167-41377753.html"
       },
       {
         "id": "internet-mac-consumption2025",
@@ -811,6 +1181,56 @@
         "url": "https://paper.people.com.cn/fcyym/pad/content/202512/26/content_30133212.html"
       },
       {
+        "id": "internet-more-bodily-autonomy-2026",
+        "title": "联合国人口基金：国际妇女节（2026-03-08）",
+        "url": "https://china.unfpa.org/zh-Hans/events/260308"
+      },
+      {
+        "id": "internet-more-nonfiction-2025",
+        "title": "中国作家网／扬子江文学评论：挑战与突围——论中国新世纪非虚构写作（2025-06-24）",
+        "url": "https://www.chinawriter.com.cn/n1/2025/0624/c404034-40507272.html"
+      },
+      {
+        "id": "internet-more-period-2024",
+        "title": "联合国人口基金：世界经期卫生日（2024-05-28）",
+        "url": "https://china.unfpa.org/zh-Hans/events/menstrual-hygiene-day"
+      },
+      {
+        "id": "internet-more-period-stigma-2025",
+        "title": "科普中国：包挂的社交表达与月经羞耻话题（2025-07-17）",
+        "url": "https://m.thepaper.cn/newsDetail_forward_31209432"
+      },
+      {
+        "id": "internet-more-women-digital-2026",
+        "title": "人民日报：推动人工智能赋能女性发展（2026-04-25）",
+        "url": "https://cpc.people.com.cn/n1/2026/0425/c64387-40708530.html"
+      },
+      {
+        "id": "internet-more-women-film-2025",
+        "title": "文艺报：国产电影中的她力量（2025-07-23）",
+        "url": "https://wyb.chinawriter.com.cn/Pad/content/202507/23/content80157.html"
+      },
+      {
+        "id": "internet-more-women-interview-2026",
+        "title": "AWDPI她视角：钟睿莹访谈上篇（2026-03-07）",
+        "url": "https://awdpi.org/stories/%E4%B8%93%E8%AE%BF%E9%92%9F%E7%9D%BF%E8%8E%B9%E4%B8%8A/"
+      },
+      {
+        "id": "internet-more-women-interview-practice-2026",
+        "title": "AWDPI她视角：钟睿莹访谈下篇（2026-03-07）",
+        "url": "https://awdpi.org/stories/%E4%B8%93%E8%AE%BF%E4%B8%8B/"
+      },
+      {
+        "id": "internet-more-women-reading-2026",
+        "title": "中国作家网／南开学报：陈琰娇谈网络文学中的爱女话语（2026-09-18）",
+        "url": "https://www.chinawriter.com.cn/n1/2026/0918/c404027-40801147.html"
+      },
+      {
+        "id": "internet-more-women-writing-2026",
+        "title": "中国作家网／南方文坛：当代女性书写中的劳动经验（2026-03-27）",
+        "url": "https://www.chinawriter.com.cn/n1/2026/0327/c404030-40690224.html"
+      },
+      {
         "id": "internet-official-2025",
         "title": "国家语言资源监测与研究网络媒体中心：2025年度十大网络流行语",
         "url": "https://nlp.ccnu.edu.cn/news/146"
@@ -819,6 +1239,126 @@
         "id": "internet-reply-2025",
         "title": "人民日报：已读乱回会寒群众心",
         "url": "https://politics.people.com.cn/n1/2025/0512/c458474-40477892.html"
+      },
+      {
+        "id": "internet-work-apple-privacy",
+        "title": "Apple中文支持：在iPhone上自定义Safari浏览器设置",
+        "url": "https://support.apple.com/zh-cn/guide/iphone/-iphb3100d149/ios"
+      },
+      {
+        "id": "internet-work-bili-ai-course",
+        "title": "哔哩哔哩AI制作视频教程：2025年7月创作教程简介与目录",
+        "url": "https://www.bilibili.com/video/BV1c38GzbERS/"
+      },
+      {
+        "id": "internet-work-bili-comment",
+        "title": "哔哩哔哩魔鬼厨房Neo：最简单的拉面，简介与播放页（2025）",
+        "url": "https://www.bilibili.com/list/174890586/?bvid=BV1Zz99YWEu9&oid=114125082467149"
+      },
+      {
+        "id": "internet-work-bili-handson",
+        "title": "哔哩哔哩张三三：2025高考有机手把手带做",
+        "url": "https://www.bilibili.com/video/BV1uoM3zpEWA/"
+      },
+      {
+        "id": "internet-work-bili-learning-path",
+        "title": "哔哩哔哩大模型入门教程：学习路线图与学习计划原文（2025年1月）",
+        "url": "https://www.bilibili.com/video/BV1mBwbe4EEG/"
+      },
+      {
+        "id": "internet-work-bili-pr-course",
+        "title": "哔哩哔哩PR教程：从零开始学剪辑调色（2025年4月）",
+        "url": "https://www.bilibili.com/video/BV1GddPY7Eww/"
+      },
+      {
+        "id": "internet-work-bili-release",
+        "title": "哔哩哔哩UP主发电机：充电专属视频发布说明（2025年更新）",
+        "url": "https://www.bilibili.com/opus/937593482483073030"
+      },
+      {
+        "id": "internet-work-bili-share",
+        "title": "哔哩哔哩蜡笔小鑫：三十天备考雅思经验分享（2025年9月）",
+        "url": "https://www.bilibili.com/video/BV1cqYVz3EW2/"
+      },
+      {
+        "id": "internet-work-bili-three",
+        "title": "哔哩哔哩UP主发电机：充电弹幕组件说明（2025年更新）",
+        "url": "https://www.bilibili.com/opus/942838170129530901"
+      },
+      {
+        "id": "internet-work-dida-focus",
+        "title": "滴答清单帮助中心：如何开始专注",
+        "url": "https://help.dida365.com/articles/6950408124297641984"
+      },
+      {
+        "id": "internet-work-dida-guide",
+        "title": "滴答清单帮助中心：新手指南与时间管理",
+        "url": "https://help.dida365.com/articles/6950689598586486784"
+      },
+      {
+        "id": "internet-work-dida-pomodoro",
+        "title": "滴答清单帮助中心：番茄专注与番茄工作法",
+        "url": "https://help.dida365.com/articles/6950361797429821440"
+      },
+      {
+        "id": "internet-work-dji-one-take",
+        "title": "DJI大疆创新：揭秘混沌少年时拍摄幕后，一镜到底（2025年5月）",
+        "url": "https://www.bilibili.com/video/BV1bkjnzAETn/"
+      },
+      {
+        "id": "internet-work-feishu-async",
+        "title": "飞书帮助中心：需求太多难管理，飞书三招帮你理清头绪（2023年更新）",
+        "url": "https://www.feishu.cn/hc/zh-CN/articles/360049067742-%E9%9C%80%E6%B1%82%E5%A4%AA%E5%A4%9A%E9%9A%BE%E7%AE%A1%E7%90%86-%E9%A3%9E%E4%B9%A6-3-%E6%8B%9B%E5%B8%AE%E4%BD%A0%E7%90%86%E6%B8%85%E5%A4%B4%E7%BB%AA"
+      },
+      {
+        "id": "internet-work-feishu-image-generation",
+        "title": "飞书官方：aily功能更新20250919",
+        "url": "https://aily.feishu.cn/hc/8dlnbe0s_e8dozzmf"
+      },
+      {
+        "id": "internet-work-feishu-knowledge",
+        "title": "飞书帮助中心：飞书知识库，构建企业与个人的专属智库（2025年更新）",
+        "url": "https://www.feishu.cn/hc/zh-CN/articles/807073676453-%E9%A3%9E%E4%B9%A6%E7%9F%A5%E8%AF%86%E5%BA%93-%E6%9E%84%E5%BB%BA%E4%BC%81%E4%B8%9A%E4%B8%8E%E4%B8%AA%E4%BA%BA%E7%9A%84%E4%B8%93%E5%B1%9E%E6%99%BA%E5%BA%93"
+      },
+      {
+        "id": "internet-work-feishu-minutes",
+        "title": "飞书帮助中心：在视频会议中使用智能纪要",
+        "url": "https://www.feishu.cn/hc/zh-CN/articles/244959839578-%E5%9C%A8%E8%A7%86%E9%A2%91%E4%BC%9A%E8%AE%AE%E4%B8%AD%E4%BD%BF%E7%94%A8%E6%99%BA%E8%83%BD%E7%BA%AA%E8%A6%81"
+      },
+      {
+        "id": "internet-work-feishu-project",
+        "title": "飞书帮助中心：飞书项目核心功能",
+        "url": "https://www.feishu.cn/hc/zh-CN/articles/810923508490-%E9%A3%9E%E4%B9%A6%E9%A1%B9%E7%9B%AE%E6%A0%B8%E5%BF%83%E5%8A%9F%E8%83%BD"
+      },
+      {
+        "id": "internet-work-feishu-review",
+        "title": "飞书帮助中心：在飞书打开项目管理新思路",
+        "url": "https://www.feishu.cn/hc/zh-CN/academy/manage_project_with_Feishu"
+      },
+      {
+        "id": "internet-work-feishu-visual-summary",
+        "title": "飞书官网：用飞书画板实现一图流汇报（2026）",
+        "url": "https://www.feishu.cn/content/article/7647452839320718324"
+      },
+      {
+        "id": "internet-work-flomo-cards",
+        "title": "flomo社区饭饭：记录自己的思考和日常太治愈",
+        "url": "https://help.flomoapp.com/community/user-story/record-life.html"
+      },
+      {
+        "id": "internet-work-flomo-links",
+        "title": "flomo官方帮助：相关笔记与笔记链接实践",
+        "url": "https://help.flomoapp.com/ai/xgbj.html"
+      },
+      {
+        "id": "internet-work-flomo-practice",
+        "title": "flomo官方社区阿粒：拒绝剪藏，把摩擦力放在合适的位置",
+        "url": "https://help.flomoapp.com/community/user-story/no-fav.html"
+      },
+      {
+        "id": "internet-work-jianying-tools",
+        "title": "剪映官网：视频创作与专业剪辑功能原文",
+        "url": "https://www.jianying.com/"
       },
       {
         "id": "internet-youth-2026",

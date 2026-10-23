@@ -68,9 +68,9 @@ Windows 与 Linux 的 Rime 理论上可使用本项目配置，但本轮只验�
 
 ## 女性人物姓名、成语、品牌与网络常用词
 
-公共词库有 **101 条女性人物姓名词形、100 条常用成语、12 个品牌名和 66 条网络常用词与短语**。在中文全拼模式中，例如 `yangjiang → 杨绛`、`tuyouyou → 屠呦呦`、`ziqiangbuxi → 自强不息`、`dazi → 搭子`、`qubanwei → 去班味`、`qingxujiazhi → 情绪价值`；品牌也可用收录的英文名输入，如 `bobbibrown → 芭比波朗`。Mac 与 iPhone 从同一数据生成，公共建议保留原有正常第一候选，本地「不再推荐」仍然优先。
+公共词库有 **101 条女性人物姓名词形、100 条常用成语、12 个品牌名和 337 条网络常用词与日常表达**。在中文全拼模式中，例如 `yangjiang → 杨绛`、`tuyouyou → 屠呦呦`、`ziqiangbuxi → 自强不息`、`dazi → 搭子`、`qubanwei → 去班味`、`qingxujiazhi → 情绪价值`；品牌也可用收录的英文名输入，如 `bobbibrown → 芭比波朗`。Mac 与 iPhone 从同一数据生成，公共建议保留原有正常第一候选，本地「不再推荐」仍然优先。
 
-每条词有读音、类别及来源。网络词结合 2024–2026 年公开用例，覆盖聊天回应、情绪关怀、工作生活和兴趣创作；不作为热度排名。品牌说明区分女性创办历史、设计定位与支持项目，不把收录当作整家企业的女性友好认证。可以[提议新词](https://github.com/SavannahY/her-words-ime/issues/new?template=public-word-proposal.yml)，或修改 [`data/public-lexicon/`](data/public-lexicon/)；格式和收录依据见 [公共词库说明](docs/public-lexicon.md)。
+每条词有读音、类别及来源。网络词结合近年公开用例，覆盖聊天回应、情绪关怀、工作学习、兴趣生活、创作分享与女性主题；不作为热度排名。[337 条完整清单](docs/internet-vocabulary.md)列出每词的全拼输入码与公开出处。这是额外补充词表，基础中文词库由 Rime 另行提供。品牌说明区分女性创办历史、设计定位与支持项目，不把收录当作整家企业的女性友好认证。可以[提议新词](https://github.com/SavannahY/her-words-ime/issues/new?template=public-word-proposal.yml)，或修改 [`data/public-lexicon/`](data/public-lexicon/)；格式和收录依据见 [公共词库说明](docs/public-lexicon.md)。
 
 ## 本地词库与不再推荐
 

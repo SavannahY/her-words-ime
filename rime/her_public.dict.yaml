@@ -8,29 +8,50 @@ version: "1"
 sort: by_weight
 ...
 爱你老己	ai ni lao ji	1
+爱女	ai nv	1
+爱女文	ai nv wen	1
+爱女文学	ai nv wen xue	1
 安妮·埃尔诺	an ni ai er nuo	1
 安排上	an pai shang	1
 奥尔加·托卡尔丘克	ao er jia tuo ka er qiu ke	1
 芭比波朗	ba bi bo lang	1
 拔草	ba cao	1
+吧唧	ba ji	1
 百炼成钢	bai lian cheng gang	1
 百折不挠	bai zhe bu nao	1
+半马	ban ma	1
 班味	ban wei	1
 班味儿	ban wei er	1
+抱抱	bao bao	1
+抱抱你	bao bao ni	1
+保姆级教程	bao mu ji jiao cheng	1
+抱石	bao shi	1
+抱团取暖	bao tuan qu nuan	1
+宝藏小城	bao zang xiao cheng	1
+被接纳	bei jie na	1
+被看见	bei kan jian	1
 贝玲妃	bei ling fei	1
+被尊重	bei zun zhong	1
 笨鸟先飞	ben niao xian fei	1
+绷不住了	beng bu zhu le	1
 毕淑敏	bi shu min	1
 边界感	bian jie gan	1
+别着急	bie zhao ji	1
 冰心	bing xin	1
 波伏娃	bo fu wa	1
 波伏瓦	bo fu wa	1
+薄荷曼波	bo he man bo	1
 博览群书	bo lan qun shu	1
 博学多才	bo xue duo cai	1
 不屈不挠	bu qu bu nao	1
+不委屈自己	bu wei qu zi ji	1
+不至于	bu zhi yu	1
 才华横溢	cai hua heng yi	1
 才思敏捷	cai si min jie	1
 测评	ce ping	1
+铲屎官	chan shi guan	1
 昌雅妮	chang ya ni	1
+抄作业	chao zuo ye	1
 陈丹燕	chen dan yan	1
 陈化兰	chen hua lan	1
 沉浸式	chen jin shi	1
@@ -39,6 +60,7 @@ sort: by_weight
 陈艺文	chen yi wen	1
 陈芋汐	chen yu xi	1
 乘风破浪	cheng feng po lang	1
+城市漫步	cheng shi man bu	1
 吃谷	chi gu	1
 池莉	chi li	1
 持之以恒	chi zhi yi heng	1
@@ -49,147 +71,324 @@ sort: by_weight
 触类旁通	chu lei pang tong	1
 出片	chu pian	1
 出圈	chu quan	1
+喘口气	chuan kou qi	1
+从零开始	cong ling kai shi	1
 从容不迫	cong rong bu po	1
+凑单	cou dan	1
+错峰出游	cuo feng chu you	1
+大女主	da nv zhu	1
 大器晚成	da qi wan cheng	1
 搭子	da zi	1
+待办清单	dai ban qing dan	1
+待办事项	dai ban shi xiang	1
 淡人	dan ren	1
 得心应手	de xin ying shou	1
 电子布洛芬	dian zi bu luo fen	1
 电子亲人	dian zi qin ren	1
 电子榨菜	dian zi zha cai	1
+叠穿	die chuan	1
 丁玲	ding ling	1
+定时发布	ding shi fa bu	1
 斗志昂扬	dou zhi ang yang	1
 独当一面	du dang yi mian	1
 独具匠心	du ju jiang xin	1
+读书笔记	du shu bi ji	1
+断舍离	duan she li	1
+对不起老己	dui bu qi lao ji	1
+钝感	dun gan	1
+钝感力	dun gan li	1
+多巴胺穿搭	duo ba an chuan da	1
+多端同步	duo duan tong bu	1
+多机位	duo ji wei	1
 多丽丝·莱辛	duo li si lai xin	1
 二创	er chuang	1
+二次元	er ci yuan	1
+发疯文学	fa feng wen xue	1
 饭搭子	fan da zi	1
 反内耗	fan nei hao	1
+番茄工作法	fan qie gong zuo fa	1
+番茄钟	fan qie zhong	1
+反向过年	fan xiang guo nian	1
 反向旅游	fan xiang lv you	1
 范小青	fan xiao qing	1
 方方	fang fang	1
+放过自己	fang guo zi ji	1
+放松一下	fang song yi xia	1
+飞盘	fei pan	1
+非虚构写作	fei xu gou xie zuo	1
 奋发图强	fen fa tu qiang	1
 奋起直追	fen qi zhi zhui	1
 氛围感	fen wei gan	1
 奋勇争先	fen yong zheng xian	1
 馥蕾诗	fu lei shi	1
+复盘	fu pan	1
+父权制	fu quan zhi	1
+干货分享	gan huo fen xiang	1
+甘特图	gan te tu	1
 各抒己见	ge shu ji jian	1
 葛水平	ge shui ping	1
+共情	gong qing	1
+公园二十分钟效应	gong yuan er shi fen zhong xiao ying	1
+工作流	gong zuo liu	1
 谷子	gu zi	1
+关键帧	guan jian zhen	1
+归属感	gui shu gan	1
+国潮	guo chao	1
+过度解读	guo du jie du	1
+哈哈	ha ha	1
 海阔天空	hai kuo tian kong	1
 韩江	han jiang	1
 含金量还在上升	han jin liang hai zai shang sheng	1
+好的	hao de	1
+好家伙	hao jia huo	1
+好嘞	hao lei	1
+好厉害	hao li hai	1
+薅羊毛	hao yang mao	1
 赫莲娜	he lian na	1
+很戳我	hen chuo wo	1
 狠狠期待	hen hen qi dai	1
 厚积薄发	hou ji bo fa	1
+互动视频	hu dong shi pin	1
+互相扶持	hu xiang fu chi	1
 黄蓓佳	huang bei jia	1
 黄英	huang ying	1
 黄咏梅	huang yong mei	1
+会议纪要	hui yi ji yao	1
+混搭	hun da	1
 豁然开朗	huo ran kai lang	1
 活人感	huo ren gan	1
+积极反馈	ji ji fan kui	1
 积少成多	ji shao cheng duo	1
 集思广益	ji si guang yi	1
 家人们	jia ren men	1
+加油	jia you	1
 健步如飞	jian bu ru fei	1
 坚持不懈	jian chi bu xie	1
+捡漏	jian lou	1
 坚韧不拔	jian ren bu ba	1
+减少内耗	jian shao nei hao	1
 健身搭子	jian shen da zi	1
 见微知著	jian wei zhi zhu	1
+桨板	jiang ban	1
 蒋胜男	jiang sheng nan	1
 匠心独运	jiang xin du yun	1
+胶囊衣橱	jiao nang yi chu	1
 脚踏实地	jiao ta shi di	1
+接纳平凡	jie na ping fan	1
+节日快乐	jie ri kuai le	1
 巾帼英雄	jin guo ying xiong	1
 尽力而为	jin li er wei	1
 金仁顺	jin ren shun	1
+经济独立	jing ji du li	1
 兢兢业业	jing jing ye ye	1
 井井有条	jing jing you tiao	1
+经期健康	jing qi jian kang	1
+经期贫困	jing qi pin kun	1
+经期卫生	jing qi wei sheng	1
+经期用品	jing qi yong pin	1
+经期友好	jing qi you hao	1
+精神内耗	jing shen nei hao	1
+经验分享	jing yan fen xiang	1
 精益求精	jing yi qiu jing	1
 敬自己一杯	jing zi ji yi bei	1
+剧本杀	ju ben sha	1
+剧荒	ju huang	1
+拒绝内耗	ju jue nei hao	1
 举一反三	ju yi fan san	1
 绝绝子	jue jue zi	1
+卡关	ka guan	1
+卡片笔记	ka pian bi ji	1
 开诚布公	kai cheng bu gong	1
+开黑	kai hei	1
 开卷有益	kai juan you yi	1
 开箱	kai xiang	1
+可可爱爱	ke ke ai ai	1
+嗑糖	ke tang	1
+课题分离	ke ti fen li	1
+刻意练习	ke yi lian xi	1
+口播	kou bo	1
+跨部门协作	kua bu men xie zuo	1
+夸夸群	kua kua qun	1
 来财	lai cai	1
 乐在其中	le zai qi zhong	1
 雷佳	lei jia	1
+泪目	lei mu	1
 李冰洁	li bing jie	1
 李娟	li juan	1
 李兰妮	li lan ni	1
 李娜	li na	1
+立牌	li pai	1
 力所能及	li suo neng ji	1
+联合投稿	lian he tou gao	1
 梁鸿	liang hong	1
 林徽因	lin hui yin	1
 林青霞	lin qing xia	1
+零基础	ling ji chu	1
 刘灵玲	liu ling ling	1
 龙腾虎跃	long teng hu yue	1
+陆冲	lu chong	1
+撸猫	lu mao	1
 鲁敏	lu min	1
+撸铁	lu tie	1
+路亚	lu ya	1
 路易丝·格丽克	lu yi si ge li ke	1
+旅居	lv ju	1
 旅行搭子	lv xing da zi	1
 马金莲	ma jin lian	1
 玛伊娅	ma yi ya	1
+慢慢来	man man lai	1
+慢下来	man xia lai	1
+漫展	man zhan	1
+盲盒	mang he	1
+毛孩子	mao hai zi	1
 茅塞顿开	mao se dun kai	1
+没必要	mei bi yao	1
+没关系	mei guan xi	1
 玫珂菲	mei ke fei	1
+美拉德穿搭	mei la de chuan da	1
+没事	mei shi	1
 美体小铺	mei ti xiao pu	1
+没问题	mei wen ti	1
 梅艳芳	mei yan fang	1
+梦幻联动	meng huan lian dong	1
 妙笔生花	miao bi sheng hua	1
 拿捏	na nie	1
+奶油风	nai you feng	1
+男女平等	nan nv ping deng	1
+脑补	nao bu	1
+内耗	nei hao	1
+内核稳定	nei he wen ding	1
 内外	nei wai	1
+你好棒	ni hao bang	1
+拧巴	ning ba	1
 浓人	nong ren	1
+女本位	nv ben wei	1
+女权主义	nv quan zhu yi	1
+女性成长	nv xing cheng zhang	1
+女性共同体	nv xing gong tong ti	1
+女性互助	nv xing hu zhu	1
+女性经验	nv xing jing yan	1
+女性劳动	nv xing lao dong	1
+女性视角	nv xing shi jiao	1
+女性书写	nv xing shu xie	1
+女性文学	nv xing wen xue	1
+女性向	nv xing xiang	1
+女性写作	nv xing xie zuo	1
+女性形象	nv xing xing xiang	1
+女性叙事	nv xing xu shi	1
+女性议题	nv xing yi ti	1
+女性友好	nv xing you hao	1
+女性主体性	nv xing zhu ti xing	1
+女性主义	nv xing zhu yi	1
 欧舒丹	ou shu dan	1
 欧缇丽	ou ti li	1
 潘向黎	pan xiang li	1
+跑马	pao ma	1
+匹克球	pi ke qiu	1
 偏偏你最争气	pian pian ni zui zheng qi	1
+拼单	pin dan	1
+拼假	pin jia	1
+平等沟通	ping deng gou tong	1
+评论区	ping lun qu	1
 平替	ping ti	1
 平野美宇	ping ye mei yu	1
+破防	po fang	1
 破圈	po quan	1
+奇奇怪怪	qi qi guai guai	1
 齐心协力	qi xin xie li	1
 乔叶	qiao ye	1
 锲而不舍	qie er bu she	1
 秦文君	qin wen jun	1
 勤学好问	qin xue hao wen	1
 情感劳动	qing gan lao dong	1
+轻户外	qing hu wai	1
+轻食	qing shi	1
+情绪充电	qing xu chong dian	1
 情绪价值	qing xu jia zhi	1
+情绪稳定	qing xu wen ding	1
+情绪支持	qing xu zhi chi	1
 轻养生	qing yang sheng	1
 裘山山	qiu shan shan	1
+秋天的第一杯奶茶	qiu tian de di yi bei nai cha	1
 求同存异	qiu tong cun yi	1
 去班味	qu ban wei	1
 取长补短	qu chang bu duan	1
+圈粉	quan fen	1
 全红婵	quan hong chan	1
 全力以赴	quan li yi fu	1
+全马	quan ma	1
+人声分离	ren sheng fen li	1
 日积月累	ri ji yue lei	1
 日新月异	ri xin yue yi	1
 融会贯通	rong hui guan tong	1
 如何呢又能怎	ru he ne you neng zen	1
+入坑	ru keng	1
+入门攻略	ru men gong lve	1
 赛博对账	sai bo dui zhang	1
 晒谷	shai gu	1
+山系穿搭	shan xi chuan da	1
+上分	shang fen	1
 上头	shang tou	1
 上野千鹤子	shang ye qian he zi	1
+稍后再看	shao hou zai kan	1
 邵丽	shao li	1
+社交边界	she jiao bian jie	1
+社恐	she kong	1
+社牛	she niu	1
 神采奕奕	shen cai yi yi	1
+深度共情	shen du gong qing	1
 审时度势	shen shi duo shi	1
+身体自主权	shen ti zi zhu quan	1
+深夜食堂	shen ye shi tang	1
 绳锯木断	sheng ju mu duan	1
 生龙活虎	sheng long huo hu	1
 事半功倍	shi ban gong bei	1
 石川佳纯	shi chuan jia chun	1
+时间管理	shi jian guan li	1
+视频创作	shi pin chuang zuo	1
+视频剪辑	shi pin jian ji	1
+视频脚本	shi pin jiao ben	1
 势如破竹	shi ru po zhu	1
 实事求是	shi shi qiu shi	1
 施蕴渝	shi yun yu	1
+手把手	shou ba shou	1
+手办	shou ban	1
 舒婷	shu ting	1
+数字人	shu zi ren	1
 数字游民	shu zi you min	1
+双向奔赴	shuang xiang ben fu	1
+双向链接	shuang xiang lian jie	1
 水滴石穿	shui di shi chuan	1
 水灵灵地	shui ling ling de	1
+四象限	si xiang xian	1
 松弛感	song chi gan	1
 随遇而安	sui yu er an	1
 孙梦雅	sun meng ya	1
 孙颖莎	sun ying sha	1
+嗦粉	suo fen	1
+索引卡片	suo yin ka pian	1
+她力量	ta li liang	1
+她视角	ta shi jiao	1
+太棒了	tai bang le	1
+太不容易了	tai bu rong yi le	1
 太会了	tai hui le	1
 泰勒·斯威夫特	tai le si wei fu te	1
 泰然自若	tai ran zi ruo	1
+太有意思了	tai you yi si le	1
 探店	tan dian	1
 唐钱婷	tang qian ting	1
+特种兵式旅游	te zhong bing shi lv you	1
+提示词	ti shi ci	1
 铁凝	tie ning	1
+贴贴	tie tie	1
+痛包	tong bao	1
+同辈压力	tong bei ya li	1
+同担	tong dan	1
+通关	tong guan	1
+同理心	tong li xin	1
 同心协力	tong xin xie li	1
+头脑风暴	tou nao feng bao	1
+图生图	tu sheng tu	1
 屠呦呦	tu you you	1
 托妮·莫里森	tuo ni mo li sen	1
 脱颖而出	tuo ying er chu	1
@@ -201,29 +400,56 @@ sort: by_weight
 王小云	wang xiao yun	1
 王欣瑜	wang xin yu	1
 王志珍	wang zhi zhen	1
+微度假	wei du jia	1
+围炉煮茶	wei lu zhu cha	1
 未雨绸缪	wei yu chou mou	1
 温故知新	wen gu zhi xin	1
 文洁若	wen jie ruo	1
+文生图	wen sheng tu	1
 文思泉涌	wen si quan yong	1
+我懂你	wo dong ni	1
+我懂这种感受	wo dong zhe zhong gan shou	1
 我裂开了	wo lie kai le	1
 我真的会谢	wo zhen de hui xie	1
 吴碧霞	wu bi xia	1
 伍尔夫	wu er fu	1
+无痕浏览	wu hen liu lan	1
+无厘头	wu li tou	1
+无料	wu liao	1
+无所谓	wu suo wei	1
+习惯打卡	xi guan da ka	1
 显眼包	xian yan bao	1
 相得益彰	xiang de yi zhang	1
 相辅相成	xiang fu xiang cheng	1
+项目复盘	xiang mu fu pan	1
+项目管理	xiang mu guan li	1
+项目周会	xiang mu zhou hui	1
+小白入门	xiao bai ru men	1
 萧红	xiao hong	1
 小确幸	xiao que xing	1
+协同编辑	xie tong bian ji	1
+谢谢你	xie xie ni	1
+辛苦了	xin ku le	1
 心旷神怡	xin kuang shen yi	1
+心理边界	xin li bian jie	1
+心理韧性	xin li ren xing	1
 信息断舍离	xin xi duan she li	1
+信息图	xin xi tu	1
 欣欣向荣	xin xin xiang rong	1
+新中式	xin zhong shi	1
+性别偏见	xing bie pian jian	1
+性别平等	xing bie ping deng	1
+性别研究	xing bie yan jiu	1
+性别意识	xing bie yi shi	1
 兴致勃勃	xing zhi bo bo	1
 胸有成竹	xiong you cheng zhu	1
 徐坤	xu kun	1
+需求看板	xu qiu kan ban	1
 徐诗晓	xu shi xiao	1
 徐小斌	xu xiao bin	1
 须一瓜	xu yi gua	1
 学无止境	xue wu zhi jing	1
+学习路线图	xue xi lu xian tu	1
 学以致用	xue yi zhi yong	1
 循序渐进	xun xu jian jin	1
 循循善诱	xun xun shan you	1
@@ -234,28 +460,45 @@ sort: by_weight
 杨紫琼	yang zi qiong	1
 姚鄂梅	yao e mei	1
 叶广芩	ye guang qin	1
+夜爬	ye pa	1
+夜跑	ye pao	1
 叶诗文	ye shi wen	1
 叶叔华	ye shu hua	1
 叶文玲	ye wen ling	1
+异步沟通	yi bu gou tong	1
 已读乱回	yi du luan hui	1
+一键三连	yi jian san lian	1
+一镜到底	yi jing dao di	1
+已经很棒了	yi jing hen bang le	1
 伊丽莎白雅顿	yi li sha bai ya dun	1
 意气风发	yi qi feng fa	1
 怡然自得	yi ran zi de	1
 一丝不苟	yi si bu gou	1
 伊藤美诚	yi teng mei cheng	1
+一图流	yi tu liu	1
 一往无前	yi wang wu qian	1
 殷健灵	yin jian ling	1
+隐私设置	yin si she zhi	1
 应付自如	ying fu zi ru	1
 硬控	ying kong	1
 迎头赶上	ying tou gan shang	1
 勇往直前	yong wang zhi qian	1
+有被暖到	you bei nuan dao	1
 游刃有余	you ren you yu	1
 有条不紊	you tiao bu wen	1
 愚公移山	yu gong yi shan	1
 余依婷	yu yi ting	1
 悦己	yue ji	1
+月经羞耻	yue jing xiu chi	1
 运筹帷幄	yun chou wei wo	1
+运动搭子	yun dong da zi	1
+运镜	yun jing	1
+云文档	yun wen dang	1
+云吸猫	yun xi mao	1
+允许自己不完美	yun xu zi ji bu wan mei	1
 再接再厉	zai jie zai li	1
+早八妆容	zao ba zhuang rong	1
+早咖晚酒	zao ka wan jiu	1
 张艾嘉	zhang ai jia	1
 张爱玲	zhang ai ling	1
 张桂梅	zhang gui mei	1
@@ -268,21 +511,49 @@ sort: by_weight
 张雨霏	zhang yu fei	1
 张悦然	zhang yue ran	1
 找搭子	zhao da zi	1
+真诚是必杀技	zhen cheng shi bi sha ji	1
 整活	zheng huo	1
 郑钦文	zheng qin wen	1
 郑儒永	zheng ru yong	1
 蒸蒸日上	zheng zheng ri shang	1
+直播复盘	zhi bo fu pan	1
+直播回放	zhi bo hui fang	1
+置顶自取	zhi ding zi qu	1
+智能体	zhi neng ti	1
+纸片人	zhi pian ren	1
+知情选择	zhi qing xuan ze	1
+知识共享	zhi shi gong xiang	1
+知识管理	zhi shi guan li	1
+知识库	zhi shi ku	1
 志同道合	zhi tong dao he	1
 知足常乐	zhi zu chang le	1
 种草	zhong cao	1
 周嘉宁	zhou jia ning	1
 周晓枫	zhou xiao feng	1
 主理人	zhu li ren	1
+主体觉醒	zhu ti jue xing	1
 主体性	zhu ti xing	1
 朱雪莹	zhu xue ying	1
+逐字稿	zhu zi gao	1
+转场	zhuan chang	1
+专注当下	zhuan zhu dang xia	1
+专注模式	zhuan zhu mo shi	1
+追更	zhui geng	1
 卓有成效	zhuo you cheng xiao	1
+自媒体	zi mei ti	1
+自洽	zi qia	1
 自强不息	zi qiang bu xi	1
+自我成长	zi wo cheng zhang	1
+自我对话	zi wo dui hua	1
+自我赋权	zi wo fu quan	1
 自我关怀	zi wo guan huai	1
+自我和解	zi wo he jie	1
+自我价值	zi wo jia zhi	1
+自我接纳	zi wo jie na	1
+自我觉察	zi wo jue cha	1
+自我认同	zi wo ren tong	1
+自我实现	zi wo shi xian	1
 孜孜不倦	zi zi bu juan	1
 宗璞	zong pu	1
 嘴替	zui ti	1
+做自己	zuo zi ji	1
