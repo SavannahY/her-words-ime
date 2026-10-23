@@ -221,6 +221,43 @@ class MemoryProtocolIntegration(unittest.TestCase):
                     self.store.mutate("remember", text=text, input="invalid")
                 self.swift("remember", text, "invalid", ok=False)
 
+    def test_spanish_comparisons_match_without_migrating_policy_identities(self):
+        samples = [
+            ("Ana", [("ANA", True), ("mañana", False), ("ñAna", False), ("Žana", False), ("Ana2", False)]),
+            ("sí", [("SÍ", True), ("si\u0301", True), ("así", False), ("SI", False)]),
+            ("ÁLEX", [("álex", True), ("A\u0301LEX", True), ("Álexa", False), ("给ÁLEX留言", True)]),
+            ("man\u0303ana", [("MAÑANA", True), ("manana", False)]),
+            ("pingüino", [("PINGU\u0308INO", True)]),
+            ("café", [("CAFE\u0301", True), ("caféína", False)]),
+            ("C++", [("áC++", False), ("C++é", False), ("给C++留言", True)]),
+            ("小ÁLEX", [("和小A\u0301LEX一起", True)]),
+        ]
+        for term, cases in samples:
+            self.store.mutate("block", text=term)
+            original = self.store.policy_path.read_bytes()
+            self.assert_interoperable()
+            for text, expected in cases:
+                with self.subTest(term=term, text=text):
+                    self.assertEqual(MANAGER.blocked(text, [term]), expected)
+                    self.assertEqual(self.swift("is-blocked", text)["blocked"], expected)
+            self.assertEqual(self.store.policy_path.read_bytes(), original, "comparison never rewrites B/F spellings")
+            self.swift("unblock", term)
+            self.assertEqual(self.assert_interoperable()["blocked"], [])
+        self.swift("remember", "A\u0301LEX", "alex")
+        self.store.mutate("block", text="álex")
+        self.assertEqual(self.assert_interoperable()["entries"], [])
+        self.swift("unblock", "álex")
+        self.assertEqual(self.assert_interoperable()["entries"], [], "restore does not revive removed variant")
+        for raw in ["café", "cafe\u0301"]:
+            self.store.mutate("block", text=raw)
+        state = self.assert_interoperable()
+        self.assertEqual(len(state["blocked"]), 2, "raw NFC/NFD policy identities are not merged")
+        self.swift("unblock", "café")
+        self.assertEqual([item["text"] for item in self.assert_interoperable()["blocked"]], ["cafe\u0301"])
+        self.assertTrue(self.swift("is-blocked", "CAFÉ")["blocked"])
+        self.swift("unblock", "cafe\u0301")
+        self.assertEqual(self.assert_interoperable()["blocked"], [])
+
     def assert_damaged_files_preserved(self, policy_bytes, learned_bytes=None):
         self.store.policy_path.write_bytes(policy_bytes)
         if learned_bytes is None:

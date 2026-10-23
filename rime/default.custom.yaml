@@ -1,8 +1,12 @@
 patch:
   schema_list:
     - schema: her_words
+    - schema: her_english
+    - schema: her_spanish
   menu/page_size: 7
   switcher/save_options/+:
     - her_original
     - her_friendly
     - her_community
+    - her_es_hints
+    - her_es_lookup

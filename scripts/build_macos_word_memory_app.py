@@ -40,7 +40,7 @@ def main():
         info = {
             "CFBundleIdentifier": IDENTIFIER, "CFBundleExecutable": executable.name,
             "CFBundleName": "她说词库", "CFBundleDisplayName": "她说词库",
-            "CFBundlePackageType": "APPL", "CFBundleShortVersionString": "0.3.0",
+            "CFBundlePackageType": "APPL", "CFBundleShortVersionString": "0.3.1",
             "CFBundleVersion": "1", "LSMinimumSystemVersion": "13.0",
             "NSHighResolutionCapable": True, "NSPrincipalClass": "NSApplication",
         }

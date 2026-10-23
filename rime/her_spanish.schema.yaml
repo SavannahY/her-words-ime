@@ -1,0 +1,39 @@
+# Spanish is a word composer: Space commits a word AND inserts a real space.
+schema:
+  schema_id: her_spanish
+  name: 她说 · Español 西班牙语
+  version: "1.0"
+  author: [ 她说 ]
+  description: |
+    西班牙语输入。原样拼写始终排首位，重音候选需主动选择。
+    ;a ;e ;i ;o ;u ;n ;v 输入 á é í ó ú ñ ü，大写同理。
+    ;? ;! 输入 ¿ ¡，;; 输入分号。空格选词并保留真实空格。
+    Tab 或上下键选择候选；菜单可关闭中文释义。
+
+switches:
+  - name: her_es_hints
+    states: [ 隐藏西语释义, 显示西语释义 ]
+
+engine:
+  processors:
+    - lua_processor@*her_latin_processor
+    - key_binder
+    - selector
+    - navigator
+    - express_editor
+  segmentors:
+    - abc_segmentor
+    - fallback_segmentor
+  translators:
+    - lua_translator@*her_latin_translator
+  filters:
+    - uniquifier
+
+speller:
+  alphabet: "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789;áéíóúüñÁÉÍÓÚÜÑ¿¡?!'-"
+
+menu:
+  page_size: 7
+
+key_binder:
+  bindings: []

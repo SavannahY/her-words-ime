@@ -77,6 +77,36 @@ class StoreChecks(unittest.TestCase):
         self.assertFalse(memory.blocked('XcodeC++', ['C++']))
         self.assertFalse(memory.blocked('C++foo', ['C++']))
 
+    def test_spanish_comparison_preserves_accents_and_latin_boundaries(self):
+        samples = [
+            ('Ana', 'ana', True), ('mañana', 'Ana', False), ('ñAna', 'Ana', False),
+            ('sí', 'SÍ', True), ('así', 'sí', False), ('SI', 'sí', False),
+            ('ÁLEX', 'álex', True), ('A\u0301LEX', 'álex', True), ('Álexa', 'álex', False),
+            ('MAÑANA', 'man\u0303ana', True), ('manana', 'mañana', False),
+            ('PINGU\u0308INO', 'pingüino', True), ('CAFE\u0301', 'café', True),
+            ('caféína', 'café', False), ('nino', 'niño', False), ('niño', 'nino', False),
+            ('áC++', 'C++', False), ('C++é', 'C++', False), ('给C++留言', 'C++', True),
+            ('Žana', 'ana', False), ('ana_2', 'Ana', False), ('ana2', 'Ana', False),
+            ('给ÁLEX留言', 'álex', True), ('和小A\u0301LEX一起', '小ÁLEX', True),
+        ]
+        for text, term, expected in samples:
+            with self.subTest(text=text, term=term):
+                self.assertEqual(memory.blocked(text, [term]), expected)
+        self.assertEqual(memory.fold('ÁLEX'), 'Álex', 'storage identity still folds ASCII only')
+
+    def test_spanish_block_removes_equivalent_memory_without_changing_policy_spelling(self):
+        self.store.mutate('remember', text='mañana', input='manana')
+        self.store.mutate('remember', text='así', input='asi')
+        self.store.mutate('remember', text='A\u0301LEX', input='alex')
+        self.store.mutate('block', text='Ana')
+        self.store.mutate('block', text='sí')
+        self.assertEqual(len(self.store.state()['entries']), 3)
+        self.store.mutate('block', text='ÁLEX')
+        self.assertEqual({e['text'] for e in self.store.state()['entries']}, {'mañana', 'así'})
+        self.assertIn('B\tÁLEX\t', self.store.policy_path.read_text())
+        self.store.mutate('unblock', text='ÁLEX')
+        self.assertFalse(any(e['input'] == 'alex' for e in self.store.state()['entries']))
+
     def test_manual_remember_keeps_forget_cutoff_for_old_aliases(self):
         self.learned()
         with patch.object(memory.time, 'time', return_value=101):

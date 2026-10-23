@@ -4,7 +4,7 @@ __include: luna_pinyin_simp.schema:/
 schema:
   schema_id: her_words
   name: 她说 · 女性优先全拼
-  version: "1.3"
+  version: "1.4"
   author:
     - 她说
   description: |
@@ -32,7 +32,7 @@ menu:
 switches:
   - name: ascii_mode
     reset: 0
-    states: [ 中文, 西文 ]
+    states: [ 中文, 英文 ]
   - name: full_shape
     states: [ 半角, 全角 ]
   - name: zh_simp
@@ -43,3 +43,5 @@ switches:
   - options: [ her_original, her_friendly, her_community ]
     reset: 1
     states: [ 保留措辞, 友好表达, 社群写法 ]
+  - name: her_es_lookup
+    states: [ 关闭中文查西语, 开启中文查西语 ]

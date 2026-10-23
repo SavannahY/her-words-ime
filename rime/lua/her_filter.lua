@@ -4,6 +4,7 @@
 local rule_data = require("her_rewrite_rules")
 local memory = require("her_memory")
 local public_data = require("her_public_aliases")
+local spanish_data = require("her_spanish_data")
 local rules = {}
 
 for index, rule in ipairs(rule_data.rules or {}) do
@@ -103,6 +104,7 @@ local function filter(input, env)
   local seen = {}
   local pending_aliases
   local pending_public
+  local pending_spanish
 
   local function emit(candidate, text, comment)
     if memory.is_blocked(env, candidate.text) or memory.is_blocked(env, text)
@@ -156,6 +158,23 @@ local function filter(input, env)
         pending_aliases = { raw = raw, start = segment.start, finish = segment._end }
       end
       pending_public = { raw = raw, start = segment.start, finish = segment._end }
+      if context:get_option("her_es_lookup") then
+        pending_spanish = { raw = raw, start = segment.start, finish = segment._end }
+      end
+    end
+  end
+
+  local function emit_spanish()
+    if not pending_spanish then return end
+    local segment = pending_spanish
+    pending_spanish = nil
+    for _, word in ipairs(spanish_data.chinese or {}) do
+      if segment.raw == word.input then
+        local comment = "西语 · " .. word.meaning
+        if word.hint and word.hint ~= "" then comment = comment .. " · " .. word.hint end
+        local candidate = Candidate("her_es_lookup", segment.start, segment.finish, word.text, comment)
+        emit(candidate, word.text, comment)
+      end
     end
   end
 
@@ -240,10 +259,11 @@ local function filter(input, env)
     emit_aliases()
     -- Public facts and brand spellings never replace an existing normal first
     -- candidate. Every addition still passes the same private suppression gate.
-    if emitted then emit_public() end
+    if emitted then emit_spanish(); emit_public() end
   end
   -- A translator with no candidates can still provide a friendly alias.
   emit_aliases()
+  emit_spanish()
   emit_public()
 end
 

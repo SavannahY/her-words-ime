@@ -12,6 +12,7 @@ import tempfile
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / 'scripts'))
 from manage_word_memory import MemoryStore, read_learned
+from compile_packs import lua_quote
 import rime_api as api
 from integration_rime import enter, select_first, find_squirrel
 
@@ -20,6 +21,104 @@ def check(condition, description):
     if not condition:
         raise AssertionError(description)
     print('PASS', description, flush=True)
+
+
+def check_lua_memory_contract(app):
+    """Run the actual module in Squirrel's bundled Lua with disposable fixtures.
+
+    The tiny context stub observes notifier attachment and commit ownership;
+    real Rime candidate/commit integration follows in worker().
+    """
+    core = C.CDLL(str(app / 'Contents/Frameworks/librime.1.dylib'), mode=C.RTLD_GLOBAL)
+    lua = C.CDLL(str(app / 'Contents/Frameworks/rime-plugins/librime-lua.dylib'), mode=C.RTLD_GLOBAL)
+    lua.luaL_newstate.restype = C.c_void_p
+    lua.luaL_openlibs.argtypes = [C.c_void_p]
+    lua.luaL_loadstring.argtypes = [C.c_void_p, C.c_char_p]
+    lua.luaL_loadstring.restype = C.c_int
+    lua.lua_pcallk.argtypes = [C.c_void_p, C.c_int, C.c_int, C.c_int, C.c_ssize_t, C.c_void_p]
+    lua.lua_pcallk.restype = C.c_int
+    lua.lua_tolstring.argtypes = [C.c_void_p, C.c_int, C.POINTER(C.c_size_t)]
+    lua.lua_tolstring.restype = C.c_char_p
+    lua.lua_close.argtypes = [C.c_void_p]
+    samples = [
+        ('Ana', 'ANA', True), ('Ana', 'mañana', False), ('Ana', 'ñAna', False),
+        ('sí', 'SÍ', True), ('sí', 'si\u0301', True), ('sí', 'así', False), ('sí', 'SI', False),
+        ('ÁLEX', 'álex', True), ('álex', 'A\u0301LEX', True), ('álex', 'Álexa', False),
+        ('man\u0303ana', 'MAÑANA', True), ('mañana', 'manana', False),
+        ('pingüino', 'PINGU\u0308INO', True), ('café', 'CAFE\u0301', True),
+        ('café', 'caféína', False), ('niño', 'nino', False), ('nino', 'niño', False),
+        ('C++', 'áC++', False), ('C++', 'C++é', False), ('C++', '给C++留言', True),
+        ('ana', 'Žana', False), ('Ana', 'ana_2', False), ('Ana', 'ana2', False),
+        ('小ÁLEX', '和小A\u0301LEX一起', True), ('张三', '和张三一起', True),
+        ('Ann', 'planning', False), ('C++', 'XcodeC++', False),
+    ]
+    with tempfile.TemporaryDirectory(prefix='her-lua-memory-contract-') as temporary:
+        directory = Path(temporary).resolve()
+        case_lua = ',\n'.join('{' + lua_quote(term) + ',' + lua_quote(text) + ','
+                              + ('true' if expected else 'false') + '}' for term, text, expected in samples)
+        script = ('package.path = ' + lua_quote(str(ROOT / 'rime/lua/?.lua')) + ' .. ";" .. package.path\n'
+                  + 'local directory = ' + lua_quote(str(directory)) + '\n'
+                  + 'local cases = {' + case_lua + '}\n' + r'''
+local memory = require("her_memory")
+local header = "HER_WORD_MEMORY\t1\n"
+local policy_path, learned_path = directory .. "/her_memory_policy.tsv", directory .. "/her_memory_learned.tsv"
+local function write(path, value) local f = assert(io.open(path, "w")); f:write(value); f:close() end
+local function read(path) local f = assert(io.open(path, "r")); local value = f:read("*a"); f:close(); return value end
+write(policy_path, header)
+write(learned_path, header)
+rime_api = { get_user_data_dir = function() return directory end }
+local connections, callback = 0, nil
+local selected, committed = {type = "her_memory", comment = ""}, "café"
+local context = { input = "cafe", set_property = function() end,
+  get_selected_candidate = function() return selected end,
+  get_commit_text = function() return committed end,
+  commit_notifier = {connect = function(_, fn)
+    connections = connections + 1; callback = fn
+    return {disconnect = function() end}
+  end} }
+local env = { engine = { context = context }, her_memory_readonly = true }
+memory.init(env)
+assert(connections == 0 and env.her_memory_connection == nil, "readonly attaches no commit notifier")
+local stale = header .. "L\tcafe\tcafé\t1\t1\n"
+write(learned_path, stale)
+write(policy_path, header .. "B\tCAFÉ\t2\n")
+memory.refresh(env)
+assert(next(env.her_memory_words) == nil, "readonly still filters blocked learned words")
+assert(read(learned_path) == stale, "readonly never rewrites the Chinese learner file, even during purge")
+write(learned_path, header)
+for _, case in ipairs(cases) do
+  write(policy_path, header .. "B\t" .. case[1] .. "\t1\n")
+  memory.refresh(env)
+  assert(memory.is_blocked(env, case[2]) == case[3], "Lua boundary mismatch: " .. case[1] .. " / " .. case[2])
+end
+assert(read(learned_path) == header, "readonly comparisons write no new learned words")
+write(policy_path, header)
+memory.refresh(env)
+assert(not memory.is_blocked(env, "ÁLEX"), "unblock invalidates comparison forms")
+local normal = { engine = { context = context } }
+memory.init(normal)
+assert(connections == 1 and callback, "Chinese memory still owns one notifier")
+selected.type = "her_es_lookup"
+callback(context)
+assert(read(learned_path) == header, "Chinese Spanish lookup must not learn a pinyin-to-Spanish mapping")
+selected.type, committed, context.input = "her_memory", "你好", "nihao"
+callback(context)
+assert(read(learned_path):find("L\tnihao\t你好\t1\t", 1, true), "ordinary confirmed Chinese still learns")
+memory.fini(normal)
+''')
+        state = lua.luaL_newstate()
+        if not state:
+            raise RuntimeError('Could not allocate bundled Lua state')
+        try:
+            lua.luaL_openlibs(state)
+            status = lua.luaL_loadstring(state, script.encode('utf-8'))
+            if not status:
+                status = lua.lua_pcallk(state, 0, 0, 0, 0, None)
+            if status:
+                raise AssertionError('Bundled Lua memory contract: ' + api.decode(lua.lua_tolstring(state, -1, None)))
+        finally:
+            lua.lua_close(state)
+    print('Bundled Lua memory: {} boundary cases plus notifier ownership passed.'.format(len(samples)), flush=True)
 
 
 def worker(app, user, phase):
@@ -149,6 +248,7 @@ def main():
         parser.error('Squirrel.app required')
     if args.worker:
         return worker(args.app, args.user, args.worker)
+    check_lua_memory_contract(args.app)
     with tempfile.TemporaryDirectory(prefix='her-memory-integration-') as temporary:
         user = Path(temporary).resolve() / 'userdata'
         shutil.copytree(ROOT / 'rime', user, ignore=shutil.ignore_patterns('build', '.DS_Store'))

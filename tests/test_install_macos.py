@@ -15,6 +15,9 @@ ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / 'scripts'))
 import install_macos as installer  # noqa: E402
 
+SCHEMAS = [{'schema': 'her_words'}, {'schema': 'her_english'}, {'schema': 'her_spanish'}]
+OPTIONS = ['her_original', 'her_friendly', 'her_community', 'her_es_hints', 'her_es_lookup']
+
 
 def patched(text):
     result, selected = installer.plan_default_custom(text)
@@ -35,7 +38,8 @@ patch:
 '''
         result, key = patched(original)
         expected = yaml.safe_load(original)
-        expected['patch']['schema_list'].append({'schema': 'her_words'})
+        expected['patch']['schema_list'].extend(SCHEMAS)
+        expected['patch']['switcher/save_options/+'] = OPTIONS
         self.assertEqual(key, 'schema_list')
         self.assertEqual(result, expected)
         self.assertNotIn('schema_list/+', result['patch'])
@@ -44,7 +48,7 @@ patch:
         result, key = patched('patch:\n  schema_list/+:\n    - schema: existing_extra\n  menu/page_size: 8\n')
         self.assertEqual(key, 'schema_list/+')
         self.assertEqual(result['patch']['schema_list/+'],
-                         [{'schema': 'existing_extra'}, {'schema': 'her_words'}])
+                         [{'schema': 'existing_extra'}] + SCHEMAS)
         self.assertNotIn('schema_list', result['patch'])
         self.assertEqual(result['patch']['menu/page_size'], 8)
 
@@ -53,16 +57,17 @@ patch:
             with self.subTest(text=text):
                 result, key = patched(text)
                 self.assertEqual(key, 'schema_list/+')
-                self.assertEqual(result['patch']['schema_list/+'], [{'schema': 'her_words'}])
+                self.assertEqual(result['patch']['schema_list/+'], SCHEMAS)
+                self.assertEqual(result['patch']['switcher/save_options/+'], OPTIONS)
                 self.assertNotIn('schema_list', result['patch'])
 
     def test_both_keys_use_explicit_list_and_preserve_append(self):
         result, key = patched('patch:\n  schema_list: [{schema: base}]\n  schema_list/+: [{schema: extra}]\n')
         self.assertEqual(key, 'schema_list')
-        self.assertEqual(result['patch']['schema_list'], [{'schema': 'base'}, {'schema': 'her_words'}])
+        self.assertEqual(result['patch']['schema_list'], [{'schema': 'base'}] + SCHEMAS)
         self.assertEqual(result['patch']['schema_list/+'], [{'schema': 'extra'}])
 
-    def test_existing_her_words_remains_idempotent_in_either_list(self):
+    def test_partial_install_is_upgraded_once_in_either_list(self):
         for text in (
             'patch:\n  schema_list: [{schema: base}, {schema: her_words}]\n',
             'patch:\n  schema_list/+: [{schema: her_words}]\n',
@@ -71,8 +76,43 @@ patch:
             with self.subTest(text=text):
                 first, _ = installer.plan_default_custom(text)
                 second, _ = installer.plan_default_custom(first)
-                self.assertEqual(yaml.safe_load(first), yaml.safe_load(text))
+                document = yaml.safe_load(first)
+                schemas = (document['patch'].get('schema_list', [])
+                           + document['patch'].get('schema_list/+', []))
+                for schema in SCHEMAS:
+                    self.assertEqual(schemas.count(schema), 1)
                 self.assertEqual(first, second)
+
+    def test_existing_schemas_and_options_across_both_patches_are_not_duplicated(self):
+        text = '''patch:
+  schema_list: [{schema: her_english, custom_flag: true}]
+  schema_list/+: [{schema: extra}, {schema: her_spanish}]
+  switcher/save_options: [ascii_mode, her_es_lookup]
+  switcher/save_options/+: [full_shape, her_friendly]
+'''
+        result, key = patched(text)
+        self.assertEqual(key, 'schema_list')
+        self.assertEqual(result['patch']['schema_list'],
+                         [{'schema': 'her_english', 'custom_flag': True}, {'schema': 'her_words'}])
+        self.assertEqual(result['patch']['schema_list/+'],
+                         [{'schema': 'extra'}, {'schema': 'her_spanish'}])
+        self.assertEqual(result['patch']['switcher/save_options'],
+                         ['ascii_mode', 'her_es_lookup', 'her_original', 'her_community', 'her_es_hints'])
+        self.assertEqual(result['patch']['switcher/save_options/+'], ['full_shape', 'her_friendly'])
+        output, _ = installer.plan_default_custom(text)
+        self.assertEqual(output, installer.plan_default_custom(output)[0])
+
+    def test_append_options_preserve_other_saved_switches_and_anchor(self):
+        text = '''other_options: &options [ascii_mode, her_es_hints]
+patch:
+  switcher/save_options/+: *options
+'''
+        result, _ = patched(text)
+        self.assertEqual(result['other_options'], ['ascii_mode', 'her_es_hints'])
+        self.assertEqual(result['patch']['switcher/save_options/+'],
+                         ['ascii_mode', 'her_es_hints', 'her_original', 'her_friendly',
+                          'her_community', 'her_es_lookup'])
+        self.assertNotIn('switcher/save_options', result['patch'])
 
     def test_bad_root_patch_and_list_types_are_rejected(self):
         invalid = [
@@ -85,6 +125,11 @@ patch:
             'patch: {schema_list: [{schema: ""}]}',
             # Validate both keys even when the first one would be selected.
             'patch: {schema_list: [], schema_list/+: wrong}',
+            'patch: {switcher/save_options: null}',
+            'patch: {switcher/save_options/+: single}',
+            'patch: {switcher/save_options: [ascii_mode, 3]}',
+            'patch: {switcher/save_options/+: [""]}',
+            'patch: {switcher/save_options: [], switcher/save_options/+: wrong}',
         ]
         for text in invalid:
             with self.subTest(text=text), self.assertRaises(RuntimeError):
@@ -128,13 +173,13 @@ patch:
         self.assertEqual(result['profile'], original['profile'])
         self.assertEqual(result['patch']['menu/page_size'], 11)
         self.assertEqual(result['patch']['schema_list'],
-                         [{'schema': 'luna_pinyin'}, {'schema': 'her_words'}])
+                         [{'schema': 'luna_pinyin'}] + SCHEMAS)
 
     def test_aliased_patch_mapping_is_not_edited_elsewhere(self):
         text = 'profile: &profile {schema_list: [{schema: base}]}\npatch: *profile\n'
         result, _ = patched(text)
         self.assertEqual(result['profile'], {'schema_list': [{'schema': 'base'}]})
-        self.assertEqual(len(result['patch']['schema_list']), 2)
+        self.assertEqual(len(result['patch']['schema_list']), 4)
 
 
 class InstallerPlanTests(unittest.TestCase):
@@ -156,10 +201,69 @@ class InstallerPlanTests(unittest.TestCase):
         self.assertFalse(self.target.exists())
         self.assertEqual(plan.schema_patch, 'schema_list/+')
         self.assertEqual(set(plan.files), set(installer.OWN_FILES) |
-                         {'default.custom.yaml', 'squirrel.custom.yaml'})
+                         {'default.custom.yaml', 'squirrel.custom.yaml', 'user.yaml'})
         config = yaml.safe_load(plan.files['default.custom.yaml'])
-        self.assertEqual(config, {'patch': {'schema_list/+': [{'schema': 'her_words'}]}})
+        self.assertEqual(config, {'patch': {'schema_list/+': SCHEMAS,
+                                          'switcher/save_options/+': OPTIONS}})
         self.assertIn(b'return {', plan.files['lua/her_rewrite_rules.lua'])
+        self.assertIn(b'return {', plan.files['lua/her_spanish_data.lua'])
+        self.assertEqual(yaml.safe_load(plan.files['user.yaml']),
+                         {'var': {'option': {'her_es_hints': True, 'her_es_lookup': False}}})
+
+    def test_user_options_only_seed_missing_choices(self):
+        self.target.mkdir()
+        user = self.target / 'user.yaml'
+        original = '''installation_id: example
+var:
+  previously_selected_schema: her_words
+  option: {her_es_hints: false, ascii_mode: true}
+'''
+        user.write_text(original, encoding='utf-8')
+        plan = self.plan()
+        expected = yaml.safe_load(original)
+        expected['var']['option']['her_es_lookup'] = False
+        self.assertEqual(yaml.safe_load(plan.files['user.yaml']), expected)
+        self.assertEqual(user.read_text(encoding='utf-8'), original)
+        saved_choices = original.replace('her_es_hints: false',
+                                         'her_es_hints: false, her_es_lookup: true')
+        user.write_text(saved_choices, encoding='utf-8')
+        self.assertNotIn('user.yaml', self.plan().files)
+        self.assertEqual(user.read_text(encoding='utf-8'), saved_choices)
+
+    def test_bad_user_options_stop_before_compilation_or_writes(self):
+        self.target.mkdir()
+        for text in ('var: null', 'var: {option: []}',
+                     'var: {option: {her_es_hints: true, her_es_hints: false}}'):
+            with self.subTest(text=text):
+                user = self.target / 'user.yaml'
+                user.write_text(text, encoding='utf-8')
+                with mock.patch.object(installer, 'load_project') as compile_packs:
+                    with self.assertRaisesRegex(RuntimeError, 'user.yaml'):
+                        self.plan()
+                    compile_packs.assert_not_called()
+                self.assertEqual(user.read_text(encoding='utf-8'), text)
+                self.assertEqual([path.name for path in self.target.iterdir()], ['user.yaml'])
+
+    def test_spanish_resources_are_freshly_compiled_before_installation(self):
+        data = b'return { marker = "fresh Spanish content" }\n'
+        with mock.patch.object(installer, 'build_spanish_resources',
+                               return_value={'lua/her_spanish_data.lua': data}) as compile_spanish:
+            plan = self.plan()
+        compile_spanish.assert_called_once_with()
+        self.assertEqual(plan.files['lua/her_spanish_data.lua'], data)
+        self.assertFalse(self.target.exists())
+
+    def test_invalid_spanish_content_stops_before_target_mutation(self):
+        self.target.mkdir()
+        config = self.target / 'default.custom.yaml'
+        original = b'patch: {schema_list: [{schema: existing}]}\n'
+        config.write_bytes(original)
+        with mock.patch.object(installer, 'build_spanish_resources',
+                               side_effect=installer.ValidationError('invalid Spanish content')):
+            with self.assertRaises(installer.ValidationError):
+                self.plan()
+        self.assertEqual(config.read_bytes(), original)
+        self.assertEqual([path.name for path in self.target.iterdir()], ['default.custom.yaml'])
 
     def test_existing_theme_is_preserved_unless_requested(self):
         self.target.mkdir()

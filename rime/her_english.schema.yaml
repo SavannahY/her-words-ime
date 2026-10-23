@@ -1,0 +1,24 @@
+# 英文键盘直通；没有拼写器，不会因 Shift 切换进入待转换状态。
+schema:
+  schema_id: her_english
+  name: 她说 · English
+  version: "1.0"
+  author:
+    - 她说
+  description: |
+    英文直接输入，大小写、空格和标点交给当前应用。
+    Control + 反引号打开方案菜单，切换中文或西班牙语。
+
+switches:
+  - name: ascii_mode
+    reset: 1
+
+engine:
+  processors:
+    - key_binder
+  segmentors: []
+  translators: []
+  filters: []
+
+key_binder:
+  bindings: []

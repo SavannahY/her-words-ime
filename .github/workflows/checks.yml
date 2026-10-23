@@ -31,6 +31,8 @@ jobs:
         run: python3 scripts/compile_packs.py --output generated/her_rewrite_rules.lua
       - name: Verify public names, idioms and brand spelling artifacts
         run: python3 scripts/compile_public_lexicon.py --check
+      - name: Verify Spanish learning material and generated data
+        run: python3 scripts/compile_spanish_learning.py --check
       - name: Compile the same language packs for the voice tool
         run: python3 scripts/compile_web_rules.py --output generated/web-rules.json
       - name: Verify committed iPhone resources and project
@@ -114,6 +116,11 @@ jobs:
     runs-on: macos-latest
     steps:
       - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install configuration dependency
+        run: python3 -m pip install -r requirements.txt
       - name: Download and verify official Squirrel release
         shell: bash
         run: |
@@ -131,5 +138,7 @@ jobs:
         run: python3 tests/integration_rime.py --app "$RUNNER_TEMP/squirrel/Payload/Squirrel.app" --config rime --report "$RUNNER_TEMP/her-words-results.json"
       - name: Verify real local word learning and deletion
         run: python3 tests/integration_word_memory.py --app "$RUNNER_TEMP/squirrel/Payload/Squirrel.app"
+      - name: Verify real Chinese, English and Spanish typing and learning switches
+        run: python3 tests/integration_trilingual.py --app "$RUNNER_TEMP/squirrel/Payload/Squirrel.app"
       - name: Verify public names, idioms, aliases and private suppression
         run: python3 tests/integration_public_lexicon.py --app "$RUNNER_TEMP/squirrel/Payload/Squirrel.app"

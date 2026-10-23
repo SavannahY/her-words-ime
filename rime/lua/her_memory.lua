@@ -7,6 +7,31 @@ local HEADER = "HER_WORD_MEMORY\t1"
 local function lower(text)
   return (text:gsub("[A-Z]", function(char) return string.char(char:byte() + 32) end))
 end
+local function comparison_fold(text)
+  -- This never changes persisted B/F keys or learned-word identities.
+  text = lower(text)
+  for _, pair in ipairs({ {"Á", "á"}, {"É", "é"}, {"Í", "í"}, {"Ó", "ó"},
+      {"Ú", "ú"}, {"Ü", "ü"}, {"Ñ", "ñ"}, {"a\u{301}", "á"}, {"e\u{301}", "é"},
+      {"i\u{301}", "í"}, {"o\u{301}", "ó"}, {"u\u{301}", "ú"}, {"u\u{308}", "ü"}, {"n\u{303}", "ñ"} }) do
+    text = text:gsub(pair[1], pair[2])
+  end
+  return text
+end
+local function latin_word_character(point)
+  if not point then return false end
+  return point == 95 or (point >= 48 and point <= 57) or (point >= 97 and point <= 122)
+      or (point >= 0x00C0 and point <= 0x02AF and point ~= 0x00D7 and point ~= 0x00F7)
+      or (point >= 0x0300 and point <= 0x036F) or (point >= 0x1D00 and point <= 0x1DBF)
+      or (point >= 0x1E00 and point <= 0x1EFF) or (point >= 0x2C60 and point <= 0x2C7F)
+      or (point >= 0xA720 and point <= 0xA7FF) or (point >= 0xAB30 and point <= 0xAB6F)
+      or (point >= 0x10780 and point <= 0x107BF) or (point >= 0x1DF00 and point <= 0x1DFFF)
+end
+local function latin_term(text)
+  for _, point in utf8.codes(text) do
+    if point >= 128 and not latin_word_character(point) then return false end
+  end
+  return true
+end
 local function clean_word(text)
   if type(text) ~= "string" or text == "" or #text > 128 or text:find("[/:@]") then return false end
   local length = utf8.len(text)
@@ -88,15 +113,15 @@ local function simplified_for_block(text, converter)
 end
 local function contains_blocked(folded, terms)
   for term, _ in pairs(terms) do
-    local ascii = true
-    for index = 1, #term do if term:byte(index) > 127 then ascii = false; break end end
+    local latin = latin_term(term)
     local begin_at = 1
     while true do
       local first, last = folded:find(term, begin_at, true)
       if not first then break end
-      if not ascii then return true end
-      local before, after = folded:sub(first - 1, first - 1), folded:sub(last + 1, last + 1)
-      if (first == 1 or not before:find("[a-zA-Z0-9_]")) and (after == "" or not after:find("[a-zA-Z0-9_]")) then return true end
+      if not latin then return true end
+      local before = first > 1 and utf8.codepoint(folded, utf8.offset(folded, -1, first)) or nil
+      local after = last < #folded and utf8.codepoint(folded, last + 1) or nil
+      if not latin_word_character(before) and not latin_word_character(after) then return true end
       begin_at = last + 1
     end
   end
@@ -104,8 +129,8 @@ local function contains_blocked(folded, terms)
 end
 local function blocked(text, current)
   if not next(current.blocked) then return false end
-  local folded = lower(text)
-  if contains_blocked(folded, current.blocked) then return true end
+  local folded = comparison_fold(text)
+  if contains_blocked(folded, current.blocked_comparison) then return true end
   -- Match both sides in the same script, including ordinary dictionary
   -- candidates already converted by the scheme's simplifier. This gate is
   -- shared by display, learning and removal of previously learned words.
@@ -156,10 +181,13 @@ function M.refresh(env)
     return env.her_memory_current -- retain the last valid block rules
   end
   current.block_converter = env.her_memory_simplifier
+  current.blocked_comparison = {}
   current.blocked_simplified = {}
   local previous_forms, forms = env.her_memory_block_forms or {}, {}
   for term, _ in pairs(current.blocked) do
-    local form = previous_forms[term] or simplified_for_block(term, current.block_converter)
+    local comparison = comparison_fold(term)
+    current.blocked_comparison[comparison] = true
+    local form = previous_forms[term] or simplified_for_block(comparison, current.block_converter)
     forms[term] = form
     current.blocked_simplified[form] = true
   end
@@ -181,7 +209,7 @@ function M.refresh(env)
     local cutoff = math.max(current.clear_before, current.forgotten[lower(word.text)] or 0)
     if word.last <= cutoff or blocked(word.text, current) then learned[key] = nil; changed = true end
   end
-  if changed and not save_learned(env.her_memory_learned, learned) then
+  if changed and not env.her_memory_readonly and not save_learned(env.her_memory_learned, learned) then
     env.engine.context:set_property("her_memory_error", "本地词库无法写入")
   else env.engine.context:set_property("her_memory_error", "") end
   env.her_memory_words = learned
@@ -221,12 +249,13 @@ function M.init(env)
   local ok, converter = pcall(function() return Opencc("t2s.json") end)
   env.her_memory_simplifier = ok and converter or nil
   M.refresh(env)
+  if env.her_memory_readonly then return end
   env.her_memory_connection = env.engine.context.commit_notifier:connect(function(context)
     local current = M.refresh(env)
     if not current or not current.learning or not env.her_memory_words
         or not env.her_memory_policy_valid or not env.her_memory_learned_valid then return end
     local candidate = context:get_selected_candidate()
-    if not candidate or candidate.type == "her_priority" or candidate.type == "her_friendly_alias"
+    if not candidate or candidate.type == "her_priority" or candidate.type == "her_friendly_alias" or candidate.type == "her_es_lookup"
         or (candidate.comment or ""):find("友好表达", 1, true) or (candidate.comment or ""):find("社群写法", 1, true) then return end
     local text, input = context:get_commit_text(), clean_input(context.input)
     if not input or not clean_word(text) or blocked(text, current) then return end

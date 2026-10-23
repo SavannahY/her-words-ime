@@ -9,7 +9,7 @@ struct MacRememberedWord: Identifiable, Equatable {
     let count: Int
     let lastUsed: Int
     let manual: Bool
-    var id: String { input + "\u{0}" + MacWordMemoryFileStore.key(text) }
+    var id: String { input + "\u{0}" + MacWordMemoryFileStore.identity(text) }
 }
 
 struct MacWordMemorySnapshot {
@@ -48,18 +48,45 @@ final class MacWordMemoryFileStore {
         String(decoding: text.utf8.map { (65...90).contains($0) ? $0 + 32 : $0 }, as: UTF8.self)
     }
 
-    static func isBlocked(_ text: String, by blocked: [String]) -> Bool {
-        let candidate = Array(key(text).utf8)
-        func word(_ byte: UInt8) -> Bool {
-            (97...122).contains(byte) || (48...57).contains(byte) || byte == 95
+    static func identity(_ text: String) -> String {
+        // Swift String keys equate NFC/NFD automatically. Encoding the existing
+        // ASCII-folded bytes preserves the TSV protocol's exact identities.
+        let hex = Array("0123456789abcdef".utf8)
+        return String(decoding: key(text).utf8.flatMap { [hex[Int($0 >> 4)], hex[Int($0 & 15)]] }, as: UTF8.self)
+    }
+
+    private static func comparisonKey(_ text: String) -> String {
+        // Canonicalize Spanish comparisons, never persisted B/F identities.
+        var value = key(text)
+        for (source, target) in [("Á", "á"), ("É", "é"), ("Í", "í"), ("Ó", "ó"),
+                                 ("Ú", "ú"), ("Ü", "ü"), ("Ñ", "ñ"), ("a\u{301}", "á"),
+                                 ("e\u{301}", "é"), ("i\u{301}", "í"), ("o\u{301}", "ó"),
+                                 ("u\u{301}", "ú"), ("u\u{308}", "ü"), ("n\u{303}", "ñ")] {
+            value = value.replacingOccurrences(of: source, with: target, options: .literal)
         }
+        return value
+    }
+
+    private static func latinWordCharacter(_ point: UInt32) -> Bool {
+        point == 95 || (48...57).contains(point) || (97...122).contains(point)
+            || ((0x00C0...0x02AF).contains(point) && point != 0x00D7 && point != 0x00F7)
+            || (0x0300...0x036F).contains(point) || (0x1D00...0x1DBF).contains(point)
+            || (0x1E00...0x1EFF).contains(point) || (0x2C60...0x2C7F).contains(point)
+            || (0xA720...0xA7FF).contains(point) || (0xAB30...0xAB6F).contains(point)
+            || (0x10780...0x107BF).contains(point) || (0x1DF00...0x1DFFF).contains(point)
+    }
+
+    static func isBlocked(_ text: String, by blocked: [String]) -> Bool {
+        guard !blocked.isEmpty else { return false }
+        let candidate = comparisonKey(text).unicodeScalars.map(\.value)
         for term in blocked {
-            let bytes = Array(key(term).utf8)
-            guard !bytes.isEmpty, bytes.count <= candidate.count else { continue }
-            let ascii = bytes.allSatisfy { $0 < 128 }
-            for start in 0...(candidate.count - bytes.count) where candidate[start..<(start + bytes.count)].elementsEqual(bytes) {
-                let end = start + bytes.count
-                if !ascii || ((start == 0 || !word(candidate[start - 1])) && (end == candidate.count || !word(candidate[end]))) {
+            let points = comparisonKey(term).unicodeScalars.map(\.value)
+            guard !points.isEmpty, points.count <= candidate.count else { continue }
+            let latin = points.allSatisfy { $0 < 128 || latinWordCharacter($0) }
+            for start in 0...(candidate.count - points.count) where candidate[start..<(start + points.count)].elementsEqual(points) {
+                let end = start + points.count
+                if !latin || ((start == 0 || !latinWordCharacter(candidate[start - 1]))
+                              && (end == candidate.count || !latinWordCharacter(candidate[end]))) {
                     return true
                 }
             }
@@ -139,9 +166,9 @@ final class MacWordMemoryFileStore {
                 guard row.count == 3 else { throw MacWordMemoryError(message: "词库删除记录格式异常。") }
                 let text = try word(row[1]), time = try number(row[2])
                 guard text == row[1] else { throw MacWordMemoryError(message: "词库删除记录不是规范格式。") }
-                if row[0] == "B" { policy.blocked[Self.key(text)] = (text, time) }
-                else { policy.forgotten[Self.key(text)] = (text, time) }
-                identity = row[0] + "\t" + Self.key(text)
+                if row[0] == "B" { policy.blocked[Self.identity(text)] = (text, time) }
+                else { policy.forgotten[Self.identity(text)] = (text, time) }
+                identity = row[0] + "\t" + Self.identity(text)
             default: throw MacWordMemoryError(message: "词库含有无法识别的记录，未改动原文件。")
             }
             guard seen.insert(identity).inserted else { throw MacWordMemoryError(message: "词库含重复记录，未改动原文件。") }
@@ -160,10 +187,10 @@ final class MacWordMemoryFileStore {
             let code = try input(row[1]), text = try word(row[2])
             let count = try number(row[3]), lastUsed = try number(row[4])
             guard code == row[1], text == row[2], (1...1_000_000).contains(count),
-                  seen.insert(code + "\u{0}" + Self.key(text)).inserted, seen.count <= maxEntries else {
+                  seen.insert(code + "\u{0}" + Self.identity(text)).inserted, seen.count <= maxEntries else {
                 throw MacWordMemoryError(message: "已学习词库记录不是规范格式。")
             }
-            guard lastUsed > max(policy.clearBefore, policy.forgotten[Self.key(text)]?.1 ?? 0),
+            guard lastUsed > max(policy.clearBefore, policy.forgotten[Self.identity(text)]?.1 ?? 0),
                   !Self.isBlocked(text, by: blocked) else { continue }
             let entry = MacRememberedWord(input: code, text: text, count: count, lastUsed: lastUsed, manual: false)
             if entries[entry.id] == nil { entries[entry.id] = entry }
@@ -227,7 +254,7 @@ final class MacWordMemoryFileStore {
                 throw MacWordMemoryError(message: "这个词已设为不再推荐，请先在隐藏列表恢复。")
             }
             let entry = MacRememberedWord(input: code, text: value, count: 1, lastUsed: now, manual: true)
-            policy.manual = policy.manual.filter { Self.key($0.value.text) != Self.key(value) }
+            policy.manual = policy.manual.filter { Self.identity($0.value.text) != Self.identity(value) }
             policy.manual[entry.id] = entry
         }
     }
@@ -235,9 +262,9 @@ final class MacWordMemoryFileStore {
     func forget(text: String) throws {
         let value = try word(text)
         try mutate { policy, now in
-            policy.manual = policy.manual.filter { Self.key($0.value.text) != Self.key(value) }
-            let cutoff = max(now, policy.forgotten[Self.key(value)]?.1 ?? 0)
-            policy.forgotten[Self.key(value)] = (value, try latestLearnedTime(matching: { Self.key($0) == Self.key(value) }, since: cutoff))
+            policy.manual = policy.manual.filter { Self.identity($0.value.text) != Self.identity(value) }
+            let cutoff = max(now, policy.forgotten[Self.identity(value)]?.1 ?? 0)
+            policy.forgotten[Self.identity(value)] = (value, try latestLearnedTime(matching: { Self.identity($0) == Self.identity(value) }, since: cutoff))
         }
     }
 
@@ -245,19 +272,19 @@ final class MacWordMemoryFileStore {
         let value = try word(text)
         try mutate { policy, now in
             policy.manual = policy.manual.filter { !Self.isBlocked($0.value.text, by: [value]) }
-            policy.blocked[Self.key(value)] = (value, now)
-            policy.forgotten[Self.key(value)] = (value, max(now, policy.forgotten[Self.key(value)]?.1 ?? 0))
+            policy.blocked[Self.identity(value)] = (value, now)
+            policy.forgotten[Self.identity(value)] = (value, max(now, policy.forgotten[Self.identity(value)]?.1 ?? 0))
             for row in try lines("her_memory_learned.tsv") ?? [] {
                 guard row.count == 5, row[0] == "L" else { throw MacWordMemoryError(message: "已学习词库格式异常。") }
                 guard Self.isBlocked(row[2], by: [value]) else { continue }
                 let time = max(now, try number(row[4]))
-                policy.forgotten[Self.key(row[2])] = (row[2], max(time, policy.forgotten[Self.key(row[2])]?.1 ?? 0))
+                policy.forgotten[Self.identity(row[2])] = (row[2], max(time, policy.forgotten[Self.identity(row[2])]?.1 ?? 0))
             }
         }
     }
 
     func unblock(text: String) throws {
-        try mutate { policy, _ in policy.blocked.removeValue(forKey: Self.key(text)) }
+        try mutate { policy, _ in policy.blocked.removeValue(forKey: Self.identity(text)) }
     }
 
     func clearLearned() throws {

@@ -26,6 +26,27 @@ def fold(text):
     return text.translate(str.maketrans('ABCDEFGHIJKLMNOPQRSTUVWXYZ', 'abcdefghijklmnopqrstuvwxyz'))
 
 
+def comparison_fold(text):
+    """Spanish comparison only; persisted B/F identities still use fold()."""
+    value = fold(text).translate(str.maketrans('ÁÉÍÓÚÜÑ', 'áéíóúüñ'))
+    for decomposed, composed in [('a\u0301', 'á'), ('e\u0301', 'é'), ('i\u0301', 'í'),
+                                  ('o\u0301', 'ó'), ('u\u0301', 'ú'), ('u\u0308', 'ü'), ('n\u0303', 'ñ')]:
+        value = value.replace(decomposed, composed)
+    return value
+
+
+def latin_word_character(character):
+    point = ord(character)
+    # Latin letters (including extensions), decimal keyboard digits, underscore
+    # and combining marks remain inside a word. Han characters are boundaries.
+    return (character == '_' or '0' <= character <= '9' or 'a' <= character <= 'z'
+            or 0x00C0 <= point <= 0x02AF and point not in (0x00D7, 0x00F7)
+            or 0x0300 <= point <= 0x036F or 0x1D00 <= point <= 0x1DBF
+            or 0x1E00 <= point <= 0x1EFF or 0x2C60 <= point <= 0x2C7F
+            or 0xA720 <= point <= 0xA7FF or 0xAB30 <= point <= 0xAB6F
+            or 0x10780 <= point <= 0x107BF or 0x1DF00 <= point <= 0x1DFFF)
+
+
 def word(text):
     if (not isinstance(text, str) or not 1 <= len(text) <= 32 or len(text.encode('utf-8')) > 128
             or any(c.isspace() or ord(c) < 32 or ord(c) == 127 for c in text)
@@ -44,14 +65,21 @@ def reading(text):
 
 
 def blocked(text, terms):
-    lowered = fold(text)
+    if not terms:
+        return False
+    lowered = comparison_fold(text)
     for term in terms:
-        term = fold(term)
-        if term.isascii():
-            if re.search(r'(?<![a-z0-9_])' + re.escape(term) + r'(?![a-z0-9_])', lowered):
+        term = comparison_fold(term)
+        if not term:
+            continue
+        latin = all(ord(char) < 128 or latin_word_character(char) for char in term)
+        start = 0
+        while (first := lowered.find(term, start)) >= 0:
+            end = first + len(term)
+            if not latin or ((first == 0 or not latin_word_character(lowered[first - 1]))
+                             and (end == len(lowered) or not latin_word_character(lowered[end]))):
                 return True
-        elif term in lowered:
-            return True
+            start = end
     return False
 
 

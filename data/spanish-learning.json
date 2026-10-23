@@ -1,0 +1,2051 @@
+{
+  "version": 1,
+  "language": "es",
+  "description": "供 Mac 西语学习与输入的初级短语小集。常用表达独立选择，例句和中文提示自行编辑；中文拼音仅查询预先收录的词句，不是万能翻译。",
+  "editorial_policy": {
+    "selection": "常用问候、礼貌、个人介绍、语言学习、餐饮、购物、旅行、状态和时间表达。",
+    "level_hints": "A1/A2 为编者提供的粗略学习提示，不是 Instituto Cervantes 对每条原创例句的单独认证。",
+    "gender": "需要性别配合的个人示例优先列女性形式，并保留男性正确变体；不把西语 él/ellos 或词尾全局替换为女性形式。",
+    "authorship": "中文释义、学习提示、输入码和例句选择均为本次独立编辑；来源用于核验语言事实，不声称第三方页面整体采用开源许可。"
+  },
+  "code_policy": {
+    "input": "NFD 分解后删除组合重音，转小写；非 a-z 字符变空格并合并空格。因此 áéíóúüñ → aeiouun；删除 ¿¡ 和句末标点。",
+    "compact_input": "input 删除空格。",
+    "behavior": "代码只用于用户显式选择的西语查询；显示和提交必须保留 text 的重音、ñ、大小写和 ¿¡。不要直接以这些码全局替换英文或中文。",
+    "ambiguity_examples": [
+      "si 不能在普通输入中无条件改为 sí。",
+      "te 不能在普通输入中无条件改为 té。",
+      "n 与 ñ、带重音与不带重音的形式可同码，需由候选和语境区分。"
+    ]
+  },
+  "sources": [
+    {
+      "id": "spanish-cervantes-functions",
+      "title": "Instituto Cervantes — Plan curricular, Funciones, Inventario A1-A2",
+      "url": "https://cvc.cervantes.es/ensenanza/biblioteca_ele/plan_curricular/niveles/05_funciones_inventario_a1-a2.htm",
+      "checked_on": "2026-10-22",
+      "checked_via": "indexed_official_excerpt",
+      "scope": "问候、自我介绍、请求和回应等初级交际功能；当前原页跳转维护页，核对官方索引片段。"
+    },
+    {
+      "id": "spanish-cervantes-notions",
+      "title": "Instituto Cervantes — Plan curricular, Nociones específicas, Inventario A1-A2",
+      "url": "https://cvc.cervantes.es/ensenanza/biblioteca_ele/plan_curricular/niveles/09_nociones_especificas_inventario_a1-a2.htm",
+      "checked_on": "2026-10-22",
+      "checked_via": "indexed_official_excerpt",
+      "scope": "饮食、出行、感觉和日常词汇的 A1/A2 范围；当前原页跳转维护页，核对官方索引片段。"
+    },
+    {
+      "id": "spanish-cervantes-general",
+      "title": "Instituto Cervantes — Plan curricular, Nociones generales, Inventario A1-A2",
+      "url": "https://cvc.cervantes.es/ensenanza/biblioteca_ele/plan_curricular/niveles/08_nociones_generales_inventario_a1-a2.htm",
+      "checked_on": "2026-10-22",
+      "checked_via": "indexed_official_excerpt",
+      "scope": "含请求说慢些、重复以及时间等初级表达。"
+    },
+    {
+      "id": "spanish-cervantes-orientation",
+      "title": "Instituto Cervantes — Español como nueva lengua: Ámbitos de programación",
+      "url": "https://cvc.cervantes.es/ensenanza/biblioteca_ele/inmigracion/orientaciones/ambitos.htm",
+      "checked_on": "2026-10-22",
+      "checked_via": "indexed_official_excerpt",
+      "scope": "初级个人信息使用 ser、llamarse、vivir、hablar、tener 现在时；含 China、chino/a 的国籍形式。"
+    },
+    {
+      "id": "spanish-rae-agreement",
+      "title": "RAE/ASALE — Diccionario panhispánico de dudas: concordancia",
+      "url": "https://www.rae.es/dpd/concordancia",
+      "checked_on": "2026-10-22",
+      "checked_via": "opened_page",
+      "scope": "形容词与其指代对象保持性、数一致；用于自编女性和男性配对例句。"
+    },
+    {
+      "id": "spanish-rae-punctuation",
+      "title": "RAE/ASALE — Diccionario panhispánico de dudas: signos de interrogación y exclamación",
+      "url": "https://www.rae.es/dpd/signos%20de%20interrogaci%C3%B3n%20y%20exclamaci%C3%B3n",
+      "checked_on": "2026-10-22",
+      "checked_via": "opened_page",
+      "scope": "直接疑问和感叹使用成对的 ¿? 和 ¡!；结束符后不另加句号。"
+    },
+    {
+      "id": "spanish-rae-progressive",
+      "title": "RAE/ASALE — Nueva gramática: Perífrasis de gerundio (I). El auxiliar estar",
+      "url": "https://www.rae.es/gram%C3%A1tica/sintaxis/per%C3%ADfrasis-de-gerundio-i-el-auxiliar-estar",
+      "checked_on": "2026-10-22",
+      "checked_via": "opened_page",
+      "scope": "用于核对自编 Estoy aprendiendo español 的 estar + gerundio 结构。"
+    },
+    {
+      "id": "spanish-dle-hola",
+      "title": "RAE/ASALE — Diccionario de la lengua española: hola",
+      "url": "https://dle.rae.es/hola",
+      "checked_on": "2026-10-22",
+      "checked_via": "opened_page",
+      "scope": "拼写、词义或语法核对；不复制来源释义。"
+    },
+    {
+      "id": "spanish-dle-day",
+      "title": "RAE/ASALE — Diccionario de la lengua española: día",
+      "url": "https://dle.rae.es/día",
+      "checked_on": "2026-10-22",
+      "checked_via": "opened_page",
+      "scope": "拼写、词义或语法核对；不复制来源释义。"
+    },
+    {
+      "id": "spanish-dle-afternoon",
+      "title": "RAE/ASALE — Diccionario de la lengua española: tarde",
+      "url": "https://dle.rae.es/tarde",
+      "checked_on": "2026-10-22",
+      "checked_via": "opened_page",
+      "scope": "拼写、词义或语法核对；不复制来源释义。"
+    },
+    {
+      "id": "spanish-dle-night",
+      "title": "RAE/ASALE — Diccionario de la lengua española: noche",
+      "url": "https://dle.rae.es/noche",
+      "checked_on": "2026-10-22",
+      "checked_via": "opened_page",
+      "scope": "拼写、词义或语法核对；不复制来源释义。"
+    },
+    {
+      "id": "spanish-dle-thanks",
+      "title": "RAE/ASALE — Diccionario de la lengua española: gracia",
+      "url": "https://dle.rae.es/gracia",
+      "checked_on": "2026-10-22",
+      "checked_via": "opened_page",
+      "scope": "拼写、词义或语法核对；不复制来源释义。"
+    },
+    {
+      "id": "spanish-dle-nothing",
+      "title": "RAE/ASALE — Diccionario de la lengua española: nada",
+      "url": "https://dle.rae.es/nada",
+      "checked_on": "2026-10-22",
+      "checked_via": "opened_page",
+      "scope": "拼写、词义或语法核对；不复制来源释义。"
+    },
+    {
+      "id": "spanish-dle-favor",
+      "title": "RAE/ASALE — Diccionario de la lengua española: favor",
+      "url": "https://dle.rae.es/favor",
+      "checked_on": "2026-10-22",
+      "checked_via": "opened_page",
+      "scope": "拼写、词义或语法核对；不复制来源释义。"
+    },
+    {
+      "id": "spanish-dle-pardon",
+      "title": "RAE/ASALE — Diccionario de la lengua española: perdón",
+      "url": "https://dle.rae.es/perdón",
+      "checked_on": "2026-10-22",
+      "checked_via": "opened_page",
+      "scope": "拼写、词义或语法核对；不复制来源释义。"
+    },
+    {
+      "id": "spanish-dle-farewell",
+      "title": "RAE/ASALE — Diccionario de la lengua española: adiós",
+      "url": "https://dle.rae.es/adiós",
+      "checked_on": "2026-10-22",
+      "checked_via": "opened_page",
+      "scope": "拼写、词义或语法核对；不复制来源释义。"
+    },
+    {
+      "id": "spanish-dle-later",
+      "title": "RAE/ASALE — Diccionario de la lengua española: luego",
+      "url": "https://dle.rae.es/luego",
+      "checked_on": "2026-10-22",
+      "checked_via": "opened_page",
+      "scope": "拼写、词义或语法核对；不复制来源释义。"
+    },
+    {
+      "id": "spanish-dle-tomorrow",
+      "title": "RAE/ASALE — Diccionario de la lengua española: mañana",
+      "url": "https://dle.rae.es/mañana",
+      "checked_on": "2026-10-22",
+      "checked_via": "opened_page",
+      "scope": "拼写、词义或语法核对；不复制来源释义。"
+    },
+    {
+      "id": "spanish-dle-china",
+      "title": "RAE/ASALE — Diccionario de la lengua española: chino",
+      "url": "https://dle.rae.es/chino",
+      "checked_on": "2026-10-22",
+      "checked_via": "opened_page",
+      "scope": "拼写、词义或语法核对；不复制来源释义。"
+    },
+    {
+      "id": "spanish-dle-pleased",
+      "title": "RAE/ASALE — Diccionario de la lengua española: encantado",
+      "url": "https://dle.rae.es/encantado",
+      "checked_on": "2026-10-22",
+      "checked_via": "opened_page",
+      "scope": "拼写、词义或语法核对；不复制来源释义。"
+    },
+    {
+      "id": "spanish-dle-vegetarian",
+      "title": "RAE/ASALE — Diccionario de la lengua española: vegetariano",
+      "url": "https://dle.rae.es/vegetariano",
+      "checked_on": "2026-10-22",
+      "checked_via": "opened_page",
+      "scope": "拼写、词义或语法核对；不复制来源释义。"
+    },
+    {
+      "id": "spanish-dle-tired",
+      "title": "RAE/ASALE — Diccionario de la lengua española: cansado",
+      "url": "https://dle.rae.es/cansado",
+      "checked_on": "2026-10-22",
+      "checked_via": "opened_page",
+      "scope": "拼写、词义或语法核对；不复制来源释义。"
+    },
+    {
+      "id": "spanish-dle-happy",
+      "title": "RAE/ASALE — Diccionario de la lengua española: contento",
+      "url": "https://dle.rae.es/contento",
+      "checked_on": "2026-10-22",
+      "checked_via": "opened_page",
+      "scope": "拼写、词义或语法核对；不复制来源释义。"
+    },
+    {
+      "id": "spanish-dle-welcome",
+      "title": "RAE/ASALE — Diccionario de la lengua española: bienvenido",
+      "url": "https://dle.rae.es/bienvenido",
+      "checked_on": "2026-10-22",
+      "checked_via": "opened_page",
+      "scope": "拼写、词义或语法核对；不复制来源释义。"
+    },
+    {
+      "id": "spanish-dle-congratulations",
+      "title": "RAE/ASALE — Diccionario de la lengua española: felicidad",
+      "url": "https://dle.rae.es/felicidad",
+      "checked_on": "2026-10-22",
+      "checked_via": "opened_page",
+      "scope": "拼写、词义或语法核对；不复制来源释义。"
+    },
+    {
+      "id": "spanish-dle-yes",
+      "title": "RAE/ASALE — Diccionario de la lengua española: sí",
+      "url": "https://dle.rae.es/sí",
+      "checked_on": "2026-10-22",
+      "checked_via": "opened_page",
+      "scope": "拼写、词义或语法核对；不复制来源释义。"
+    },
+    {
+      "id": "spanish-dle-agreement",
+      "title": "RAE/ASALE — Diccionario de la lengua española: acuerdo",
+      "url": "https://dle.rae.es/acuerdo",
+      "checked_on": "2026-10-22",
+      "checked_via": "opened_page",
+      "scope": "拼写、词义或语法核对；不复制来源释义。"
+    },
+    {
+      "id": "spanish-dle-feel",
+      "title": "RAE/ASALE — Diccionario de la lengua española: sentir",
+      "url": "https://dle.rae.es/sentir",
+      "checked_on": "2026-10-22",
+      "checked_via": "opened_page",
+      "scope": "拼写、词义或语法核对；不复制来源释义。"
+    },
+    {
+      "id": "spanish-dle-learn",
+      "title": "RAE/ASALE — Diccionario de la lengua española: aprender",
+      "url": "https://dle.rae.es/aprender",
+      "checked_on": "2026-10-22",
+      "checked_via": "opened_page",
+      "scope": "拼写、词义或语法核对；不复制来源释义。"
+    },
+    {
+      "id": "spanish-dle-be-state",
+      "title": "RAE/ASALE — Diccionario de la lengua española: estar",
+      "url": "https://dle.rae.es/estar",
+      "checked_on": "2026-10-22",
+      "checked_via": "opened_page",
+      "scope": "拼写、词义或语法核对；不复制来源释义。"
+    },
+    {
+      "id": "spanish-dle-be",
+      "title": "RAE/ASALE — Diccionario de la lengua española: ser",
+      "url": "https://dle.rae.es/ser",
+      "checked_on": "2026-10-22",
+      "checked_via": "opened_page",
+      "scope": "拼写、词义或语法核对；不复制来源释义。"
+    },
+    {
+      "id": "spanish-dle-can",
+      "title": "RAE/ASALE — Diccionario de la lengua española: poder",
+      "url": "https://dle.rae.es/poder",
+      "checked_on": "2026-10-22",
+      "checked_via": "opened_page",
+      "scope": "拼写、词义或语法核对；不复制来源释义。"
+    },
+    {
+      "id": "spanish-dle-have",
+      "title": "RAE/ASALE — Diccionario de la lengua española: tener",
+      "url": "https://dle.rae.es/tener",
+      "checked_on": "2026-10-22",
+      "checked_via": "opened_page",
+      "scope": "拼写、词义或语法核对；不复制来源释义。"
+    },
+    {
+      "id": "spanish-dle-cost",
+      "title": "RAE/ASALE — Diccionario de la lengua española: costar",
+      "url": "https://dle.rae.es/costar",
+      "checked_on": "2026-10-22",
+      "checked_via": "opened_page",
+      "scope": "拼写、词义或语法核对；不复制来源释义。"
+    },
+    {
+      "id": "spanish-dle-hour",
+      "title": "RAE/ASALE — Diccionario de la lengua española: hora",
+      "url": "https://dle.rae.es/hora",
+      "checked_on": "2026-10-22",
+      "checked_via": "opened_page",
+      "scope": "拼写、词义或语法核对；不复制来源释义。"
+    },
+    {
+      "id": "spanish-dle-right",
+      "title": "RAE/ASALE — Diccionario de la lengua española: derecho",
+      "url": "https://dle.rae.es/derecho",
+      "checked_on": "2026-10-22",
+      "checked_via": "opened_page",
+      "scope": "拼写、词义或语法核对；不复制来源释义。"
+    },
+    {
+      "id": "spanish-dle-left",
+      "title": "RAE/ASALE — Diccionario de la lengua española: izquierdo",
+      "url": "https://dle.rae.es/izquierdo",
+      "checked_on": "2026-10-22",
+      "checked_via": "opened_page",
+      "scope": "拼写、词义或语法核对；不复制来源释义。"
+    },
+    {
+      "id": "spanish-dle-like",
+      "title": "RAE/ASALE — Diccionario de la lengua española: gustar",
+      "url": "https://dle.rae.es/gustar",
+      "checked_on": "2026-10-22",
+      "checked_via": "opened_page",
+      "scope": "拼写、词义或语法核对；不复制来源释义。"
+    },
+    {
+      "id": "spanish-dle-understand",
+      "title": "RAE/ASALE — Diccionario de la lengua española: entender",
+      "url": "https://dle.rae.es/entender",
+      "checked_on": "2026-10-22",
+      "checked_via": "opened_page",
+      "scope": "拼写、词义或语法核对；不复制来源释义。"
+    },
+    {
+      "id": "spanish-dle-exist",
+      "title": "RAE/ASALE — Diccionario de la lengua española: haber",
+      "url": "https://dle.rae.es/haber",
+      "checked_on": "2026-10-22",
+      "checked_via": "opened_page",
+      "scope": "拼写、词义或语法核对；不复制来源释义。"
+    },
+    {
+      "id": "spanish-dle-say",
+      "title": "RAE/ASALE — Diccionario de la lengua española: decir",
+      "url": "https://dle.rae.es/decir",
+      "checked_on": "2026-10-22",
+      "checked_via": "opened_page",
+      "scope": "拼写、词义或语法核对；不复制来源释义。"
+    },
+    {
+      "id": "spanish-dle-write",
+      "title": "RAE/ASALE — Diccionario de la lengua española: escribir",
+      "url": "https://dle.rae.es/escribir",
+      "checked_on": "2026-10-22",
+      "checked_via": "opened_page",
+      "scope": "拼写、词义或语法核对；不复制来源释义。"
+    },
+    {
+      "id": "spanish-dle-help",
+      "title": "RAE/ASALE — Diccionario de la lengua española: ayuda",
+      "url": "https://dle.rae.es/ayuda",
+      "checked_on": "2026-10-22",
+      "checked_via": "opened_page",
+      "scope": "拼写、词义或语法核对；不复制来源释义。"
+    },
+    {
+      "id": "spanish-dle-coffee",
+      "title": "RAE/ASALE — Diccionario de la lengua española: café",
+      "url": "https://dle.rae.es/café",
+      "checked_on": "2026-10-22",
+      "checked_via": "opened_page",
+      "scope": "拼写、词义或语法核对；不复制来源释义。"
+    },
+    {
+      "id": "spanish-dle-tea",
+      "title": "RAE/ASALE — Diccionario de la lengua española: té",
+      "url": "https://dle.rae.es/té",
+      "checked_on": "2026-10-22",
+      "checked_via": "opened_page",
+      "scope": "拼写、词义或语法核对；不复制来源释义。"
+    },
+    {
+      "id": "spanish-dle-bathroom",
+      "title": "RAE/ASALE — Diccionario de la lengua española: baño",
+      "url": "https://dle.rae.es/baño",
+      "checked_on": "2026-10-22",
+      "checked_via": "opened_page",
+      "scope": "拼写、词义或语法核对；不复制来源释义。"
+    },
+    {
+      "id": "spanish-dle-wifi",
+      "title": "RAE/ASALE — Diccionario de la lengua española: wifi",
+      "url": "https://dle.rae.es/wifi",
+      "checked_on": "2026-10-22",
+      "checked_via": "opened_page",
+      "scope": "拼写、词义或语法核对；不复制来源释义。"
+    },
+    {
+      "id": "spanish-rae-how",
+      "title": "RAE/ASALE — Diccionario panhispánico de dudas: cómo",
+      "url": "https://www.rae.es/dpd/c%C3%B3mo",
+      "checked_on": "2026-10-22",
+      "checked_via": "opened_page",
+      "scope": "拼写、词义或语法核对；不复制来源释义。"
+    },
+    {
+      "id": "spanish-rae-what",
+      "title": "RAE/ASALE — Diccionario panhispánico de dudas: qué",
+      "url": "https://www.rae.es/dpd/qu%C3%A9",
+      "checked_on": "2026-10-22",
+      "checked_via": "opened_page",
+      "scope": "拼写、词义或语法核对；不复制来源释义。"
+    },
+    {
+      "id": "spanish-dle-today",
+      "title": "RAE/ASALE — Diccionario de la lengua española: hoy",
+      "url": "https://dle.rae.es/hoy",
+      "checked_on": "2026-10-22",
+      "checked_via": "opened_page",
+      "scope": "拼写、词义或语法核对；不复制来源释义。"
+    },
+    {
+      "id": "spanish-dle-reservation",
+      "title": "RAE/ASALE — Diccionario de la lengua española: reserva",
+      "url": "https://dle.rae.es/reserva",
+      "checked_on": "2026-10-22",
+      "checked_via": "opened_page",
+      "scope": "拼写、词义或语法核对；不复制来源释义。"
+    },
+    {
+      "id": "spanish-dle-station",
+      "title": "RAE/ASALE — Diccionario de la lengua española: estación",
+      "url": "https://dle.rae.es/estación",
+      "checked_on": "2026-10-22",
+      "checked_via": "opened_page",
+      "scope": "拼写、词义或语法核对；不复制来源释义。"
+    },
+    {
+      "id": "spanish-dle-need",
+      "title": "RAE/ASALE — Diccionario de la lengua española: necesitar",
+      "url": "https://dle.rae.es/necesitar",
+      "checked_on": "2026-10-22",
+      "checked_via": "opened_page",
+      "scope": "拼写、词义或语法核对；不复制来源释义。"
+    },
+    {
+      "id": "spanish-dle-mean",
+      "title": "RAE/ASALE — Diccionario de la lengua española: significar",
+      "url": "https://dle.rae.es/significar",
+      "checked_on": "2026-10-22",
+      "checked_via": "opened_page",
+      "scope": "拼写、词义或语法核对；不复制来源释义。"
+    },
+    {
+      "id": "spanish-dle-student",
+      "title": "RAE/ASALE — Diccionario de la lengua española: estudiante",
+      "url": "https://dle.rae.es/estudiante",
+      "checked_on": "2026-10-22",
+      "checked_via": "opened_page",
+      "scope": "拼写、词义或语法核对；不复制来源释义。"
+    }
+  ],
+  "entries": [
+    {
+      "id": "es-hola",
+      "text": "Hola.",
+      "input": "hola",
+      "compact_input": "hola",
+      "meaning_zh": "你好。",
+      "topic": "greetings",
+      "level_hint": "A1",
+      "source_ids": [
+        "spanish-dle-hola"
+      ],
+      "provenance": "common_expression_verified",
+      "zh_queries": [
+        {
+          "text": "你好",
+          "pinyin": "ni hao"
+        }
+      ]
+    },
+    {
+      "id": "es-buenos-dias",
+      "text": "Buenos días.",
+      "input": "buenos dias",
+      "compact_input": "buenosdias",
+      "meaning_zh": "早上好。",
+      "topic": "greetings",
+      "level_hint": "A1",
+      "source_ids": [
+        "spanish-dle-day"
+      ],
+      "provenance": "common_expression_verified",
+      "note": "días 带重音；buenos 与阳性复数 días 一致，与说话者性别无关。",
+      "zh_queries": [
+        {
+          "text": "早上好",
+          "pinyin": "zao shang hao"
+        }
+      ]
+    },
+    {
+      "id": "es-buenas-tardes",
+      "text": "Buenas tardes.",
+      "input": "buenas tardes",
+      "compact_input": "buenastardes",
+      "meaning_zh": "下午好。",
+      "topic": "greetings",
+      "level_hint": "A1",
+      "source_ids": [
+        "spanish-dle-afternoon"
+      ],
+      "provenance": "common_expression_verified",
+      "zh_queries": [
+        {
+          "text": "下午好",
+          "pinyin": "xia wu hao"
+        }
+      ]
+    },
+    {
+      "id": "es-buenas-noches",
+      "text": "Buenas noches.",
+      "input": "buenas noches",
+      "compact_input": "buenasnoches",
+      "meaning_zh": "晚上好；晚安。",
+      "topic": "greetings",
+      "level_hint": "A1",
+      "source_ids": [
+        "spanish-dle-night"
+      ],
+      "provenance": "common_expression_verified",
+      "note": "可用于晚间见面，也可用于睡前道别。",
+      "zh_queries": [
+        {
+          "text": "晚上好",
+          "pinyin": "wan shang hao"
+        },
+        {
+          "text": "晚安",
+          "pinyin": "wan an"
+        }
+      ]
+    },
+    {
+      "id": "es-que-tal",
+      "text": "¿Qué tal?",
+      "input": "que tal",
+      "compact_input": "quetal",
+      "meaning_zh": "最近怎么样？",
+      "topic": "greetings",
+      "level_hint": "A1",
+      "source_ids": [
+        "spanish-cervantes-functions",
+        "spanish-rae-what"
+      ],
+      "provenance": "common_expression_verified",
+      "zh_queries": [
+        {
+          "text": "最近怎么样",
+          "pinyin": "zui jin zen me yang"
+        }
+      ]
+    },
+    {
+      "id": "es-como-estas",
+      "text": "¿Cómo estás?",
+      "input": "como estas",
+      "compact_input": "comoestas",
+      "meaning_zh": "你好吗？",
+      "topic": "greetings",
+      "level_hint": "A1",
+      "source_ids": [
+        "spanish-cervantes-functions",
+        "spanish-rae-how",
+        "spanish-dle-be-state"
+      ],
+      "provenance": "common_expression_verified",
+      "note": "estás 对应熟悉、非正式称呼 tú；对单个对象提问。",
+      "zh_queries": [
+        {
+          "text": "你好吗",
+          "pinyin": "ni hao ma"
+        }
+      ]
+    },
+    {
+      "id": "es-muy-bien-gracias",
+      "text": "Muy bien, gracias.",
+      "input": "muy bien gracias",
+      "compact_input": "muybiengracias",
+      "meaning_zh": "很好，谢谢。",
+      "topic": "greetings",
+      "level_hint": "A1",
+      "source_ids": [
+        "spanish-cervantes-functions",
+        "spanish-dle-thanks"
+      ],
+      "provenance": "common_expression_verified",
+      "zh_queries": [
+        {
+          "text": "很好谢谢",
+          "pinyin": "hen hao xie xie"
+        }
+      ]
+    },
+    {
+      "id": "es-y-tu",
+      "text": "¿Y tú?",
+      "input": "y tu",
+      "compact_input": "ytu",
+      "meaning_zh": "你呢？",
+      "topic": "greetings",
+      "level_hint": "A1",
+      "source_ids": [
+        "spanish-cervantes-functions",
+        "spanish-rae-punctuation"
+      ],
+      "provenance": "common_expression_verified",
+      "note": "tú 是人称代词，带重音。",
+      "zh_queries": [
+        {
+          "text": "你呢",
+          "pinyin": "ni ne"
+        }
+      ]
+    },
+    {
+      "id": "es-adios",
+      "text": "Adiós.",
+      "input": "adios",
+      "compact_input": "adios",
+      "meaning_zh": "再见。",
+      "topic": "greetings",
+      "level_hint": "A1",
+      "source_ids": [
+        "spanish-dle-farewell"
+      ],
+      "provenance": "common_expression_verified",
+      "zh_queries": [
+        {
+          "text": "再见",
+          "pinyin": "zai jian"
+        }
+      ]
+    },
+    {
+      "id": "es-hasta-luego",
+      "text": "Hasta luego.",
+      "input": "hasta luego",
+      "compact_input": "hastaluego",
+      "meaning_zh": "回头见；再见。",
+      "topic": "greetings",
+      "level_hint": "A1",
+      "source_ids": [
+        "spanish-dle-later"
+      ],
+      "provenance": "common_expression_verified",
+      "zh_queries": [
+        {
+          "text": "回头见",
+          "pinyin": "hui tou jian"
+        }
+      ]
+    },
+    {
+      "id": "es-hasta-manana",
+      "text": "Hasta mañana.",
+      "input": "hasta manana",
+      "compact_input": "hastamanana",
+      "meaning_zh": "明天见。",
+      "topic": "greetings",
+      "level_hint": "A1",
+      "source_ids": [
+        "spanish-dle-tomorrow"
+      ],
+      "provenance": "common_expression_verified",
+      "note": "mañana 保留 ñ；输入码 manana 只是查询写法。",
+      "zh_queries": [
+        {
+          "text": "明天见",
+          "pinyin": "ming tian jian"
+        }
+      ]
+    },
+    {
+      "id": "es-gracias",
+      "text": "Gracias.",
+      "input": "gracias",
+      "compact_input": "gracias",
+      "meaning_zh": "谢谢。",
+      "topic": "courtesy",
+      "level_hint": "A1",
+      "source_ids": [
+        "spanish-dle-thanks"
+      ],
+      "provenance": "common_expression_verified",
+      "zh_queries": [
+        {
+          "text": "谢谢",
+          "pinyin": "xie xie"
+        }
+      ]
+    },
+    {
+      "id": "es-muchas-gracias",
+      "text": "Muchas gracias.",
+      "input": "muchas gracias",
+      "compact_input": "muchasgracias",
+      "meaning_zh": "非常感谢。",
+      "topic": "courtesy",
+      "level_hint": "A1",
+      "source_ids": [
+        "spanish-dle-thanks"
+      ],
+      "provenance": "common_expression_verified",
+      "zh_queries": [
+        {
+          "text": "非常感谢",
+          "pinyin": "fei chang gan xie"
+        }
+      ]
+    },
+    {
+      "id": "es-de-nada",
+      "text": "De nada.",
+      "input": "de nada",
+      "compact_input": "denada",
+      "meaning_zh": "不客气。",
+      "topic": "courtesy",
+      "level_hint": "A1",
+      "source_ids": [
+        "spanish-dle-nothing"
+      ],
+      "provenance": "common_expression_verified",
+      "zh_queries": [
+        {
+          "text": "不客气",
+          "pinyin": "bu ke qi"
+        }
+      ]
+    },
+    {
+      "id": "es-por-favor",
+      "text": "Por favor.",
+      "input": "por favor",
+      "compact_input": "porfavor",
+      "meaning_zh": "请；麻烦你了。",
+      "topic": "courtesy",
+      "level_hint": "A1",
+      "source_ids": [
+        "spanish-dle-favor"
+      ],
+      "provenance": "common_expression_verified",
+      "zh_queries": [
+        {
+          "text": "请",
+          "pinyin": "qing"
+        }
+      ]
+    },
+    {
+      "id": "es-perdon",
+      "text": "Perdón.",
+      "input": "perdon",
+      "compact_input": "perdon",
+      "meaning_zh": "抱歉；打扰一下。",
+      "topic": "courtesy",
+      "level_hint": "A1",
+      "source_ids": [
+        "spanish-dle-pardon"
+      ],
+      "provenance": "common_expression_verified",
+      "zh_queries": [
+        {
+          "text": "抱歉",
+          "pinyin": "bao qian"
+        },
+        {
+          "text": "打扰一下",
+          "pinyin": "da rao yi xia"
+        }
+      ]
+    },
+    {
+      "id": "es-lo-siento",
+      "text": "Lo siento.",
+      "input": "lo siento",
+      "compact_input": "losiento",
+      "meaning_zh": "对不起；很遗憾。",
+      "topic": "courtesy",
+      "level_hint": "A1",
+      "source_ids": [
+        "spanish-dle-feel"
+      ],
+      "provenance": "common_expression_verified",
+      "note": "可道歉，也可对他人的不幸表示难过，含义由语境决定。",
+      "zh_queries": [
+        {
+          "text": "对不起",
+          "pinyin": "dui bu qi"
+        },
+        {
+          "text": "很遗憾",
+          "pinyin": "hen yi han"
+        }
+      ]
+    },
+    {
+      "id": "es-si",
+      "text": "Sí.",
+      "input": "si",
+      "compact_input": "si",
+      "meaning_zh": "是的；好。",
+      "topic": "courtesy",
+      "level_hint": "A1",
+      "source_ids": [
+        "spanish-dle-yes"
+      ],
+      "provenance": "lexical_fact",
+      "note": "表示肯定的 sí 带重音，区别于条件连词 si。",
+      "zh_queries": [
+        {
+          "text": "是的",
+          "pinyin": "shi de"
+        }
+      ]
+    },
+    {
+      "id": "es-no",
+      "text": "No.",
+      "input": "no",
+      "compact_input": "no",
+      "meaning_zh": "不；不是。",
+      "topic": "courtesy",
+      "level_hint": "A1",
+      "source_ids": [
+        "spanish-cervantes-functions"
+      ],
+      "provenance": "lexical_fact",
+      "zh_queries": [
+        {
+          "text": "不",
+          "pinyin": "bu"
+        }
+      ]
+    },
+    {
+      "id": "es-de-acuerdo",
+      "text": "De acuerdo.",
+      "input": "de acuerdo",
+      "compact_input": "deacuerdo",
+      "meaning_zh": "好的；同意。",
+      "topic": "courtesy",
+      "level_hint": "A1",
+      "source_ids": [
+        "spanish-dle-agreement"
+      ],
+      "provenance": "common_expression_verified",
+      "zh_queries": [
+        {
+          "text": "同意",
+          "pinyin": "tong yi"
+        },
+        {
+          "text": "好的",
+          "pinyin": "hao de"
+        }
+      ]
+    },
+    {
+      "id": "es-encantada",
+      "text": "Encantada.",
+      "input": "encantada",
+      "compact_input": "encantada",
+      "meaning_zh": "很高兴认识你。〔女性说话者〕",
+      "topic": "introductions",
+      "level_hint": "A1",
+      "source_ids": [
+        "spanish-dle-pleased",
+        "spanish-rae-agreement"
+      ],
+      "provenance": "common_expression_verified",
+      "note": "这里的阴阳性与说话者一致，不随对方性别变化。",
+      "variants": [
+        {
+          "text": "Encantado.",
+          "input": "encantado",
+          "compact_input": "encantado",
+          "meaning_zh": "很高兴认识你。〔男性说话者〕",
+          "grammatical_form": "masculine_speaker",
+          "source_ids": [
+            "spanish-dle-pleased",
+            "spanish-rae-agreement"
+          ],
+          "zh_queries": [
+            {
+              "text": "男生说很高兴认识你",
+              "pinyin": "nan sheng shuo hen gao xing ren shi ni"
+            }
+          ]
+        }
+      ],
+      "zh_queries": [
+        {
+          "text": "很高兴认识你",
+          "pinyin": "hen gao xing ren shi ni"
+        }
+      ]
+    },
+    {
+      "id": "es-me-llamo",
+      "text": "Me llamo Ana.",
+      "input": "me llamo ana",
+      "compact_input": "mellamoana",
+      "meaning_zh": "我叫安娜。",
+      "topic": "introductions",
+      "level_hint": "A1",
+      "source_ids": [
+        "spanish-cervantes-orientation"
+      ],
+      "provenance": "original_example",
+      "note": "Ana 仅为例句姓名，使用时换成自己的名字。",
+      "zh_queries": [
+        {
+          "text": "我叫安娜",
+          "pinyin": "wo jiao an na"
+        }
+      ]
+    },
+    {
+      "id": "es-como-te-llamas",
+      "text": "¿Cómo te llamas?",
+      "input": "como te llamas",
+      "compact_input": "comotellamas",
+      "meaning_zh": "你叫什么名字？",
+      "topic": "introductions",
+      "level_hint": "A1",
+      "source_ids": [
+        "spanish-cervantes-orientation",
+        "spanish-rae-how"
+      ],
+      "provenance": "original_example",
+      "note": "te llamas 对应非正式称呼 tú。",
+      "zh_queries": [
+        {
+          "text": "你叫什么名字",
+          "pinyin": "ni jiao shen me ming zi"
+        }
+      ]
+    },
+    {
+      "id": "es-soy-china",
+      "text": "Soy china.",
+      "input": "soy china",
+      "compact_input": "soychina",
+      "meaning_zh": "我是中国人。〔女性说话者〕",
+      "topic": "introductions",
+      "level_hint": "A1",
+      "source_ids": [
+        "spanish-dle-china",
+        "spanish-dle-be",
+        "spanish-rae-agreement"
+      ],
+      "provenance": "original_example",
+      "note": "国籍形容词 china 用小写；国家名 China 才用大写。",
+      "variants": [
+        {
+          "text": "Soy chino.",
+          "input": "soy chino",
+          "compact_input": "soychino",
+          "meaning_zh": "我是中国人。〔男性说话者〕",
+          "grammatical_form": "masculine_speaker",
+          "source_ids": [
+            "spanish-dle-china",
+            "spanish-dle-be",
+            "spanish-rae-agreement"
+          ],
+          "zh_queries": [
+            {
+              "text": "我是中国男性",
+              "pinyin": "wo shi zhong guo nan xing"
+            }
+          ]
+        }
+      ],
+      "zh_queries": [
+        {
+          "text": "我是中国人",
+          "pinyin": "wo shi zhong guo ren"
+        },
+        {
+          "text": "我是中国女性",
+          "pinyin": "wo shi zhong guo nv xing"
+        }
+      ]
+    },
+    {
+      "id": "es-soy-de-china",
+      "text": "Soy de China.",
+      "input": "soy de china",
+      "compact_input": "soydechina",
+      "meaning_zh": "我来自中国。",
+      "topic": "introductions",
+      "level_hint": "A1",
+      "source_ids": [
+        "spanish-cervantes-orientation",
+        "spanish-dle-be"
+      ],
+      "provenance": "original_example",
+      "note": "这一说法不随说话者性别变化。",
+      "zh_queries": [
+        {
+          "text": "我来自中国",
+          "pinyin": "wo lai zi zhong guo"
+        }
+      ]
+    },
+    {
+      "id": "es-de-donde-eres",
+      "text": "¿De dónde eres?",
+      "input": "de donde eres",
+      "compact_input": "dedondeeres",
+      "meaning_zh": "你来自哪里？",
+      "topic": "introductions",
+      "level_hint": "A1",
+      "source_ids": [
+        "spanish-cervantes-orientation",
+        "spanish-dle-be",
+        "spanish-rae-punctuation"
+      ],
+      "provenance": "original_example",
+      "zh_queries": [
+        {
+          "text": "你来自哪里",
+          "pinyin": "ni lai zi na li"
+        }
+      ]
+    },
+    {
+      "id": "es-vivo-en-eeuu",
+      "text": "Vivo en Estados Unidos.",
+      "input": "vivo en estados unidos",
+      "compact_input": "vivoenestadosunidos",
+      "meaning_zh": "我住在美国。",
+      "topic": "introductions",
+      "level_hint": "A1",
+      "source_ids": [
+        "spanish-cervantes-orientation"
+      ],
+      "provenance": "original_example",
+      "note": "居住地仅为例句内容，不用于自动推断用户资料。",
+      "zh_queries": [
+        {
+          "text": "我住在美国",
+          "pinyin": "wo zhu zai mei guo"
+        }
+      ]
+    },
+    {
+      "id": "es-soy-estudiante",
+      "text": "Soy estudiante.",
+      "input": "soy estudiante",
+      "compact_input": "soyestudiante",
+      "meaning_zh": "我是学生。",
+      "topic": "introductions",
+      "level_hint": "A1",
+      "source_ids": [
+        "spanish-cervantes-orientation",
+        "spanish-dle-be",
+        "spanish-dle-student"
+      ],
+      "provenance": "original_example",
+      "note": "estudiante 本身不因说话者性别而改词尾。",
+      "zh_queries": [
+        {
+          "text": "我是学生",
+          "pinyin": "wo shi xue sheng"
+        }
+      ]
+    },
+    {
+      "id": "es-aprendiendo",
+      "text": "Estoy aprendiendo español.",
+      "input": "estoy aprendiendo espanol",
+      "compact_input": "estoyaprendiendoespanol",
+      "meaning_zh": "我正在学西班牙语。",
+      "topic": "learning",
+      "level_hint": "A2",
+      "source_ids": [
+        "spanish-rae-progressive",
+        "spanish-dle-learn",
+        "spanish-dle-be-state"
+      ],
+      "provenance": "original_example",
+      "note": "estar + gerundio 表示正在进行的过程；aprender 的副动词是 aprendiendo。",
+      "zh_queries": [
+        {
+          "text": "我正在学西班牙语",
+          "pinyin": "wo zheng zai xue xi ban ya yu"
+        }
+      ]
+    },
+    {
+      "id": "es-hablo-poco",
+      "text": "Hablo un poco de español.",
+      "input": "hablo un poco de espanol",
+      "compact_input": "hablounpocodeespanol",
+      "meaning_zh": "我会说一点西班牙语。",
+      "topic": "learning",
+      "level_hint": "A1",
+      "source_ids": [
+        "spanish-cervantes-orientation"
+      ],
+      "provenance": "original_example",
+      "note": "español 指语言时用小写，并保留 ñ；该词本身没有书面重音符号。",
+      "zh_queries": [
+        {
+          "text": "我会一点西班牙语",
+          "pinyin": "wo hui yi dian xi ban ya yu"
+        }
+      ]
+    },
+    {
+      "id": "es-no-entiendo",
+      "text": "No entiendo.",
+      "input": "no entiendo",
+      "compact_input": "noentiendo",
+      "meaning_zh": "我不明白。",
+      "topic": "learning",
+      "level_hint": "A1",
+      "source_ids": [
+        "spanish-dle-understand",
+        "spanish-cervantes-general"
+      ],
+      "provenance": "original_example",
+      "zh_queries": [
+        {
+          "text": "我不明白",
+          "pinyin": "wo bu ming bai"
+        }
+      ]
+    },
+    {
+      "id": "es-mas-despacio",
+      "text": "Más despacio, por favor.",
+      "input": "mas despacio por favor",
+      "compact_input": "masdespacioporfavor",
+      "meaning_zh": "请说慢一点。",
+      "topic": "learning",
+      "level_hint": "A1",
+      "source_ids": [
+        "spanish-cervantes-general",
+        "spanish-dle-favor"
+      ],
+      "provenance": "common_expression_verified",
+      "zh_queries": [
+        {
+          "text": "请说慢一点",
+          "pinyin": "qing shuo man yi dian"
+        }
+      ]
+    },
+    {
+      "id": "es-puedes-repetir",
+      "text": "¿Puedes repetir, por favor?",
+      "input": "puedes repetir por favor",
+      "compact_input": "puedesrepetirporfavor",
+      "meaning_zh": "请你再说一遍，好吗？",
+      "topic": "learning",
+      "level_hint": "A1",
+      "source_ids": [
+        "spanish-cervantes-general",
+        "spanish-dle-can"
+      ],
+      "provenance": "original_example",
+      "note": "puedes 对应非正式称呼 tú；对不熟悉的人可用 puede。",
+      "variants": [
+        {
+          "text": "¿Puede repetir, por favor?",
+          "input": "puede repetir por favor",
+          "compact_input": "puederepetirporfavor",
+          "meaning_zh": "请您再说一遍，好吗？〔正式称呼 usted〕",
+          "grammatical_form": "formal_usted",
+          "source_ids": [
+            "spanish-cervantes-general",
+            "spanish-dle-can"
+          ],
+          "zh_queries": [
+            {
+              "text": "请您再说一遍",
+              "pinyin": "qing nin zai shuo yi bian"
+            }
+          ]
+        }
+      ],
+      "zh_queries": [
+        {
+          "text": "请再说一遍",
+          "pinyin": "qing zai shuo yi bian"
+        }
+      ]
+    },
+    {
+      "id": "es-como-se-dice",
+      "text": "¿Cómo se dice esto en español?",
+      "input": "como se dice esto en espanol",
+      "compact_input": "comosediceestoenespanol",
+      "meaning_zh": "这个用西班牙语怎么说？",
+      "topic": "learning",
+      "level_hint": "A1",
+      "source_ids": [
+        "spanish-dle-say",
+        "spanish-rae-how"
+      ],
+      "provenance": "original_example",
+      "zh_queries": [
+        {
+          "text": "这个用西语怎么说",
+          "pinyin": "zhe ge yong xi yu zen me shuo"
+        }
+      ]
+    },
+    {
+      "id": "es-que-significa",
+      "text": "¿Qué significa esta palabra?",
+      "input": "que significa esta palabra",
+      "compact_input": "quesignificaestapalabra",
+      "meaning_zh": "这个词是什么意思？",
+      "topic": "learning",
+      "level_hint": "A1",
+      "source_ids": [
+        "spanish-rae-what",
+        "spanish-cervantes-functions",
+        "spanish-dle-mean"
+      ],
+      "provenance": "original_example",
+      "zh_queries": [
+        {
+          "text": "这个词什么意思",
+          "pinyin": "zhe ge ci shen me yi si"
+        }
+      ]
+    },
+    {
+      "id": "es-puedes-escribirlo",
+      "text": "¿Puedes escribirlo, por favor?",
+      "input": "puedes escribirlo por favor",
+      "compact_input": "puedesescribirloporfavor",
+      "meaning_zh": "请你把它写下来，好吗？",
+      "topic": "learning",
+      "level_hint": "A2",
+      "source_ids": [
+        "spanish-dle-write",
+        "spanish-dle-can"
+      ],
+      "provenance": "original_example",
+      "note": "escribirlo 把 lo 接在不定式后；此处 lo 指需要写下的内容。",
+      "zh_queries": [
+        {
+          "text": "请把它写下来",
+          "pinyin": "qing ba ta xie xia lai"
+        }
+      ]
+    },
+    {
+      "id": "es-un-cafe",
+      "text": "Un café, por favor.",
+      "input": "un cafe por favor",
+      "compact_input": "uncafeporfavor",
+      "meaning_zh": "请给我一杯咖啡。",
+      "topic": "food",
+      "level_hint": "A1",
+      "source_ids": [
+        "spanish-dle-coffee",
+        "spanish-dle-favor"
+      ],
+      "provenance": "original_example",
+      "zh_queries": [
+        {
+          "text": "一杯咖啡",
+          "pinyin": "yi bei ka fei"
+        },
+        {
+          "text": "请给我咖啡",
+          "pinyin": "qing gei wo ka fei"
+        }
+      ]
+    },
+    {
+      "id": "es-un-te",
+      "text": "Un té, por favor.",
+      "input": "un te por favor",
+      "compact_input": "unteporfavor",
+      "meaning_zh": "请给我一杯茶。",
+      "topic": "food",
+      "level_hint": "A1",
+      "source_ids": [
+        "spanish-dle-tea",
+        "spanish-dle-favor"
+      ],
+      "provenance": "original_example",
+      "note": "饮品 té 带重音，区别于代词 te。",
+      "zh_queries": [
+        {
+          "text": "一杯茶",
+          "pinyin": "yi bei cha"
+        }
+      ]
+    },
+    {
+      "id": "es-agua-sin-gas",
+      "text": "Agua sin gas, por favor.",
+      "input": "agua sin gas por favor",
+      "compact_input": "aguasingasporfavor",
+      "meaning_zh": "请给我无气泡水。",
+      "topic": "food",
+      "level_hint": "A1",
+      "source_ids": [
+        "spanish-cervantes-notions",
+        "spanish-dle-favor"
+      ],
+      "provenance": "original_example",
+      "zh_queries": [
+        {
+          "text": "无气泡水",
+          "pinyin": "wu qi pao shui"
+        }
+      ]
+    },
+    {
+      "id": "es-sin-azucar",
+      "text": "Sin azúcar, por favor.",
+      "input": "sin azucar por favor",
+      "compact_input": "sinazucarporfavor",
+      "meaning_zh": "请不要加糖。",
+      "topic": "food",
+      "level_hint": "A2",
+      "source_ids": [
+        "spanish-cervantes-notions",
+        "spanish-dle-favor"
+      ],
+      "provenance": "original_example",
+      "zh_queries": [
+        {
+          "text": "不要加糖",
+          "pinyin": "bu yao jia tang"
+        }
+      ]
+    },
+    {
+      "id": "es-la-cuenta",
+      "text": "La cuenta, por favor.",
+      "input": "la cuenta por favor",
+      "compact_input": "lacuentaporfavor",
+      "meaning_zh": "麻烦结账。",
+      "topic": "food",
+      "level_hint": "A1",
+      "source_ids": [
+        "spanish-cervantes-notions",
+        "spanish-dle-favor"
+      ],
+      "provenance": "original_example",
+      "note": "在餐厅请求账单；实际付款后还可说 Gracias。",
+      "zh_queries": [
+        {
+          "text": "结账",
+          "pinyin": "jie zhang"
+        }
+      ]
+    },
+    {
+      "id": "es-pagar-tarjeta",
+      "text": "¿Puedo pagar con tarjeta?",
+      "input": "puedo pagar con tarjeta",
+      "compact_input": "puedopagarcontarjeta",
+      "meaning_zh": "我可以刷卡付款吗？",
+      "topic": "shopping",
+      "level_hint": "A1",
+      "source_ids": [
+        "spanish-cervantes-notions",
+        "spanish-dle-can"
+      ],
+      "provenance": "original_example",
+      "zh_queries": [
+        {
+          "text": "可以刷卡吗",
+          "pinyin": "ke yi shua ka ma"
+        }
+      ]
+    },
+    {
+      "id": "es-vegetariana",
+      "text": "Soy vegetariana.",
+      "input": "soy vegetariana",
+      "compact_input": "soyvegetariana",
+      "meaning_zh": "我吃素。〔女性说话者〕",
+      "topic": "food",
+      "level_hint": "A2",
+      "source_ids": [
+        "spanish-dle-vegetarian",
+        "spanish-dle-be",
+        "spanish-rae-agreement"
+      ],
+      "provenance": "original_example",
+      "note": "vegetariana 指素食者；不等于严格纯素 vegana。",
+      "variants": [
+        {
+          "text": "Soy vegetariano.",
+          "input": "soy vegetariano",
+          "compact_input": "soyvegetariano",
+          "meaning_zh": "我吃素。〔男性说话者〕",
+          "grammatical_form": "masculine_speaker",
+          "source_ids": [
+            "spanish-dle-vegetarian",
+            "spanish-dle-be",
+            "spanish-rae-agreement"
+          ],
+          "zh_queries": [
+            {
+              "text": "我是素食男性",
+              "pinyin": "wo shi su shi nan xing"
+            }
+          ]
+        }
+      ],
+      "zh_queries": [
+        {
+          "text": "我吃素",
+          "pinyin": "wo chi su"
+        },
+        {
+          "text": "我是素食女性",
+          "pinyin": "wo shi su shi nv xing"
+        }
+      ]
+    },
+    {
+      "id": "es-hambre",
+      "text": "Tengo hambre.",
+      "input": "tengo hambre",
+      "compact_input": "tengohambre",
+      "meaning_zh": "我饿了。",
+      "topic": "feelings",
+      "level_hint": "A2",
+      "source_ids": [
+        "spanish-cervantes-notions",
+        "spanish-dle-have"
+      ],
+      "provenance": "original_example",
+      "note": "西语用 tener hambre 表达饥饿。",
+      "zh_queries": [
+        {
+          "text": "我饿了",
+          "pinyin": "wo e le"
+        }
+      ]
+    },
+    {
+      "id": "es-sed",
+      "text": "Tengo sed.",
+      "input": "tengo sed",
+      "compact_input": "tengosed",
+      "meaning_zh": "我渴了。",
+      "topic": "feelings",
+      "level_hint": "A2",
+      "source_ids": [
+        "spanish-cervantes-notions",
+        "spanish-dle-have"
+      ],
+      "provenance": "original_example",
+      "zh_queries": [
+        {
+          "text": "我渴了",
+          "pinyin": "wo ke le"
+        }
+      ]
+    },
+    {
+      "id": "es-bano",
+      "text": "¿Dónde está el baño?",
+      "input": "donde esta el bano",
+      "compact_input": "dondeestaelbano",
+      "meaning_zh": "洗手间在哪里？",
+      "topic": "travel",
+      "level_hint": "A1",
+      "source_ids": [
+        "spanish-dle-bathroom",
+        "spanish-dle-be-state",
+        "spanish-rae-punctuation"
+      ],
+      "provenance": "original_example",
+      "zh_queries": [
+        {
+          "text": "洗手间在哪里",
+          "pinyin": "xi shou jian zai na li"
+        },
+        {
+          "text": "厕所在哪",
+          "pinyin": "ce suo zai na"
+        }
+      ]
+    },
+    {
+      "id": "es-cuanto-cuesta",
+      "text": "¿Cuánto cuesta?",
+      "input": "cuanto cuesta",
+      "compact_input": "cuantocuesta",
+      "meaning_zh": "多少钱？",
+      "topic": "shopping",
+      "level_hint": "A1",
+      "source_ids": [
+        "spanish-dle-cost",
+        "spanish-rae-punctuation"
+      ],
+      "provenance": "original_example",
+      "note": "问单个物品或某事的价钱；多个物品用 cuestan。",
+      "zh_queries": [
+        {
+          "text": "多少钱",
+          "pinyin": "duo shao qian"
+        }
+      ]
+    },
+    {
+      "id": "es-que-hora",
+      "text": "¿Qué hora es?",
+      "input": "que hora es",
+      "compact_input": "quehoraes",
+      "meaning_zh": "现在几点？",
+      "topic": "travel",
+      "level_hint": "A1",
+      "source_ids": [
+        "spanish-dle-hour",
+        "spanish-dle-be",
+        "spanish-rae-what"
+      ],
+      "provenance": "original_example",
+      "zh_queries": [
+        {
+          "text": "几点了",
+          "pinyin": "ji dian le"
+        }
+      ]
+    },
+    {
+      "id": "es-ayuda",
+      "text": "Necesito ayuda.",
+      "input": "necesito ayuda",
+      "compact_input": "necesitoayuda",
+      "meaning_zh": "我需要帮助。",
+      "topic": "travel",
+      "level_hint": "A1",
+      "source_ids": [
+        "spanish-dle-help",
+        "spanish-cervantes-functions",
+        "spanish-dle-need"
+      ],
+      "provenance": "original_example",
+      "zh_queries": [
+        {
+          "text": "我需要帮助",
+          "pinyin": "wo xu yao bang zhu"
+        }
+      ]
+    },
+    {
+      "id": "es-wifi",
+      "text": "¿Hay wifi?",
+      "input": "hay wifi",
+      "compact_input": "haywifi",
+      "meaning_zh": "这里有无线网络吗？",
+      "topic": "travel",
+      "level_hint": "A1",
+      "source_ids": [
+        "spanish-dle-wifi",
+        "spanish-dle-exist",
+        "spanish-rae-punctuation"
+      ],
+      "provenance": "original_example",
+      "note": "hay 表示有、存在；wifi 是通行词形。",
+      "zh_queries": [
+        {
+          "text": "有无线网吗",
+          "pinyin": "you wu xian wang ma"
+        }
+      ]
+    },
+    {
+      "id": "es-reserva",
+      "text": "Tengo una reserva.",
+      "input": "tengo una reserva",
+      "compact_input": "tengounareserva",
+      "meaning_zh": "我有预订。",
+      "topic": "travel",
+      "level_hint": "A2",
+      "source_ids": [
+        "spanish-dle-have",
+        "spanish-cervantes-notions",
+        "spanish-dle-reservation"
+      ],
+      "provenance": "original_example",
+      "note": "用于酒店、餐厅等核对预订；不自动补入真实个人信息。",
+      "zh_queries": [
+        {
+          "text": "我有预订",
+          "pinyin": "wo you yu ding"
+        }
+      ]
+    },
+    {
+      "id": "es-estacion",
+      "text": "¿Dónde está la estación?",
+      "input": "donde esta la estacion",
+      "compact_input": "dondeestalaestacion",
+      "meaning_zh": "车站在哪里？",
+      "topic": "travel",
+      "level_hint": "A1",
+      "source_ids": [
+        "spanish-cervantes-notions",
+        "spanish-dle-be-state",
+        "spanish-rae-punctuation",
+        "spanish-dle-station"
+      ],
+      "provenance": "original_example",
+      "zh_queries": [
+        {
+          "text": "车站在哪里",
+          "pinyin": "che zhan zai na li"
+        }
+      ]
+    },
+    {
+      "id": "es-derecha",
+      "text": "A la derecha.",
+      "input": "a la derecha",
+      "compact_input": "aladerecha",
+      "meaning_zh": "在右边；往右。",
+      "topic": "travel",
+      "level_hint": "A1",
+      "source_ids": [
+        "spanish-dle-right"
+      ],
+      "provenance": "common_expression_verified",
+      "zh_queries": [
+        {
+          "text": "右边",
+          "pinyin": "you bian"
+        }
+      ]
+    },
+    {
+      "id": "es-izquierda",
+      "text": "A la izquierda.",
+      "input": "a la izquierda",
+      "compact_input": "alaizquierda",
+      "meaning_zh": "在左边；往左。",
+      "topic": "travel",
+      "level_hint": "A1",
+      "source_ids": [
+        "spanish-dle-left"
+      ],
+      "provenance": "common_expression_verified",
+      "zh_queries": [
+        {
+          "text": "左边",
+          "pinyin": "zuo bian"
+        }
+      ]
+    },
+    {
+      "id": "es-cansada",
+      "text": "Estoy cansada.",
+      "input": "estoy cansada",
+      "compact_input": "estoycansada",
+      "meaning_zh": "我累了。〔女性说话者〕",
+      "topic": "feelings",
+      "level_hint": "A2",
+      "source_ids": [
+        "spanish-dle-tired",
+        "spanish-dle-be-state",
+        "spanish-rae-agreement"
+      ],
+      "provenance": "original_example",
+      "note": "cansada 描述说话者的状态；不要把它当成所有用户固定的词尾。",
+      "variants": [
+        {
+          "text": "Estoy cansado.",
+          "input": "estoy cansado",
+          "compact_input": "estoycansado",
+          "meaning_zh": "我累了。〔男性说话者〕",
+          "grammatical_form": "masculine_speaker",
+          "source_ids": [
+            "spanish-dle-tired",
+            "spanish-dle-be-state",
+            "spanish-rae-agreement"
+          ],
+          "zh_queries": [
+            {
+              "text": "男生说我累了",
+              "pinyin": "nan sheng shuo wo lei le"
+            }
+          ]
+        }
+      ],
+      "zh_queries": [
+        {
+          "text": "我累了",
+          "pinyin": "wo lei le"
+        }
+      ]
+    },
+    {
+      "id": "es-contenta",
+      "text": "Estoy contenta.",
+      "input": "estoy contenta",
+      "compact_input": "estoycontenta",
+      "meaning_zh": "我很开心。〔女性说话者〕",
+      "topic": "feelings",
+      "level_hint": "A2",
+      "source_ids": [
+        "spanish-dle-happy",
+        "spanish-dle-be-state",
+        "spanish-rae-agreement"
+      ],
+      "provenance": "original_example",
+      "note": "这里是状态，用 estar；词尾与说话者一致。",
+      "variants": [
+        {
+          "text": "Estoy contento.",
+          "input": "estoy contento",
+          "compact_input": "estoycontento",
+          "meaning_zh": "我很开心。〔男性说话者〕",
+          "grammatical_form": "masculine_speaker",
+          "source_ids": [
+            "spanish-dle-happy",
+            "spanish-dle-be-state",
+            "spanish-rae-agreement"
+          ],
+          "zh_queries": [
+            {
+              "text": "男生说我很开心",
+              "pinyin": "nan sheng shuo wo hen kai xin"
+            }
+          ]
+        }
+      ],
+      "zh_queries": [
+        {
+          "text": "我很开心",
+          "pinyin": "wo hen kai xin"
+        }
+      ]
+    },
+    {
+      "id": "es-estoy-bien",
+      "text": "Estoy bien.",
+      "input": "estoy bien",
+      "compact_input": "estoybien",
+      "meaning_zh": "我挺好的。",
+      "topic": "feelings",
+      "level_hint": "A1",
+      "source_ids": [
+        "spanish-dle-be-state",
+        "spanish-cervantes-functions"
+      ],
+      "provenance": "original_example",
+      "note": "bien 是副词，不需要随说话者性别改变。",
+      "zh_queries": [
+        {
+          "text": "我挺好的",
+          "pinyin": "wo ting hao de"
+        }
+      ]
+    },
+    {
+      "id": "es-sueno",
+      "text": "Tengo sueño.",
+      "input": "tengo sueno",
+      "compact_input": "tengosueno",
+      "meaning_zh": "我困了。",
+      "topic": "feelings",
+      "level_hint": "A2",
+      "source_ids": [
+        "spanish-cervantes-notions",
+        "spanish-dle-have"
+      ],
+      "provenance": "original_example",
+      "note": "sueño 保留 ñ；表达困倦，而非字面的“我有一个梦”。",
+      "zh_queries": [
+        {
+          "text": "我困了",
+          "pinyin": "wo kun le"
+        }
+      ]
+    },
+    {
+      "id": "es-frio",
+      "text": "Tengo frío.",
+      "input": "tengo frio",
+      "compact_input": "tengofrio",
+      "meaning_zh": "我觉得冷。",
+      "topic": "feelings",
+      "level_hint": "A2",
+      "source_ids": [
+        "spanish-cervantes-notions",
+        "spanish-dle-have"
+      ],
+      "provenance": "original_example",
+      "note": "个人感觉用 Tengo frío；天气冷通常用 Hace frío。",
+      "zh_queries": [
+        {
+          "text": "我觉得冷",
+          "pinyin": "wo jue de leng"
+        }
+      ]
+    },
+    {
+      "id": "es-calor",
+      "text": "Tengo calor.",
+      "input": "tengo calor",
+      "compact_input": "tengocalor",
+      "meaning_zh": "我觉得热。",
+      "topic": "feelings",
+      "level_hint": "A2",
+      "source_ids": [
+        "spanish-cervantes-notions",
+        "spanish-dle-have"
+      ],
+      "provenance": "original_example",
+      "zh_queries": [
+        {
+          "text": "我觉得热",
+          "pinyin": "wo jue de re"
+        }
+      ]
+    },
+    {
+      "id": "es-me-gusta",
+      "text": "Me gusta.",
+      "input": "me gusta",
+      "compact_input": "megusta",
+      "meaning_zh": "我喜欢。",
+      "topic": "feelings",
+      "level_hint": "A1",
+      "source_ids": [
+        "spanish-dle-like"
+      ],
+      "provenance": "original_example",
+      "note": "用于前文已经提到的单个事物；喜欢多个事物通常用 Me gustan。",
+      "zh_queries": [
+        {
+          "text": "我喜欢",
+          "pinyin": "wo xi huan"
+        }
+      ]
+    },
+    {
+      "id": "es-que-bien",
+      "text": "¡Qué bien!",
+      "input": "que bien",
+      "compact_input": "quebien",
+      "meaning_zh": "太好了！",
+      "topic": "responses",
+      "level_hint": "A1",
+      "source_ids": [
+        "spanish-rae-what",
+        "spanish-rae-punctuation"
+      ],
+      "provenance": "original_example",
+      "zh_queries": [
+        {
+          "text": "太好了",
+          "pinyin": "tai hao le"
+        }
+      ]
+    },
+    {
+      "id": "es-felicidades",
+      "text": "¡Felicidades!",
+      "input": "felicidades",
+      "compact_input": "felicidades",
+      "meaning_zh": "恭喜！",
+      "topic": "responses",
+      "level_hint": "A1",
+      "source_ids": [
+        "spanish-dle-congratulations",
+        "spanish-rae-punctuation"
+      ],
+      "provenance": "common_expression_verified",
+      "zh_queries": [
+        {
+          "text": "恭喜",
+          "pinyin": "gong xi"
+        }
+      ]
+    },
+    {
+      "id": "es-bienvenida",
+      "text": "¡Bienvenida!",
+      "input": "bienvenida",
+      "compact_input": "bienvenida",
+      "meaning_zh": "欢迎你！〔对一位女性〕",
+      "topic": "responses",
+      "level_hint": "A1",
+      "source_ids": [
+        "spanish-dle-welcome",
+        "spanish-rae-agreement",
+        "spanish-rae-punctuation"
+      ],
+      "provenance": "common_expression_verified",
+      "note": "这里的词尾与被欢迎的对象一致，不是与说话者一致。",
+      "variants": [
+        {
+          "text": "¡Bienvenido!",
+          "input": "bienvenido",
+          "compact_input": "bienvenido",
+          "meaning_zh": "欢迎你！〔对一位男性〕",
+          "grammatical_form": "masculine_addressee",
+          "source_ids": [
+            "spanish-dle-welcome",
+            "spanish-rae-agreement",
+            "spanish-rae-punctuation"
+          ],
+          "zh_queries": [
+            {
+              "text": "欢迎男生",
+              "pinyin": "huan ying nan sheng"
+            }
+          ]
+        }
+      ],
+      "zh_queries": [
+        {
+          "text": "欢迎你",
+          "pinyin": "huan ying ni"
+        },
+        {
+          "text": "欢迎女生",
+          "pinyin": "huan ying nv sheng"
+        }
+      ]
+    },
+    {
+      "id": "es-ahora-no",
+      "text": "Ahora no puedo.",
+      "input": "ahora no puedo",
+      "compact_input": "ahoranopuedo",
+      "meaning_zh": "我现在不行／没空。",
+      "topic": "plans",
+      "level_hint": "A1",
+      "source_ids": [
+        "spanish-dle-can",
+        "spanish-cervantes-functions"
+      ],
+      "provenance": "original_example",
+      "zh_queries": [
+        {
+          "text": "我现在没空",
+          "pinyin": "wo xian zai mei kong"
+        }
+      ]
+    },
+    {
+      "id": "es-tomamos-cafe",
+      "text": "¿Tomamos un café?",
+      "input": "tomamos un cafe",
+      "compact_input": "tomamosuncafe",
+      "meaning_zh": "我们喝杯咖啡，好吗？",
+      "topic": "plans",
+      "level_hint": "A2",
+      "source_ids": [
+        "spanish-cervantes-notions",
+        "spanish-dle-coffee",
+        "spanish-rae-punctuation"
+      ],
+      "provenance": "original_example",
+      "note": "用第一人称复数现在时提出一起做事的建议。",
+      "zh_queries": [
+        {
+          "text": "一起喝咖啡吗",
+          "pinyin": "yi qi he ka fei ma"
+        }
+      ]
+    },
+    {
+      "id": "es-hoy",
+      "text": "hoy",
+      "input": "hoy",
+      "compact_input": "hoy",
+      "meaning_zh": "今天",
+      "topic": "time",
+      "level_hint": "A1",
+      "source_ids": [
+        "spanish-cervantes-general",
+        "spanish-dle-today"
+      ],
+      "provenance": "lexical_fact",
+      "zh_queries": [
+        {
+          "text": "今天",
+          "pinyin": "jin tian"
+        }
+      ]
+    },
+    {
+      "id": "es-manana",
+      "text": "mañana",
+      "input": "manana",
+      "compact_input": "manana",
+      "meaning_zh": "明天；早晨",
+      "topic": "time",
+      "level_hint": "A1",
+      "source_ids": [
+        "spanish-dle-tomorrow"
+      ],
+      "provenance": "lexical_fact",
+      "note": "作副词常指明天；作名词 la mañana 指早晨，需看语境。",
+      "zh_queries": [
+        {
+          "text": "明天",
+          "pinyin": "ming tian"
+        },
+        {
+          "text": "早晨",
+          "pinyin": "zao chen"
+        }
+      ]
+    },
+    {
+      "id": "es-pasado-manana",
+      "text": "pasado mañana",
+      "input": "pasado manana",
+      "compact_input": "pasadomanana",
+      "meaning_zh": "后天",
+      "topic": "time",
+      "level_hint": "A2",
+      "source_ids": [
+        "spanish-dle-tomorrow"
+      ],
+      "provenance": "common_expression_verified",
+      "zh_queries": [
+        {
+          "text": "后天",
+          "pinyin": "hou tian"
+        }
+      ]
+    }
+  ]
+}

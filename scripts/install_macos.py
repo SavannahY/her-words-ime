@@ -25,16 +25,24 @@ except ImportError as error:
 try:
     from .compile_packs import compile_project
     from .compile_public_lexicon import build_public_resources
+    from .compile_spanish_learning import build_spanish_resources
     from .validate_packs import ValidationError, load_project
 except ImportError:
     from compile_packs import compile_project
     from compile_public_lexicon import build_public_resources
+    from compile_spanish_learning import build_spanish_resources
     from validate_packs import ValidationError, load_project
 
 ROOT = Path(__file__).resolve().parents[1]
-OWN_FILES = ['her_words.schema.yaml', 'her_pinyin.dict.yaml', 'her_words.dict.yaml',
+MANAGED_SCHEMAS = ['her_words', 'her_english', 'her_spanish']
+SAVE_OPTIONS = ['her_original', 'her_friendly', 'her_community',
+                'her_es_hints', 'her_es_lookup']
+OWN_FILES = ['her_words.schema.yaml', 'her_english.schema.yaml', 'her_spanish.schema.yaml',
+             'her_pinyin.dict.yaml', 'her_words.dict.yaml',
              'her_public.dict.yaml', 'lua/her_public_aliases.lua',
-             'lua/her_filter.lua', 'lua/her_memory.lua', 'lua/her_rewrite_rules.lua']
+             'lua/her_filter.lua', 'lua/her_memory.lua', 'lua/her_rewrite_rules.lua',
+             'lua/her_latin_core.lua', 'lua/her_latin_processor.lua',
+             'lua/her_latin_translator.lua', 'lua/her_spanish_data.lua']
 TOUCHED_FILES = OWN_FILES + ['default.custom.yaml', 'squirrel.custom.yaml', 'user.yaml']
 
 
@@ -70,18 +78,18 @@ class UniqueKeySafeLoader(yaml.SafeLoader):
         return super().construct_document(node)
 
 
-def load_custom_yaml(text):
+def load_custom_yaml(text, filename='default.custom.yaml'):
     """Load a single mapping with SafeLoader; an empty document means {}."""
     loader = UniqueKeySafeLoader(text)
     try:
         node = loader.get_single_node()
         value = {} if node is None else loader.construct_document(node)
     except yaml.YAMLError as error:
-        raise RuntimeError('default.custom.yaml 不是安全、有效且无重复键的 YAML：' + str(error)) from error
+        raise RuntimeError(filename + ' 不是安全、有效且无重复键的 YAML：' + str(error)) from error
     finally:
         loader.dispose()
     if not isinstance(value, dict):
-        raise RuntimeError('default.custom.yaml 顶层必须是映射。')
+        raise RuntimeError(filename + ' 顶层必须是映射。')
     return value
 
 
@@ -110,13 +118,54 @@ def plan_default_custom(text):
                 raise RuntimeError('patch/{} 每一项必须含有非空 schema 名称。'.format(key))
         lists.append(values)
     key = 'schema_list' if 'schema_list' in patch else 'schema_list/+'
-    # An existing append patch can already register her_words even when a full
-    # list is also present. Avoid registering it twice, and remain idempotent.
-    if not any(value['schema'] == 'her_words' for values in lists for value in values):
-        patch[key] = list(patch.get(key, [])) + [{'schema': 'her_words'}]
+    # A schema can already occur in either a full list or an append patch.
+    # Preserve both patches and their user-defined entries; only add missing IDs.
+    present = {value['schema'] for values in lists for value in values}
+    missing = [{'schema': name} for name in MANAGED_SCHEMAS if name not in present]
+    if missing:
+        patch[key] = list(patch.get(key, [])) + missing
+
+    option_lists = []
+    for option_key in ('switcher/save_options', 'switcher/save_options/+'):
+        if option_key not in patch:
+            continue
+        values = patch[option_key]
+        if (not isinstance(values, list)
+                or any(not isinstance(value, str) or not value.strip() for value in values)):
+            raise RuntimeError('patch/{} 必须是非空开关名称的列表。'.format(option_key))
+        option_lists.append(values)
+    option_key = ('switcher/save_options' if 'switcher/save_options' in patch
+                  else 'switcher/save_options/+')
+    present_options = {value for values in option_lists for value in values}
+    missing_options = [name for name in SAVE_OPTIONS if name not in present_options]
+    if missing_options:
+        patch[option_key] = list(patch.get(option_key, [])) + missing_options
     output = yaml.safe_dump(document, allow_unicode=True, sort_keys=False,
                             default_flow_style=False)
     return output, key
+
+
+def plan_user_options(text):
+    """Seed first-use defaults while retaining explicit saved user choices."""
+    document = load_custom_yaml(text, filename='user.yaml')
+    current_var = document.get('var', {})
+    if not isinstance(current_var, dict):
+        raise RuntimeError('user.yaml 的 var 必须是映射。')
+    current_options = current_var.get('option', {})
+    if not isinstance(current_options, dict):
+        raise RuntimeError('user.yaml 的 var/option 必须是映射。')
+    defaults = {'her_es_hints': True, 'her_es_lookup': False}
+    missing = {key: value for key, value in defaults.items() if key not in current_options}
+    if not missing:
+        return None
+    # Detach YAML aliases before changing only the two owned option keys.
+    options = dict(current_options)
+    options.update(missing)
+    var = dict(current_var)
+    var['option'] = options
+    document['var'] = var
+    return yaml.safe_dump(document, allow_unicode=True, sort_keys=False,
+                          default_flow_style=False)
 
 
 def absolute_target(path):
@@ -176,13 +225,23 @@ def prepare_plan(target, manifest, theme=False):
     except UnicodeError as error:
         raise RuntimeError('default.custom.yaml 必须是有效 UTF-8。') from error
     default_custom, schema_patch = plan_default_custom(original)
+    user_file = target / 'user.yaml'
+    try:
+        user_original = user_file.read_text(encoding='utf-8') if user_file.exists() else ''
+    except UnicodeError as error:
+        raise RuntimeError('user.yaml 必须是有效 UTF-8。') from error
+    user_options = plan_user_options(user_original)
     project = load_project(manifest)
     compiled_public = build_public_resources()
-    generated = {'lua/her_rewrite_rules.lua'} | compiled_public.keys()
+    compiled_spanish = build_spanish_resources()
+    generated = {'lua/her_rewrite_rules.lua'} | compiled_public.keys() | compiled_spanish.keys()
     files = {name: (ROOT / 'rime' / name).read_bytes() for name in OWN_FILES if name not in generated}
     files['lua/her_rewrite_rules.lua'] = compile_project(project).encode('utf-8')
     files.update(compiled_public)
+    files.update(compiled_spanish)
     files['default.custom.yaml'] = default_custom.encode('utf-8')
+    if user_options is not None:
+        files['user.yaml'] = user_options.encode('utf-8')
     if theme or not (target / 'squirrel.custom.yaml').exists():
         files['squirrel.custom.yaml'] = (ROOT / 'rime/squirrel.custom.yaml').read_bytes()
     # Recheck after reading/compiling so the plan never knowingly targets a
@@ -256,7 +315,7 @@ def main():
     target = plan.target
     print('输入法：', app)
     print('配置目录：', target)
-    print('安装她说方案；保留其他方案。默认中性表达，社群写法需手动切换。')
+    print('安装她说中文、English 和西班牙语方案；保留其他方案。')
     print('输入来源补丁：patch/' + plan.schema_patch)
     print('计划写入：' + '、'.join(plan.files))
     if args.dry_run:
@@ -272,7 +331,7 @@ def main():
     run([deployer, '--build', target, app / 'Contents/SharedSupport', target / 'build'])
     run([deployer, '--set-active-schema', 'her_words'], cwd=target)
     run([app / 'Contents/MacOS/Squirrel', '--reload'])
-    print('配置已部署。请从系统输入菜单选择鼠须管，按 Control + 反引号查看措辞开关。')
+    print('配置已部署。请从系统输入菜单选择鼠须管，按 Control + 反引号切换输入方案和选项。')
 
 
 if __name__ == '__main__':
