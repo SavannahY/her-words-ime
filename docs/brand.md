@@ -25,4 +25,3 @@ Existing brand palette: plum #62476f for the speech-bubble body, warm paper whit
 Text (verbatim): “她” only. No other words or labels.
 Constraints: genuinely transparent canvas outside the symbol, transparent corners; one isolated production logo, no presentation board, no mockup, no gradients, no shadows, no 3D effects, no texture, no watermark, no tiny decorative details.
 ```
-
